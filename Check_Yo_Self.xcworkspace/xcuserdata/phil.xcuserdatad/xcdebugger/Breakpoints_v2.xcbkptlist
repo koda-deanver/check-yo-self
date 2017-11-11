@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Check_Yo_Self/FitBit/HeartStats.swift"
+            timestampString = "513298175.31306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "getHeartStats(for:completion:failure:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Check_Yo_Self.HeartStats.getHeartStats (for : Swift.String, completion : (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.Int&gt;&gt;) -&gt; (), failure : (Check_Yo_Self.ErrorType) -&gt; ()) -&gt; ()"
+                  moduleName = "Check_Yo_Self"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/phil/Desktop/CheckYoSelf/Check_Yo_Self/Check_Yo_Self/FitBit/HeartStats.swift"
+                  timestampString = "513298436.736321"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Check_Yo_Self.HeartStats.getHeartStats (for : Swift.String, completion : (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.Int&gt;&gt;) -&gt; (), failure : (Check_Yo_Self.ErrorType) -&gt; ()) -&gt; ()"
+                  moduleName = "Check_Yo_Self"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/phil/Desktop/CheckYoSelf/Check_Yo_Self/Check_Yo_Self/FitBit/HeartStats.swift"
+                  timestampString = "513298436.740326"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "148">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Check_Yo_Self/FitBit/HeartStats.swift"
+            timestampString = "513298178.185068"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "getHeartStats(for:completion:failure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Check_Yo_Self/LoadingViewController.swift"
+            timestampString = "513365037.886676"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
