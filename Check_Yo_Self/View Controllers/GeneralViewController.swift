@@ -1,57 +1,39 @@
-//********************************************************************
-//  GeneralViewController.swift
-//  Check Yo Self
-//  Created by Phil on 12/1/16
 //
-//  Description: Used to provide general behavior for all view controllers
-//********************************************************************
+//  GeneralViewController.swift
+//  Check_Yo_Self
+//
+//  Created by Phil Rattazzi on 12/1/16.
+//  Copyright © 2016 ThematicsLLC. All rights reserved.
+//
+//  Base class for all View Controllers.
+//
 
 import UIKit
 
-
 class GeneralViewController: UIViewController, UITextFieldDelegate{
-    var screenWidth: CGFloat{
-        return UIScreen.main.bounds.width
-    }
-    var screenHeight: CGFloat{
-        return UIScreen.main.bounds.height
-    }
     
-    override var prefersStatusBarHidden: Bool{
-        return true
-    }
-
-    var appSkin: DesignStyle!
-    var backgroundImage: UIImageView!
-    override func viewDidLoad(){
-        super.viewDidLoad()
-        self.backgroundImage = UIImageView(frame: CGRect(x: 0, y: 0, width: self.screenWidth, height: self.screenHeight))
-        // Adjust background for age
-        if PlayerData.sharedInstance.isAdult{
-            self.appSkin = .adult
-            self.backgroundImage.image = #imageLiteral(resourceName: "GradientBlack")
-        }else{
-            self.appSkin = .child
-            self.backgroundImage.image = #imageLiteral(resourceName: "GradientWhite")
-        }
-        self.view.addSubview(self.backgroundImage)
-        self.view.sendSubview(toBack: self.backgroundImage)
-    }
+    // MARK: - Public Members -
     
-    //********************************************************************
-    // hideKeyboardWhenTappedAround
-    // Description: Hides keyboard when tapped on screen
-    //********************************************************************
+    var screenWidth: CGFloat{ return UIScreen.main.bounds.width }
+    var screenHeight: CGFloat{ return UIScreen.main.bounds.height }
+    override var prefersStatusBarHidden: Bool { return true }
+    
+    // MARK: - Public Methods -
+    
+    ///
+    /// Hides keyboard when user taps on screen.
+    ///
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
-    //********************************************************************
-    // dismissKeyboard
-    // Description: Dismissed keyboard
-    //********************************************************************
-    func dismissKeyboard() {
+    // MARK: - Private Methods -
+    
+    ///
+    /// Description: Dismisses keyboard.
+    ///
+    @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
 }

@@ -106,13 +106,13 @@ class CubeViewController: GeneralViewController, PickAvatarViewControllerDelegat
         }
         
         // Set up gesture recognizers
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(CubeViewController.handleSwipe(sender:)))
+        /*let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(CubeViewController.handleSwipe(sender:)))
         swipeLeft.direction = .left
         view.addGestureRecognizer(swipeLeft)
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(CubeViewController.handleSwipe(sender:)))
         swipeRight.direction = .right
-        view.addGestureRecognizer(swipeRight)
+        view.addGestureRecognizer(swipeRight)*/
         
         // Add images to buttons
         let buttonImageDictionary: [UIButton: UIImage] = [
@@ -187,13 +187,7 @@ class CubeViewController: GeneralViewController, PickAvatarViewControllerDelegat
         self.usernameLabel.text = PlayerData.sharedInstance.displayName
         self.gemLabel.setTitle(String(format: "%d",PlayerData.sharedInstance.gemTotal), for: UIControlState.normal)
         
-        switch self.appSkin!{
-        case .adult:
-            self.gemLabel.setTitleColor(UIColor.white, for: .normal)
-        case .child:
-            self.gemLabel.setTitleColor(UIColor.black, for: .normal)
-        }
-        
+        self.gemLabel.setTitleColor(UIColor.white, for: .normal)
         
         // Phase Image
         if PlayerData.sharedInstance.creationPhase != .none{
@@ -223,12 +217,12 @@ class CubeViewController: GeneralViewController, PickAvatarViewControllerDelegat
         self.profileButton.setImage(Media.connectionBackdropList[playerColor.intValue()], for: .normal)
         
         // Play Button
-        switch self.appSkin!{
+        /*switch self.appSkin!{
         case .adult:
             self.playButton.setImage(#imageLiteral(resourceName: "PlayButtonWhite"), for: .normal)
         case .child:
             self.playButton.setImage(#imageLiteral(resourceName: "PlayButtonBlack"), for: .normal)
-        }
+        }*/
     }
     
     //********************************************************************
@@ -240,7 +234,7 @@ class CubeViewController: GeneralViewController, PickAvatarViewControllerDelegat
             case "ShowFriendList":
                 guard PlayerData.sharedInstance.facebookID != nil else{
                     self.showConnectionAlert(ConnectionAlert(title: "No Facebook Friends", message: "Log in to Facebook on the Connection page to see your friend list.", okButtonText: "OK", okButtonCompletion: {
-                        _ in
+                        
                         
                     }))
                     return false

@@ -6,6 +6,16 @@
 //  Description: Provide easy to use general control over app
 //********************************************************************
 
+import FirebaseCore
+import FirebaseDatabase
+
+// MARK: - Type Alias -
+
+typealias Closure = () -> Void
+
+// MARK: - Constants -
+
+let FIREBASE_ROOT = Database.database().reference(fromURL: "https://check-yo-self-18682434.firebaseio.com/")
 let SHOW_ADS = false
 
 let QUESTIONS_PER_ROUND = 20

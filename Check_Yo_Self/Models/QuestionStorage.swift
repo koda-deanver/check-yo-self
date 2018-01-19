@@ -117,7 +117,7 @@ class QuestionStorage: NSObject, NSCoding {
     //********************************************************************
     func loadPhaseFirebase(phase: CreationPhase, completion: @escaping () -> Void, failure: @escaping () -> Void){
         
-        let rootNode = FIRDatabase.database().reference(fromURL: "https://check-yo-self-18682434.firebaseio.com/")
+        let rootNode = Database.database().reference(fromURL: "https://check-yo-self-18682434.firebaseio.com/")
         let questionCategoryNode = rootNode.child("Questions/\(phase.rawValue)Question")
         
         questionCategoryNode.observeSingleEvent(of: .value, with: {

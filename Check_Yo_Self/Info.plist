@@ -18,7 +18,7 @@
 	<key>FacebookAppID</key>
 	<string>168489043664341</string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>en_US</string>
 	<key>CFBundleDisplayName</key>
 	<string>Check Yo Self</string>
 	<key>CFBundleExecutable</key>

@@ -430,8 +430,8 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
     // Description: Save import data to Firebase
     //********************************************************************
     func savePlayerFirebase(completion: () -> (), failure: (ErrorType) -> ()){
-        if let user = FIRAuth.auth()?.currentUser{
-            let rootNode = FIRDatabase.database().reference(fromURL: "https://check-yo-self-18682434.firebaseio.com/")
+        if let user = Auth.auth().currentUser{
+            let rootNode = Database.database().reference(fromURL: "https://check-yo-self-18682434.firebaseio.com/")
             let playerNode = rootNode.child("Users/\(user.uid)")
            
             let playerStats: [String: Any] = [
@@ -454,8 +454,8 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
     // Description: Get stored player data from firebase
     //********************************************************************
     func loadPlayerFirebase(completion: @escaping () -> (), failure: @escaping (ErrorType) -> ()){
-        if let user = FIRAuth.auth()?.currentUser{
-            let rootNode = FIRDatabase.database().reference(fromURL: "https://check-yo-self-18682434.firebaseio.com/")
+        if let user = Auth.auth().currentUser{
+            let rootNode = Database.database().reference(fromURL: "https://check-yo-self-18682434.firebaseio.com/")
             let playerNode = rootNode.child("Users/\(user.uid)")
             playerNode.observeSingleEvent(of: .value, with: {
                 snapshot in

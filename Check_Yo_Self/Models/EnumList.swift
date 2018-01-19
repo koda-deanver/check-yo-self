@@ -99,19 +99,19 @@ enum CubeColor: String{
     func rgbColor() -> UIColor{
         switch self{
         case .none:
-            return UIColor(colorLiteralRed: 0.7, green: 0.7, blue: 0.7, alpha: 1.0)
+            return UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1.0)
         case .red:
-            return UIColor(colorLiteralRed: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+            return UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
         case .green:
-            return UIColor(colorLiteralRed: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
+            return UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
         case .blue:
-            return UIColor(colorLiteralRed: 0.0, green: 0.0, blue: 1.0, alpha: 1.0)
+            return UIColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.0)
         case .cyan:
-            return UIColor(colorLiteralRed: 0.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            return UIColor(red: 0.0, green: 1.0, blue: 1.0, alpha: 1.0)
         case .magenta:
-            return UIColor(colorLiteralRed: 1.0, green: 0.0, blue: 1.0, alpha: 1.0)
+            return UIColor(red: 1.0, green: 0.0, blue: 1.0, alpha: 1.0)
         case .yellow:
-            return UIColor(colorLiteralRed: 1.0, green: 1.0, blue: 0.0, alpha: 1.0)
+            return UIColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 1.0)
         }
     }
 }

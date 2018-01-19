@@ -10,6 +10,7 @@
 import UIKit
 import HealthKit
 import FacebookLogin
+import FacebookCore
 import CoreLocation
 
 class DevicesViewController: GeneralViewController, AuthenticationProtocol {
@@ -366,14 +367,12 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
     //********************************************************************
     func loginFB(completion: @escaping () -> Void, failure: @escaping (ErrorType) -> Void){
         let loginManager = LoginManager()
-        loginManager.logIn([.publicProfile, .userFriends], viewController: self) { loginResult in
+        
+        loginManager.logIn(readPermissions: [ReadPermission.publicProfile, ReadPermission.userFriends]) { loginResult in
             switch loginResult {
-            case .failed(let error):
-                failure(.connection(error))
-            case .cancelled:
-                failure(.permissions("User Cancelled Facebook Login"))
-            case .success(_, _, _):
-                completion()
+            case .failed: failure(ErrorType.data("Fix"))
+            case .cancelled: failure(ErrorType.data("Fix"))
+            case .success(_, _, _): completion()
             }
         }
     }

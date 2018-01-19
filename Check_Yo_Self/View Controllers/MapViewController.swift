@@ -66,14 +66,15 @@ class MapViewController: GeneralViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // FIX
         // Set up swipe recognizers
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(MapViewController.handleSwipe(sender:)))
+        /*let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(MapViewController.handleSwipe(sender:)))
         swipeLeft.direction = .left
         view.addGestureRecognizer(swipeLeft)
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(MapViewController.handleSwipe(sender:)))
         swipeRight.direction = .right
-        view.addGestureRecognizer(swipeRight)
+        view.addGestureRecognizer(swipeRight)*/
     }
     
     //********************************************************************

@@ -75,7 +75,7 @@ class ConnectionAlertViewController: UIViewController {
     //********************************************************************
     func showAnimate(){
         // Adjust transparent backround for popup window to stand out
-        self.view.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+        self.view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
         // Fade in and shrink
         self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         self.view.alpha = 0.0

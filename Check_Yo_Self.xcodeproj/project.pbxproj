@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		132042AB201062C300DCE39E /* BSGFirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132042AA201062C300DCE39E /* BSGFirebaseService.swift */; };
+		132042AD2010682300DCE39E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132042AC2010682300DCE39E /* DataManager.swift */; };
+		132042AF2010692800DCE39E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132042AE2010692800DCE39E /* User.swift */; };
+		13523AF62011C34D00CDF58C /* LabelAndTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */; };
+		13523AF82011C52B00CDF58C /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */; };
+		13523AFB2011E1E500CDF58C /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */; };
 		4A06B5F81E709F1B008BDBE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A06B5F71E709F1B008BDBE1 /* GoogleService-Info.plist */; };
 		4A06B5FA1E70F287008BDBE1 /* EnumList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B5F91E70F287008BDBE1 /* EnumList.swift */; };
 		4A06B5FC1E713C82008BDBE1 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B5FB1E713C82008BDBE1 /* Connection.swift */; };
@@ -68,6 +74,12 @@
 
 /* Begin PBXFileReference section */
 		07D724E8DB2EF705EBC757AB /* Pods_Check_Yo_Self.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Check_Yo_Self.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		132042AA201062C300DCE39E /* BSGFirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSGFirebaseService.swift; sourceTree = "<group>"; };
+		132042AC2010682300DCE39E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		132042AE2010692800DCE39E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAndTextFieldCell.swift; sourceTree = "<group>"; };
+		13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountViewController.swift; sourceTree = "<group>"; };
+		13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 		4A00258B1E36A52A00950990 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		4A06B5F71E709F1B008BDBE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A06B5F91E70F287008BDBE1 /* EnumList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnumList.swift; path = Models/EnumList.swift; sourceTree = "<group>"; };
@@ -121,7 +133,7 @@
 		4AA2D3A11E25771500DBE986 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTabBar.swift; path = ../CustomTabBar.swift; sourceTree = "<group>"; };
 		4AA2D3C91E2E8E4200DBE986 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		4AA2D3CB1E2FFC6F00DBE986 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "View Controllers/Constants.swift"; sourceTree = "<group>"; };
-		4AADEAD51E30826600C062B5 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingViewController.swift; path = ../LoadingViewController.swift; sourceTree = "<group>"; };
+		4AADEAD51E30826600C062B5 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		4AADEAD71E30848000C062B5 /* Noodle.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Noodle.gif; sourceTree = "<group>"; };
 		4AADEAD91E30887000C062B5 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
 		4ABD51531E99558A00607CE8 /* PickAvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickAvatarViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +164,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		132042A9201062BA00DCE39E /* BSG */ = {
+			isa = PBXGroup;
+			children = (
+				4A55D70F1E79B6BB00EFB9B5 /* BSGCommon.swift */,
+				132042AA201062C300DCE39E /* BSGFirebaseService.swift */,
+			);
+			path = BSG;
+			sourceTree = "<group>";
+		};
+		13523AF92011C54900CDF58C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4A8346941E203B6200BAF8F9 /* LoginViewController.swift */,
+				13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */,
+				4AADEAD51E30826600C062B5 /* LoadingViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		4A06B6031E71870F008BDBE1 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,8 +199,9 @@
 				4AADEAD91E30887000C062B5 /* iOSDevCenters+GIF.swift */,
 				4A06B5F91E70F287008BDBE1 /* EnumList.swift */,
 				4AA2D3CB1E2FFC6F00DBE986 /* Constants.swift */,
-				4A55D70F1E79B6BB00EFB9B5 /* BSGCommon.swift */,
 				4AA2D39B1E24B35E00DBE986 /* Media.swift */,
+				132042AC2010682300DCE39E /* DataManager.swift */,
+				132042AE2010692800DCE39E /* User.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -206,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				4A8346781E203B6200BAF8F9 /* AppDelegate.swift */,
+				132042A9201062BA00DCE39E /* BSG */,
 				4A877CD11E889C0F009CE752 /* Table Cells */,
 				4A06B6031E71870F008BDBE1 /* Alerts */,
 				4A438D7F1E31E6A300C2253C /* Overrides */,
@@ -256,9 +289,8 @@
 		4A83468E1E203B6200BAF8F9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				13523AF92011C54900CDF58C /* Login */,
 				4A8346921E203B6200BAF8F9 /* GeneralViewController.swift */,
-				4AADEAD51E30826600C062B5 /* LoadingViewController.swift */,
-				4A8346941E203B6200BAF8F9 /* LoginViewController.swift */,
 				4A83468F1E203B6200BAF8F9 /* CubeViewController.swift */,
 				4ABD51531E99558A00607CE8 /* PickAvatarViewController.swift */,
 				4A06B6011E717D69008BDBE1 /* ViewControllerExtensions.swift */,
@@ -271,6 +303,7 @@
 				4A8346981E203B6200BAF8F9 /* StatsViewController.swift */,
 				4A8346901E203B6200BAF8F9 /* DataEntryDetailsViewController.swift */,
 				4A8346951E203B6200BAF8F9 /* MapViewController.swift */,
+				13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -295,6 +328,7 @@
 			children = (
 				4A8346881E203B6200BAF8F9 /* CustomTableViewCell.swift */,
 				4A877CCF1E889BED009CE752 /* FriendCell.swift */,
+				13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -424,9 +458,32 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Check_Yo_Self/Pods-Check_Yo_Self-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -439,13 +496,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Check_Yo_Self-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E981019BDC7E27674BC3E7D0 /* [CP] Copy Pods Resources */ = {
@@ -476,6 +536,7 @@
 				4AADEADA1E30887000C062B5 /* iOSDevCenters+GIF.swift in Sources */,
 				4A55D7101E79B6BB00EFB9B5 /* BSGCommon.swift in Sources */,
 				4A8346AA1E203B6200BAF8F9 /* CubeViewController.swift in Sources */,
+				132042AD2010682300DCE39E /* DataManager.swift in Sources */,
 				4A83469F1E203B6200BAF8F9 /* Notifications.swift in Sources */,
 				4AADEAD61E30826600C062B5 /* LoadingViewController.swift in Sources */,
 				4A8346B01E203B6200BAF8F9 /* MapViewController.swift in Sources */,
@@ -489,12 +550,16 @@
 				4A877CCE1E88960C009CE752 /* Friend.swift in Sources */,
 				4A8346A41E203B6200BAF8F9 /* CustomTableViewCell.swift in Sources */,
 				4A06B6021E717D69008BDBE1 /* ViewControllerExtensions.swift in Sources */,
+				132042AF2010692800DCE39E /* User.swift in Sources */,
+				13523AF82011C52B00CDF58C /* CreateNewAccountViewController.swift in Sources */,
 				4AA2D3CC1E2FFC6F00DBE986 /* Constants.swift in Sources */,
+				13523AF62011C34D00CDF58C /* LabelAndTextFieldCell.swift in Sources */,
 				4A8346AD1E203B6200BAF8F9 /* GeneralViewController.swift in Sources */,
 				4A438D7D1E31E46600C2253C /* CheckViewController.swift in Sources */,
 				4A8346A91E203B6200BAF8F9 /* QuestionStorage.swift in Sources */,
 				4A06B5FE1E717C34008BDBE1 /* ConnectionAlert.swift in Sources */,
 				4A8346A61E203B6200BAF8F9 /* LocationMarker.swift in Sources */,
+				132042AB201062C300DCE39E /* BSGFirebaseService.swift in Sources */,
 				4A8346AC1E203B6200BAF8F9 /* DevicesViewController.swift in Sources */,
 				4A8346A21E203B6200BAF8F9 /* String+Dates.swift in Sources */,
 				4A8346A71E203B6200BAF8F9 /* PlayerData.swift in Sources */,
@@ -507,6 +572,7 @@
 				4A877CD01E889BED009CE752 /* FriendCell.swift in Sources */,
 				4A8346AB1E203B6200BAF8F9 /* DataEntryDetailsViewController.swift in Sources */,
 				4A877CD31E889D5C009CE752 /* FriendListTableViewController.swift in Sources */,
+				13523AFB2011E1E500CDF58C /* BackgroundViewController.swift in Sources */,
 				4A8346B11E203B6200BAF8F9 /* PlayViewController.swift in Sources */,
 				4A83469D1E203B6200BAF8F9 /* AuthenticationController.swift in Sources */,
 			);
@@ -641,12 +707,12 @@
 					"$(PROJECT_DIR)/Check_Yo_Self/Frameworks",
 				);
 				INFOPLIST_FILE = Check_Yo_Self/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.thematics.checkyoself;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -665,12 +731,12 @@
 					"$(PROJECT_DIR)/Check_Yo_Self/Frameworks",
 				);
 				INFOPLIST_FILE = Check_Yo_Self/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.thematics.checkyoself;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
