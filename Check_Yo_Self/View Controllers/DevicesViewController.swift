@@ -44,10 +44,10 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
     // Description: Try to connect user to the chosen connection
     //********************************************************************
     @IBAction func connectionPressed(_ sender: UIButton) {
-        for index in 0..<CONNECTIONS.count{
+        for index in 0..<Constants.connections.count{
             // Found correct connection
             if self.backdropArray[index] == sender{
-                handleConnectionTouch(CONNECTIONS[index], connectionIndex: index)
+                handleConnectionTouch(Constants.connections[index], connectionIndex: index)
             }
         }
     }
@@ -71,7 +71,7 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
     // Description: Place images on future connections
     //********************************************************************
     func loadFutureConnections(){
-        for connectionIndex in CONNECTIONS.count...8{
+        for connectionIndex in Constants.connections.count...8{
             // Set up Connection Image
             let backdropDimension = self.backdropArray[connectionIndex].frame.width
             let imageDimension = backdropDimension * 0.6
@@ -103,7 +103,7 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
     // Description: Reset all connections to false to test again
     //********************************************************************
     func resetAllConnections(){
-        for connection in CONNECTIONS{
+        for connection in Constants.connections{
             connection.isConnected = nil
         }
     }
@@ -120,7 +120,7 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
         for backdrop in self.backdropArray{
             backdrop.alpha = 0.4
         }
-        for connectionIndex in 0..<CONNECTIONS.count{
+        for connectionIndex in 0..<Constants.connections.count{
             // Show connections that are available
             self.backdropArray[connectionIndex].alpha = 1.0
             // Set up Connection Image
@@ -129,12 +129,12 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
             let connectionImageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: imageDimension, height: imageDimension)))
             connectionImageView.center = CGPoint(x: backdropDimension/2, y: backdropDimension/2)
             // Set correct image
-            let connectionImageName = CONNECTIONS[connectionIndex].type.rawValue
+            let connectionImageName = Constants.connections[connectionIndex].type.rawValue
             connectionImageView.image = UIImage(named: connectionImageName)
             self.backdropArray[connectionIndex].addSubview(connectionImageView)
             // Check each for connection status
             checkConnection(connectionIndex: connectionIndex)
-            CONNECTIONS[connectionIndex].checkConnection()
+            Constants.connections[connectionIndex].checkConnection()
         }
     }
     
@@ -144,12 +144,12 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
     //********************************************************************
     func countConnected(){
         var connectionsMade: Int = 0
-        for connection in CONNECTIONS{
+        for connection in Constants.connections{
             if connection.isConnected == true{
                 connectionsMade += 1
             }
         }
-        self.connectionsLabel.text = "Connections: \(connectionsMade)/\(CONNECTIONS.count)"
+        self.connectionsLabel.text = "Connections: \(connectionsMade)/\(Constants.connections.count)"
     }
     
     //********************************************************************
@@ -191,7 +191,7 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
                 finished in
                 self.countConnected()
                 // Base condition
-                if let isConnected = CONNECTIONS[connectionIndex].isConnected{
+                if let isConnected = Constants.connections[connectionIndex].isConnected{
                     pendingImageView.removeFromSuperview()
                     if isConnected{
                         let backdrop = self.backdropArray[connectionIndex]
@@ -356,7 +356,7 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
             return
         }
         PlayerData.sharedInstance.fitbitToken = authToken
-        for connection in CONNECTIONS where connection.type == .fitbit{
+        for connection in Constants.connections where connection.type == .fitbit{
             connection.checkConnection()
         }
     }

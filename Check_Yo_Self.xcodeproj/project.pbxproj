@@ -10,6 +10,8 @@
 		132042AB201062C300DCE39E /* BSGFirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132042AA201062C300DCE39E /* BSGFirebaseService.swift */; };
 		132042AD2010682300DCE39E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132042AC2010682300DCE39E /* DataManager.swift */; };
 		132042AF2010692800DCE39E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132042AE2010692800DCE39E /* User.swift */; };
+		13382AAD2016F28B00CAAB84 /* SubmitButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13382AAC2016F28B00CAAB84 /* SubmitButtonCell.swift */; };
+		13382AB02017159500CAAB84 /* LoginFlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13382AAF2017159500CAAB84 /* LoginFlowManager.swift */; };
 		13523AF62011C34D00CDF58C /* LabelAndTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */; };
 		13523AF82011C52B00CDF58C /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */; };
 		13523AFB2011E1E500CDF58C /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */; };
@@ -60,7 +62,7 @@
 		4AA2D3A01E256A7D00DBE986 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2D39F1E256A7D00DBE986 /* Avatar.swift */; };
 		4AA2D3A21E25771500DBE986 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2D3A11E25771500DBE986 /* CustomTabBar.swift */; };
 		4AA2D3CA1E2E8E4200DBE986 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA2D3C91E2E8E4200DBE986 /* CloudKit.framework */; };
-		4AA2D3CC1E2FFC6F00DBE986 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2D3CB1E2FFC6F00DBE986 /* Constants.swift */; };
+		4AA2D3CC1E2FFC6F00DBE986 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2D3CB1E2FFC6F00DBE986 /* Configuration.swift */; };
 		4AADEAD61E30826600C062B5 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AADEAD51E30826600C062B5 /* LoadingViewController.swift */; };
 		4AADEAD81E30848000C062B5 /* Noodle.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4AADEAD71E30848000C062B5 /* Noodle.gif */; };
 		4AADEADA1E30887000C062B5 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AADEAD91E30887000C062B5 /* iOSDevCenters+GIF.swift */; };
@@ -77,6 +79,8 @@
 		132042AA201062C300DCE39E /* BSGFirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSGFirebaseService.swift; sourceTree = "<group>"; };
 		132042AC2010682300DCE39E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		132042AE2010692800DCE39E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		13382AAC2016F28B00CAAB84 /* SubmitButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButtonCell.swift; sourceTree = "<group>"; };
+		13382AAF2017159500CAAB84 /* LoginFlowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlowManager.swift; sourceTree = "<group>"; };
 		13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAndTextFieldCell.swift; sourceTree = "<group>"; };
 		13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountViewController.swift; sourceTree = "<group>"; };
 		13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +136,7 @@
 		4AA2D39F1E256A7D00DBE986 /* Avatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		4AA2D3A11E25771500DBE986 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTabBar.swift; path = ../CustomTabBar.swift; sourceTree = "<group>"; };
 		4AA2D3C91E2E8E4200DBE986 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		4AA2D3CB1E2FFC6F00DBE986 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "View Controllers/Constants.swift"; sourceTree = "<group>"; };
+		4AA2D3CB1E2FFC6F00DBE986 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = "View Controllers/Configuration.swift"; sourceTree = "<group>"; };
 		4AADEAD51E30826600C062B5 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		4AADEAD71E30848000C062B5 /* Noodle.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Noodle.gif; sourceTree = "<group>"; };
 		4AADEAD91E30887000C062B5 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
@@ -173,6 +177,14 @@
 			path = BSG;
 			sourceTree = "<group>";
 		};
+		13382AAE2017158A00CAAB84 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				13382AAF2017159500CAAB84 /* LoginFlowManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		13523AF92011C54900CDF58C /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +193,14 @@
 				4AADEAD51E30826600C062B5 /* LoadingViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		13523AFC2011E5C700CDF58C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				4A8346921E203B6200BAF8F9 /* GeneralViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		4A06B6031E71870F008BDBE1 /* Alerts */ = {
@@ -198,7 +218,7 @@
 			children = (
 				4AADEAD91E30887000C062B5 /* iOSDevCenters+GIF.swift */,
 				4A06B5F91E70F287008BDBE1 /* EnumList.swift */,
-				4AA2D3CB1E2FFC6F00DBE986 /* Constants.swift */,
+				4AA2D3CB1E2FFC6F00DBE986 /* Configuration.swift */,
 				4AA2D39B1E24B35E00DBE986 /* Media.swift */,
 				132042AC2010682300DCE39E /* DataManager.swift */,
 				132042AE2010692800DCE39E /* User.swift */,
@@ -237,6 +257,7 @@
 		4A8346771E203B6200BAF8F9 /* Check_Yo_Self */ = {
 			isa = PBXGroup;
 			children = (
+				13382AAE2017158A00CAAB84 /* Managers */,
 				4A8346781E203B6200BAF8F9 /* AppDelegate.swift */,
 				132042A9201062BA00DCE39E /* BSG */,
 				4A877CD11E889C0F009CE752 /* Table Cells */,
@@ -289,8 +310,8 @@
 		4A83468E1E203B6200BAF8F9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				13523AFC2011E5C700CDF58C /* Base */,
 				13523AF92011C54900CDF58C /* Login */,
-				4A8346921E203B6200BAF8F9 /* GeneralViewController.swift */,
 				4A83468F1E203B6200BAF8F9 /* CubeViewController.swift */,
 				4ABD51531E99558A00607CE8 /* PickAvatarViewController.swift */,
 				4A06B6011E717D69008BDBE1 /* ViewControllerExtensions.swift */,
@@ -329,6 +350,7 @@
 				4A8346881E203B6200BAF8F9 /* CustomTableViewCell.swift */,
 				4A877CCF1E889BED009CE752 /* FriendCell.swift */,
 				13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */,
+				13382AAC2016F28B00CAAB84 /* SubmitButtonCell.swift */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -533,6 +555,7 @@
 				4A8346A51E203B6200BAF8F9 /* DataEntry.swift in Sources */,
 				4A06B5FC1E713C82008BDBE1 /* Connection.swift in Sources */,
 				4ABD51541E99558A00607CE8 /* PickAvatarViewController.swift in Sources */,
+				13382AB02017159500CAAB84 /* LoginFlowManager.swift in Sources */,
 				4AADEADA1E30887000C062B5 /* iOSDevCenters+GIF.swift in Sources */,
 				4A55D7101E79B6BB00EFB9B5 /* BSGCommon.swift in Sources */,
 				4A8346AA1E203B6200BAF8F9 /* CubeViewController.swift in Sources */,
@@ -552,7 +575,7 @@
 				4A06B6021E717D69008BDBE1 /* ViewControllerExtensions.swift in Sources */,
 				132042AF2010692800DCE39E /* User.swift in Sources */,
 				13523AF82011C52B00CDF58C /* CreateNewAccountViewController.swift in Sources */,
-				4AA2D3CC1E2FFC6F00DBE986 /* Constants.swift in Sources */,
+				4AA2D3CC1E2FFC6F00DBE986 /* Configuration.swift in Sources */,
 				13523AF62011C34D00CDF58C /* LabelAndTextFieldCell.swift in Sources */,
 				4A8346AD1E203B6200BAF8F9 /* GeneralViewController.swift in Sources */,
 				4A438D7D1E31E46600C2253C /* CheckViewController.swift in Sources */,
@@ -575,6 +598,7 @@
 				13523AFB2011E1E500CDF58C /* BackgroundViewController.swift in Sources */,
 				4A8346B11E203B6200BAF8F9 /* PlayViewController.swift in Sources */,
 				4A83469D1E203B6200BAF8F9 /* AuthenticationController.swift in Sources */,
+				13382AAD2016F28B00CAAB84 /* SubmitButtonCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

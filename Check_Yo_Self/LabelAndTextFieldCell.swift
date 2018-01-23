@@ -10,7 +10,16 @@ import UIKit
 
 class LabelAndTextFieldCell: UITableViewCell {
     
-    var validCharacters: [String]!
+    // MARK: - Public Members -
+    
+    var currentText: String { return textField.text ?? "" }
+    
+    // MARK: - Private Members -
+    
+    private var validCharacters: [String] = []
+    private var maxCharacters: Int = 0
+    
+    // MARK: - Outlets -
     
     @IBOutlet private weak var label: UILabel!
     @IBOutlet private weak var textField: UITextField!
@@ -23,7 +32,7 @@ class LabelAndTextFieldCell: UITableViewCell {
     /// - parameter placeholder: Text to be displayed both as label for field, and as placeholder text inside field.
     /// - parameter validCharacters: Defines which characters are allowed to be typed in field.
     ///
-    func configure(withPlaceholder placeholder: String, validCharacters: [String]) {
+    func configure(withPlaceholder placeholder: String, validCharacters: [String], maxCharacters: Int) {
         
         label.text = placeholder
         
@@ -31,6 +40,7 @@ class LabelAndTextFieldCell: UITableViewCell {
         textField.delegate = self
         
         self.validCharacters = validCharacters
+        self.maxCharacters = maxCharacters
         
         style()
     }
@@ -41,7 +51,7 @@ class LabelAndTextFieldCell: UITableViewCell {
     private func style() {
         
         backgroundColor = .clear
-        textField.borderStyle = .none
+        textField.borderStyle = .line
         textField.backgroundColor = .white
     }
 }
@@ -54,6 +64,9 @@ extension LabelAndTextFieldCell: UITextFieldDelegate {
     /// Limit characters in field to only valid ones or a backspace.
     ///
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let newText = currentText + string
+        guard newText.count < maxCharacters else { return false }
         
         guard validCharacters.contains(string.lowercased()) || string == "" else { return false }
         return true

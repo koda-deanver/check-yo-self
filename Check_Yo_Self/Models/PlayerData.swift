@@ -264,7 +264,7 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
     //********************************************************************
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse{
-            for connection in CONNECTIONS where connection.type == .maps{
+            for connection in Constants.connections where connection.type == .maps{
                 connection.checkConnection()
             }
         }

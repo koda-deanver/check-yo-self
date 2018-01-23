@@ -22,16 +22,16 @@ class BSGFirebaseService {
     ///
     /// - parameter path: Path to update data.
     /// - parameter values: Values to update to database.
-    /// - parameter completion: Successful update completion.
+    /// - parameter success: Successful update completion.
     /// - parameter failure: Handles failure to update data.
     ///
-    static func updateNode(atPath path: DatabaseReference, values: [String: Any], completion: @escaping Closure = {}, failure: @escaping Closure = {}) {
+    static func updateNode(atPath path: DatabaseReference, values: [String: Any], success: @escaping Closure = {}, failure: @escaping Closure = {}) {
         
         checkConnection(completion: { isConnected in
             
             if isConnected {
                 path.updateChildValues(values)
-                completion()
+                success()
             } else {
                 failure()
             }
@@ -43,16 +43,16 @@ class BSGFirebaseService {
     /// Get snapshot of data at path.
     ///
     /// - parameter path: Path to retreive data from.
-    /// - parameter completion: Successful completion containing snapshot of data.
+    /// - parameter success: Successful completion containing snapshot of data.
     /// - parameter failure: Handles failure to get data.
     ///
-    static func fetchData(atPath path: DatabaseReference, completion: @escaping (DataSnapshot) -> Void = {_ in }, failure: @escaping Closure = {}){
+    static func fetchData(atPath path: DatabaseReference, success: @escaping (DataSnapshot) -> Void = {_ in }, failure: @escaping Closure = {}){
         
         checkConnection(completion: { isConnected in
             
             if isConnected {
                 path.observeSingleEvent(of: .value, with: { snapshot in
-                    completion(snapshot)
+                    success(snapshot)
                 })
             } else {
                 failure()
@@ -65,16 +65,16 @@ class BSGFirebaseService {
     /// Remove all children at the specified path.
     ///
     /// - parameter path: Path to remove.
-    /// - parameter completion: Successful completion containing snapshot of data.
+    /// - parameter success: Successful completion containing snapshot of data.
     /// - parameter failure: Handles failure to get data.
     ///
-    static func removeNode(atPath path: DatabaseReference, completion: @escaping Closure, failure: @escaping Closure = {}) {
+    static func removeNode(atPath path: DatabaseReference, success: @escaping Closure, failure: @escaping Closure = {}) {
         
         checkConnection(completion: { isConnected in
             
             if isConnected {
                 path.removeValue()
-                completion()
+                success()
             } else {
                 failure()
             }

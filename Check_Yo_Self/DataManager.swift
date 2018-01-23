@@ -2,7 +2,7 @@
 //  DataManager.swift
 //  Check_Yo_Self
 //
-//  Created by Phil on 1/18/18.
+//  Created by Phil Rattazzi on 1/18/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
@@ -12,11 +12,20 @@ import FirebaseDatabase
 
 class DataManager {
     
+    /// MARK: - Public Members -
+    
     static let shared = DataManager()
     
-    func getUser(withCredentials credentials: (username: String, password: String), completion: @escaping (User) -> Void, failure: @escaping (String) -> Void) {
+    ///
+    /// Attempt to get user with specified credentials.
+    ///
+    /// - parameter credential: Username and password tuple with user info.
+    /// - parameter success: Returns a user object if succeeds.
+    /// - parameter failure: Failure handler containing error string.
+    ///
+    func getUser(withCredentials credentials: (username: String, password: String), success: @escaping (User) -> Void, failure: @escaping (String) -> Void) {
     
-        BSGFirebaseService.fetchData(atPath: FIREBASE_ROOT.child("clients"), completion: { snapshot in
+        BSGFirebaseService.fetchData(atPath: Constants.firebaseRootPath.child("clients"), success: { snapshot in
             
             guard let clients = snapshot.value as? [String: Any] else {
                 failure("Connection Error")
@@ -24,7 +33,7 @@ class DataManager {
             }
             
             // Find matching user
-            for userRecord in clients where userRecord.key == credentials.username {
+            for userRecord in clients where userRecord.key.lowercased() == credentials.username.lowercased() {
                 
                 guard let user = User(withUserRecord: userRecord) else {
                     failure("User not found")
@@ -36,13 +45,56 @@ class DataManager {
                     return
                 }
                 
-                completion(user)
+                success(user)
                 return
             }
             failure("User not found")
             
         }, failure: {
             failure("Connection Error")
+        })
+    }
+    
+    ///
+    /// Check to see if a user with this username exists.
+    ///
+    /// - parameter username: User to check for
+    /// - parameter success: Returns true if user is found and false if user DNE.
+    /// - parameter failure: Failure handler containing error string.
+    ///
+    func checkForUser(withUsername username: String, success: @escaping (Bool) -> Void, failure: @escaping (String) -> Void) {
+        
+        BSGFirebaseService.fetchData(atPath: Constants.firebaseRootPath.child("clients"), success: { snapshot in
+            
+            guard let clients = snapshot.value as? [String: Any] else {
+                failure("Connection Error")
+                return
+            }
+            
+            // Find matching user
+            for userRecord in clients where userRecord.key.lowercased() == username.lowercased() {
+                
+                success(false)
+                return
+            }
+            success(true) /* username available */
+            
+        }, failure: {
+            failure("Connection Error")
+        })
+    }
+    
+    func createUser(withCredentials credentials: (username: String, password: String), success: @escaping (User) -> Void, failure: @escaping (String) -> Void) {
+        
+        let userPath = Constants.firebaseRootPath.child("clients/\(credentials.username)")
+        BSGFirebaseService.updateNode(atPath: userPath, values: [
+            "username" : "\(credentials.username)",
+            "password" : "\(credentials.password)"
+            ], success: {
+                let user = User(withUsername: credentials.username, password: credentials.password)
+                success(user)
+        }, failure: {
+            failure("Failed to create user.")
         })
     }
 }

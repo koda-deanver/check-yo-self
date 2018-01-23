@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         content.body = "Don't forget to Check Yo Self and make the most of your day."
         
         // Set for 2 days
-        let secondsUntilAlert = Double((((DAYS_FOR_COME_BACK_ALERT * 24) * 60) * 60))
+        let secondsUntilAlert = Double((((Configuration.daysUntilComebackAlert * 24) * 60) * 60))
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: secondsUntilAlert, repeats: true)
         let request = UNNotificationRequest(identifier: "WeMissYou", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: {

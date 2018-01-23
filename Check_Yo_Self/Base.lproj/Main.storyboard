@@ -9,6 +9,7 @@
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -870,10 +871,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B16-9q-hry">
-                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <rect key="frame" x="16" y="96" width="343" height="510.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LabelAndTextFieldCell" id="D7p-UW-7PU" customClass="LabelAndTextFieldCell" customModule="Check_Yo_Self" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="labelAndTextFieldCell" id="D7p-UW-7PU" customClass="LabelAndTextFieldCell" customModule="Check_Yo_Self" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D7p-UW-7PU" id="u0s-Yj-mKh">
@@ -883,7 +884,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Oeh-Sp-wY7">
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnP-cZ-sWS">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnP-cZ-sWS">
                                                             <rect key="frame" x="0.0" y="0.0" width="171.5" height="43.5"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -913,6 +914,35 @@
                                             <outlet property="textField" destination="rCp-KY-KN2" id="yoY-QA-hFd"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="submitButtonCell" id="zxr-EU-2yh" customClass="SubmitButtonCell" customModule="Check_Yo_Self" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zxr-EU-2yh" id="YBY-Wt-btg">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfe-W6-eXA">
+                                                    <rect key="frame" x="86" y="0.0" width="171.5" height="44"/>
+                                                    <state key="normal" title="Create" backgroundImage="GameButtonGray"/>
+                                                    <connections>
+                                                        <action selector="submitButtonPressed:" destination="zxr-EU-2yh" eventType="touchUpInside" id="wPl-OC-8aO"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jfe-W6-eXA" firstAttribute="centerY" secondItem="YBY-Wt-btg" secondAttribute="centerY" id="Wb9-bJ-OVq"/>
+                                                <constraint firstItem="jfe-W6-eXA" firstAttribute="centerX" secondItem="YBY-Wt-btg" secondAttribute="centerX" id="rI5-62-c3z"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="jfe-W6-eXA" firstAttribute="width" secondItem="zxr-EU-2yh" secondAttribute="width" multiplier="0.5" id="Jlb-sx-vrb"/>
+                                            <constraint firstItem="jfe-W6-eXA" firstAttribute="height" secondItem="zxr-EU-2yh" secondAttribute="height" id="gd7-fY-wi2"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="submitButton" destination="jfe-W6-eXA" id="Rli-AT-c19"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <sections/>
                                 <connections>
@@ -923,8 +953,8 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="asY-S4-6hY" firstAttribute="top" secondItem="B16-9q-hry" secondAttribute="bottom" id="0nJ-xg-bVq"/>
-                            <constraint firstItem="B16-9q-hry" firstAttribute="top" secondItem="5hQ-4d-SU7" secondAttribute="bottom" id="4Tr-hV-hH2"/>
+                            <constraint firstItem="asY-S4-6hY" firstAttribute="top" secondItem="B16-9q-hry" secondAttribute="bottom" multiplier="1.1" id="0nJ-xg-bVq"/>
+                            <constraint firstItem="B16-9q-hry" firstAttribute="top" secondItem="5hQ-4d-SU7" secondAttribute="bottom" multiplier="1.5" id="4Tr-hV-hH2"/>
                             <constraint firstItem="B16-9q-hry" firstAttribute="leading" secondItem="qfL-Ft-GBA" secondAttribute="leadingMargin" id="9gq-E3-zgx"/>
                             <constraint firstItem="B16-9q-hry" firstAttribute="trailing" secondItem="qfL-Ft-GBA" secondAttribute="trailingMargin" id="gBe-vb-1Om"/>
                         </constraints>
@@ -936,6 +966,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="B16-9q-hry" id="hEV-em-o43"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0CZ-Cx-rRG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1139,7 +1172,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step Count:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Pf-yF-2dR">
-                                        <rect key="frame" x="122.5" y="0.0" width="90" height="81"/>
+                                        <rect key="frame" x="123" y="0.0" width="90" height="81"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

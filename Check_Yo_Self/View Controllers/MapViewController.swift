@@ -101,8 +101,8 @@ class MapViewController: GeneralViewController {
     //********************************************************************
     func incrementSliderValue(_ value: Int, by increment: Int) -> Int{
         var newValue = value + increment
-        if newValue >= VALID_PHASES{
-            newValue = VALID_PHASES - 1
+        if newValue >= Configuration.validPhases{
+            newValue = Configuration.validPhases - 1
         }else if newValue < 0{
             newValue = 0
         }

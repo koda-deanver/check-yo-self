@@ -151,7 +151,7 @@ class LoadingViewController: GeneralViewController {
     //********************************************************************
     func enoughQuestions() -> Bool{
         for (_,questionArray) in QuestionStorage.sharedInstance.questionBank{
-            if questionArray.count < QUESTIONS_PER_ROUND{
+            if questionArray.count < Configuration.questionsPerRound {
                 return false
             }
         }

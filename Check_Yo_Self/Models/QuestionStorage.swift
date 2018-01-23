@@ -148,7 +148,7 @@ class QuestionStorage: NSObject, NSCoding {
                 print("\(phaseQuestions.count) \(phase.rawValue) Loaded")
                 self.banksFilled += 1
                 // Check if all phases were loaded successfully
-                if self.banksFilled == VALID_PHASES + 1{
+                if self.banksFilled == Configuration.validPhases + 1{
                     self.banksFilled = 0
                     completion()
                 }

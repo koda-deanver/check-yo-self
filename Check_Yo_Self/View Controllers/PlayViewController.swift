@@ -155,7 +155,7 @@ class PlayViewController: GeneralViewController{
         }else if self.creationPhase != PlayerData.sharedInstance.creationPhase{
             // Phase slider was moved
             self.phaseChange()
-        }else if self.questionsAnswered == QUESTIONS_PER_ROUND{
+        }else if self.questionsAnswered == Configuration.questionsPerRound{
             // Old game was finished start a new one
             startNewGame()
         }else if self.questionsAnswered == 0{
@@ -201,7 +201,7 @@ class PlayViewController: GeneralViewController{
     //********************************************************************
     func startNewGame(){
         // Catch next interstitial for game over
-        if SHOW_ADS == true{
+        if Configuration.showAds == true{
             Chartboost.cacheInterstitial(CBLocationGameOver)
         }
         
@@ -219,7 +219,7 @@ class PlayViewController: GeneralViewController{
         self.questionsAnswered = 0
         self.score = 0
         self.startTime = Date.init()
-        QuestionStorage.sharedInstance.getQuestionsLocal(amount: QUESTIONS_PER_ROUND, phase: self.creationPhase){newQuestions, error in
+        QuestionStorage.sharedInstance.getQuestionsLocal(amount: Configuration.questionsPerRound, phase: self.creationPhase){newQuestions, error in
             if let error = error{
                 switch error{
                 case .question:
@@ -355,7 +355,7 @@ class PlayViewController: GeneralViewController{
             self.updateStats()
             
             // Show interstitial at game over 70%
-            if SHOW_ADS == true{
+            if Configuration.showAds == true{
                 let showAd = Int(arc4random_uniform(10)) + 1
                 if showAd >= 7{
                     Chartboost.showInterstitial(CBLocationGameOver)

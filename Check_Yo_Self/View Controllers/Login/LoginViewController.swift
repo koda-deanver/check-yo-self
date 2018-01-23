@@ -58,7 +58,7 @@ class LoginViewController: GeneralViewController {
     ///
     private func validateLogin(username: String, password: String){
         
-        DataManager.shared.getUser(withCredentials: (username, password), completion: { user in
+        DataManager.shared.getUser(withCredentials: (username, password), success: { user in
             
             PlayerData.sharedInstance.displayName = user.username
             self.launchGame(onTab: 0)
