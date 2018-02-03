@@ -61,9 +61,11 @@ class LoginViewController: GeneralViewController {
         DataManager.shared.getUsers(matching: [(field: .username, value: username), (field: .password, value: password)],success: { users in
             
             guard users.count == 1 else {
-                self.showLoginAlert(withTitleText: "More than one user was returned.")
+                let errorText = (users.count == 0) ? "User not found. Did you forget your password again?" : "More than one user was returned."
+                self.showLoginAlert(withTitleText: errorText)
                 return
             }
+            
             let user = users[0]
             
             PlayerData.sharedInstance.displayName = user.username
