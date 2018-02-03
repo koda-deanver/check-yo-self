@@ -1,41 +1,40 @@
-//********************************************************************
-//  FriendListTableViewController.swift
-//  Check Yo Self
-//  Created by Phil on 3/26/17
 //
-//  Description: Display table of friends
-//********************************************************************
+//  FriendListTableViewController.swift
+//  Check_Yo_Self
+//
+//  Created by Phil Rattazzi on 3/26/17.
+//  Copyright © 2018 ThematicsLLC. All rights reserved.
+//
+
 
 import UIKit
 
-
-class FriendListTableViewController: UITableViewController {
+/// Display list of Facebook friends. Can only be accessed if logged into Facebook.
+final class FriendListTableViewController: UITableViewController {
     
-    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true)
+    override func viewDidLoad() {
+        
+        PlayerData.sharedInstance.loadFriendsFB(completion: { friendIDArray in
+            
+            for id in friendIDArray {
+                
+                DataManager.shared.getUsers(matching: [(field: .facebookID, value: id)], success: { users in
+                    print(users)
+                }, failure: { errorString in
+                    
+                })
+            }
+        })
     }
     
-    //********************************************************************
-    // numberOfSections
-    // Description: Always return 1 section
-    //********************************************************************
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    //********************************************************************
-    // numberOfRowsInSection
-    // Description: Return number of friends that play WhoDat
-    //********************************************************************
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(PlayerData.sharedInstance.friendList)
         return PlayerData.sharedInstance.friendList.count
     }
     
-    //********************************************************************
-    // cellForRowAt
-    // Description: Setup individual cell
-    //********************************************************************
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendCell
         let friend = PlayerData.sharedInstance.friendList[indexPath.row]
@@ -43,4 +42,13 @@ class FriendListTableViewController: UITableViewController {
         return cell
     }
     
+}
+
+// MARK: - Extension: Actions -
+
+extension FriendListTableViewController {
+    
+    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true)
+    }
 }

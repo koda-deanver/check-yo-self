@@ -246,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				4A8346881E203B6200BAF8F9 /* CustomTableViewCell.swift */,
-				4A877CCF1E889BED009CE752 /* FriendCell.swift */,
 				13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */,
 				13382AAC2016F28B00CAAB84 /* SubmitButtonCell.swift */,
 			);
@@ -321,6 +320,7 @@
 		13E5ACE82026120800C92237 /* Friend List */ = {
 			isa = PBXGroup;
 			children = (
+				4A877CCF1E889BED009CE752 /* FriendCell.swift */,
 				4A877CD21E889D5C009CE752 /* FriendListTableViewController.swift */,
 				4A877CCD1E88960C009CE752 /* Friend.swift */,
 			);

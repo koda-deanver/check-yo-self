@@ -22,15 +22,16 @@ class LoginFlowManager {
     // MARK: - Public Methods -
     
     ///
-    /// Ensure all required field are satisfied and either create account or display error alert.
+    /// Ensure username and password are satisfactory to create a new user.
+    ///
     /// - parameter credentials: Username and password to validate.
     /// - parameter viewController: The calling view controller if there is one.
     ///
-    func validateCredentials(credentials: (username: String, password: String), viewController: GeneralViewController?) {
+    func validateNewCredentials(credentials: (username: String, password: String), viewController: GeneralViewController?) {
         
-        validateUsername(credentials.username, success: { username in
+        validateNewUsername(credentials.username, success: { username in
             
-            if self.validatePassword(credentials.password) {
+            if self.validateNewPassword(credentials.password) {
                 self.createAccount(withUsername: username, password: credentials.password, viewController: viewController)
             } else {
                 viewController?.displayAlert(withTitle: self.errorAlertTitle, message: ("Password must be between \(NewAccountInfoFieldType.password.minCharacters) and \(NewAccountInfoFieldType.password.maxCharacters) characters"), completion: nil)
@@ -50,7 +51,7 @@ class LoginFlowManager {
     /// - parameter success: Success handler containing valid username.
     /// - parameter failure: Failure handler passing error string.
     ///
-    private func validateUsername(_ username: String, success: @escaping (String) -> Void, failure: @escaping (String) -> Void) {
+    private func validateNewUsername(_ username: String, success: @escaping (String) -> Void, failure: @escaping (String) -> Void) {
         
         // Must meet minimum length.
         guard username.count >= NewAccountInfoFieldType.username.minCharacters && username.count <= NewAccountInfoFieldType.username.maxCharacters else {
@@ -65,15 +66,12 @@ class LoginFlowManager {
             return
         }
         
-        DataManager.shared.checkForUser(withUsername: username, success: { usernameAvailable in
+        // Check for availability.
+        DataManager.shared.getUsers(matching: [(field: .username, value: username)], success: { users in
             
-            guard usernameAvailable else {
-                failure("Username Taken")
-                return
-            }
-            success(username)
-            
+            users.isEmpty ? success(username) : failure("Username Taken")
         }, failure: failure)
+
     }
     
     ///
@@ -83,7 +81,7 @@ class LoginFlowManager {
     ///
     /// - returns: Bool indicating if password is valid.
     ///
-    private func validatePassword(_ password: String) -> Bool {
+    private func validateNewPassword(_ password: String) -> Bool {
         
         guard password.count >= NewAccountInfoFieldType.password.minCharacters && password.count <= NewAccountInfoFieldType.password.maxCharacters else {
             return false

@@ -43,8 +43,8 @@ struct Configuration {
     static let validPhases = 6 /* not including profile */
     
     // For username
-    static let usernameMinLength = 3
-    static let usernameMaxLength = 12
+    static let usernameMinLength = 0
+    static let usernameMaxLength = 20
     static let passwordMinLength = 8
     static let passwordMaxLength = 16
     

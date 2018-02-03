@@ -231,14 +231,7 @@ class CubeViewController: GeneralViewController, PickAvatarViewControllerDelegat
     //********************************************************************
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         switch identifier{
-            case "ShowFriendList":
-                guard PlayerData.sharedInstance.facebookID != nil else{
-                    self.showConnectionAlert(ConnectionAlert(title: "No Facebook Friends", message: "Log in to Facebook on the Connection page to see your friend list.", okButtonText: "OK", okButtonCompletion: {
-                        
-                        
-                    }))
-                    return false
-                }
+            case "ShowFriendList": return true
             default:
                 break
         }

@@ -66,7 +66,7 @@ extension LabelAndTextFieldCell: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         let newText = currentText + string
-        guard newText.count < maxCharacters else { return false }
+        guard newText.count <= maxCharacters else { return false }
         
         guard validCharacters.contains(string.lowercased()) || string == "" else { return false }
         return true

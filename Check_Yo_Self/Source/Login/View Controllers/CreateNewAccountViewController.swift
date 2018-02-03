@@ -93,7 +93,7 @@ class CreateNewAccountViewController: GeneralViewController {
         guard let passwordRow = NewAccountInfoFieldType.password.tableRow, let passwordCell = tableView.visibleCells[passwordRow] as? LabelAndTextFieldCell else { return }
         let password = passwordCell.currentText
         
-        LoginFlowManager.shared.validateCredentials(credentials: (username, password), viewController: self)
+        LoginFlowManager.shared.validateNewCredentials(credentials: (username, password), viewController: self)
     }
     
 }

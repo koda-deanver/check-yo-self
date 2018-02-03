@@ -388,7 +388,7 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
     // Description: Populate friendList array with facebook friends
     // Errors: Connection, Facebook, Data
     //********************************************************************
-    func loadFriendsFB(completion: @escaping () -> Void = {}, failure: @escaping (ErrorType) -> Void = {_ in }){
+    func loadFriendsFB(completion: @escaping ([String]) -> Void = {_ in}, failure: @escaping (ErrorType) -> Void = {_ in }){
         if AccessToken.current != nil {
             let connection = GraphRequestConnection()
             connection.add(GraphRequest(graphPath: "me", parameters: ["fields": "friends"])) { httpResponse, result in
@@ -399,6 +399,9 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
                     if let facebookDictionary = response.dictionaryValue{
                         if let friendResponse = facebookDictionary["friends"] as? [String: Any]{
                             if let friends = friendResponse["data"] as? [[String: Any]]{
+                                
+                                var friendIDs: [String] = []
+                                
                                 for friend in friends{
                                     if let facebookID = friend["id"] as? String,
                                         let facebookName = friend["name"] as? String{
@@ -406,9 +409,9 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
                                         let imageData = NSData(contentsOf: picURL)
                                         
                                         let friendToAdd = Friend(facebookID, facebookName: facebookName, facebookImageData: imageData)
-                                        self.friendList.append(friendToAdd)
+                                        friendIDs.append(facebookID)
                                 }// Friend loop
-                                completion()
+                                completion(friendIDs)
                             } // Friends exists
                         } // Friend response exists
                         }
@@ -513,6 +516,4 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
             print(gameString)
         }
     }
-    
-    
 }

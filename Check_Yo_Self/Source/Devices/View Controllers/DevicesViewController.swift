@@ -385,7 +385,7 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
         // Load FB Data
         PlayerData.sharedInstance.loadPlayerFB(completion: {
             print("SUCCESS: Player FB data loaded")
-            PlayerData.sharedInstance.loadFriendsFB(completion: {
+            PlayerData.sharedInstance.loadFriendsFB(completion: { _ in
                 print("SUCCESS: Player FB friends Loaded")
             }, failure: { errorType in
                 switch errorType{

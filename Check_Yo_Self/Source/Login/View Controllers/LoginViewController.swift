@@ -45,7 +45,7 @@ class LoginViewController: GeneralViewController {
         alertController.addAction(UIAlertAction(title: "Create Account", style: .default){
             action in
             alertController.dismiss(animated: true, completion: nil)
-            self.createNewAccount()
+            self.showCreateNewAccount()
         })
         self.present(alertController, animated: true, completion: nil)
     }
@@ -58,9 +58,16 @@ class LoginViewController: GeneralViewController {
     ///
     private func validateLogin(username: String, password: String){
         
-        DataManager.shared.getUser(withCredentials: (username, password), success: { user in
+        DataManager.shared.getUsers(matching: [(field: .username, value: username), (field: .password, value: password)],success: { users in
+            
+            guard users.count == 1 else {
+                self.showLoginAlert(withTitleText: "More than one user was returned.")
+                return
+            }
+            let user = users[0]
             
             PlayerData.sharedInstance.displayName = user.username
+            PlayerData.sharedInstance.gemTotal = user.gems
             self.launchGame(onTab: 0)
             
         }, failure: { errorMessage in
@@ -73,7 +80,7 @@ class LoginViewController: GeneralViewController {
     ///
     /// Launches proccess to create new account.
     ///
-    private func createNewAccount() {
+    private func showCreateNewAccount() {
         performSegue(withIdentifier: "showCreateNewAccount", sender: self)
     }
     

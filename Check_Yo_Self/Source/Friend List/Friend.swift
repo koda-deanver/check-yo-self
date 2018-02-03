@@ -9,6 +9,7 @@
 import Foundation
 
 class Friend: NSObject {
+    
     let facebookID: String
     let facebookName: String
     let facebookImageData: NSData?
