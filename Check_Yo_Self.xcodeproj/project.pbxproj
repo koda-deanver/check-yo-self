@@ -15,6 +15,9 @@
 		13523AF62011C34D00CDF58C /* LabelAndTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */; };
 		13523AF82011C52B00CDF58C /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */; };
 		13523AFB2011E1E500CDF58C /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */; };
+		13C099A6202D851C00E356D5 /* BSGFacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A5202D851C00E356D5 /* BSGFacebookService.swift */; };
+		13C099A8202D865100E356D5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A7202D865100E356D5 /* ProfileViewController.swift */; };
+		13C099AA202D886200E356D5 /* DropdownTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A9202D886200E356D5 /* DropdownTableCell.swift */; };
 		13E5ACF62026150A00C92237 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E5ACF52026150A00C92237 /* CustomTabBar.swift */; };
 		4A06B5F81E709F1B008BDBE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A06B5F71E709F1B008BDBE1 /* GoogleService-Info.plist */; };
 		4A06B5FA1E70F287008BDBE1 /* EnumList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B5F91E70F287008BDBE1 /* EnumList.swift */; };
@@ -43,7 +46,7 @@
 		4A8346A51E203B6200BAF8F9 /* DataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346891E203B6200BAF8F9 /* DataEntry.swift */; };
 		4A8346A61E203B6200BAF8F9 /* LocationMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468A1E203B6200BAF8F9 /* LocationMarker.swift */; };
 		4A8346A71E203B6200BAF8F9 /* PlayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468B1E203B6200BAF8F9 /* PlayerData.swift */; };
-		4A8346A81E203B6200BAF8F9 /* QuestionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468C1E203B6200BAF8F9 /* QuestionObject.swift */; };
+		4A8346A81E203B6200BAF8F9 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468C1E203B6200BAF8F9 /* Question.swift */; };
 		4A8346A91E203B6200BAF8F9 /* QuestionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468D1E203B6200BAF8F9 /* QuestionStorage.swift */; };
 		4A8346AA1E203B6200BAF8F9 /* CubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468F1E203B6200BAF8F9 /* CubeViewController.swift */; };
 		4A8346AB1E203B6200BAF8F9 /* DataEntryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346901E203B6200BAF8F9 /* DataEntryDetailsViewController.swift */; };
@@ -84,6 +87,9 @@
 		13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAndTextFieldCell.swift; sourceTree = "<group>"; };
 		13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountViewController.swift; sourceTree = "<group>"; };
 		13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
+		13C099A5202D851C00E356D5 /* BSGFacebookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BSGFacebookService.swift; path = ../../../../../../BSGFacebookService.swift; sourceTree = "<group>"; };
+		13C099A7202D865100E356D5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		13C099A9202D886200E356D5 /* DropdownTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownTableCell.swift; sourceTree = "<group>"; };
 		13E5ACF52026150A00C92237 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		4A00258B1E36A52A00950990 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		4A06B5F71E709F1B008BDBE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -116,7 +122,7 @@
 		4A8346891E203B6200BAF8F9 /* DataEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataEntry.swift; sourceTree = "<group>"; };
 		4A83468A1E203B6200BAF8F9 /* LocationMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationMarker.swift; sourceTree = "<group>"; };
 		4A83468B1E203B6200BAF8F9 /* PlayerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerData.swift; sourceTree = "<group>"; };
-		4A83468C1E203B6200BAF8F9 /* QuestionObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionObject.swift; sourceTree = "<group>"; };
+		4A83468C1E203B6200BAF8F9 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		4A83468D1E203B6200BAF8F9 /* QuestionStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionStorage.swift; sourceTree = "<group>"; };
 		4A83468F1E203B6200BAF8F9 /* CubeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CubeViewController.swift; sourceTree = "<group>"; };
 		4A8346901E203B6200BAF8F9 /* DataEntryDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataEntryDetailsViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +217,7 @@
 				4A8346941E203B6200BAF8F9 /* LoginViewController.swift */,
 				13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */,
 				4AADEAD51E30826600C062B5 /* LoadingViewController.swift */,
+				13C099A7202D865100E356D5 /* ProfileViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -236,6 +243,7 @@
 		13E5ACDF202610C300C92237 /* BSG */ = {
 			isa = PBXGroup;
 			children = (
+				13C099A5202D851C00E356D5 /* BSGFacebookService.swift */,
 				4A55D70F1E79B6BB00EFB9B5 /* BSGCommon.swift */,
 				132042AA201062C300DCE39E /* BSGFirebaseService.swift */,
 			);
@@ -248,6 +256,7 @@
 				4A8346881E203B6200BAF8F9 /* CustomTableViewCell.swift */,
 				13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */,
 				13382AAC2016F28B00CAAB84 /* SubmitButtonCell.swift */,
+				13C099A9202D886200E356D5 /* DropdownTableCell.swift */,
 			);
 			path = "Table Cells";
 			sourceTree = "<group>";
@@ -273,7 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				13E5ACE42026117700C92237 /* View Controllers */,
-				4A83468C1E203B6200BAF8F9 /* QuestionObject.swift */,
+				4A83468C1E203B6200BAF8F9 /* Question.swift */,
 				4A83468D1E203B6200BAF8F9 /* QuestionStorage.swift */,
 			);
 			path = Play;
@@ -672,11 +681,12 @@
 				4A8346AA1E203B6200BAF8F9 /* CubeViewController.swift in Sources */,
 				132042AD2010682300DCE39E /* DataManager.swift in Sources */,
 				4A83469F1E203B6200BAF8F9 /* Notifications.swift in Sources */,
+				13C099A6202D851C00E356D5 /* BSGFacebookService.swift in Sources */,
 				4AADEAD61E30826600C062B5 /* LoadingViewController.swift in Sources */,
 				4A8346B01E203B6200BAF8F9 /* MapViewController.swift in Sources */,
 				4A06B6001E717C4B008BDBE1 /* ConnectionAlertViewController.swift in Sources */,
 				4AA2D39C1E24B35E00DBE986 /* Media.swift in Sources */,
-				4A8346A81E203B6200BAF8F9 /* QuestionObject.swift in Sources */,
+				4A8346A81E203B6200BAF8F9 /* Question.swift in Sources */,
 				4A8346AF1E203B6200BAF8F9 /* LoginViewController.swift in Sources */,
 				4A8346B31E203B6200BAF8F9 /* StatsViewController.swift in Sources */,
 				4A8346991E203B6200BAF8F9 /* AppDelegate.swift in Sources */,
@@ -692,7 +702,9 @@
 				4A8346A91E203B6200BAF8F9 /* QuestionStorage.swift in Sources */,
 				4A06B5FE1E717C34008BDBE1 /* ConnectionAlert.swift in Sources */,
 				4A8346A61E203B6200BAF8F9 /* LocationMarker.swift in Sources */,
+				13C099AA202D886200E356D5 /* DropdownTableCell.swift in Sources */,
 				132042AB201062C300DCE39E /* BSGFirebaseService.swift in Sources */,
+				13C099A8202D865100E356D5 /* ProfileViewController.swift in Sources */,
 				4A8346AC1E203B6200BAF8F9 /* DevicesViewController.swift in Sources */,
 				4A8346A21E203B6200BAF8F9 /* String+Dates.swift in Sources */,
 				4A8346A71E203B6200BAF8F9 /* PlayerData.swift in Sources */,

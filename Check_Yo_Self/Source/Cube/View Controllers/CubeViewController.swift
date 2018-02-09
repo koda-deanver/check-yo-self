@@ -1,17 +1,17 @@
-//********************************************************************
-//  CubeViewController.swift
-//  Check Yo Self
-//  Created by Phil on 12/9/16
 //
-//  Description: Main screen displaying user profile info and total gems
-//  as well as other relevant information.
-//********************************************************************
+//  CubeViewController.swift
+//  check-yo-self
+//
+//  Created by Phil Rattazzi on 12/9/16.
+//  Copyright © 2016 ThematicsLLC. All rights reserved.
+//
 
 import UIKit
 import MapKit
 import UserNotifications
 import Firebase
 
+/// Acts as home screen for the app.
 class CubeViewController: GeneralViewController, PickAvatarViewControllerDelegate{
     
     var checkAlertShown = false

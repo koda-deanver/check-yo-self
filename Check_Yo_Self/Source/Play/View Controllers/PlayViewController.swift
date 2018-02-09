@@ -12,7 +12,7 @@ import MapKit
 import CoreLocation
 
 class PlayViewController: GeneralViewController{
-    var gameQuestions: [QuestionObject]?
+    var gameQuestions: [Question]?
     var questionsAnswered: Int = 0
     var profileAvatarIndex: Int?
     var score: Int = 0
@@ -45,9 +45,9 @@ class PlayViewController: GeneralViewController{
         let currentQuestion = gameQuestions![questionsAnswered]
         let choiceText = sender.currentTitle!
         for i in 0..<6{
-            let matchText = currentQuestion.choiceArray[i].choiceText
+            let matchText = currentQuestion.choices[i].text
             if(choiceText == matchText){
-                let valueOfChoice = currentQuestion.choiceArray[i].choiceValue
+                let valueOfChoice = currentQuestion.choices[i].pointValue
                 self.score += valueOfChoice
                 
                 // Check if answer to that question needs to be saved
@@ -302,13 +302,13 @@ class PlayViewController: GeneralViewController{
     //********************************************************************
     func launchNewQuestion(){
         let currentQuestion = gameQuestions![questionsAnswered]
-        questionLabel.text = "\(self.questionsAnswered + 1). \(currentQuestion.questionText)"
-        redButton.setTitle(currentQuestion.choiceArray[5].choiceText, for: UIControlState.normal)
-        greenButton.setTitle(currentQuestion.choiceArray[4].choiceText, for: UIControlState.normal)
-        blueButton.setTitle(currentQuestion.choiceArray[3].choiceText, for: UIControlState.normal)
-        cyanButton.setTitle(currentQuestion.choiceArray[2].choiceText, for: UIControlState.normal)
-        magentaButton.setTitle(currentQuestion.choiceArray[1].choiceText, for: UIControlState.normal)
-        yellowButton.setTitle(currentQuestion.choiceArray[0].choiceText, for: UIControlState.normal)
+        questionLabel.text = "\(self.questionsAnswered + 1). \(currentQuestion.text)"
+        redButton.setTitle(currentQuestion.choices[5].text, for: UIControlState.normal)
+        greenButton.setTitle(currentQuestion.choices[4].text, for: UIControlState.normal)
+        blueButton.setTitle(currentQuestion.choices[3].text, for: UIControlState.normal)
+        cyanButton.setTitle(currentQuestion.choices[2].text, for: UIControlState.normal)
+        magentaButton.setTitle(currentQuestion.choices[1].text, for: UIControlState.normal)
+        yellowButton.setTitle(currentQuestion.choices[0].text, for: UIControlState.normal)
     }
     
     //********************************************************************

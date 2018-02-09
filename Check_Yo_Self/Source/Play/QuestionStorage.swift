@@ -14,8 +14,8 @@ import Firebase
 
 class QuestionStorage: NSObject, NSCoding {
     static var sharedInstance = QuestionStorage()
-    var questionBank: [String: [QuestionObject]] = [:]
-    var tempQuestionBank: [String: [QuestionObject]] = [:]
+    var questionBank: [String: [Question]] = [:]
+    var tempQuestionBank: [String: [Question]] = [:]
     let container = CKContainer.default()
     // Keep track of successful cloudKit grabs
     var banksFilled = 0
@@ -25,7 +25,7 @@ class QuestionStorage: NSObject, NSCoding {
     // Designated Initializer
     // Description: Always called
     //********************************************************************
-    private init(questionBank: [String: [QuestionObject]]){
+    private init(questionBank: [String: [Question]]){
         self.questionBank = questionBank
     }
     
@@ -52,7 +52,7 @@ class QuestionStorage: NSObject, NSCoding {
     // Description: Required to initialize from archived object
     //********************************************************************
     convenience required init?(coder aDecoder: NSCoder) {
-        let questionBank = aDecoder.decodeObject(forKey: "questionBank") as! [String: [QuestionObject]]
+        let questionBank = aDecoder.decodeObject(forKey: "questionBank") as! [String: [Question]]
         self.init(questionBank: questionBank)
     }
     
@@ -69,7 +69,7 @@ class QuestionStorage: NSObject, NSCoding {
     // Description: Retrieve a specified number of questions from any phase
     // for use in the game
     //********************************************************************
-    func getQuestionsLocal(amount: Int, phase: CreationPhase, completion: @escaping ([QuestionObject]?, ErrorType?) -> Void){
+    func getQuestionsLocal(amount: Int, phase: CreationPhase, completion: @escaping ([Question]?, ErrorType?) -> Void){
         // Questions exist
         if var questionsForPhase = self.questionBank[phase.rawValue]{
             // Not enough questions
@@ -79,23 +79,23 @@ class QuestionStorage: NSObject, NSCoding {
             }
             // Done if getting profile questions
             if phase == .none{
-                var chosenQuestions: [QuestionObject] = []
+                var chosenQuestions: [Question] = []
                 for i in 0 ..< amount{
-                    let newQuestion: QuestionObject = questionsForPhase[i]
+                    let newQuestion: Question = questionsForPhase[i]
                     chosenQuestions.append(newQuestion)
                 }
                 // Display questions in set order
                 chosenQuestions.sort{
-                    $0.questionID < $1.questionID
+                    $0.id < $1.id
                 }
                 print(chosenQuestions)
                 completion(chosenQuestions, nil)
             // Randomize order for all other phases
             }else{
-                var chosenQuestions: [QuestionObject] = []
+                var chosenQuestions: [Question] = []
                 for _ in 0 ..< amount{
                     let choice = Int(arc4random_uniform(UInt32(questionsForPhase.count)))
-                    let newQuestion: QuestionObject = questionsForPhase[choice]
+                    var newQuestion: Question = questionsForPhase[choice]
                     newQuestion.randomize()
                     chosenQuestions.append(newQuestion)
                     questionsForPhase.remove(at: choice)
@@ -123,7 +123,7 @@ class QuestionStorage: NSObject, NSCoding {
         questionCategoryNode.observeSingleEvent(of: .value, with: {
             snapshot in
             if let firebaseQuestions = snapshot.value as? [AnyObject]{
-                var phaseQuestions: [QuestionObject] = []
+                var phaseQuestions: [Question] = []
                 for questionRecord in firebaseQuestions{
                     let questionID = questionRecord["id"] as? String
                     let questionTitle = questionRecord["title"] as? String
@@ -136,7 +136,7 @@ class QuestionStorage: NSObject, NSCoding {
                             let choiceNeg1 = choices[4]["choiceText"] as? String,
                             let choiceNeg2 = choices[5]["choiceText"] as? String{
                             // Following same init order 3,2,1,0,-1,-2
-                            let newQuestion = (QuestionObject(phase, questionID, questionTitle, choice3, choice2, choice1, choice0, choiceNeg1, choiceNeg2))
+                            let newQuestion = Question(withText: questionTitle, id: questionID, type: phase, choice3, choice2, choice1, choice0, choiceNeg1, choiceNeg2)
                             phaseQuestions.append(newQuestion)
                         }else{
                             print("ERROR: \(questionID)")

@@ -1,18 +1,16 @@
 //
 //  CreateNewAccountViewController.swift
-//  Check_Yo_Self
+//  check-yo-self
 //
 //  Created by Phil Rattazzi on 1/19/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
-//
-//  Prompt user to enter necessary information to create a new account.
 //
 
 import UIKit
 
 // MARK: - Struct: CharacterType -
 
-// Convenience struct for distiguishing valid character sets for textFields in the cells.
+/// Convenience struct for distiguishing valid character sets for textFields in the cells.
 struct CharacterType {
     static let alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
     static let numeric = ["0","1","2","3","4","5","6","7","8","9"]
@@ -66,6 +64,7 @@ enum NewAccountInfoFieldType {
 
 // MARK: Class: - CreateNewAccountViewController -
 
+///  Prompt user to enter necessary information to create a new account.
 class CreateNewAccountViewController: GeneralViewController {
     
     // MARK: - Outlets -

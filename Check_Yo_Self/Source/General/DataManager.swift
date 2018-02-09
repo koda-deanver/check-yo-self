@@ -57,65 +57,6 @@ class DataManager {
     }
     
     ///
-    /// Searches the *client* database for user.
-    ///
-    /// This method looks for a user with matching *facebook-id* field in database. If a user is found, this will succeed returning the user object. If the user DNE, it will still succeed with nil. This method fails if there is a connection error or a user is found with missing data.
-    ///
-    /// - parameter username: Username of user to search for.
-    /// - parameter success: Called when there is no error and a user if found/not found. Returns User object or nil.
-    /// - parameter failure: Called when there is connection error or user is missing data.
-    ///
-    /*func getUser(withFacebookID facebookID: String, success: @escaping (User?) -> Void, failure: @escaping (String) -> Void) {
-        
-        fetchAllClients(success: { clients in
-            
-            for userRecord in clients {
-                
-                guard let userInfo = userRecord.value as? [String: Any], let user = User(withUserInfo: userInfo) else {
-                    failure("User missing data.")
-                    continue
-                }
-                
-                // Found using matching FBID.
-                if facebookID == user.facebookID {
-                    success(user)
-                    return
-                }
-            }
-            
-            success(nil)
-            
-        }, failure: failure)
-        
-    }
-    
-    ///
-    /// Attempt to get user with specified credentials. Will fail if usrname or password is incorrect.
-    ///
-    /// - parameter credential: Username and password tuple with user info.
-    /// - parameter success: Returns a user object if succeeds.
-    /// - parameter failure: Failure handler containing error string.
-    ///
-    func getUser(withCredentials credentials: (username: String, password: String), success: @escaping (User) -> Void, failure: @escaping (String) -> Void) {
-    
-        getUser(withUsername: credentials.username, success: { user in
-            
-            guard let user = user else {
-                failure("User not found.")
-                return
-            }
-            
-            guard user.password == credentials.password else {
-                failure("Incorrect Password.")
-                return
-            }
-            
-            success(user)
-            
-        }, failure: failure)
-    }*/
-    
-    ///
     /// Create a new user with specified credentials.
     ///
     /// - parameter success: Returns user on successful create.

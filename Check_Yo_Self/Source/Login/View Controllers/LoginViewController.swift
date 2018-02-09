@@ -1,15 +1,14 @@
 //
 //  LoginViewController.swift
-//  Check_Yo_Self
+//  check-yo-self
 //
 //  Created by Phil Rattazzi on 1/3/17.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
-//  Initial login screen for app. User can either enter credeentials to log in or create a new account.
-//
 
 import UIKit
 
+///  Initial login screen for app. User can either enter credeentials to log in or create a new account.
 class LoginViewController: GeneralViewController {
     
     // MARK: - Lifecycle -
@@ -70,6 +69,7 @@ class LoginViewController: GeneralViewController {
             
             PlayerData.sharedInstance.displayName = user.username
             PlayerData.sharedInstance.gemTotal = user.gems
+            
             self.launchGame(onTab: 0)
             
         }, failure: { errorMessage in
