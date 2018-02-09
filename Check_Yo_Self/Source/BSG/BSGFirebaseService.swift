@@ -15,6 +15,11 @@ import Firebase
 
 class BSGFirebaseService {
 
+    // MARK: - Static Members -
+    
+    /// Used to force a second attempt after strange first fail 
+    static var isFirstAttempt = true
+    
     // MARK: - Static Methods -
     
     ///
@@ -25,7 +30,7 @@ class BSGFirebaseService {
     /// - parameter success: Successful update completion.
     /// - parameter failure: Handles failure to update data.
     ///
-    static func updateNode(atPath path: DatabaseReference, values: [String: Any], success: @escaping Closure = {}, failure: @escaping Closure = {}) {
+    static func updateData(atPath path: DatabaseReference, values: [String: Any], success: @escaping Closure = {}, failure: @escaping Closure = {}) {
         
         checkConnection(completion: { isConnected in
             
@@ -33,7 +38,14 @@ class BSGFirebaseService {
                 path.updateChildValues(values)
                 success()
             } else {
-                failure()
+                if isFirstAttempt {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0, execute: {
+                        updateData(atPath: path, values: values, success: success, failure: failure)
+                    } )
+                } else {
+                    failure()
+                }
+                isFirstAttempt = false
             }
             
         })
@@ -55,7 +67,14 @@ class BSGFirebaseService {
                     success(snapshot)
                 })
             } else {
-                failure()
+                if isFirstAttempt {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0, execute: {
+                        fetchData(atPath: path, success: success, failure: failure)
+                    } )
+                } else {
+                    failure()
+                }
+                isFirstAttempt = false
             }
             
         })
@@ -68,7 +87,7 @@ class BSGFirebaseService {
     /// - parameter success: Successful completion containing snapshot of data.
     /// - parameter failure: Handles failure to get data.
     ///
-    static func removeNode(atPath path: DatabaseReference, success: @escaping Closure, failure: @escaping Closure = {}) {
+    static func removeData(atPath path: DatabaseReference, success: @escaping Closure, failure: @escaping Closure = {}) {
         
         checkConnection(completion: { isConnected in
             
@@ -76,7 +95,14 @@ class BSGFirebaseService {
                 path.removeValue()
                 success()
             } else {
-                failure()
+                if isFirstAttempt {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0, execute: {
+                        removeData(atPath: path, success: success, failure: failure)
+                    } )
+                } else {
+                    failure()
+                }
+                isFirstAttempt = false
             }
             
         })

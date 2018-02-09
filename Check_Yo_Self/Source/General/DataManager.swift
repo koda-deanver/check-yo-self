@@ -124,7 +124,7 @@ class DataManager {
     func createUser(withCredentials credentials: (username: String, password: String), success: @escaping (User) -> Void, failure: @escaping (String) -> Void) {
         
         let userPath = Constants.firebaseRootPath.child("clients/\(credentials.username)")
-        BSGFirebaseService.updateNode(atPath: userPath, values: [
+        BSGFirebaseService.updateData(atPath: userPath, values: [
             "username" : "\(credentials.username)",
             "password" : "\(credentials.password)"
             ], success: {
