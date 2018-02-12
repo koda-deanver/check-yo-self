@@ -106,16 +106,16 @@ class LoadingViewController: GeneralViewController {
                     self.present(newView, animated: true, completion: nil)
                 }
             }else{
-                self.showConnectionAlert(ConnectionAlert(title: "Not Enough Questions", message: "The developers are in the process of creating new content", okButtonText: "OK"){
+                /*self.showConnectionAlert(ConnectionAlert(title: "Not Enough Questions", message: "The developers are in the process of creating new content", okButtonText: "OK"){
                     // Terminate App
                     exit(0)
-                })
+                })*/
             }
         }){
             // Failure Handler
-            self.showConnectionAlert(ConnectionAlert(title: "Failed to download content", message: "Check your internet connection and try again", okButtonText: "OK"){
+            /*self.showConnectionAlert(ConnectionAlert(title: "Failed to download content", message: "Check your internet connection and try again", okButtonText: "OK"){
                 exit(0)
-            })
+            })*/
         }
     }
     
@@ -132,16 +132,16 @@ class LoadingViewController: GeneralViewController {
                 QuestionStorage.sharedInstance.archiveQuestions()
                 self.launchGame(onTab: 0)
             }else{
-                self.showConnectionAlert(ConnectionAlert(title: "Not Enough Questions", message: "The developers are in the process of creating new content", okButtonText: "OK"){
+                /*self.showConnectionAlert(ConnectionAlert(title: "Not Enough Questions", message: "The developers are in the process of creating new content", okButtonText: "OK"){
                     // Terminate App
                     exit(0)
-                })
+                })*/
             }
         }){
             // Failure Handler
-            self.showConnectionAlert(ConnectionAlert(title: "Could not sync new questions", message: "Using saved questions", okButtonText: "OK"){
+            /*self.showConnectionAlert(ConnectionAlert(title: "Could not sync new questions", message: "Using saved questions", okButtonText: "OK"){
                 self.launchGame(onTab: 0)
-            })
+            })*/
         }
     }
     

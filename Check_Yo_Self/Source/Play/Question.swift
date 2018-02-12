@@ -10,6 +10,22 @@
 //
 
 import UIKit
+import FirebaseDatabase
+
+typealias Choice = (text: String, pointValue: Int)
+
+/// Represents types of questions.
+enum QuestionType: String {
+    case check = "Check"
+    case brainstorm = "Brainstorm"
+    case develop = "Develop"
+    case align = "Align"
+    case improve = "Improve"
+    case make = "Make"
+    case profile = "Profile"
+    
+    var databaseNode: String { return rawValue.lowercased() }
+}
 
 /// Model for a question with 6 choices.
 struct Question {
@@ -18,22 +34,41 @@ struct Question {
     
     let text: String
     let id: String
-    let type: CreationPhase
-    var choices: [(text: String, pointValue: Int)] = []
+    let type: QuestionType
+    var choices: [Choice] = []
     
     // MARK: - Initializers -
     
-    init(withText text: String, id: String, type: CreationPhase, choices: [(text: String, pointValue: Int)]) {
+    init(withText text: String, id: String, type: QuestionType, choices: [Choice]) {
         self.text = text
         self.id = id
         self.type = type
         self.choices = choices
     }
     
-    init(withText text: String, id: String, type: CreationPhase, _ choice3: String, _ choice2: String, _ choice1: String, _ choice0: String, _ choiceNeg1: String, _ choiceNeg2: String){
+    init(withText text: String, id: String, type: QuestionType, _ choice3: String, _ choice2: String, _ choice1: String, _ choice0: String, _ choiceNeg1: String, _ choiceNeg2: String){
         
         let choices = [(choice3,3), (choice2,2), (choice1,1), (choice0,0), (choiceNeg1,-1), (choiceNeg2,-2)]
         self.init(withText: text, id: id, type: type, choices: choices)
+    }
+    
+    init?(withSnapshot snapshot: [String: Any], type questionType: QuestionType) {
+        
+        guard let questionText = snapshot["text"] as? String, let questionID = snapshot["id"] as? String, let choiceSnapshot = snapshot["choices"] as? [[String: Any]] else { return nil }
+        
+        var choices: [Choice] = []
+        for choice in choiceSnapshot {
+            guard let text = choice["text"] as? String else { return nil }
+            let pointValue = choice["point-value"] as? Int ?? 0
+            
+            choices.append((text: text, pointValue: pointValue))
+        }
+        
+        self.text = questionText
+        self.id = questionID
+        self.type = questionType
+        self.choices = choices
+        
     }
     
     // MARK: - Public Methods -

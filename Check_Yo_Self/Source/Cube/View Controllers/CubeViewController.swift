@@ -54,7 +54,7 @@ class CubeViewController: GeneralViewController, PickAvatarViewControllerDelegat
     @IBAction func userPicPressed(_ sender: UIButton) {
         // Show alert if player has an avatar
         if let avatar = PlayerData.sharedInstance.avatar{
-            self.showConnectionAlert(ConnectionAlert(title: "\(avatar.name)\nOccupation: \(avatar.discipline)", message: "\(avatar.bio)", okButtonText: "Keep", cancelButtonText: "Change", okButtonCompletion: {
+            /*self.showConnectionAlert(ConnectionAlert(title: "\(avatar.name)\nOccupation: \(avatar.discipline)", message: "\(avatar.bio)", okButtonText: "Keep", cancelButtonText: "Change", okButtonCompletion: {
                 
             }, cancelButtonCompletion: {
                 let pickAvatarNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PickAvatarNavigation") as! UINavigationController
@@ -62,7 +62,7 @@ class CubeViewController: GeneralViewController, PickAvatarViewControllerDelegat
                 pickAvatarViewController.delegate = self
                 pickAvatarViewController.oldAvatar = avatar
                 self.present(pickAvatarNavigationController, animated: true)
-            }))
+            }))*/
         }
     }
     
@@ -73,7 +73,7 @@ class CubeViewController: GeneralViewController, PickAvatarViewControllerDelegat
     @IBAction func gemLabelPressed(_ sender: UIButton) {
         print(QuestionStorage.sharedInstance)
         // Show Gem Alert
-        self.showConnectionAlert(ConnectionAlert(title: "JabbRGems", message: "To reddem JabbRGems for ColLAB GEAR go to CollabRjabbR.com in the Membership Marketplace or just click the K button below!", okButtonText: "Cool"))
+        /*self.showConnectionAlert(ConnectionAlert(title: "JabbRGems", message: "To reddem JabbRGems for ColLAB GEAR go to CollabRjabbR.com in the Membership Marketplace or just click the K button below!", okButtonText: "Cool"))*/
     }
     
     //********************************************************************
@@ -163,16 +163,16 @@ class CubeViewController: GeneralViewController, PickAvatarViewControllerDelegat
                 BSGCommon.playVideo(url: videoURL, onController: self)
             }else{
                 // Show Profile Questions Alert
-                self.showConnectionAlert(ConnectionAlert(title: "Hey \(PlayerData.sharedInstance.displayName)!", message: "This series of questions will hopefully help personalize your experience.", okButtonText: "Start", okButtonCompletion: {
+                /*self.showConnectionAlert(ConnectionAlert(title: "Hey \(PlayerData.sharedInstance.displayName)!", message: "This series of questions will hopefully help personalize your experience.", okButtonText: "Start", okButtonCompletion: {
                     self.tabBarController?.setTabsActive(false)
                     self.tabBarController?.selectedIndex = 1
-                }))
+                }))*/
             }
         // Creation Phase not .none
         }else if !self.checkAlertShown{
             self.checkAlertShown = true
             // Show Profile Questions Alert on log in
-            self.showConnectionAlert(ConnectionAlert(title: "Hey \(PlayerData.sharedInstance.displayName)!", message: "Don't forget to Check Yo Self", okButtonText: "Right On"))
+           /* self.showConnectionAlert(ConnectionAlert(title: "Hey \(PlayerData.sharedInstance.displayName)!", message: "Don't forget to Check Yo Self", okButtonText: "Right On"))*/
         }
         updateCubeProfile()
     }

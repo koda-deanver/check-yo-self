@@ -62,14 +62,17 @@ class DataManager {
     /// - parameter success: Returns user on successful create.
     /// - parameter failure: Failure handler containing error string.
     ///
-    func createUser(withCredentials credentials: (username: String, password: String), success: @escaping (User) -> Void, failure: @escaping (String) -> Void) {
+    func createUserAccount(for user: User, success: @escaping (User) -> Void, failure: @escaping (String) -> Void) {
         
-        let userPath = Constants.firebaseRootPath.child("clients/\(credentials.username)")
+        let userPath = Constants.firebaseRootPath.child("clients/\(user.username)")
         BSGFirebaseService.updateData(atPath: userPath, values: [
-            "username" : "\(credentials.username)",
-            "password" : "\(credentials.password)"
+            UserDatabaseField.username.rawValue : "\(user.username)",
+            UserDatabaseField.password.rawValue : "\(user.password)",
+            UserDatabaseField.favoriteColor.rawValue : "\(user.favoriteColor.rawValue)",
+            UserDatabaseField.ageGroup.rawValue : "\(user.ageGroup ?? "")",
+            UserDatabaseField.favoriteGenre.rawValue : "\(user.favoriteGenre ?? "")",
+            UserDatabaseField.identity.rawValue : "\(user.identity ?? "")"
             ], success: {
-                let user = User(withUsername: credentials.username, password: credentials.password)
                 success(user)
         }, failure: {
             failure("Failed to create user.")
@@ -97,6 +100,29 @@ class DataManager {
             
         }, failure: {
             failure("Connection Error.")
+        })
+    }
+    
+    func getQuestions(ofType questionType: QuestionType, success: @escaping ([Question]) -> Void, failure: @escaping (String) -> Void) {
+        
+        let path = Constants.firebaseRootPath.child("questions/\(questionType.databaseNode)")
+        
+        BSGFirebaseService.fetchData(atPath: path, success: { snapshot in
+            print(snapshot)
+            guard let questionSnapshots = snapshot.value as? [[String: Any]] else {
+                failure("Connection Error")
+                return
+            }
+            
+            var questions: [Question] = []
+            
+            for snapshot in questionSnapshots {
+                guard let question = Question(withSnapshot: snapshot, type: questionType) else { continue }
+                questions.append(question)
+            }
+            
+            success(questions)
+            
         })
     }
 }

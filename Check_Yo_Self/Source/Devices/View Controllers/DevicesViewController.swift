@@ -218,7 +218,7 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
     // Description: Try to connect user to the chosen connection
     //********************************************************************
     func handleConnectionTouch(_ connection: Connection, connectionIndex: Int){
-        if let isConnected = connection.isConnected{
+        /*if let isConnected = connection.isConnected{
             // Reset to recheck
             switch connection.type{
             case .cube:
@@ -322,7 +322,7 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
             default:
                 break
             }
-        }
+        }*/
     }
     
     //********************************************************************

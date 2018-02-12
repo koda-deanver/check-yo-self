@@ -22,7 +22,6 @@ class SubmitButtonCell: UITableViewCell {
     
     @IBOutlet weak var submitButton: UIButton!
     weak var delegate: SubmitButtonCellDelegate!
-   
 }
 
 // MARK: - Extension: Actions -

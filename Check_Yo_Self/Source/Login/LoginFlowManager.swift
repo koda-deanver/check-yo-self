@@ -8,37 +8,39 @@
 
 import Foundation
 
+/// Function for controlling login and account creation process.
 class LoginFlowManager {
     
     // MARK: - Public Members -
     
     static let shared = LoginFlowManager()
     
-    // MARK: - Private Members -
-    
-    private let successAlertTitle = "New account created!"
-    private let errorAlertTitle = "Failed to create account."
-    
     // MARK: - Public Methods -
     
     ///
-    /// Ensure username and password are satisfactory to create a new user.
+    /// Create account with current credentials.
     ///
-    /// - parameter credentials: Username and password to validate.
-    /// - parameter viewController: The calling view controller if there is one.
+    /// - parameter user: The user to create an account for.
+    /// - parameter success: Handler for successful account creation.
+    /// - parameter failure: Handler for failed account creation.
     ///
-    func validateNewCredentials(credentials: (username: String, password: String), viewController: GeneralViewController?) {
+    func createAccount(for user: User, success: @escaping Closure, failure: @escaping ErrorClosure) {
         
-        validateNewUsername(credentials.username, success: { username in
+        guard user.favoriteColor != nil, user.ageGroup != nil, user.favoriteGenre != nil, user.identity != nil else {
+            failure("Enter all of your profile info!")
+            return
+        }
+        
+        validateNewUsername(user.username, success: { username in
             
-            if self.validateNewPassword(credentials.password) {
-                self.createAccount(withUsername: username, password: credentials.password, viewController: viewController)
+            if self.validateNewPassword(user.password) {
+                DataManager.shared.createUserAccount(for: user, success: { _ in
+                    success()
+                }, failure: failure)
             } else {
-                viewController?.displayAlert(withTitle: self.errorAlertTitle, message: ("Password must be between \(NewAccountInfoFieldType.password.minCharacters) and \(NewAccountInfoFieldType.password.maxCharacters) characters"), completion: nil)
+                failure("Password must be between \(NewAccountInfoFieldType.password.minCharacters) and \(NewAccountInfoFieldType.password.maxCharacters) characters")
             }
-        }, failure : { errorString in
-            viewController?.displayAlert(withTitle: self.errorAlertTitle, message: errorString, completion: nil)
-        })
+        }, failure : failure )
         
     }
     
@@ -88,23 +90,5 @@ class LoginFlowManager {
         }
         
         return true
-    }
-    
-    ///
-    /// Create account with current credentials.
-    ///
-    /// - parameter username: Username for new account.
-    /// - parameter password: Password for new account.
-    /// - parameter viewController: The calling view controller if there is one.
-    ///
-    private func createAccount(withUsername username: String, password: String, viewController: GeneralViewController?) {
-        
-        DataManager.shared.createUser(withCredentials: (username, password), success: { user in
-            viewController?.displayAlert(withTitle: self.successAlertTitle, message: "", completion: {
-                viewController?.dismiss(animated: true, completion: nil)
-            })
-        }, failure: { errorString in
-            viewController?.displayAlert(withTitle: self.errorAlertTitle, message: errorString, completion: nil)
-        })
     }
 }

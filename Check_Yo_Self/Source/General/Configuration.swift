@@ -14,6 +14,7 @@ import FirebaseDatabase
 // MARK: - Type Alias -
 
 typealias Closure = () -> Void
+typealias ErrorClosure = (String) -> Void
 
 // MARK: - Constants -
 
@@ -29,6 +30,12 @@ struct Constants {
         Connection(type: .fitbit),
         Connection(type: .maps)
     ]
+}
+
+// MARK: - Font -
+
+struct Font {
+    static let main = "Arial"
 }
 
 // MARK: - Configuration -

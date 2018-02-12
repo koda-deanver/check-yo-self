@@ -136,7 +136,7 @@ class QuestionStorage: NSObject, NSCoding {
                             let choiceNeg1 = choices[4]["choiceText"] as? String,
                             let choiceNeg2 = choices[5]["choiceText"] as? String{
                             // Following same init order 3,2,1,0,-1,-2
-                            let newQuestion = Question(withText: questionTitle, id: questionID, type: phase, choice3, choice2, choice1, choice0, choiceNeg1, choiceNeg2)
+                            let newQuestion = Question(withText: questionTitle, id: questionID, type: .profile, choice3, choice2, choice1, choice0, choiceNeg1, choiceNeg2)
                             phaseQuestions.append(newQuestion)
                         }else{
                             print("ERROR: \(questionID)")

@@ -15,16 +15,18 @@
 		13523AF62011C34D00CDF58C /* LabelAndTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */; };
 		13523AF82011C52B00CDF58C /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */; };
 		13523AFB2011E1E500CDF58C /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */; };
+		138BF0272031403900119A52 /* BSGCustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF0252031403700119A52 /* BSGCustomAlert.swift */; };
+		138BF0282031403900119A52 /* BSGCustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF0262031403800119A52 /* BSGCustomAlertController.swift */; };
+		138BF02A2031411C00119A52 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF0292031411C00119A52 /* AlertController.swift */; };
+		138BF02C2031418E00119A52 /* JabbrColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF02B2031418E00119A52 /* JabbrColor.swift */; };
 		13C099A6202D851C00E356D5 /* BSGFacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A5202D851C00E356D5 /* BSGFacebookService.swift */; };
 		13C099A8202D865100E356D5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A7202D865100E356D5 /* ProfileViewController.swift */; };
-		13C099AA202D886200E356D5 /* DropdownTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A9202D886200E356D5 /* DropdownTableCell.swift */; };
+		13C099AA202D886200E356D5 /* DropdownMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A9202D886200E356D5 /* DropdownMenuCell.swift */; };
+		13C099AC202D997600E356D5 /* NewAccountInfoFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099AB202D997600E356D5 /* NewAccountInfoFieldType.swift */; };
 		13E5ACF62026150A00C92237 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E5ACF52026150A00C92237 /* CustomTabBar.swift */; };
 		4A06B5F81E709F1B008BDBE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A06B5F71E709F1B008BDBE1 /* GoogleService-Info.plist */; };
 		4A06B5FA1E70F287008BDBE1 /* EnumList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B5F91E70F287008BDBE1 /* EnumList.swift */; };
 		4A06B5FC1E713C82008BDBE1 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B5FB1E713C82008BDBE1 /* Connection.swift */; };
-		4A06B5FE1E717C34008BDBE1 /* ConnectionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B5FD1E717C34008BDBE1 /* ConnectionAlert.swift */; };
-		4A06B6001E717C4B008BDBE1 /* ConnectionAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B5FF1E717C4B008BDBE1 /* ConnectionAlertViewController.swift */; };
-		4A06B6021E717D69008BDBE1 /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B6011E717D69008BDBE1 /* ViewControllerExtensions.swift */; };
 		4A438D7D1E31E46600C2253C /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A438D7C1E31E46600C2253C /* CheckViewController.swift */; };
 		4A438D821E31EB5400C2253C /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A438D811E31EB5400C2253C /* Chartboost.framework */; };
 		4A438D841E31EB8000C2253C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A438D831E31EB8000C2253C /* StoreKit.framework */; };
@@ -87,17 +89,19 @@
 		13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAndTextFieldCell.swift; sourceTree = "<group>"; };
 		13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountViewController.swift; sourceTree = "<group>"; };
 		13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
+		138BF0252031403700119A52 /* BSGCustomAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSGCustomAlert.swift; sourceTree = "<group>"; };
+		138BF0262031403800119A52 /* BSGCustomAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSGCustomAlertController.swift; sourceTree = "<group>"; };
+		138BF0292031411C00119A52 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		138BF02B2031418E00119A52 /* JabbrColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JabbrColor.swift; sourceTree = "<group>"; };
 		13C099A5202D851C00E356D5 /* BSGFacebookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BSGFacebookService.swift; path = ../../../../../../BSGFacebookService.swift; sourceTree = "<group>"; };
 		13C099A7202D865100E356D5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		13C099A9202D886200E356D5 /* DropdownTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownTableCell.swift; sourceTree = "<group>"; };
+		13C099A9202D886200E356D5 /* DropdownMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownMenuCell.swift; sourceTree = "<group>"; };
+		13C099AB202D997600E356D5 /* NewAccountInfoFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountInfoFieldType.swift; sourceTree = "<group>"; };
 		13E5ACF52026150A00C92237 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		4A00258B1E36A52A00950990 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		4A06B5F71E709F1B008BDBE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A06B5F91E70F287008BDBE1 /* EnumList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumList.swift; sourceTree = "<group>"; };
 		4A06B5FB1E713C82008BDBE1 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
-		4A06B5FD1E717C34008BDBE1 /* ConnectionAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionAlert.swift; sourceTree = "<group>"; };
-		4A06B5FF1E717C4B008BDBE1 /* ConnectionAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionAlertViewController.swift; sourceTree = "<group>"; };
-		4A06B6011E717D69008BDBE1 /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
 		4A438D7C1E31E46600C2253C /* CheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		4A438D811E31EB5400C2253C /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chartboost.framework; path = Check_Yo_Self/Frameworks/Chartboost.framework; sourceTree = "<group>"; };
 		4A438D831E31EB8000C2253C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -198,6 +202,7 @@
 			children = (
 				13E5ACDD2026107E00C92237 /* View Controllers */,
 				13382AAF2017159500CAAB84 /* LoginFlowManager.swift */,
+				13C099AB202D997600E356D5 /* NewAccountInfoFieldType.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -205,8 +210,7 @@
 		13E5ACDC2026104C00C92237 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
-				4A06B5FD1E717C34008BDBE1 /* ConnectionAlert.swift */,
-				4A06B5FF1E717C4B008BDBE1 /* ConnectionAlertViewController.swift */,
+				138BF0292031411C00119A52 /* AlertController.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -236,6 +240,7 @@
 				132042AE2010692800DCE39E /* User.swift */,
 				4A06B5F91E70F287008BDBE1 /* EnumList.swift */,
 				4A8346781E203B6200BAF8F9 /* AppDelegate.swift */,
+				138BF02B2031418E00119A52 /* JabbrColor.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -243,6 +248,8 @@
 		13E5ACDF202610C300C92237 /* BSG */ = {
 			isa = PBXGroup;
 			children = (
+				138BF0252031403700119A52 /* BSGCustomAlert.swift */,
+				138BF0262031403800119A52 /* BSGCustomAlertController.swift */,
 				13C099A5202D851C00E356D5 /* BSGFacebookService.swift */,
 				4A55D70F1E79B6BB00EFB9B5 /* BSGCommon.swift */,
 				132042AA201062C300DCE39E /* BSGFirebaseService.swift */,
@@ -256,7 +263,7 @@
 				4A8346881E203B6200BAF8F9 /* CustomTableViewCell.swift */,
 				13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */,
 				13382AAC2016F28B00CAAB84 /* SubmitButtonCell.swift */,
-				13C099A9202D886200E356D5 /* DropdownTableCell.swift */,
+				13C099A9202D886200E356D5 /* DropdownMenuCell.swift */,
 			);
 			path = "Table Cells";
 			sourceTree = "<group>";
@@ -301,7 +308,6 @@
 			isa = PBXGroup;
 			children = (
 				13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */,
-				4A06B6011E717D69008BDBE1 /* ViewControllerExtensions.swift */,
 				4A8346921E203B6200BAF8F9 /* GeneralViewController.swift */,
 			);
 			path = "View Controllers";
@@ -671,6 +677,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13C099AC202D997600E356D5 /* NewAccountInfoFieldType.swift in Sources */,
 				13E5ACF62026150A00C92237 /* CustomTabBar.swift in Sources */,
 				4A8346A51E203B6200BAF8F9 /* DataEntry.swift in Sources */,
 				4A06B5FC1E713C82008BDBE1 /* Connection.swift in Sources */,
@@ -684,7 +691,6 @@
 				13C099A6202D851C00E356D5 /* BSGFacebookService.swift in Sources */,
 				4AADEAD61E30826600C062B5 /* LoadingViewController.swift in Sources */,
 				4A8346B01E203B6200BAF8F9 /* MapViewController.swift in Sources */,
-				4A06B6001E717C4B008BDBE1 /* ConnectionAlertViewController.swift in Sources */,
 				4AA2D39C1E24B35E00DBE986 /* Media.swift in Sources */,
 				4A8346A81E203B6200BAF8F9 /* Question.swift in Sources */,
 				4A8346AF1E203B6200BAF8F9 /* LoginViewController.swift in Sources */,
@@ -692,7 +698,6 @@
 				4A8346991E203B6200BAF8F9 /* AppDelegate.swift in Sources */,
 				4A877CCE1E88960C009CE752 /* Friend.swift in Sources */,
 				4A8346A41E203B6200BAF8F9 /* CustomTableViewCell.swift in Sources */,
-				4A06B6021E717D69008BDBE1 /* ViewControllerExtensions.swift in Sources */,
 				132042AF2010692800DCE39E /* User.swift in Sources */,
 				13523AF82011C52B00CDF58C /* CreateNewAccountViewController.swift in Sources */,
 				4AA2D3CC1E2FFC6F00DBE986 /* Configuration.swift in Sources */,
@@ -700,9 +705,8 @@
 				4A8346AD1E203B6200BAF8F9 /* GeneralViewController.swift in Sources */,
 				4A438D7D1E31E46600C2253C /* CheckViewController.swift in Sources */,
 				4A8346A91E203B6200BAF8F9 /* QuestionStorage.swift in Sources */,
-				4A06B5FE1E717C34008BDBE1 /* ConnectionAlert.swift in Sources */,
 				4A8346A61E203B6200BAF8F9 /* LocationMarker.swift in Sources */,
-				13C099AA202D886200E356D5 /* DropdownTableCell.swift in Sources */,
+				13C099AA202D886200E356D5 /* DropdownMenuCell.swift in Sources */,
 				132042AB201062C300DCE39E /* BSGFirebaseService.swift in Sources */,
 				13C099A8202D865100E356D5 /* ProfileViewController.swift in Sources */,
 				4A8346AC1E203B6200BAF8F9 /* DevicesViewController.swift in Sources */,
@@ -713,12 +717,16 @@
 				4A8346AE1E203B6200BAF8F9 /* KnowledgeBaseViewController.swift in Sources */,
 				4A06B5FA1E70F287008BDBE1 /* EnumList.swift in Sources */,
 				4A8346A01E203B6200BAF8F9 /* HeartStats.swift in Sources */,
+				138BF0282031403900119A52 /* BSGCustomAlertController.swift in Sources */,
 				4A8346B21E203B6200BAF8F9 /* StatsNavViewController.swift in Sources */,
 				4A877CD01E889BED009CE752 /* FriendCell.swift in Sources */,
+				138BF02A2031411C00119A52 /* AlertController.swift in Sources */,
 				4A8346AB1E203B6200BAF8F9 /* DataEntryDetailsViewController.swift in Sources */,
+				138BF0272031403900119A52 /* BSGCustomAlert.swift in Sources */,
 				4A877CD31E889D5C009CE752 /* FriendListTableViewController.swift in Sources */,
 				13523AFB2011E1E500CDF58C /* BackgroundViewController.swift in Sources */,
 				4A8346B11E203B6200BAF8F9 /* PlayViewController.swift in Sources */,
+				138BF02C2031418E00119A52 /* JabbrColor.swift in Sources */,
 				4A83469D1E203B6200BAF8F9 /* AuthenticationController.swift in Sources */,
 				13382AAD2016F28B00CAAB84 /* SubmitButtonCell.swift in Sources */,
 			);

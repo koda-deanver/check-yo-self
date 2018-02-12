@@ -34,6 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Chartboost.start(withAppId: "5882482d43150f4771a3bdf1", appSignature: "e6c3203b65f9cbe700de0bf1208656fea12ebe8f", delegate: nil)
         // Configure Firebase shared instance
         FirebaseApp.configure()
+        
+        // Alerts
+        AlertController.configure(withAnimationDuration: 0.25, backgroundImage: #imageLiteral(resourceName: "AlertBackdropGray"), messageFont: Font.main, messageTextColor: .black, buttonFont: Font.main, buttonTextColor: .black, buttonImage: #imageLiteral(resourceName: "GameButtonGray"))
+        
         return true
     }
     

@@ -38,16 +38,8 @@ class BSGFirebaseService {
                 path.updateChildValues(values)
                 success()
             } else {
-                if isFirstAttempt {
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0, execute: {
-                        updateData(atPath: path, values: values, success: success, failure: failure)
-                    } )
-                } else {
-                    failure()
-                }
-                isFirstAttempt = false
+                failure()
             }
-            
         })
     }
     
@@ -67,16 +59,8 @@ class BSGFirebaseService {
                     success(snapshot)
                 })
             } else {
-                if isFirstAttempt {
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0, execute: {
-                        fetchData(atPath: path, success: success, failure: failure)
-                    } )
-                } else {
-                    failure()
-                }
-                isFirstAttempt = false
+                failure()
             }
-            
         })
     }
     
@@ -95,16 +79,8 @@ class BSGFirebaseService {
                 path.removeValue()
                 success()
             } else {
-                if isFirstAttempt {
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0, execute: {
-                        removeData(atPath: path, success: success, failure: failure)
-                    } )
-                } else {
-                    failure()
-                }
-                isFirstAttempt = false
+                failure()
             }
-            
         })
     }
     
@@ -112,6 +88,8 @@ class BSGFirebaseService {
     
     ///
     /// Check for connection to database before acting.
+    ///
+    /// - note: This method always returns false on the first attempt, so a retry with delay is used the first time.
     ///
     /// - parameter completion: Completion handler containing Bool that indicates if there is a connection.
     ///
@@ -121,7 +99,17 @@ class BSGFirebaseService {
         
         connectedRef.observeSingleEvent(of: .value, with: { snapshot in
             
-            let isConnected = (snapshot.value as? Bool) == true
+            let isConnected = snapshot.value as? Bool ?? false
+            print(isConnected)
+            // Retry.
+            if !isConnected && isFirstAttempt {
+                isFirstAttempt = false
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+                    self.checkConnection(completion: completion)
+                })
+                return
+            }
+            
             completion(isConnected)
         })
     }

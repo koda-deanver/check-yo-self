@@ -17,55 +17,15 @@ struct CharacterType {
     static let specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*"]
 }
 
-// MARK: - Enum: NewAccountInfoFieldType -
-
-enum NewAccountInfoFieldType {
-    
-    case username, password
-    
-    var tableRow: Int? {
-        
-        for (index, type) in NewAccountInfoFieldType.all.enumerated() where type == self {
-            return index
-        }
-        return nil /* This type is not in table */
-    }
-    
-    var placeholder: String {
-        switch self {
-        case .username: return "Username"
-        case .password: return "Password"
-        }
-    }
-    
-    var validCharacters: [String] {
-        switch self {
-        case .username: return CharacterType.alphabet + CharacterType.numeric
-        case .password: return CharacterType.alphabet + CharacterType.numeric + CharacterType.specialCharacters
-        }
-    }
-    
-    var minCharacters: Int {
-        switch self {
-        case .username: return Configuration.usernameMinLength
-        case .password: return Configuration.passwordMinLength
-        }
-    }
-    
-    var maxCharacters: Int {
-        switch self {
-        case .username: return Configuration.usernameMaxLength
-        case .password: return Configuration.passwordMaxLength
-        }
-    }
-    
-    static var all: [NewAccountInfoFieldType] = [username, password]
-}
-
 // MARK: Class: - CreateNewAccountViewController -
 
 ///  Prompt user to enter necessary information to create a new account.
 class CreateNewAccountViewController: GeneralViewController {
+    
+    // MARK: - Private Members -
+    
+    private let successAlertTitle = "New account created!"
+    private let errorAlertTitle = "Failed to create account."
     
     // MARK: - Outlets -
     
@@ -92,7 +52,8 @@ class CreateNewAccountViewController: GeneralViewController {
         guard let passwordRow = NewAccountInfoFieldType.password.tableRow, let passwordCell = tableView.visibleCells[passwordRow] as? LabelAndTextFieldCell else { return }
         let password = passwordCell.currentText
         
-        LoginFlowManager.shared.validateNewCredentials(credentials: (username, password), viewController: self)
+        User.current = User(withUsername: username, password: password)
+        performSegue(withIdentifier: "showProfile", sender: self)
     }
     
 }
@@ -131,7 +92,7 @@ extension CreateNewAccountViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 30.0
+        return 40.0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

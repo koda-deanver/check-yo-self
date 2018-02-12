@@ -176,20 +176,20 @@ class PlayViewController: GeneralViewController{
         if PlayerData.sharedInstance.runCheckOnce == true{
             PlayerData.sharedInstance.runCheckOnce = false
             self.creationPhase = .check
-            self.showConnectionAlert(ConnectionAlert(title: "\(self.creationPhase.rawValue) phase!", message: "Answer these 20 questions & Score JabbRGems", okButtonText: "GO", okButtonCompletion: {
+            /*self.showConnectionAlert(ConnectionAlert(title: "\(self.creationPhase.rawValue) phase!", message: "Answer these 20 questions & Score JabbRGems", okButtonText: "GO", okButtonCompletion: {
                 self.startNewGame()
-            }))
+            }))*/
         // Regular phase change
         }else if PlayerData.sharedInstance.creationPhase == .none{
-            self.creationPhase = .none
+            /*self.creationPhase = .none
             self.showConnectionAlert(ConnectionAlert(title: "\(self.creationPhase.rawValue) phase!", message: "Answer these 20 questions to customize your profile", okButtonText: "GO", okButtonCompletion: {
                 self.startNewGame()
-            }))
+            }))*/
         }else{
-            self.creationPhase = PlayerData.sharedInstance.creationPhase
+            /*self.creationPhase = PlayerData.sharedInstance.creationPhase
             self.showConnectionAlert(ConnectionAlert(title: "\(self.creationPhase.rawValue) phase!", message: "Answer these 20 questions & Score JabbRGgems", okButtonText: "GO", okButtonCompletion: {
                 self.startNewGame()
-            }))
+            }))*/
         }
         updateStats()
     }
@@ -229,9 +229,9 @@ class PlayViewController: GeneralViewController{
                 default:
                     break
                 }
-                self.showConnectionAlert(ConnectionAlert(title: "Try Again", message: "Cannot load \(self.creationPhase.rawValue) phase at this time", okButtonText: "OK", okButtonCompletion: {
+                /*self.showConnectionAlert(ConnectionAlert(title: "Try Again", message: "Cannot load \(self.creationPhase.rawValue) phase at this time", okButtonText: "OK", okButtonCompletion: {
                     self.tabBarController?.selectedIndex = 0
-                }))
+                }))*/
                 
             }else{
                 print("Grabbed \(newQuestions?.count) \(self.creationPhase) Questions")
@@ -288,9 +288,9 @@ class PlayViewController: GeneralViewController{
         if self.questionsAnswered % 5 == 0{
             let alertIndex = self.questionsAnswered / 5
             let alertMessage = Media.progressAlertMessages[self.creationPhase]![alertIndex]
-            self.showConnectionAlert(ConnectionAlert(title: "Section \(alertIndex+1)", message: "These 5 questions \(alertMessage)", okButtonText: "GO", okButtonCompletion: {
+            /*self.showConnectionAlert(ConnectionAlert(title: "Section \(alertIndex+1)", message: "These 5 questions \(alertMessage)", okButtonText: "GO", okButtonCompletion: {
                 self.launchNewQuestion()
-            }))
+            }))*/
         }else{
             launchNewQuestion()
         }
@@ -349,7 +349,7 @@ class PlayViewController: GeneralViewController{
             // Go to Stats screen
             pageIndex = 3
         }
-        self.showConnectionAlert(ConnectionAlert(title: title, message: message, okButtonText: "OK", okButtonCompletion: {
+        /*self.showConnectionAlert(ConnectionAlert(title: title, message: message, okButtonText: "OK", okButtonCompletion: {
                         self.backDrop.image = nil
             self.resetButtons()
             self.updateStats()
@@ -363,7 +363,7 @@ class PlayViewController: GeneralViewController{
             }
             self.setTabsActive(true)
             self.tabBarController?.selectedIndex = pageIndex
-        }))
+        }))*/
     }
     
     //********************************************************************

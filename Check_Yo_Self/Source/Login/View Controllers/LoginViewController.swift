@@ -11,43 +11,18 @@ import UIKit
 ///  Initial login screen for app. User can either enter credeentials to log in or create a new account.
 class LoginViewController: GeneralViewController {
     
+    // MARK: - Outlets -
+    
+    @IBOutlet private weak var usernameTextField: UITextField!
+    @IBOutlet private weak var passcodeTextField: UITextField!
+    
     // MARK: - Lifecycle -
     
-    override func viewDidAppear(_ animated: Bool) {
-        showLoginAlert(withTitleText: "Log in to Jabbr account")
+    override func viewDidLoad() {
+        view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.4)
     }
     
     // MARK: - Private methods -
-    
-    ///
-    /// Show alert prompting user to login.
-    ///
-    private func showLoginAlert(withTitleText titleText: String) {
-        
-        let alertController = UIAlertController(title: titleText, message: "Don't have a Jabbr account? Create one!", preferredStyle: UIAlertControllerStyle.alert)
-        
-        alertController.addTextField() {
-            textField in
-            textField.placeholder = "Username"
-            textField.borderStyle = .roundedRect
-        }
-        alertController.addTextField() {
-            textField in
-            textField.placeholder = "Password"
-            textField.borderStyle = .roundedRect
-        }
-        alertController.addAction(UIAlertAction(title: "Log In", style: .default){
-            action in
-            guard let username = alertController.textFields?[0].text, let password = alertController.textFields?[1].text else { return /*FIX: Handle error */ }
-            self.validateLogin(username: username, password: password)
-        })
-        alertController.addAction(UIAlertAction(title: "Create Account", style: .default){
-            action in
-            alertController.dismiss(animated: true, completion: nil)
-            self.showCreateNewAccount()
-        })
-        self.present(alertController, animated: true, completion: nil)
-    }
     
     ///
     /// Checks if user exists, and if password matches.
@@ -60,8 +35,9 @@ class LoginViewController: GeneralViewController {
         DataManager.shared.getUsers(matching: [(field: .username, value: username), (field: .password, value: password)],success: { users in
             
             guard users.count == 1 else {
-                let errorText = (users.count == 0) ? "User not found. Did you forget your password again?" : "More than one user was returned."
-                self.showLoginAlert(withTitleText: errorText)
+                let errorText = (users.count == 0) ? "User not found." : "Uh-oh Something is wrong with your account."
+                let alert = BSGCustomAlert(message: errorText, options: [(text: "Close", handler: {})])
+                self.showAlert(alert)
                 return
             }
             
@@ -70,36 +46,25 @@ class LoginViewController: GeneralViewController {
             PlayerData.sharedInstance.displayName = user.username
             PlayerData.sharedInstance.gemTotal = user.gems
             
-            self.launchGame(onTab: 0)
+            self.performSegue(withIdentifier: "showCubeScreen", sender: self)
             
         }, failure: { errorMessage in
             
-            self.showLoginAlert(withTitleText: errorMessage)
+            let alert = BSGCustomAlert(message: errorMessage, options: [(text: "Close", handler: {})])
+            self.showAlert(alert)
             return
         })
     }
+}
+
+// MARK: - Extension: LoginViewController -
+
+extension LoginViewController {
     
-    ///
-    /// Launches proccess to create new account.
-    ///
-    private func showCreateNewAccount() {
-        performSegue(withIdentifier: "showCreateNewAccount", sender: self)
-    }
-    
-    ///
-    /// Start game on specified tab.
-    ///
-    private func launchGame(onTab tab: Int){
-        // Go to Menu
-        DispatchQueue.main.async {
-            let newView: UITabBarController = self.storyboard!.instantiateViewController(withIdentifier: "TabBarScene") as! UITabBarController
-            newView.selectedIndex = tab
-            
-            let cubeController = newView.viewControllers?[0] as! CubeViewController
-            // Show tutorial video on cube screen
-            cubeController.newPlayer = true
-            cubeController.tabBarController?.setTabsActive(false)
-            self.present(newView, animated: true, completion: nil)
-        }
+    @IBAction func submitButtonPressed(_ sender: UIButton) {
+        
+        guard let username = usernameTextField.text, let passcode = passcodeTextField.text else { return }
+        
+        validateLogin(username: username, password: passcode)
     }
 }

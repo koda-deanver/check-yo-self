@@ -92,7 +92,7 @@ class StatsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if PlayerData.sharedInstance.playsToday >= PlayerData.sharedInstance.playsPerDay{
-            self.showConnectionAlert(ConnectionAlert(title: "CONGRATS! You've reached your daily limit of redeemable JabbRGems!", message: "Feel free to play indefinitely to run up the points on on your TEAM & earn more gems when you CHECKIn tomorrow", okButtonText: "Alright"))
+            /*self.showConnectionAlert(ConnectionAlert(title: "CONGRATS! You've reached your daily limit of redeemable JabbRGems!", message: "Feel free to play indefinitely to run up the points on on your TEAM & earn more gems when you CHECKIn tomorrow", okButtonText: "Alright"))*/
         }
         self.filterPhase = .none
         self.phaseFilterButton.title = "All Phases"
