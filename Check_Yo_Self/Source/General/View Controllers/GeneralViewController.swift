@@ -10,7 +10,7 @@
 
 import UIKit
 
-class GeneralViewController: UIViewController, UITextFieldDelegate{
+class GeneralViewController: UIViewController {
     
     // MARK: - Public Members -
     
@@ -26,23 +26,6 @@ class GeneralViewController: UIViewController, UITextFieldDelegate{
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
-    }
-    
-    ///
-    /// Display typical alert.
-    ///
-    /// - parameter title: Title text for alert.
-    /// - parameter message: Message text for alert.
-    /// - parameter completion: Handler for pressing action button on alert.
-    ///
-    func displayAlert(withTitle title: String, message: String, completion: Closure?) {
-        
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-            completion?()
-        }))
-        
-        present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - Private Methods -

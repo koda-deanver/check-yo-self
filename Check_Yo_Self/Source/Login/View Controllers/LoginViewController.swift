@@ -13,16 +13,58 @@ class LoginViewController: GeneralViewController {
     
     // MARK: - Outlets -
     
-    @IBOutlet private weak var usernameTextField: UITextField!
-    @IBOutlet private weak var passcodeTextField: UITextField!
+    @IBOutlet private weak var loginView: UIView!
+    @IBOutlet private weak var messageLabel: UILabel!
+    @IBOutlet private weak var usernameTextField: TextField!
+    @IBOutlet private weak var passcodeTextField: TextField!
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var createAccountButton: UIButton!
     
     // MARK: - Lifecycle -
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        setup()
+    }
+    
+    /// To prevent temporarily showing this view behind the next.
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
         view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.4)
+        loginView.isHidden = false
+        createAccountButton.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        view.backgroundColor = .clear
+        loginView.isHidden = true
+        createAccountButton.isHidden = true
     }
     
     // MARK: - Private methods -
+    
+    ///
+    /// Sets initial style.
+    ///
+    private func setup() {
+        
+        view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.4)
+        
+        messageLabel.font = UIFont(name: Font.main, size: Font.mediumSize * 0.8)
+        
+        usernameTextField.configure(withBlueprint: TextFieldBlueprint(placeholder: "Username", validCharacters: CharacterType.alphabet + CharacterType.numeric + CharacterType.specialCharacters, maxCharacters: Configuration.usernameMaxLength, minCharacters: Configuration.usernameMinLength))
+        passcodeTextField.configure(withBlueprint: TextFieldBlueprint(placeholder: "Passcode", validCharacters: CharacterType.numeric, maxCharacters: Configuration.passcodeLength, minCharacters: Configuration.passcodeLength))
+        
+        loginButton.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
+        loginButton.isEnabled = false
+        
+        createAccountButton.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
+    }
     
     ///
     /// Checks if user exists, and if password matches.
@@ -35,7 +77,7 @@ class LoginViewController: GeneralViewController {
         DataManager.shared.getUsers(matching: [(field: .username, value: username), (field: .password, value: password)],success: { users in
             
             guard users.count == 1 else {
-                let errorText = (users.count == 0) ? "User not found." : "Uh-oh Something is wrong with your account."
+                let errorText = (users.count == 0) ? "Invalid username/passcode." : "Uh-oh Something is wrong with your account."
                 let alert = BSGCustomAlert(message: errorText, options: [(text: "Close", handler: {})])
                 self.showAlert(alert)
                 return
@@ -57,14 +99,25 @@ class LoginViewController: GeneralViewController {
     }
 }
 
-// MARK: - Extension: LoginViewController -
+// MARK: - Extension: Actions -
 
 extension LoginViewController {
     
-    @IBAction func submitButtonPressed(_ sender: UIButton) {
+    @IBAction func textFieldDidChange(_ sender: UITextField) {
+        
+        guard let username = usernameTextField.text, let passcode = passcodeTextField.text else { return }
+        
+        loginButton.isEnabled = username.count >= Configuration.usernameMinLength && passcode.count == Configuration.passcodeLength
+    }
+    
+    @IBAction func loginButtonPressed(_ sender: UIButton) {
         
         guard let username = usernameTextField.text, let passcode = passcodeTextField.text else { return }
         
         validateLogin(username: username, password: passcode)
+    }
+    
+    @IBAction func createAccountButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "showCreateNewAccount", sender: self)
     }
 }

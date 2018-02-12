@@ -26,22 +26,28 @@ class LoginFlowManager {
     ///
     func createAccount(for user: User, success: @escaping Closure, failure: @escaping ErrorClosure) {
         
-        guard user.favoriteColor != nil, user.ageGroup != nil, user.favoriteGenre != nil, user.identity != nil else {
+        guard user.ageGroup != nil, user.favoriteGenre != nil, user.identity != nil else {
             failure("Enter all of your profile info!")
             return
         }
         
-        validateNewUsername(user.username, success: { username in
-            
-            if self.validateNewPassword(user.password) {
-                DataManager.shared.createUserAccount(for: user, success: { _ in
-                    success()
-                }, failure: failure)
-            } else {
-                failure("Password must be between \(NewAccountInfoFieldType.password.minCharacters) and \(NewAccountInfoFieldType.password.maxCharacters) characters")
-            }
-        }, failure : failure )
+        DataManager.shared.createUserAccount(for: user, success: { _ in
+            success()
+        }, failure: failure)
+    }
+    
+    ///
+    /// Ensure username is available and fits criteria.
+    ///
+    /// - parameter user: The user to validate credentials for.
+    /// - parameter success: Handler for successful credential validation.
+    /// - parameter failure: Handler for failed credential validation.
+    ///
+    func validateCredentials(for user: User, success: @escaping Closure, failure: @escaping ErrorClosure) {
         
+        validateNewUsername(user.username, success: { username in
+            success()
+        }, failure : failure )
     }
     
     // MARK: - Private Methods -
@@ -56,8 +62,8 @@ class LoginFlowManager {
     private func validateNewUsername(_ username: String, success: @escaping (String) -> Void, failure: @escaping (String) -> Void) {
         
         // Must meet minimum length.
-        guard username.count >= NewAccountInfoFieldType.username.minCharacters && username.count <= NewAccountInfoFieldType.username.maxCharacters else {
-            failure("Username must be between \(NewAccountInfoFieldType.username.minCharacters) and \(NewAccountInfoFieldType.username.maxCharacters) characters")
+        guard username.count >= Configuration.usernameMinLength && username.count <= Configuration.usernameMaxLength else {
+            failure("Username must be between \(Configuration.usernameMinLength) and \(Configuration.usernameMaxLength) characters")
             return
         }
         
@@ -74,21 +80,5 @@ class LoginFlowManager {
             users.isEmpty ? success(username) : failure("Username Taken")
         }, failure: failure)
 
-    }
-    
-    ///
-    /// Check that password meets requirements.
-    ///
-    /// - parameter password: Password to validate.
-    ///
-    /// - returns: Bool indicating if password is valid.
-    ///
-    private func validateNewPassword(_ password: String) -> Bool {
-        
-        guard password.count >= NewAccountInfoFieldType.password.minCharacters && password.count <= NewAccountInfoFieldType.password.maxCharacters else {
-            return false
-        }
-        
-        return true
     }
 }

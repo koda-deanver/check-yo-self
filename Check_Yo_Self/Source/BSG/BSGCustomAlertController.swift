@@ -81,7 +81,8 @@ class BSGVerticalButtonAlertController: UIViewController {
     private func setUpAlert(){
         
         // Alert view
-        let alertView = UIImageView(frame: CGRect(x: 0, y: 0, width: view.frame.height * 0.40, height: view.frame.height * 0.40))
+        let height = view.frame.height * 0.30
+        let alertView = UIImageView(frame: CGRect(x: 0, y: 0, width: height * 1.2, height: height))
         alertView.center = CGPoint(x: view.frame.width * 0.5, y: view.frame.height * 0.5)
         
         if let backgroundImage = BSGVerticalButtonAlertController.backgroundImage{

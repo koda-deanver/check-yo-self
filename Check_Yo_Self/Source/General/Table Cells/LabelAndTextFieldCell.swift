@@ -8,21 +8,27 @@
 
 import UIKit
 
+// MARK: - Protocol -
+
+protocol LabelAndTextFieldCellDelegate: class {
+    func labelAndTextFieldCell(_ cell: LabelAndTextFieldCell, didChangeTextInField textField: TextField)
+}
+
+// MARK: - Class -
+
 class LabelAndTextFieldCell: UITableViewCell {
     
     // MARK: - Public Members -
     
     var currentText: String { return textField.text ?? "" }
+    weak var delegate: LabelAndTextFieldCellDelegate?
     
-    // MARK: - Private Members -
-    
-    private var validCharacters: [String] = []
-    private var maxCharacters: Int = 0
+    var inputIsValid: Bool { return textField.inputIsValid }
     
     // MARK: - Outlets -
     
     @IBOutlet private weak var label: UILabel!
-    @IBOutlet private weak var textField: UITextField!
+    @IBOutlet private weak var textField: TextField!
     
     // MARK: - Public Methods -
     
@@ -31,16 +37,17 @@ class LabelAndTextFieldCell: UITableViewCell {
     ///
     /// - parameter placeholder: Text to be displayed both as label for field, and as placeholder text inside field.
     /// - parameter validCharacters: Defines which characters are allowed to be typed in field.
+    /// - parameter maxCharacters: Maximum characters allowed.
+    /// - parameter minCharacters: Minimum characters allowed.
     ///
-    func configure(withPlaceholder placeholder: String, validCharacters: [String], maxCharacters: Int) {
+    func configure(withTextFieldBlueprint blueprint: TextFieldBlueprint) {
         
-        label.text = placeholder
+        label.text = blueprint.placeholder
+        label.font = UIFont(name: Font.main, size: Font.mediumSize)
         
-        textField.placeholder = placeholder
-        textField.delegate = self
-        
-        self.validCharacters = validCharacters
-        self.maxCharacters = maxCharacters
+        textField.configure(withBlueprint: blueprint)
+        textField.font = UIFont(name: Font.main, size: Font.mediumSize)
+        textField.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
         
         style()
     }
@@ -51,24 +58,15 @@ class LabelAndTextFieldCell: UITableViewCell {
     private func style() {
         
         backgroundColor = .clear
-        textField.borderStyle = .line
         textField.backgroundColor = .white
     }
 }
 
-// MARK: - Extension: UITextFieldDelegate -
+// MARK: - Extension: Actions -
 
-extension LabelAndTextFieldCell: UITextFieldDelegate {
+extension LabelAndTextFieldCell {
     
-    ///
-    /// Limit characters in field to only valid ones or a backspace.
-    ///
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        let newText = currentText + string
-        guard newText.count <= maxCharacters else { return false }
-        
-        guard validCharacters.contains(string.lowercased()) || string == "" else { return false }
-        return true
+    @objc func textFieldDidChange() {
+        delegate?.labelAndTextFieldCell(self, didChangeTextInField: textField)
     }
 }

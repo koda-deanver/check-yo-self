@@ -36,6 +36,11 @@ struct Constants {
 
 struct Font {
     static let main = "Arial"
+    
+    /// Size based on 60 pt for 9 inch iPad.
+    static let mediumSize: CGFloat = (60 / 1536) * UIScreen.main.bounds.width
+    static let smallSize: CGFloat = (40 / 1536) * UIScreen.main.bounds.width
+    static let largeSize: CGFloat = (80 / 1536) * UIScreen.main.bounds.width
 }
 
 // MARK: - Configuration -
@@ -50,10 +55,9 @@ struct Configuration {
     static let validPhases = 6 /* not including profile */
     
     // For username
-    static let usernameMinLength = 0
+    static let usernameMinLength = 1
     static let usernameMaxLength = 20
-    static let passwordMinLength = 8
-    static let passwordMaxLength = 16
+    static let passcodeLength = 6
     
     // Alerts
     static let daysUntilComebackAlert = 2

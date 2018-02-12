@@ -22,6 +22,15 @@ class SubmitButtonCell: UITableViewCell {
     
     @IBOutlet weak var submitButton: UIButton!
     weak var delegate: SubmitButtonCellDelegate!
+    
+    ///
+    /// Enable or disable submit button.
+    ///
+    /// - parameter shouldEnable: Bool indicating whether the button should be enabled.
+    ///
+    func setButtonEnabled(_ shouldEnable: Bool) {
+        submitButton.isEnabled = shouldEnable
+    }
 }
 
 // MARK: - Extension: Actions -
