@@ -39,6 +39,20 @@ enum JabbrColor: String {
         }
     }
     
+    /// Color in UIColor form.
+    var uiColor: UIColor {
+        
+        switch self{
+        case .red: return UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        case .green: return UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
+        case .blue: return UIColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.0)
+        case .cyan: return UIColor(red: 0.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        case .magenta: return UIColor(red: 1.0, green: 0.0, blue: 1.0, alpha: 1.0)
+        case .yellow: return UIColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 1.0)
+        case .none: return UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1.0)
+        }
+    }
+    
     ///
     /// Returns a JabbrColor if it matches string, otherwise returns none.
     ///

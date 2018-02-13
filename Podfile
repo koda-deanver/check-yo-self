@@ -14,4 +14,6 @@ target 'Check_Yo_Self' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
+
+  pod 'MBProgressHUD'
 end

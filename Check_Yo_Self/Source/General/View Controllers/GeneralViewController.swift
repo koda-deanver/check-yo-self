@@ -1,15 +1,15 @@
 //
 //  GeneralViewController.swift
-//  Check_Yo_Self
+//  check-yo-self
 //
 //  Created by Phil Rattazzi on 12/1/16.
 //  Copyright © 2016 ThematicsLLC. All rights reserved.
 //
-//  Base class for all View Controllers.
-//
 
 import UIKit
+import MBProgressHUD
 
+/// Base class containing common functionality for all View Controllers.
 class GeneralViewController: UIViewController {
     
     // MARK: - Public Members -
@@ -17,6 +17,13 @@ class GeneralViewController: UIViewController {
     var screenWidth: CGFloat{ return UIScreen.main.bounds.width }
     var screenHeight: CGFloat{ return UIScreen.main.bounds.height }
     override var prefersStatusBarHidden: Bool { return true }
+    
+    // MARK: - Lifecycle -
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        style()
+    }
     
     // MARK: - Public Methods -
     
@@ -28,7 +35,37 @@ class GeneralViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
+    ///
+    /// Start progress indicator.
+    ///
+    func showProgressHUD() {
+        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hud.contentColor = User.current?.favoriteColor.uiColor
+    }
+    
+    ///
+    /// Hide progress indicator.
+    ///
+    func hideProgressHUD() {
+        MBProgressHUD.hide(for: self.view, animated: true)
+    }
+    
+    ///
+    /// Handle error with single button alert.
+    ///
+    /// - parameter errorMessage: Message to dispplay in alert.
+    ///
+    func handle(_ errorMessage: String) {
+        
+        hideProgressHUD()
+        
+        let alert = BSGCustomAlert(message: errorMessage, options: [(text: "Close", handler: {})])
+        self.showAlert(alert)
+    }
+    
     // MARK: - Private Methods -
+    
+    func style() {}
     
     ///
     /// Description: Dismisses keyboard.
@@ -37,5 +74,3 @@ class GeneralViewController: UIViewController {
         view.endEditing(true)
     }
 }
-
-

@@ -22,11 +22,16 @@ class DropdownMenuCell: UITableViewCell {
     
     // MARK: - Public Members -
     
-    weak var delegate: DropdownMenuCellDelegate?
+    /// Determines if current field has taken input.
+    var inputIsValid: Bool {
+        guard let text = textField.text else { return false }
+        return text.count >= 1
+    }
     
     // MARK: - Private Members -
     
     private var question: Question!
+    private weak var delegate: DropdownMenuCellDelegate?
     
     // MARK: - Outlets -
     
@@ -39,14 +44,18 @@ class DropdownMenuCell: UITableViewCell {
     ///
     /// Set up cell with question.
     ///
-    func configure(withQuestion question: Question) {
+    func configure(withQuestion question: Question, delegate: DropdownMenuCellDelegate? = nil) {
         
         self.question = question
+        self.delegate = delegate
+        
         label.textColor = .white
         label.text = question.text
+        
+        textField.delegate = self
+        
         pickerView.alpha = 0.0
     }
-    
 }
 
 // MARK: - Extension: UITextFieldDelegate -
@@ -54,7 +63,14 @@ class DropdownMenuCell: UITableViewCell {
 extension DropdownMenuCell: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        let selectedRow = pickerView.selectedRow(inComponent: 0)
+        guard let choice = (pickerView.view(forRow: selectedRow, forComponent: 0) as? UILabel)?.text else { return }
+        
+        textField.text = choice
         pickerView.alpha = 1.0
+        
+        delegate?.dropdownMenuCell(self, didSelectChoice: choice, forQuestion: question)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -86,10 +102,11 @@ extension DropdownMenuCell: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 18.0
+        return 16.0
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
         let choice = question.choices[row].text
         textField.text = choice
         

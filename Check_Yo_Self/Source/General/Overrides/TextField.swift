@@ -22,10 +22,16 @@ struct CharacterType {
 /// Model to build text fields from.
 struct TextFieldBlueprint {
     
+    /// Text to display as placeholder in field.
     let placeholder: String
+    /// Determines what type of characters can be typed in field.
     let validCharacters: [String]
+    /// Maximum number of characters that can be typed in field.
     let maxCharacters: Int
+    /// Minimum number of characters to return valid input. Does **NOT** stop field from containing less.
     let minCharacters: Int
+    /// Determines if characters are hidden
+    let isSecure: Bool
 }
 
 // MARK: - Class -
@@ -50,9 +56,12 @@ class TextField: UITextField {
         
         self.blueprint = blueprint
         
-        self.placeholder = blueprint.placeholder
-        delegate = self
+        placeholder = blueprint.placeholder
+        isSecureTextEntry = blueprint.isSecure
         font = UIFont(name: Font.main, size: Font.mediumSize)
+        
+        autocorrectionType = .no
+        delegate = self
     }
 }
 

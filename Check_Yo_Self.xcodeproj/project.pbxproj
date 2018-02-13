@@ -10,7 +10,6 @@
 		132042AB201062C300DCE39E /* BSGFirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132042AA201062C300DCE39E /* BSGFirebaseService.swift */; };
 		132042AD2010682300DCE39E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132042AC2010682300DCE39E /* DataManager.swift */; };
 		132042AF2010692800DCE39E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132042AE2010692800DCE39E /* User.swift */; };
-		13382AAD2016F28B00CAAB84 /* SubmitButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13382AAC2016F28B00CAAB84 /* SubmitButtonCell.swift */; };
 		13382AB02017159500CAAB84 /* LoginFlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13382AAF2017159500CAAB84 /* LoginFlowManager.swift */; };
 		13523AF62011C34D00CDF58C /* LabelAndTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */; };
 		13523AF82011C52B00CDF58C /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */; };
@@ -20,7 +19,7 @@
 		138BF02A2031411C00119A52 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF0292031411C00119A52 /* AlertController.swift */; };
 		138BF02C2031418E00119A52 /* JabbrColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF02B2031418E00119A52 /* JabbrColor.swift */; };
 		138BF02E2031638C00119A52 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF02D2031638C00119A52 /* TextField.swift */; };
-		13C099A6202D851C00E356D5 /* BSGFacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A5202D851C00E356D5 /* BSGFacebookService.swift */; };
+		138BF03220328D9E00119A52 /* BSGFacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF03120328D9E00119A52 /* BSGFacebookService.swift */; };
 		13C099A8202D865100E356D5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A7202D865100E356D5 /* ProfileViewController.swift */; };
 		13C099AA202D886200E356D5 /* DropdownMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A9202D886200E356D5 /* DropdownMenuCell.swift */; };
 		13E5ACF62026150A00C92237 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E5ACF52026150A00C92237 /* CustomTabBar.swift */; };
@@ -84,7 +83,6 @@
 		132042AA201062C300DCE39E /* BSGFirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSGFirebaseService.swift; sourceTree = "<group>"; };
 		132042AC2010682300DCE39E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		132042AE2010692800DCE39E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		13382AAC2016F28B00CAAB84 /* SubmitButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButtonCell.swift; sourceTree = "<group>"; };
 		13382AAF2017159500CAAB84 /* LoginFlowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlowManager.swift; sourceTree = "<group>"; };
 		13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAndTextFieldCell.swift; sourceTree = "<group>"; };
 		13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountViewController.swift; sourceTree = "<group>"; };
@@ -94,7 +92,7 @@
 		138BF0292031411C00119A52 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		138BF02B2031418E00119A52 /* JabbrColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JabbrColor.swift; sourceTree = "<group>"; };
 		138BF02D2031638C00119A52 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
-		13C099A5202D851C00E356D5 /* BSGFacebookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BSGFacebookService.swift; path = ../../../../../../BSGFacebookService.swift; sourceTree = "<group>"; };
+		138BF03120328D9E00119A52 /* BSGFacebookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSGFacebookService.swift; sourceTree = "<group>"; };
 		13C099A7202D865100E356D5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		13C099A9202D886200E356D5 /* DropdownMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownMenuCell.swift; sourceTree = "<group>"; };
 		13E5ACF52026150A00C92237 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -248,8 +246,8 @@
 			isa = PBXGroup;
 			children = (
 				138BF0252031403700119A52 /* BSGCustomAlert.swift */,
+				138BF03120328D9E00119A52 /* BSGFacebookService.swift */,
 				138BF0262031403800119A52 /* BSGCustomAlertController.swift */,
-				13C099A5202D851C00E356D5 /* BSGFacebookService.swift */,
 				4A55D70F1E79B6BB00EFB9B5 /* BSGCommon.swift */,
 				132042AA201062C300DCE39E /* BSGFirebaseService.swift */,
 			);
@@ -261,7 +259,6 @@
 			children = (
 				4A8346881E203B6200BAF8F9 /* CustomTableViewCell.swift */,
 				13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */,
-				13382AAC2016F28B00CAAB84 /* SubmitButtonCell.swift */,
 				13C099A9202D886200E356D5 /* DropdownMenuCell.swift */,
 			);
 			path = "Table Cells";
@@ -615,6 +612,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -629,6 +627,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -687,7 +686,6 @@
 				4A8346AA1E203B6200BAF8F9 /* CubeViewController.swift in Sources */,
 				132042AD2010682300DCE39E /* DataManager.swift in Sources */,
 				4A83469F1E203B6200BAF8F9 /* Notifications.swift in Sources */,
-				13C099A6202D851C00E356D5 /* BSGFacebookService.swift in Sources */,
 				4AADEAD61E30826600C062B5 /* LoadingViewController.swift in Sources */,
 				4A8346B01E203B6200BAF8F9 /* MapViewController.swift in Sources */,
 				4AA2D39C1E24B35E00DBE986 /* Media.swift in Sources */,
@@ -720,6 +718,7 @@
 				138BF0282031403900119A52 /* BSGCustomAlertController.swift in Sources */,
 				4A8346B21E203B6200BAF8F9 /* StatsNavViewController.swift in Sources */,
 				4A877CD01E889BED009CE752 /* FriendCell.swift in Sources */,
+				138BF03220328D9E00119A52 /* BSGFacebookService.swift in Sources */,
 				138BF02A2031411C00119A52 /* AlertController.swift in Sources */,
 				4A8346AB1E203B6200BAF8F9 /* DataEntryDetailsViewController.swift in Sources */,
 				138BF0272031403900119A52 /* BSGCustomAlert.swift in Sources */,
@@ -728,7 +727,6 @@
 				4A8346B11E203B6200BAF8F9 /* PlayViewController.swift in Sources */,
 				138BF02C2031418E00119A52 /* JabbrColor.swift in Sources */,
 				4A83469D1E203B6200BAF8F9 /* AuthenticationController.swift in Sources */,
-				13382AAD2016F28B00CAAB84 /* SubmitButtonCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

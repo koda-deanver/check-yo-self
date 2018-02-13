@@ -7,7 +7,8 @@
 //
 
 import UIKit
-    
+
+/// Wrapper for *BSGVerticalButtonAlertController* adding color changing functionality.
 class AlertController: BSGVerticalButtonAlertController {
     
     ///
@@ -19,6 +20,8 @@ class AlertController: BSGVerticalButtonAlertController {
         AlertController.configure(withAnimationDuration: 0.25, backgroundImage: color.alertBackdrop, buttonImage: color.buttonImage)
     }
 }
+
+// MARK: - Extension: UIViewController -
 
 extension UIViewController {
     

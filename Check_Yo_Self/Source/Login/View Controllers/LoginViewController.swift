@@ -22,9 +22,22 @@ class LoginViewController: GeneralViewController {
     
     // MARK: - Lifecycle -
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setup()
+    ///
+    /// Sets initial style.
+    ///
+    override func style() {
+        
+        view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.4)
+        
+        messageLabel.font = UIFont(name: Font.main, size: Font.mediumSize * 0.8)
+        
+        usernameTextField.configure(withBlueprint: TextFieldBlueprint(placeholder: "Username", validCharacters: CharacterType.alphabet + CharacterType.numeric + CharacterType.specialCharacters, maxCharacters: Configuration.usernameMaxLength, minCharacters: Configuration.usernameMinLength, isSecure: false))
+        passcodeTextField.configure(withBlueprint: TextFieldBlueprint(placeholder: "Passcode", validCharacters: CharacterType.numeric, maxCharacters: Configuration.passcodeLength, minCharacters: Configuration.passcodeLength, isSecure: true))
+        
+        loginButton.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
+        loginButton.isEnabled = false
+        
+        createAccountButton.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
     }
     
     /// To prevent temporarily showing this view behind the next.
@@ -49,24 +62,6 @@ class LoginViewController: GeneralViewController {
     // MARK: - Private methods -
     
     ///
-    /// Sets initial style.
-    ///
-    private func setup() {
-        
-        view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.4)
-        
-        messageLabel.font = UIFont(name: Font.main, size: Font.mediumSize * 0.8)
-        
-        usernameTextField.configure(withBlueprint: TextFieldBlueprint(placeholder: "Username", validCharacters: CharacterType.alphabet + CharacterType.numeric + CharacterType.specialCharacters, maxCharacters: Configuration.usernameMaxLength, minCharacters: Configuration.usernameMinLength))
-        passcodeTextField.configure(withBlueprint: TextFieldBlueprint(placeholder: "Passcode", validCharacters: CharacterType.numeric, maxCharacters: Configuration.passcodeLength, minCharacters: Configuration.passcodeLength))
-        
-        loginButton.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
-        loginButton.isEnabled = false
-        
-        createAccountButton.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
-    }
-    
-    ///
     /// Checks if user exists, and if password matches.
     ///
     /// - parameter username: Username input from user.
@@ -74,7 +69,11 @@ class LoginViewController: GeneralViewController {
     ///
     private func validateLogin(username: String, password: String){
         
+        showProgressHUD()
+        
         DataManager.shared.getUsers(matching: [(field: .username, value: username), (field: .password, value: password)],success: { users in
+            
+            self.hideProgressHUD()
             
             guard users.count == 1 else {
                 let errorText = (users.count == 0) ? "Invalid username/passcode." : "Uh-oh Something is wrong with your account."
@@ -91,10 +90,7 @@ class LoginViewController: GeneralViewController {
             self.performSegue(withIdentifier: "showCubeScreen", sender: self)
             
         }, failure: { errorMessage in
-            
-            let alert = BSGCustomAlert(message: errorMessage, options: [(text: "Close", handler: {})])
-            self.showAlert(alert)
-            return
+            self.handle(errorMessage)
         })
     }
 }

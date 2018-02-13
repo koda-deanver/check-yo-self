@@ -1,15 +1,14 @@
 //
 //  BackgroundViewController.swift
-//  Check_Yo_Self
+//  check-yo-self
 //
 //  Created by Phil Rattazzi on 1/19/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
-//  Stays in background for the duration of app displaying background image.
-//
 
 import UIKit
 
+/// Looms in background for the duration of app displaying background image.
 class BackgroundViewController: GeneralViewController {
     
     // MARK: - Private Members -

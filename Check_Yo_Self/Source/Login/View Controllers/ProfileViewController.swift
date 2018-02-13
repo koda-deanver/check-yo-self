@@ -9,20 +9,40 @@
 import UIKit
 
 /// Present user with a series of questions that personalize thier account. These questions are taken from the database.
-class ProfileViewController: UIViewController {
+class ProfileViewController: GeneralViewController {
     
     // MARK: - Private Members -
     
+    /// Questions grabbed from database asking user personal info.
     private var profileQuestions: [Question] = []
     
+    /// Determines if all fields have been filled.
+    private var inputIsValid: Bool {
+        
+        for cell in tableView.visibleCells where (cell as? DropdownMenuCell)?.inputIsValid == false  {
+            return false
+        }
+        return true
+    }
+    
+    // MARK: - Outlets -
+    
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var finishButton: UIButton!
     
     // MARK: - Lifecycle -
     
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
         loadProfileQuestions()
+    }
+    
+    override func style() {
+        
         view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+        
+        finishButton.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
+        finishButton.isEnabled = false
     }
     
     // MARK: - Private Methods -
@@ -31,11 +51,18 @@ class ProfileViewController: UIViewController {
     /// Load profile questions from database and reload table.
     ///
     private func loadProfileQuestions() {
+        
+        showProgressHUD()
+        
         DataManager.shared.getQuestions(ofType: .profile, success: { questions in
+            
+            self.hideProgressHUD()
+            
             self.profileQuestions = questions
             self.tableView.reloadData()
+            
         }, failure: { errorString in
-            // TODO: Show alert
+            self.handle(errorString)
         })
     }
     
@@ -44,10 +71,13 @@ class ProfileViewController: UIViewController {
     ///
     private func createAccount() {
         
+        showProgressHUD()
+        
         LoginFlowManager.shared.createAccount(for: User.current, success: {
+            self.hideProgressHUD()
             self.performSegue(withIdentifier: "showCubeScreen", sender: self)
         }, failure: { errorString in
-            // TODO: Handle error
+            self.handle(errorString)
         })
     }
 }
@@ -57,28 +87,18 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profileQuestions.count + 1
+        return profileQuestions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row == profileQuestions.count {
-            
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "submitButtonCell") as? SubmitButtonCell else { return UITableViewCell() }
-            cell.delegate = self
-            return cell
-        } else {
-            
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "dropdownMenuCell") as? DropdownMenuCell else { return UITableViewCell() }
-            cell.delegate = self
-            cell.configure(withQuestion: profileQuestions[indexPath.row])
-            return cell
-        }
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "dropdownMenuCell") as? DropdownMenuCell else { return UITableViewCell() }
+        cell.configure(withQuestion: profileQuestions[indexPath.row], delegate: self)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == profileQuestions.count ? 40.0 : 120.0
+        return 120.0
     }
 }
 
@@ -95,14 +115,16 @@ extension ProfileViewController: DropdownMenuCellDelegate {
         case "PQ-000003": User.current?.identity = choice
         default: break
         }
+        
+        finishButton.isEnabled = inputIsValid
     }
 }
 
-// MARK: - Extension: SubmitButtonCellDelegate -
+// MARK: - Extension: Actions -
 
-extension ProfileViewController: SubmitButtonCellDelegate {
+extension ProfileViewController {
     
-    func submitButtonCell(_ cell: SubmitButtonCell, didPressSubmitButton: UIButton) {
+    @IBAction func finishButtonPressed(_ sender: UIButton) {
         createAccount()
     }
 }

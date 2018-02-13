@@ -21,9 +21,11 @@ class LabelAndTextFieldCell: UITableViewCell {
     // MARK: - Public Members -
     
     var currentText: String { return textField.text ?? "" }
-    weak var delegate: LabelAndTextFieldCellDelegate?
-    
     var inputIsValid: Bool { return textField.inputIsValid }
+    
+    // MARK: - Private Members -
+    
+    private weak var delegate: LabelAndTextFieldCellDelegate?
     
     // MARK: - Outlets -
     
@@ -40,7 +42,9 @@ class LabelAndTextFieldCell: UITableViewCell {
     /// - parameter maxCharacters: Maximum characters allowed.
     /// - parameter minCharacters: Minimum characters allowed.
     ///
-    func configure(withTextFieldBlueprint blueprint: TextFieldBlueprint) {
+    func configure(withTextFieldBlueprint blueprint: TextFieldBlueprint, delegate: LabelAndTextFieldCellDelegate? = nil) {
+        
+        self.delegate = delegate
         
         label.text = blueprint.placeholder
         label.font = UIFont(name: Font.main, size: Font.mediumSize)

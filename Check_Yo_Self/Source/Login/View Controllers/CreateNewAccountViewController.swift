@@ -8,19 +8,15 @@
 
 import UIKit
 
-// MARK: Class: - CreateNewAccountViewController -
-
 ///  Prompt user to enter necessary information to create a new account.
 class CreateNewAccountViewController: GeneralViewController {
     
     // MARK: - Private Members -
     
     private let newAccountFields: [TextFieldBlueprint] = [
-        TextFieldBlueprint(placeholder: "Username", validCharacters: CharacterType.alphabet + CharacterType.numeric + CharacterType.specialCharacters, maxCharacters: Configuration.usernameMaxLength, minCharacters: Configuration.usernameMinLength),
-        TextFieldBlueprint(placeholder: "Passcode", validCharacters: CharacterType.numeric, maxCharacters: Configuration.passcodeLength, minCharacters: Configuration.passcodeLength)
+        TextFieldBlueprint(placeholder: "Username", validCharacters: CharacterType.alphabet + CharacterType.numeric + CharacterType.specialCharacters, maxCharacters: Configuration.usernameMaxLength, minCharacters: Configuration.usernameMinLength, isSecure: false),
+        TextFieldBlueprint(placeholder: "Passcode", validCharacters: CharacterType.numeric, maxCharacters: Configuration.passcodeLength, minCharacters: Configuration.passcodeLength, isSecure: true)
     ]
-    private let successAlertTitle = "New account created!"
-    private let errorAlertTitle = "Failed to create account."
     
     private var username: String? { return (tableView.visibleCells[0] as? LabelAndTextFieldCell)?.currentText }
     private var password: String? { return (tableView.visibleCells[1] as? LabelAndTextFieldCell)?.currentText }
@@ -28,14 +24,20 @@ class CreateNewAccountViewController: GeneralViewController {
     // MARK: - Outlets -
     
     @IBOutlet weak var tableView: UITableView!
-    private weak var submitButtonCell: SubmitButtonCell!
+    @IBOutlet weak var continueButton: UIButton!
     
     // MARK: - Lifecycle -
     
-    override func viewDidLoad() {
+    ///
+    /// Initial styling.
+    ///
+    override func style() {
         
-        super.viewDidLoad()
-        style()
+        title = "Create New Account"
+        view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.4)
+        
+        continueButton.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
+        continueButton.isEnabled = false
     }
     
     /// To prevent temporarily showing this view behind the next.
@@ -55,16 +57,7 @@ class CreateNewAccountViewController: GeneralViewController {
         tableView.isHidden = true
     }
     
-    // MARK: - Private Methods -
-    
-    ///
-    /// Initial styling.
-    ///
-    private func style() {
-        
-        title = "Create New Account"
-        view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.4)
-    }
+    // MARK: - Public Methods -
     
     ///
     /// Submit current fields to create new user acccount.
@@ -72,14 +65,15 @@ class CreateNewAccountViewController: GeneralViewController {
     func submitFields() {
         
         guard let username = username, let password = password else { return }
-        
         User.current = User(withUsername: username, password: password)
+        
+        showProgressHUD()
+        
         LoginFlowManager.shared.validateCredentials(for: User.current, success: {
+            self.hideProgressHUD()
             self.performSegue(withIdentifier: "showProfile", sender: self)
         }, failure: { errorString in
-            
-            let alert = BSGCustomAlert(message: errorString, options: [(text: "Close", handler: {})])
-            self.showAlert(alert)
+            self.handle(errorString)
         })
     }
 }
@@ -88,45 +82,20 @@ class CreateNewAccountViewController: GeneralViewController {
 
 extension CreateNewAccountViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return newAccountFields.count + 1 /* extra section for submit button */
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return newAccountFields.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == newAccountFields.count {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "submitButtonCell") as? SubmitButtonCell else { return UITableViewCell() }
-            cell.delegate = self
-            cell.submitButton.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
-            cell.setButtonEnabled(false)
-            submitButtonCell = cell
-            return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "labelAndTextFieldCell") as? LabelAndTextFieldCell else { return UITableViewCell() }
-            cell.delegate = self
-            cell.configure(withTextFieldBlueprint: newAccountFields[indexPath.section])
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "labelAndTextFieldCell") as? LabelAndTextFieldCell else { return UITableViewCell() }
+        cell.configure(withTextFieldBlueprint: newAccountFields[indexPath.row], delegate: self)
 
-            return cell
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = tableView.backgroundColor
-        return view
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == newAccountFields.count ? 30.0 : 60.0
-    }
-    
-    /// Spacing between cells
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10.0
+        return 60.0
     }
 }
 
@@ -141,15 +110,7 @@ extension CreateNewAccountViewController: LabelAndTextFieldCellDelegate {
             inputIsValid = false
         }
         
-        submitButtonCell.setButtonEnabled(inputIsValid)
-    }
-}
-// MARK: - Extension: SubmitButtonCellDelegate -
-
-extension CreateNewAccountViewController: SubmitButtonCellDelegate {
-    
-    func submitButtonCell(_ cell: SubmitButtonCell, didPressSubmitButton: UIButton) {
-        submitFields()
+        continueButton.isEnabled = inputIsValid
     }
 }
 
@@ -159,5 +120,9 @@ extension CreateNewAccountViewController {
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func continueButtonPressed(_ sender: UIButton) {
+        submitFields()
     }
 }
