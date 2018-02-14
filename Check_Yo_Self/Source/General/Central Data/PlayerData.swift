@@ -74,7 +74,7 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
     // Facebook
     var facebookID: String?
     var facebookImageData: NSData?
-    var friendList: [Friend] = []
+    //var friendList: [Friend] = []
     
     //********************************************************************
     // Designated Initializer
@@ -380,51 +380,6 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
             connection.start()
         }else{
             failure(.permissions("Access Token"))
-        }
-    }
-    
-    //********************************************************************
-    // loadFriendsFB
-    // Description: Populate friendList array with facebook friends
-    // Errors: Connection, Facebook, Data
-    //********************************************************************
-    func loadFriendsFB(completion: @escaping ([String]) -> Void = {_ in}, failure: @escaping (ErrorType) -> Void = {_ in }){
-        if AccessToken.current != nil {
-            let connection = GraphRequestConnection()
-            connection.add(GraphRequest(graphPath: "me", parameters: ["fields": "friends"])) { httpResponse, result in
-                switch result {
-                case .success(let response):
-                    // Clean slate for new call
-                    PlayerData.sharedInstance.friendList.removeAll(keepingCapacity: false)
-                    if let facebookDictionary = response.dictionaryValue{
-                        if let friendResponse = facebookDictionary["friends"] as? [String: Any]{
-                            if let friends = friendResponse["data"] as? [[String: Any]]{
-                                
-                                var friendIDs: [String] = []
-                                
-                                for friend in friends{
-                                    if let facebookID = friend["id"] as? String,
-                                        let facebookName = friend["name"] as? String{
-                                        let picURL = URL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large")!
-                                        let imageData = NSData(contentsOf: picURL)
-                                        
-                                        let friendToAdd = Friend(facebookID, facebookName: facebookName, facebookImageData: imageData)
-                                        friendIDs.append(facebookID)
-                                }// Friend loop
-                                completion(friendIDs)
-                            } // Friends exists
-                        } // Friend response exists
-                        }
-                    }
-                case .failed(let error):
-                    // Result != success
-                    failure(.connection(error))
-                }
-            } // Graph request
-            connection.start()
-        }else{
-            // No access token
-            failure(.permissions("No access token"))
         }
     }
 

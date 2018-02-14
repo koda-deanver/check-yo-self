@@ -31,7 +31,7 @@ class LoginFlowManager {
             return
         }
         
-        DataManager.shared.createUserAccount(for: user, success: { _ in
+        DataManager.shared.updateAccount(for: user, success: { _ in
             success()
         }, failure: failure)
     }

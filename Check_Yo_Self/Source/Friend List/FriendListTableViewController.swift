@@ -1,6 +1,6 @@
 //
-//  FriendListTableViewController.swift
-//  Check_Yo_Self
+//  FriendListViewController.swift
+//  check-yo-self
 //
 //  Created by Phil Rattazzi on 3/26/17.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
@@ -10,21 +10,20 @@
 import UIKit
 
 /// Display list of Facebook friends. Can only be accessed if logged into Facebook.
-final class FriendListTableViewController: UITableViewController {
+final class FriendListViewController: GeneralViewController {
     
     override func viewDidLoad() {
         
-        PlayerData.sharedInstance.loadFriendsFB(completion: { friendIDArray in
+        BSGFacebookService.getFriends(completion: { friendTupleArray in
             
-            for id in friendIDArray {
-                
-                DataManager.shared.getUsers(matching: [(field: .facebookID, value: id)], success: { users in
-                    print(users)
+            for friend in friendTupleArray {
+                DataManager.shared.getUsers(matching: [(field: .facebookID, value: friend.id)], success: { users in
+                    
                 }, failure: { errorString in
                     
                 })
             }
-        })
+        }, failure: nil)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

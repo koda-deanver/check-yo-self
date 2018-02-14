@@ -100,7 +100,7 @@ class PlayViewController: GeneralViewController{
         }else if questionsAnswered == 2{
             let backdropInt = valueOfChoice + 3
             self.backDrop.image = Media.alertBackdropList[backdropInt]
-            PlayerData.sharedInstance.cubeColor = CubeColor.cubeColorForInt(backdropInt)!
+            //PlayerData.sharedInstance.cubeColor = CubeColor.cubeColorForInt(backdropInt)!
         }else if questionsAnswered == 3{
             switch valueOfChoice{
             case -2,-1,0:

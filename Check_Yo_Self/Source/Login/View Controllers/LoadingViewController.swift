@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class LoadingViewController: GeneralViewController {
+final class LoadingViewController: GeneralViewController {
     @IBOutlet weak var loadingGif: UIImageView!
     //********************************************************************
     // viewDidLoad
@@ -31,37 +31,6 @@ class LoadingViewController: GeneralViewController {
                 print(user!.uid)
             }
         }
-        
-        // Load FB Data
-        PlayerData.sharedInstance.loadPlayerFB(completion: {
-            print("SUCCESS: Player FB data loaded")
-            PlayerData.sharedInstance.loadFriendsFB(completion: { _ in
-                print("SUCCESS: Player FB friends Loaded")
-            }, failure: { errorType in
-                switch errorType{
-                case .connection(let error):
-                    print("CONNECTION ERROR: \(error)")
-                case .permissions(let errorString):
-                    print("PERMISSIONS ERROR: \(errorString)")
-                case .data(let errorString):
-                    print("DATA ERROR: \(errorString)")
-                default:
-                    break
-                }
-            })
-        }, failure: { errorType in
-            print("--LOAD PLAYER FB--")
-            switch errorType{
-            case .connection(let error):
-                print("CONNECTION ERROR: \(error)")
-            case .permissions(let errorString):
-                print("PERMISSIONS ERROR: \(errorString)")
-            case .data(let errorString):
-                print("DATA ERROR: \(errorString)")
-            default:
-                break
-            }
-        })
 
         // Check for new user
         if(PlayerData.sharedInstance.creationPhase == .none){

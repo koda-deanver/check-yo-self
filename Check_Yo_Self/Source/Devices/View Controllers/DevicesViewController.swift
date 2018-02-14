@@ -61,7 +61,7 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
         // Authentication Controller for Fitbit
         self.authenticationController = AuthenticationController(delegate: self)
         // Set connection label color
-        self.connectionsLabel.textColor = CubeColor.green.rgbColor()
+        self.connectionsLabel.textColor = CubeColor.green.uiColor
         loadAllConnections()
         loadFutureConnections()
     }
@@ -381,7 +381,7 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
     // loadAllFacebookData
     // Description: Helper function to load player FB data upon first connect
     //********************************************************************
-    func loadAllFacebookData(){
+    /*func loadAllFacebookData(){
         // Load FB Data
         PlayerData.sharedInstance.loadPlayerFB(completion: {
             print("SUCCESS: Player FB data loaded")
@@ -412,6 +412,6 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
                 break
             }
         })
-    }
+    }*/
 }
 

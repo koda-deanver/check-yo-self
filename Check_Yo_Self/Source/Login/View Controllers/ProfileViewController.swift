@@ -9,7 +9,7 @@
 import UIKit
 
 /// Present user with a series of questions that personalize thier account. These questions are taken from the database.
-class ProfileViewController: GeneralViewController {
+final class ProfileViewController: GeneralViewController {
     
     // MARK: - Private Members -
     
@@ -109,7 +109,7 @@ extension ProfileViewController: DropdownMenuCellDelegate {
     func dropdownMenuCell(_ cell: DropdownMenuCell, didSelectChoice choice: String, forQuestion question: Question) {
         
         switch question.id {
-        case "PQ-000000": User.current?.favoriteColor = JabbrColor.colorFromString(choice.lowercased())
+        case "PQ-000000": User.current?.favoriteColor = CubeColor.colorFromString(choice.lowercased())
         case "PQ-000001": User.current?.ageGroup = choice
         case "PQ-000002": User.current?.favoriteGenre = choice
         case "PQ-000003": User.current?.identity = choice

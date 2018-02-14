@@ -9,7 +9,7 @@
 import UIKit
 
 ///  Initial login screen for app. User can either enter credeentials to log in or create a new account.
-class LoginViewController: GeneralViewController {
+final class LoginViewController: GeneralViewController {
     
     // MARK: - Outlets -
     

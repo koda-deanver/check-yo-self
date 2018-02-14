@@ -16,7 +16,7 @@ class AlertController: BSGVerticalButtonAlertController {
     ///
     /// - parameter color: JabbrColor to change alert to.
     ///
-    static func changeColor(to color: JabbrColor) {
+    static func changeColor(to color: CubeColor) {
         AlertController.configure(withAnimationDuration: 0.25, backgroundImage: color.alertBackdrop, buttonImage: color.buttonImage)
     }
 }
@@ -33,7 +33,7 @@ extension UIViewController {
     /// - parameter alert: Custom alert to show.
     /// - parameter color: Color to show alerts in.
     ///
-    func showAlert(_ alert: BSGCustomAlert, inColor color: JabbrColor){
+    func showAlert(_ alert: BSGCustomAlert, inColor color: CubeColor){
         
         AlertController.changeColor(to: color)
         

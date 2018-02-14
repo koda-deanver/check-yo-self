@@ -1,6 +1,6 @@
 //
-//  JabbrColor.swift
-//  Check_Yo_Self
+//  CubeColor.swift
+//  check-yo-self
 //
 //  Created by Phil on 2/11/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
@@ -9,7 +9,7 @@
 import Foundation
 
 /// Represents the six colors of CollabrJabbr.
-enum JabbrColor: String {
+enum CubeColor: String {
     
     case red, green, blue, cyan, magenta, yellow, none
     
@@ -23,6 +23,19 @@ enum JabbrColor: String {
         case .magenta: return #imageLiteral(resourceName: "AlertBackdropMagenta")
         case .yellow: return #imageLiteral(resourceName: "AlertBackdropYellow")
         case .none: return #imageLiteral(resourceName: "AlertBackdropGray")
+        }
+    }
+    
+    /// The background image for connection buttons.
+    var connectionBackdrop: UIImage {
+        switch self {
+        case .red: return #imageLiteral(resourceName: "ConnectionBackdropRed")
+        case .green: return #imageLiteral(resourceName: "ConnectionBackdropGreen")
+        case .blue: return #imageLiteral(resourceName: "ConnectionBackdropBlue")
+        case .cyan: return #imageLiteral(resourceName: "ConnectionBackdropCyan")
+        case .magenta: return #imageLiteral(resourceName: "ConnectionBackdropMagenta")
+        case .yellow: return #imageLiteral(resourceName: "ConnectionBackdropYellow")
+        case .none: return #imageLiteral(resourceName: "ConnectionBackdropGray")
         }
     }
     
@@ -60,7 +73,7 @@ enum JabbrColor: String {
     ///
     /// - returns: A color matching the given string, if there is one.
     ///
-    static func colorFromString(_ string: String) -> JabbrColor {
-        return JabbrColor(rawValue: string) ?? .none
+    static func colorFromString(_ string: String) -> CubeColor {
+        return CubeColor(rawValue: string) ?? .none
     }
 }

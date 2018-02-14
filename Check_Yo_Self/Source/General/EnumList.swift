@@ -47,7 +47,7 @@ enum ConnectionType: String{
 }
 
 // Color of player and associated information
-enum CubeColor: String{
+/*enum CubeColor: String{
     case none = "None"
     case red = "Red"
     case green = "Green"
@@ -114,7 +114,7 @@ enum CubeColor: String{
             return UIColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 1.0)
         }
     }
-}
+}*/
 
 // Style of background (Adult/Kid)
 enum DesignStyle{

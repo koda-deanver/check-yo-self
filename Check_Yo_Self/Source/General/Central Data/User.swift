@@ -14,7 +14,7 @@ import Foundation
 enum UserDatabaseField: String {
     
     case username = "username"
-    case password = "password"
+    case password = "passcode"
     case gems = "gems"
     
     case favoriteColor = "favorite-color"
@@ -37,7 +37,7 @@ class User {
     let password: String
     var gems: Int = 0
     
-    var favoriteColor: JabbrColor = .none
+    var favoriteColor: CubeColor = .none
     var ageGroup: String?
     var favoriteGenre: String?
     var identity: String?
@@ -63,7 +63,7 @@ class User {
         gems = Int(gemsString) ?? 0
         
         let favoriteColorString = userInfo[UserDatabaseField.favoriteColor.rawValue] as? String ?? "none"
-        favoriteColor = JabbrColor.colorFromString(favoriteColorString)
+        favoriteColor = CubeColor.colorFromString(favoriteColorString)
         
         ageGroup = userInfo[UserDatabaseField.ageGroup.rawValue] as? String
         favoriteGenre = userInfo[UserDatabaseField.favoriteGenre.rawValue] as? String

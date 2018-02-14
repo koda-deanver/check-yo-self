@@ -9,7 +9,7 @@
 import UIKit
 
 ///  Prompt user to enter necessary information to create a new account.
-class CreateNewAccountViewController: GeneralViewController {
+final class CreateNewAccountViewController: GeneralViewController {
     
     // MARK: - Private Members -
     

@@ -12,6 +12,10 @@ import Foundation
 import FacebookLogin
 import FacebookCore
 
+enum BSGFacebookError {
+    case accessToken, connection
+}
+
 class BSGFacebookService{
     
     // MARK: - Static Methods -
@@ -49,9 +53,7 @@ class BSGFacebookService{
     ///
     /// - returns: User Facebook image as UIImage.
     ///
-    static func imageFromID(_ facebookID: String?) -> UIImage? {
-        
-        guard let facebookID = facebookID else { return nil }
+    static func getImage(forID facebookID: String) -> UIImage? {
         
         // Set image if available
         let picURL = URL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large")!
@@ -65,10 +67,10 @@ class BSGFacebookService{
     /// - parameter completion: Closure containing ID and name.
     /// - parameter failure: Handles failure to get user data.
     ///
-    static func loadUserData(completion: @escaping (String, String) -> Void, failure: @escaping Closure = {}){
+    static func loadUser(completion: @escaping ((id: String, name: String)) -> Void, failure: Closure?){
         
         guard AccessToken.current != nil else {
-            failure()
+            failure?()
             return
         }
         
@@ -80,56 +82,50 @@ class BSGFacebookService{
             case .success(let response):
                 
             guard let facebookDictionary = response.dictionaryValue, let facebookID = facebookDictionary["id"] as? String, let facebookName = facebookDictionary["name"] as? String else {
-                failure()
+                failure?()
                 return
             }
-            completion(facebookID, facebookName)
+            completion((id: facebookID, name: facebookName))
                 
-            case .failed:
-                failure()
+            case .failed: failure?()
             }
         }
         connection.start()
     }
     
-    //********************************************************************
-    // loadFriends(completion:failure)
-    // Description: Populate friendList array with facebook friends
-    //********************************************************************
-    /*static func loadFriends(completion: @escaping ([FacebookFriend]) -> Void, failure: @escaping () -> Void = {_ in }){
-        if AccessToken.current != nil {
-            let connection = GraphRequestConnection()
-            connection.add(GraphRequest(graphPath: "me", parameters: ["fields": "friends"])) { httpResponse, result in
-                switch result {
-                case .success(let response):
-                    if let facebookDictionary = response.dictionaryValue{
-                        if let friendResponse = facebookDictionary["friends"] as? [String: Any]{
-                            if let friends = friendResponse["data"] as? [[String: Any]]{
-                                var friendArray: [FacebookFriend] = []
-                                for friend in friends{
-                                    if let facebookID = friend["id"] as? String,
-                                        let facebookName = friend["name"] as? String{
-                                        // Add friend to returned array
-                                        let friend = FacebookFriend(facebookID: facebookID, facebookName: facebookName)
-                                        friendArray.append(friend)
-                                    }else{// Friend ID and name exist
-                                        failure(.data("Name/ID missing", nil))
-                                    }
-                                }// Friend loop
-                                completion(friendArray)
-                            } // Friends exists
-                        } // Friend response exists
-                }// Facebook Dictionary exists
-                case .failed(let error):
-                    // Result != success
-                    failure(.connection("Response failed", error))
-                }
-            } // Graph request
-            connection.start()
-        }else{
-            // No access token
-            failure(.permissions("No access token", nil))
+    ///
+    /// Get friends from FB.
+    ///
+    static func getFriends(completion: @escaping ([(id: String, name: String)]) -> Void, failure: ((BSGFacebookError) -> Void)?){
+        
+        guard AccessToken.current != nil else {
+            failure?(.accessToken)
+            return
         }
-    }*/
+        
+        let connection = GraphRequestConnection()
+        connection.add(GraphRequest(graphPath: "me", parameters: ["fields": "friends"])) { httpResponse, result in
+            switch result {
+            case .success(let response):
+                if let facebookDictionary = response.dictionaryValue{
+                    if let friendResponse = facebookDictionary["friends"] as? [String: Any]{
+                        if let friends = friendResponse["data"] as? [[String: Any]]{
+                            
+                            var friendArray: [(id: String, name: String)] = []
+                            for friend in friends{
+                                guard let facebookID = friend["id"] as? String, let facebookName = friend["name"] as? String else { continue }
+                                
+                                let friend = (id: facebookID, name: facebookName)
+                                friendArray.append(friend)
+                            }
+                            completion(friendArray)
+                        }
+                    }
+            }
+            case .failed: failure?(.connection)
+            }
+        }
+        connection.start()
+    }
 }
 
