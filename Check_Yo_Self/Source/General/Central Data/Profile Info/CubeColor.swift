@@ -73,7 +73,8 @@ enum CubeColor: String {
     ///
     /// - returns: A color matching the given string, if there is one.
     ///
-    static func colorFromString(_ string: String) -> CubeColor {
+    static func color(fromString string: String?) -> CubeColor {
+        guard let string = string else { return .none }
         return CubeColor(rawValue: string) ?? .none
     }
 }

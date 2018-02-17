@@ -103,9 +103,9 @@ class BSGVerticalButtonAlertController: UIViewController {
         
         let buttonStack = UIStackView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         buttonStack.axis = .vertical
-        buttonStack.distribution = .equalSpacing
+        buttonStack.distribution = .fillEqually
         
-        let buttonFrame = CGRect(x: 0, y: 0, width: alertView.frame.width * 0.8, height: alertView.frame.height * 0.20)
+        let buttonFrame = CGRect(x: 0, y: 0, width: alertView.frame.width * 0.8, height: 0.15 * CGFloat(alert.options.count))
         for option in alert.options {
             let button = createAlertButton(withText: option.text, frame: buttonFrame)
             buttons.append(button)

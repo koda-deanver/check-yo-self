@@ -38,9 +38,9 @@ class User {
     var gems: Int = 0
     
     var favoriteColor: CubeColor = .none
-    var ageGroup: String?
-    var favoriteGenre: String?
-    var identity: String?
+    var ageGroup: AgeGroup = .adult
+    var favoriteGenre: CollabrationGenre = .foodie
+    var identity: Identity = .unknown
     
     var facebookID: String?
     var facebookName: String?
@@ -62,14 +62,17 @@ class User {
         let gemsString = userInfo[UserDatabaseField.gems.rawValue] as? String ?? "0"
         gems = Int(gemsString) ?? 0
         
-        let favoriteColorString = userInfo[UserDatabaseField.favoriteColor.rawValue] as? String ?? "none"
-        favoriteColor = CubeColor.colorFromString(favoriteColorString)
-        
-        ageGroup = userInfo[UserDatabaseField.ageGroup.rawValue] as? String
-        favoriteGenre = userInfo[UserDatabaseField.favoriteGenre.rawValue] as? String
-        identity = userInfo[UserDatabaseField.identity.rawValue] as? String
-        
         facebookID = userInfo[UserDatabaseField.facebookID.rawValue] as? String
         facebookName = userInfo[UserDatabaseField.facebookName.rawValue] as? String
+        
+        guard let profileInfo = userInfo["profile"] as? [String: Any] else { return nil }
+        
+        favoriteColor = CubeColor.color(fromString: profileInfo[UserDatabaseField.favoriteColor.rawValue] as? String)
+        
+        ageGroup = AgeGroup.ageGroup(fromString: profileInfo[UserDatabaseField.ageGroup.rawValue] as? String)
+        
+        favoriteGenre = CollabrationGenre.genre(fromString: profileInfo[UserDatabaseField.favoriteGenre.rawValue] as? String)
+        
+        identity = Identity.identity(fromString: profileInfo[UserDatabaseField.identity.rawValue] as? String)
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 /// Display list of Facebook friends. Can only be accessed if logged into Facebook.
-final class FriendListViewController: GeneralViewController {
+final class FriendListViewController: SkinnedViewController {
     
     // MARK: - Private Members -
     
@@ -52,7 +52,7 @@ final class FriendListViewController: GeneralViewController {
             self.hideProgressHUD()
             
             switch facebookError {
-            case .accessToken: self.promptFacebookLogin()
+            case .missingAccessToken: self.promptFacebookLogin()
             default: break
             }
         })
@@ -63,7 +63,11 @@ final class FriendListViewController: GeneralViewController {
     ///
     private func promptFacebookLogin() {
         let alert = BSGCustomAlert(message: "You need to be logged in to Facebook to see friends.", options: [(text: "Login", handler: {
-            BSGFacebookService.login()
+            DataManager.shared.loginFacebook(success: {
+                self.showAlert(BSGCustomAlert(message: "Login Succeeded!"))
+            }, failure: { _ in
+                self.showAlert(BSGCustomAlert(message: "Login Failed."))
+            })
         }), (text: "Cancel", handler: {})])
         showAlert(alert)
     }
@@ -71,7 +75,7 @@ final class FriendListViewController: GeneralViewController {
 
 // MARK: - Extension: UITableViewDataSource -
 
-extension FriendListViewController: UITableViewDataSource {
+extension FriendListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friends.count
@@ -82,6 +86,11 @@ extension FriendListViewController: UITableViewDataSource {
         cell.configure(for: friends[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constants.rowHeightNormal
+    }
+    
 }
 
 // MARK: - Extension: Actions -

@@ -62,24 +62,88 @@ class DataManager {
     /// - parameter success: Returns user on successful create.
     /// - parameter failure: Failure handler containing error string.
     ///
-    func updateAccount(for user: User, success: @escaping (User) -> Void, failure: @escaping (String) -> Void) {
+    func updateAccount(for user: User, success: @escaping (User) -> Void, failure: ErrorClosure?) {
+        
+        let userPath = Constants.firebaseRootPath.child("clients/\(user.username)")
         
         let profile: [String: Any] = [
             UserDatabaseField.favoriteColor.rawValue : "\(user.favoriteColor.rawValue)",
-            UserDatabaseField.ageGroup.rawValue : "\(user.ageGroup ?? "")",
-            UserDatabaseField.favoriteGenre.rawValue : "\(user.favoriteGenre ?? "")",
-            UserDatabaseField.identity.rawValue : "\(user.identity ?? "")"
+            UserDatabaseField.ageGroup.rawValue : "\(user.ageGroup.rawValue)",
+            UserDatabaseField.favoriteGenre.rawValue : "\(user.favoriteGenre.rawValue)",
+            UserDatabaseField.identity.rawValue : "\(user.identity.rawValue)"
         ]
         
-        let userPath = Constants.firebaseRootPath.child("clients/\(user.username)")
-        BSGFirebaseService.updateData(atPath: userPath, values: [
+        var values: [String: Any] = [
             UserDatabaseField.username.rawValue : "\(user.username)",
             UserDatabaseField.password.rawValue : "\(user.password)",
             "profile": profile
-            ], success: {
+        ]
+        
+        // Add facebook info if present.
+        if let facebookID = user.facebookID, let facebookName = user.facebookName {
+            values[UserDatabaseField.facebookID.rawValue] = "\(facebookID)"
+            values[UserDatabaseField.facebookName.rawValue] = "\(facebookName)"
+        }
+        
+        BSGFirebaseService.updateData(atPath: userPath, values: values, success: {
                 success(user)
         }, failure: {
-            failure("Failed to create user.")
+            failure?("Failed to create user.")
+        })
+    }
+    
+    ///
+    /// Get questions of specified type from database.
+    ///
+    /// - parameter success: Handler for successful load of questions.
+    /// - parameter failure: Handler for failure to get questions.
+    ///
+    func getQuestions(ofType questionType: QuestionType, success: @escaping ([Question]) -> Void, failure: @escaping ErrorClosure) {
+        
+        let path = Constants.firebaseRootPath.child("questions/\(questionType.databaseNode)")
+        
+        BSGFirebaseService.fetchData(atPath: path, success: { snapshot in
+            print(snapshot)
+            guard let questionSnapshots = snapshot.value as? [[String: Any]] else {
+                failure("Connection Error")
+                return
+            }
+            
+            var questions: [Question] = []
+            
+            for snapshot in questionSnapshots {
+                guard let question = Question(withSnapshot: snapshot, type: questionType) else { continue }
+                questions.append(question)
+            }
+            
+            success(questions)
+            
+        })
+    }
+    
+    ///
+    /// Log user into Facebook and save id and name.
+    ///
+    /// - parameter success: Handler for successfu login to Facebook.
+    /// - parameter failure: Handler for failed login to Facebook.
+    ///
+    func loginFacebook(success: Closure?, failure: ErrorClosure?) {
+        
+        BSGFacebookService.login(completion: {
+            BSGFacebookService.getUser(completion: { userInfo in
+                
+                User.current.facebookID = userInfo.id
+                User.current.facebookName = userInfo.name
+                
+                self.updateAccount(for: User.current, success: { _ in
+                    success?()
+                }, failure: failure)
+                
+            }, failure: { error in
+                failure?("Failed to login to Facebook")
+            })
+        }, failure: { _ in
+            failure?("Failed to login to Facebook")
         })
     }
     
@@ -106,27 +170,5 @@ class DataManager {
             failure("Connection Error.")
         })
     }
-    
-    func getQuestions(ofType questionType: QuestionType, success: @escaping ([Question]) -> Void, failure: @escaping (String) -> Void) {
-        
-        let path = Constants.firebaseRootPath.child("questions/\(questionType.databaseNode)")
-        
-        BSGFirebaseService.fetchData(atPath: path, success: { snapshot in
-            print(snapshot)
-            guard let questionSnapshots = snapshot.value as? [[String: Any]] else {
-                failure("Connection Error")
-                return
-            }
-            
-            var questions: [Question] = []
-            
-            for snapshot in questionSnapshots {
-                guard let question = Question(withSnapshot: snapshot, type: questionType) else { continue }
-                questions.append(question)
-            }
-            
-            success(questions)
-            
-        })
-    }
+
 }

@@ -21,7 +21,7 @@
 		138BF02E2031638C00119A52 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF02D2031638C00119A52 /* TextField.swift */; };
 		138BF03220328D9E00119A52 /* BSGFacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF03120328D9E00119A52 /* BSGFacebookService.swift */; };
 		138BF0372032B25300119A52 /* SkinnedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF0362032B25300119A52 /* SkinnedViewController.swift */; };
-		138BF03A2032B2E800119A52 /* AgeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF0392032B2E800119A52 /* AgeGroup.swift */; };
+		138BF03A2032B2E800119A52 /* ProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF0392032B2E800119A52 /* ProfileInfo.swift */; };
 		13C099A8202D865100E356D5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A7202D865100E356D5 /* ProfileViewController.swift */; };
 		13C099AA202D886200E356D5 /* DropdownMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A9202D886200E356D5 /* DropdownMenuCell.swift */; };
 		13E5ACF62026150A00C92237 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E5ACF52026150A00C92237 /* CustomTabBar.swift */; };
@@ -95,7 +95,7 @@
 		138BF02D2031638C00119A52 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		138BF03120328D9E00119A52 /* BSGFacebookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSGFacebookService.swift; sourceTree = "<group>"; };
 		138BF0362032B25300119A52 /* SkinnedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinnedViewController.swift; sourceTree = "<group>"; };
-		138BF0392032B2E800119A52 /* AgeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeGroup.swift; sourceTree = "<group>"; };
+		138BF0392032B2E800119A52 /* ProfileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfo.swift; sourceTree = "<group>"; };
 		13C099A7202D865100E356D5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		13C099A9202D886200E356D5 /* DropdownMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownMenuCell.swift; sourceTree = "<group>"; };
 		13E5ACF52026150A00C92237 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				138BF02B2031418E00119A52 /* CubeColor.swift */,
-				138BF0392032B2E800119A52 /* AgeGroup.swift */,
+				138BF0392032B2E800119A52 /* ProfileInfo.swift */,
 			);
 			path = "Profile Info";
 			sourceTree = "<group>";
@@ -724,7 +724,7 @@
 				4A8346A61E203B6200BAF8F9 /* LocationMarker.swift in Sources */,
 				13C099AA202D886200E356D5 /* DropdownMenuCell.swift in Sources */,
 				132042AB201062C300DCE39E /* BSGFirebaseService.swift in Sources */,
-				138BF03A2032B2E800119A52 /* AgeGroup.swift in Sources */,
+				138BF03A2032B2E800119A52 /* ProfileInfo.swift in Sources */,
 				13C099A8202D865100E356D5 /* ProfileViewController.swift in Sources */,
 				4A8346AC1E203B6200BAF8F9 /* DevicesViewController.swift in Sources */,
 				4A8346A21E203B6200BAF8F9 /* String+Dates.swift in Sources */,

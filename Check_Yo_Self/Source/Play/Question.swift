@@ -12,7 +12,7 @@
 import UIKit
 import FirebaseDatabase
 
-typealias Choice = (text: String, pointValue: Int)
+typealias Choice = (text: String, pointValue: Int, profileValue: String?)
 
 /// Represents types of questions.
 enum QuestionType: String {
@@ -35,6 +35,7 @@ struct Question {
     let text: String
     let id: String
     let type: QuestionType
+    /// Affects user experience based on answer.
     var choices: [Choice] = []
     
     // MARK: - Initializers -
@@ -48,7 +49,7 @@ struct Question {
     
     init(withText text: String, id: String, type: QuestionType, _ choice3: String, _ choice2: String, _ choice1: String, _ choice0: String, _ choiceNeg1: String, _ choiceNeg2: String){
         
-        let choices = [(choice3,3), (choice2,2), (choice1,1), (choice0,0), (choiceNeg1,-1), (choiceNeg2,-2)]
+        let choices: [Choice] = [(choice3,3, nil), (choice2,2, nil), (choice1,1, nil), (choice0,0, nil), (choiceNeg1,-1, nil), (choiceNeg2,-2, nil)]
         self.init(withText: text, id: id, type: type, choices: choices)
     }
     
@@ -60,8 +61,9 @@ struct Question {
         for choice in choiceSnapshot {
             guard let text = choice["text"] as? String else { return nil }
             let pointValue = choice["point-value"] as? Int ?? 0
+            let profileValue = choice["profile-value"] as? String
             
-            choices.append((text: text, pointValue: pointValue))
+            choices.append((text: text, pointValue: pointValue, profileValue: profileValue))
         }
         
         self.text = questionText
@@ -78,7 +80,7 @@ struct Question {
     ///
     mutating func randomize(){
         
-        var randomChoices: [(text: String, pointValue: Int)] = []
+        var randomChoices: [Choice] = []
         
         while choices.count != 0{
             let randomIndex = Int(arc4random_uniform(UInt32(choices.count)))

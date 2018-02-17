@@ -20,6 +20,8 @@ typealias ErrorClosure = (String) -> Void
 
 struct Constants {
     
+    static let rowHeightNormal: CGFloat = 60.0
+
     static let firebaseRootPath = Database.database().reference(fromURL: "https://check-yo-self-18682434.firebaseio.com/")
     
     // Connection that are currently available

@@ -312,7 +312,7 @@
             </objects>
             <point key="canvasLocation" x="-2540" y="1665"/>
         </scene>
-        <!--Friend List View Controller-->
+        <!--Facebook Friends-->
         <scene sceneID="O1y-w5-ib6">
             <objects>
                 <viewController id="JqL-Zf-Qyh" customClass="FriendListViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
@@ -324,28 +324,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oQP-iU-AgW" userLabel="tableView">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oQP-iU-AgW" userLabel="tableView">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="friendCell" id="nmq-qX-oUP" customClass="FriendCell" customModule="Check_Yo_Self" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nmq-qX-oUP" id="Ujd-g4-MPc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ConnectionBackdropGray" translatesAutoresizingMaskIntoConstraints="NO" id="bmn-tp-4fZ" userLabel="backdrop">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FriendsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="fRg-eu-1jA" userLabel="friendImage">
-                                                    <rect key="frame" x="37.5" y="1" width="39.5" height="40"/>
+                                                    <rect key="frame" x="37.5" y="4.5" width="34.5" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="fRg-eu-1jA" secondAttribute="height" multiplier="1:1" id="YmK-xP-hxM"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jon Snow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mew-c5-bpf" userLabel="nameLabel">
-                                                    <rect key="frame" x="87" y="11.5" width="74.5" height="20.5"/>
+                                                    <rect key="frame" x="82" y="11.5" width="74.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -379,11 +379,12 @@
                                                 <constraint firstItem="mew-c5-bpf" firstAttribute="centerY" secondItem="Ujd-g4-MPc" secondAttribute="centerY" id="ovu-aH-x0E"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="UNv-kz-Wz2" firstAttribute="trailing" secondItem="nmq-qX-oUP" secondAttribute="centerX" multiplier="1.8" id="D1G-YE-Bxj"/>
                                             <constraint firstItem="fRg-eu-1jA" firstAttribute="leading" secondItem="nmq-qX-oUP" secondAttribute="centerX" multiplier="0.2" id="JhZ-fB-yoP"/>
                                             <constraint firstItem="UNv-kz-Wz2" firstAttribute="height" secondItem="nmq-qX-oUP" secondAttribute="height" id="LtQ-Db-psx"/>
-                                            <constraint firstItem="fRg-eu-1jA" firstAttribute="height" secondItem="nmq-qX-oUP" secondAttribute="height" multiplier="0.9" id="S6q-Fe-ppq"/>
+                                            <constraint firstItem="fRg-eu-1jA" firstAttribute="height" secondItem="nmq-qX-oUP" secondAttribute="height" multiplier="0.8" id="S6q-Fe-ppq"/>
                                             <constraint firstItem="URH-nF-kv6" firstAttribute="height" secondItem="nmq-qX-oUP" secondAttribute="height" multiplier="0.7" id="kvH-fj-MXr"/>
                                         </constraints>
                                         <connections>
@@ -396,6 +397,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="JqL-Zf-Qyh" id="JHF-gu-3S1"/>
+                                    <outlet property="delegate" destination="JqL-Zf-Qyh" id="4Hg-ut-exu"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -407,7 +409,7 @@
                             <constraint firstItem="ayH-jJ-Cmi" firstAttribute="top" secondItem="oQP-iU-AgW" secondAttribute="bottom" id="oqf-Um-Pvs"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ztU-7e-o17">
+                    <navigationItem key="navigationItem" title="Facebook Friends" id="ztU-7e-o17">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="age-mS-iLN">
                             <connections>
                                 <action selector="backButtonPressed:" destination="JqL-Zf-Qyh" id="azh-cU-Lw5"/>
@@ -734,7 +736,7 @@
                                 </constraints>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JabbRGem" translatesAutoresizingMaskIntoConstraints="NO" id="eWb-mD-358">
-                                <rect key="frame" x="289" y="72" width="50" height="50"/>
+                                <rect key="frame" x="289" y="28" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="TDE-ea-ram"/>
                                     <constraint firstAttribute="width" constant="50" id="hga-ib-iFH"/>
@@ -748,13 +750,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6t-HT-h7V">
-                                <rect key="frame" x="36" y="84" width="42" height="28"/>
+                                <rect key="frame" x="36" y="40" width="42" height="28"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000000" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsq-Ps-2xd">
-                                <rect key="frame" x="192" y="81" width="87" height="30.5"/>
+                                <rect key="frame" x="192" y="37" width="87" height="30.5"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="26"/>
                                 <color key="textColor" red="1" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -890,7 +892,7 @@
         <!--Login View Controller-->
         <scene sceneID="EZQ-Kq-4fK">
             <objects>
-                <viewController storyboardIdentifier="LoginScene" id="Zqt-00-Rnf" customClass="LoginViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" id="Zqt-00-Rnf" customClass="LoginViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rLV-FL-98w"/>
                         <viewControllerLayoutGuide type="bottom" id="thd-kk-Wpt"/>
@@ -921,6 +923,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <action selector="textFieldDidChange:" destination="Zqt-00-Rnf" eventType="editingChanged" id="Fsb-Go-Cfx"/>
+                                                    <action selector="textFieldEditingDidEnd:" destination="Zqt-00-Rnf" eventType="editingDidEnd" id="y0b-HO-Nd5"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Gc-Bk-1oL" userLabel="passcodeTextField" customClass="TextField" customModule="Check_Yo_Self" customModuleProvider="target">
@@ -930,6 +933,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                                                 <connections>
                                                     <action selector="textFieldDidChange:" destination="Zqt-00-Rnf" eventType="editingChanged" id="avO-oz-uLT"/>
+                                                    <action selector="textFieldEditingDidEnd:" destination="Zqt-00-Rnf" eventType="editingDidEnd" id="aXZ-d4-T4m"/>
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1VT-zf-80G" userLabel="loginButton">
@@ -998,7 +1002,7 @@
         <!--Create New Account View Controller-->
         <scene sceneID="mgr-kC-dfb">
             <objects>
-                <viewController id="PEa-iB-K9k" customClass="CreateNewAccountViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="createNewAccountViewController" id="PEa-iB-K9k" customClass="CreateNewAccountViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5hQ-4d-SU7"/>
                         <viewControllerLayoutGuide type="bottom" id="asY-S4-6hY"/>
@@ -1104,7 +1108,7 @@
         <!--Profile View Controller-->
         <scene sceneID="7VN-4r-4sP">
             <objects>
-                <viewController id="dhS-PX-xpl" customClass="ProfileViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="profileViewController" id="dhS-PX-xpl" customClass="ProfileViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zPQ-6Z-EHQ"/>
                         <viewControllerLayoutGuide type="bottom" id="Tie-UB-9j1"/>
@@ -1576,7 +1580,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9an-rp-4Jc">
-                                <rect key="frame" x="307" y="94" width="22" height="22"/>
+                                <rect key="frame" x="307" y="50" width="22" height="22"/>
                                 <connections>
                                     <action selector="infoButtonPressed:" destination="5gm-EC-Spv" eventType="touchUpInside" id="f8e-Tr-Ua6"/>
                                 </connections>
@@ -1605,7 +1609,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mql-SN-rcg" userLabel="Top Stack">
-                                <rect key="frame" x="36" y="216" width="303" height="91"/>
+                                <rect key="frame" x="36" y="172" width="303" height="91"/>
                                 <subviews>
                                     <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" restorationIdentifier="leftArrow" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPO-Kh-uOq">
                                         <rect key="frame" x="0.0" y="20.5" width="50" height="50"/>
@@ -1889,6 +1893,6 @@
         <image name="TripleCheckSmall" width="90" height="51"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HAB-If-do0"/>
+        <segue reference="6oq-HZ-WNf"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -80,6 +80,7 @@ final class ProfileViewController: GeneralViewController {
             self.handle(errorString)
         })
     }
+    
 }
 
 // MARK: - Extension: UITableViewDataSource, UITableViewDelegate -
@@ -98,7 +99,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120.0
+        return Constants.rowHeightNormal * 2
     }
 }
 
@@ -106,13 +107,15 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension ProfileViewController: DropdownMenuCellDelegate {
     
-    func dropdownMenuCell(_ cell: DropdownMenuCell, didSelectChoice choice: String, forQuestion question: Question) {
+    func dropdownMenuCell(_ cell: DropdownMenuCell, didSelectChoice choice: Choice, forQuestion question: Question) {
+        
+        guard let currentUser = User.current else { return }
         
         switch question.id {
-        case "PQ-000000": User.current?.favoriteColor = CubeColor.colorFromString(choice.lowercased())
-        case "PQ-000001": User.current?.ageGroup = choice
-        case "PQ-000002": User.current?.favoriteGenre = choice
-        case "PQ-000003": User.current?.identity = choice
+        case "PQ-000000": currentUser.favoriteColor = CubeColor.color(fromString: choice.profileValue)
+        case "PQ-000001": currentUser.ageGroup = AgeGroup.ageGroup(fromString: choice.profileValue)
+        case "PQ-000002": currentUser.favoriteGenre = CollabrationGenre.genre(fromString: choice.profileValue)
+        case "PQ-000003": currentUser.identity = Identity.identity(fromString: choice.profileValue)
         default: break
         }
         
@@ -126,5 +129,9 @@ extension ProfileViewController {
     
     @IBAction func finishButtonPressed(_ sender: UIButton) {
         createAccount()
+    }
+    
+    @objc func exit() {
+        dismiss(animated: true, completion: nil)
     }
 }

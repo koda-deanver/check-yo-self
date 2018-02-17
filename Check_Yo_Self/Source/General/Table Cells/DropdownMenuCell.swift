@@ -12,7 +12,7 @@ import UIKit
 
 /// Delegate protocol for handling selections in cell.
 protocol DropdownMenuCellDelegate: class {
-    func dropdownMenuCell(_ cell: DropdownMenuCell, didSelectChoice choice: String, forQuestion question: Question)
+    func dropdownMenuCell(_ cell: DropdownMenuCell, didSelectChoice choice: Choice, forQuestion question: Question)
 }
 
 // MARK: - Class -
@@ -65,12 +65,12 @@ extension DropdownMenuCell: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         let selectedRow = pickerView.selectedRow(inComponent: 0)
-        guard let choice = (pickerView.view(forRow: selectedRow, forComponent: 0) as? UILabel)?.text else { return }
+        let selectedChoice = question.choices[selectedRow]
         
-        textField.text = choice
+        textField.text = selectedChoice.text
         pickerView.alpha = 1.0
         
-        delegate?.dropdownMenuCell(self, didSelectChoice: choice, forQuestion: question)
+        delegate?.dropdownMenuCell(self, didSelectChoice: selectedChoice, forQuestion: question)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -107,10 +107,10 @@ extension DropdownMenuCell: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        let choice = question.choices[row].text
-        textField.text = choice
+        let selectedChoice = question.choices[row]
+        textField.text = selectedChoice.text
         
-        delegate?.dropdownMenuCell(self, didSelectChoice: choice, forQuestion: question)
+        delegate?.dropdownMenuCell(self, didSelectChoice: selectedChoice, forQuestion: question)
     }
     
 }

@@ -8,14 +8,15 @@
 
 import UIKit
 import MapKit
-import UserNotifications
 import Firebase
 
 /// Acts as home screen for the app.
-class CubeViewController: GeneralViewController, PickAvatarViewControllerDelegate{
+class CubeViewController: SkinnedViewController {
     
     /// Determines whether to show video.
     var newPlayer = false
+    
+    // MARK: - Outlets -
     
     @IBOutlet weak var titleLogo: UIImageView!
     
@@ -25,40 +26,46 @@ class CubeViewController: GeneralViewController, PickAvatarViewControllerDelegat
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var phaseImage: UIImageView!
     
-    
-    // Small buttons
+    /// Button that launches knowledge base screen.
     @IBOutlet weak var knowledgeBaseButton: UIButton!
-    @IBOutlet weak var connectionsButton: UIButton!
-    @IBOutlet weak var friendsButton: UIButton!
+    /// Button that launches profile screen.
     @IBOutlet weak var profileButton: UIButton!
+    /// Button that launches friend list screen.
+    @IBOutlet weak var friendsButton: UIButton!
+    /// Button that launches connections screen.
+    @IBOutlet weak var connectionsButton: UIButton!
     
     @IBOutlet weak var gemLabel: UIButton!
     
     @IBOutlet weak var playButton: UIButton!
     
-    
     // MARK: - Lifecycle -
     
-    override func viewDidLoad() {
+    override func style() {
+        setupButtons()
+    }
+    
+    ///
+    /// Style button with correct images and color.
+    ///
+    private func setupButtons() {
         
-        super.viewDidLoad()
+        let buttons = [knowledgeBaseButton, profileButton, friendsButton, connectionsButton]
+        let buttonImages = [#imageLiteral(resourceName: "KnowledgeBaseIcon"), #imageLiteral(resourceName: "ProfileIcon"), #imageLiteral(resourceName: "FriendsIcon"), #imageLiteral(resourceName: "ConnectionsIcon")]
         
-        // Add images to buttons
-        /*let buttonImageDictionary: [UIButton: UIImage] = [
-            knowledgeBaseButton: #imageLiteral(resourceName: "KnowledgeBaseIcon"),
-            connectionsButton: #imageLiteral(resourceName: "ConnectionsIcon"),
-            friendsButton: #imageLiteral(resourceName: "FriendsIcon"),
-            profileButton: #imageLiteral(resourceName: "ProfileIcon")
-        ]
-        for (button, image) in buttonImageDictionary{
-            let topImage = UIImageView(frame: CGRect(x: 0, y: 0, width: button.frame.width * 0.7, height: button.frame.height * 0.7))
-            topImage.center = CGPoint(x: button.frame.width/2, y: button.frame.height/2)
-            topImage.image = image
-            button.addSubview(topImage)
-        }*/
+        for (index, button) in buttons.enumerated() {
+            
+            guard let button = button else { continue }
+            button.setBackgroundImage(User.current.favoriteColor.connectionBackdrop, for: .normal)
+            
+            let inset = button.frame.width * 0.1
+            button.setImage(buttonImages[index], for: .normal)
+            button.imageEdgeInsets = UIEdgeInsetsMake(inset, inset, inset, inset)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         super.viewDidAppear(true)
         
         if newPlayer {
@@ -68,26 +75,6 @@ class CubeViewController: GeneralViewController, PickAvatarViewControllerDelegat
         }
         
         updateCubeProfile()
-    }
-    
-    //********************************************************************
-    // handleSwipe
-    // Description: Control phase changing by swipe
-    //********************************************************************
-    func handleSwipe(sender: UISwipeGestureRecognizer){
-        let currentIndex = Int(Media.titleLogos.index(of: self.titleLogo!.image!)!)
-        print(currentIndex)
-        if sender.direction == .left{
-            let newIndex = BSGCommon.incrementValue(currentIndex, by: 1, max: Media.titleLogos.count - 1)
-            print(newIndex)
-            self.titleLogo.image = Media.titleLogos[newIndex]
-        }else if sender.direction == .right{
-            let newIndex = BSGCommon.incrementValue(currentIndex, by: -1, max: Media.titleLogos.count - 1)
-            print(newIndex)
-            self.titleLogo.image = Media.titleLogos[newIndex]
-        }else{
-            print("Invalid swipe")
-        }
     }
     
     ///
@@ -125,12 +112,6 @@ class CubeViewController: GeneralViewController, PickAvatarViewControllerDelegat
         // Backdrop
         //self.cubeFace.image = Media.alertBackdropList[playerColor.intValue()]
         
-        // Small Buttons
-        /*self.knowledgeBaseButton.setImage(Media.connectionBackdropList[playerColor.intValue()], for: .normal)
-        self.connectionsButton.setImage(Media.connectionBackdropList[playerColor.intValue()], for: .normal)
-        self.friendsButton.setImage(Media.connectionBackdropList[playerColor.intValue()], for: .normal)
-        self.profileButton.setImage(Media.connectionBackdropList[playerColor.intValue()], for: .normal)*/
-        
         // Play Button
         /*switch self.appSkin!{
         case .adult:
@@ -140,6 +121,8 @@ class CubeViewController: GeneralViewController, PickAvatarViewControllerDelegat
         }*/*/
     }
     
+    
+
 }
 
 extension CubeViewController{
@@ -182,12 +165,20 @@ extension CubeViewController {
         /*self.showConnectionAlert(ConnectionAlert(title: "JabbRGems", message: "To reddem JabbRGems for ColLAB GEAR go to CollabRjabbR.com in the Membership Marketplace or just click the K button below!", okButtonText: "Cool"))*/
     }
     
+    /// Can't do this in storyboard because of double segue.
     @IBAction func profileButtonPressed(_ sender: UIButton) {
-        // TODO: Launch profile screen
+        
+        guard let profileViewController = self.storyboard?.instantiateViewController(withIdentifier: "profileViewController") as? ProfileViewController else { return }
+        
+        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: profileViewController, action: #selector(profileViewController.exit))
+        profileViewController.navigationItem.setLeftBarButton(backButton, animated: false)
+        
+        let navigationController = UINavigationController(rootViewController: profileViewController)
+        navigationController.modalPresentationStyle = .overCurrentContext
+        
+        self.present(navigationController, animated: true, completion: nil)
     }
     
     @IBAction func playButtonPressed(_ sender: UIButton) {
-        //PlayerData.sharedInstance.runCheckOnce = true
-        //self.tabBarController?.selectedIndex = 1
     }
 }

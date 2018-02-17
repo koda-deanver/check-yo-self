@@ -95,7 +95,7 @@ extension CreateNewAccountViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
+        return Constants.rowHeightNormal
     }
 }
 

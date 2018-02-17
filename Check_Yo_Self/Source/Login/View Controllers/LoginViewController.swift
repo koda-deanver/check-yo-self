@@ -83,9 +83,7 @@ final class LoginViewController: GeneralViewController {
             }
             
             let user = users[0]
-            
-            PlayerData.sharedInstance.displayName = user.username
-            PlayerData.sharedInstance.gemTotal = user.gems
+            User.current = user
             
             self.performSegue(withIdentifier: "showCubeScreen", sender: self)
             
@@ -104,6 +102,15 @@ extension LoginViewController {
         guard let username = usernameTextField.text, let passcode = passcodeTextField.text else { return }
         
         loginButton.isEnabled = username.count >= Configuration.usernameMinLength && passcode.count == Configuration.passcodeLength
+    }
+    
+    @IBAction func textFieldEditingDidEnd(_ sender: TextField) {
+        
+        /*if sender == usernameTextField {
+            passcodeTextField.becomeFirstResponder()
+        } else {
+            passcodeTextField.resignFirstResponder()
+        }*/
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {

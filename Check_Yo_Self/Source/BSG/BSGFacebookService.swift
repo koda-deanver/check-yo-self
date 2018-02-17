@@ -5,17 +5,24 @@
 //  Created by Phil Rattazzi on 6/5/17
 //  Copyright © 2017 Brook Street Games. All rights reserved.
 //
-//  Contains functions for interfacing with Facebook.
-//
 
 import Foundation
 import FacebookLogin
 import FacebookCore
 
+// MARK: - Typealias -
+
+/// Closure containing BSGFacebookError.
+typealias BSGFacebookErrorClosure = (BSGFacebookError) -> Void
+
+// MARK: - Enum -
+
+/// Error types returned in Facebook error handlers.
 enum BSGFacebookError {
-    case accessToken, connection
+    case missingAccessToken, connectionFailed, missingData, cancelledAction
 }
 
+///  Contains functions for interfacing with Facebook.
 class BSGFacebookService{
     
     // MARK: - Static Methods -
@@ -23,24 +30,24 @@ class BSGFacebookService{
     ///
     /// Handles login to Facebook.
     ///
-    /// - parameter completion: Handles successful login.
-    /// - parameter failure: Handles login failure.
+    /// - parameter completion: Handler for successful login.
+    /// - parameter failure: Handler login failure containing error.
     ///
-    static func login(completion: @escaping Closure = {}, failure: @escaping Closure = {}) {
+    static func login(completion: Closure? = nil, failure: BSGFacebookErrorClosure? = nil) {
         
         let loginManager = LoginManager()
         
         loginManager.logIn(readPermissions: [ReadPermission.publicProfile, ReadPermission.userFriends]) { loginResult in
             switch loginResult {
-            case .failed: failure()
-            case .cancelled: failure()
-            case .success(_, _, _): completion()
+            case .failed: failure?(.connectionFailed)
+            case .cancelled: failure?(.cancelledAction)
+            case .success(_, _, _): completion?()
             }
         }
     }
     
     ///
-    /// Handles log out from Facebook
+    /// Logs user out of Facebook
     ///
     static func logout() {
         LoginManager().logOut()
@@ -55,7 +62,6 @@ class BSGFacebookService{
     ///
     static func getImage(forID facebookID: String) -> UIImage? {
         
-        // Set image if available
         let picURL = URL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large")!
         let facebookImageData = try? Data(contentsOf: picURL)
         return (facebookImageData != nil) ? UIImage(data: facebookImageData!) : nil
@@ -67,10 +73,10 @@ class BSGFacebookService{
     /// - parameter completion: Closure containing ID and name.
     /// - parameter failure: Handles failure to get user data.
     ///
-    static func loadUser(completion: @escaping ((id: String, name: String)) -> Void, failure: Closure?){
+    static func getUser(completion: @escaping ((id: String, name: String)) -> Void, failure: BSGFacebookErrorClosure? = nil){
         
         guard AccessToken.current != nil else {
-            failure?()
+            failure?(.missingAccessToken)
             return
         }
         
@@ -82,12 +88,12 @@ class BSGFacebookService{
             case .success(let response):
                 
             guard let facebookDictionary = response.dictionaryValue, let facebookID = facebookDictionary["id"] as? String, let facebookName = facebookDictionary["name"] as? String else {
-                failure?()
+                failure?(.missingData)
                 return
             }
             completion((id: facebookID, name: facebookName))
                 
-            case .failed: failure?()
+            case .failed: failure?(.connectionFailed)
             }
         }
         connection.start()
@@ -96,10 +102,10 @@ class BSGFacebookService{
     ///
     /// Get friends from FB.
     ///
-    static func getFriends(completion: @escaping ([(id: String, name: String)]) -> Void, failure: ((BSGFacebookError) -> Void)?){
+    static func getFriends(completion: @escaping ([(id: String, name: String)]) -> Void, failure: BSGFacebookErrorClosure? = nil){
         
         guard AccessToken.current != nil else {
-            failure?(.accessToken)
+            failure?(.missingAccessToken)
             return
         }
         
@@ -122,7 +128,7 @@ class BSGFacebookService{
                         }
                     }
             }
-            case .failed: failure?(.connection)
+            case .failed: failure?(.connectionFailed)
             }
         }
         connection.start()
