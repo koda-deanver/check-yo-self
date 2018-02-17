@@ -14,8 +14,8 @@ final class CreateNewAccountViewController: GeneralViewController {
     // MARK: - Private Members -
     
     private let newAccountFields: [TextFieldBlueprint] = [
-        TextFieldBlueprint(placeholder: "Username", validCharacters: CharacterType.alphabet + CharacterType.numeric + CharacterType.specialCharacters, maxCharacters: Configuration.usernameMaxLength, minCharacters: Configuration.usernameMinLength, isSecure: false),
-        TextFieldBlueprint(placeholder: "Passcode", validCharacters: CharacterType.numeric, maxCharacters: Configuration.passcodeLength, minCharacters: Configuration.passcodeLength, isSecure: true)
+        TextFieldBlueprint(withPlaceholder: "Username", maxCharacters: Configuration.usernameMaxLength, minCharacters: Configuration.usernameMinLength),
+        TextFieldBlueprint(withPlaceholder: "Passcode", isSecure: true, maxCharacters: Configuration.passcodeLength, minCharacters: Configuration.passcodeLength, limitCharactersTo: CharacterType.numeric)
     ]
     
     private var username: String? { return (tableView.visibleCells[0] as? LabelAndTextFieldCell)?.currentText }

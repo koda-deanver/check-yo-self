@@ -11,6 +11,11 @@ import UIKit
 /// Present user with a series of questions that personalize thier account. These questions are taken from the database.
 final class ProfileViewController: GeneralViewController {
     
+    // MARK: - Public Members -
+    
+    // Determines if choices should be populated with previously selected values.
+    var shouldPreloadChoices: Bool = false
+    
     // MARK: - Private Members -
     
     /// Questions grabbed from database asking user personal info.
@@ -67,6 +72,33 @@ final class ProfileViewController: GeneralViewController {
     }
     
     ///
+    /// Get the last choice that user picked.
+    ///
+    /// If *shouldPreloadChoices* is false, it means this is the users' first time through and all fields should display placeholder text.
+    ///
+    /// - returns: The last choice that was displayed or nil.
+    ///
+    private func getPreviouslySelectedChoice(forQuestion question: Question) -> Choice? {
+        
+        guard shouldPreloadChoices, let currentUser = User.current else { return nil }
+        
+        var previousChoiceProfileValue: String = ""
+        
+        switch question.id {
+        case "PQ-000000": previousChoiceProfileValue = currentUser.favoriteColor.rawValue
+        case "PQ-000001": previousChoiceProfileValue = currentUser.ageGroup.rawValue
+        case "PQ-000002": previousChoiceProfileValue = currentUser.favoriteGenre.rawValue
+        case "PQ-000003": previousChoiceProfileValue = currentUser.identity.rawValue
+        default: break
+        }
+        
+        for choice in question.choices where choice.profileValue == previousChoiceProfileValue {
+            return choice
+        }
+        return nil
+    }
+    
+    ///
     /// Ensure that required information has been entered before creating account.
     ///
     private func createAccount() {
@@ -94,7 +126,11 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "dropdownMenuCell") as? DropdownMenuCell else { return UITableViewCell() }
-        cell.configure(withQuestion: profileQuestions[indexPath.row], delegate: self)
+        
+        let question = profileQuestions[indexPath.row]
+        let previousChoice = getPreviouslySelectedChoice(forQuestion: question)
+        
+        cell.configure(withQuestion: question, selectedChoice: previousChoice, delegate: self)
         return cell
     }
     

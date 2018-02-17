@@ -36,7 +36,7 @@ class DropdownMenuCell: UITableViewCell {
     // MARK: - Outlets -
     
     @IBOutlet private weak var label: UILabel!
-    @IBOutlet private weak var textField: UITextField!
+    @IBOutlet private weak var textField: TextField!
     @IBOutlet private weak var pickerView: UIPickerView!
     
     // MARK: - Public Methods -
@@ -44,7 +44,7 @@ class DropdownMenuCell: UITableViewCell {
     ///
     /// Set up cell with question.
     ///
-    func configure(withQuestion question: Question, delegate: DropdownMenuCellDelegate? = nil) {
+    func configure(withQuestion question: Question, selectedChoice: Choice?, delegate: DropdownMenuCellDelegate? = nil) {
         
         self.question = question
         self.delegate = delegate
@@ -52,7 +52,9 @@ class DropdownMenuCell: UITableViewCell {
         label.textColor = .white
         label.text = question.text
         
-        textField.delegate = self
+        let blueprint = TextFieldBlueprint(withPlaceholder: "Select an option.", isEditable: false)
+        textField.configure(withBlueprint: blueprint, delegate: self)
+        textField.text = selectedChoice?.text
         
         pickerView.alpha = 0.0
     }
@@ -60,9 +62,9 @@ class DropdownMenuCell: UITableViewCell {
 
 // MARK: - Extension: UITextFieldDelegate -
 
-extension DropdownMenuCell: UITextFieldDelegate {
+extension DropdownMenuCell: TextFieldDelegate {
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    func textFieldSelected(_ textField: TextField) {
         
         let selectedRow = pickerView.selectedRow(inComponent: 0)
         let selectedChoice = question.choices[selectedRow]
@@ -71,10 +73,6 @@ extension DropdownMenuCell: UITextFieldDelegate {
         pickerView.alpha = 1.0
         
         delegate?.dropdownMenuCell(self, didSelectChoice: selectedChoice, forQuestion: question)
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        pickerView.alpha = 0.0
     }
 }
 

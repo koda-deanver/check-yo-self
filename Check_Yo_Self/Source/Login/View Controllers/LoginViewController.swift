@@ -31,8 +31,11 @@ final class LoginViewController: GeneralViewController {
         
         messageLabel.font = UIFont(name: Font.main, size: Font.mediumSize * 0.8)
         
-        usernameTextField.configure(withBlueprint: TextFieldBlueprint(placeholder: "Username", validCharacters: CharacterType.alphabet + CharacterType.numeric + CharacterType.specialCharacters, maxCharacters: Configuration.usernameMaxLength, minCharacters: Configuration.usernameMinLength, isSecure: false))
-        passcodeTextField.configure(withBlueprint: TextFieldBlueprint(placeholder: "Passcode", validCharacters: CharacterType.numeric, maxCharacters: Configuration.passcodeLength, minCharacters: Configuration.passcodeLength, isSecure: true))
+        let usernameBlueprint = TextFieldBlueprint(withPlaceholder: "Username", maxCharacters: Configuration.usernameMaxLength, minCharacters: Configuration.usernameMinLength)
+        usernameTextField.configure(withBlueprint: usernameBlueprint, delegate: nil)
+        
+        let passcodeBlueprint = TextFieldBlueprint(withPlaceholder: "Passcode", isSecure: true, maxCharacters: Configuration.passcodeLength, minCharacters: Configuration.passcodeLength, limitCharactersTo: CharacterType.numeric)
+        passcodeTextField.configure(withBlueprint: passcodeBlueprint, delegate: nil)
         
         loginButton.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
         loginButton.isEnabled = false

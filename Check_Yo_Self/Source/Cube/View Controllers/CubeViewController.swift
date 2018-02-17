@@ -172,6 +172,7 @@ extension CubeViewController {
         
         let backButton = UIBarButtonItem(title: "Back", style: .plain, target: profileViewController, action: #selector(profileViewController.exit))
         profileViewController.navigationItem.setLeftBarButton(backButton, animated: false)
+        profileViewController.shouldPreloadChoices = true
         
         let navigationController = UINavigationController(rootViewController: profileViewController)
         navigationController.modalPresentationStyle = .overCurrentContext

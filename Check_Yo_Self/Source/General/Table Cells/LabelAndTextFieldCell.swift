@@ -49,7 +49,7 @@ class LabelAndTextFieldCell: UITableViewCell {
         label.text = blueprint.placeholder
         label.font = UIFont(name: Font.main, size: Font.mediumSize)
         
-        textField.configure(withBlueprint: blueprint)
+        textField.configure(withBlueprint: blueprint, delegate: nil)
         textField.font = UIFont(name: Font.main, size: Font.mediumSize)
         textField.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
         
