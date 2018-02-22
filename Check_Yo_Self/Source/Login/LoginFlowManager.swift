@@ -24,7 +24,7 @@ class LoginFlowManager {
     /// - parameter success: Handler for successful account creation.
     /// - parameter failure: Handler for failed account creation.
     ///
-    func createAccount(for user: User, success: @escaping Closure, failure: @escaping ErrorClosure) {
+    func updateAccount(for user: User, success: @escaping Closure, failure: @escaping ErrorClosure) {
         
         guard user.ageGroup != nil, user.favoriteGenre != nil, user.identity != nil else {
             failure("Enter all of your profile info!")

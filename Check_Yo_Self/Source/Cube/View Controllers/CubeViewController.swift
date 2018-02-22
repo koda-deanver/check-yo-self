@@ -37,6 +37,7 @@ class CubeViewController: SkinnedViewController {
     
     @IBOutlet weak var gemLabel: UIButton!
     
+    @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     
     // MARK: - Lifecycle -
@@ -62,6 +63,8 @@ class CubeViewController: SkinnedViewController {
             button.setImage(buttonImages[index], for: .normal)
             button.imageEdgeInsets = UIEdgeInsetsMake(inset, inset, inset, inset)
         }
+        
+        logoutButton.setBackgroundImage(User.current.favoriteColor.connectionBackdrop, for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -178,6 +181,16 @@ extension CubeViewController {
         navigationController.modalPresentationStyle = .overCurrentContext
         
         self.present(navigationController, animated: true, completion: nil)
+    }
+    
+    @IBAction func logoutButtonPressed(_ sender: UIButton) {
+        
+        let logoutAlert = BSGCustomAlert(message: "Logout of Check Yo Self?", options: [(text: "Logout", handler: {
+            User.current = nil
+            self.dismiss(animated: true, completion: nil)
+        }),(text: "Cancel", handler: {})])
+        
+        showAlert(logoutAlert, inColor: User.current.favoriteColor)
     }
     
     @IBAction func playButtonPressed(_ sender: UIButton) {

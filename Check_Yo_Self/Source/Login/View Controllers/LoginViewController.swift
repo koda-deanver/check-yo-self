@@ -29,7 +29,7 @@ final class LoginViewController: GeneralViewController {
         
         view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.4)
         
-        messageLabel.font = UIFont(name: Font.main, size: Font.mediumSize * 0.8)
+        messageLabel.font = UIFont(name: Font.main, size: Font.mediumSize)
         
         let usernameBlueprint = TextFieldBlueprint(withPlaceholder: "Username", maxCharacters: Configuration.usernameMaxLength, minCharacters: Configuration.usernameMinLength)
         usernameTextField.configure(withBlueprint: usernameBlueprint, delegate: nil)
@@ -51,6 +51,8 @@ final class LoginViewController: GeneralViewController {
         view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.4)
         loginView.isHidden = false
         createAccountButton.isHidden = false
+        
+        clearTextFields()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -77,11 +79,12 @@ final class LoginViewController: GeneralViewController {
         DataManager.shared.getUsers(matching: [(field: .username, value: username), (field: .password, value: password)],success: { users in
             
             self.hideProgressHUD()
+            self.clearTextFields()
             
             guard users.count == 1 else {
                 let errorText = (users.count == 0) ? "Invalid username/passcode." : "Uh-oh Something is wrong with your account."
                 let alert = BSGCustomAlert(message: errorText, options: [(text: "Close", handler: {})])
-                self.showAlert(alert)
+                self.showAlert(alert, inColor: .none)
                 return
             }
             
@@ -91,8 +94,17 @@ final class LoginViewController: GeneralViewController {
             self.performSegue(withIdentifier: "showCubeScreen", sender: self)
             
         }, failure: { errorMessage in
+            self.clearTextFields()
             self.handle(errorMessage)
         })
+    }
+    
+    ///
+    /// Clears username and passcode text fields.
+    ///
+    private func clearTextFields() {
+        usernameTextField.text = ""
+        passcodeTextField.text = ""
     }
 }
 

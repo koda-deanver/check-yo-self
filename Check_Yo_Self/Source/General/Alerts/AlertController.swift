@@ -17,7 +17,7 @@ class AlertController: BSGVerticalButtonAlertController {
     /// - parameter color: JabbrColor to change alert to.
     ///
     static func changeColor(to color: CubeColor) {
-        AlertController.configure(withAnimationDuration: 0.25, backgroundImage: color.alertBackdrop, buttonImage: color.buttonImage)
+        AlertController.configure(withAnimationDuration: 0.25, backgroundImage: color.alertBackdrop, buttonTextColor: .black, buttonImage: color.buttonImage)
     }
 }
 

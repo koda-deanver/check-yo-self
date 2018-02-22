@@ -12,6 +12,7 @@ import UIKit
 
 /// Delegate protocol for handling selections in cell.
 protocol DropdownMenuCellDelegate: class {
+    func dropdownMenuCell(_ cell: DropdownMenuCell, willActivatePicker pickerView: UIPickerView)
     func dropdownMenuCell(_ cell: DropdownMenuCell, didSelectChoice choice: Choice, forQuestion question: Question)
 }
 
@@ -44,6 +45,8 @@ class DropdownMenuCell: UITableViewCell {
     ///
     /// Set up cell with question.
     ///
+    /// The initial choice of the pickerView is set to the selectedChoice. If there is none, it defaults to the first choice.
+    ///
     func configure(withQuestion question: Question, selectedChoice: Choice?, delegate: DropdownMenuCellDelegate? = nil) {
         
         self.question = question
@@ -56,7 +59,21 @@ class DropdownMenuCell: UITableViewCell {
         textField.configure(withBlueprint: blueprint, delegate: self)
         textField.text = selectedChoice?.text
         
+        var selectedIndex = 0
+        for index in 0..<question.choices.count where question.choices[index].profileValue == selectedChoice?.profileValue {
+            selectedIndex = index
+        }
+        pickerView.selectRow(selectedIndex, inComponent: 0, animated: false)
         pickerView.alpha = 0.0
+    }
+    
+    ///
+    /// Show or remove pickerView.
+    ///
+    /// - parameter on: If true, show pickerView. Otherwise hide it.
+    ///
+    func togglePickerView(on: Bool) {
+        pickerView.alpha = on ? 1.0 : 0.0
     }
 }
 
@@ -66,13 +83,8 @@ extension DropdownMenuCell: TextFieldDelegate {
     
     func textFieldSelected(_ textField: TextField) {
         
-        let selectedRow = pickerView.selectedRow(inComponent: 0)
-        let selectedChoice = question.choices[selectedRow]
-        
-        textField.text = selectedChoice.text
+        delegate?.dropdownMenuCell(self, willActivatePicker: pickerView)
         pickerView.alpha = 1.0
-        
-        delegate?.dropdownMenuCell(self, didSelectChoice: selectedChoice, forQuestion: question)
     }
 }
 

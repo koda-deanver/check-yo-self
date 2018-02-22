@@ -84,7 +84,7 @@
         <!--Cube-->
         <scene sceneID="mSf-ZH-2VY">
             <objects>
-                <viewController storyboardIdentifier="CubeScene" title="Cube" id="s06-6N-bN5" customClass="CubeViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cubeViewController" title="Cube" id="s06-6N-bN5" customClass="CubeViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vwT-dm-zkM"/>
                         <viewControllerLayoutGuide type="bottom" id="a4L-Y8-V9T"/>
@@ -173,6 +173,16 @@
                                     <action selector="playButtonPressed:" destination="s06-6N-bN5" eventType="touchUpInside" id="p2a-91-iIG"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7U-le-Je2">
+                                <rect key="frame" x="87" y="447" width="200" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout" backgroundImage="GameButtonGray">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutButtonPressed:" destination="s06-6N-bN5" eventType="touchUpInside" id="E77-pY-UJ9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -183,6 +193,7 @@
                         <outlet property="friendsButton" destination="dfS-tu-kdD" id="zZi-ic-R1q"/>
                         <outlet property="gemLabel" destination="yi6-F4-bQt" id="5TJ-LM-Ge3"/>
                         <outlet property="knowledgeBaseButton" destination="Byj-Zt-X5a" id="W4c-mY-mgR"/>
+                        <outlet property="logoutButton" destination="k7U-le-Je2" id="nEw-jf-84V"/>
                         <outlet property="phaseImage" destination="2Q6-fp-cHh" id="obm-u6-KFg"/>
                         <outlet property="playButton" destination="WxB-bi-Ac0" id="tlR-YC-UMH"/>
                         <outlet property="profileButton" destination="4Y0-Gc-WGE" id="w4e-JQ-32I"/>
@@ -907,37 +918,42 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlertBackdropGray" translatesAutoresizingMaskIntoConstraints="NO" id="Q2E-h4-6oW">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="200"/>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Eqq-Kp-Kt1" userLabel="loginStack">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Eqq-Kp-Kt1" userLabel="loginStack">
                                         <rect key="frame" x="24" y="20.5" width="192" height="160"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Jabbr account." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rb-mb-f2Q" userLabel="label">
-                                                <rect key="frame" x="0.0" y="0.0" width="192" height="25"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to CollabRjabbR account." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rb-mb-f2Q" userLabel="label">
+                                                <rect key="frame" x="0.0" y="0.0" width="192" height="50"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EYS-2O-kb8" userLabel="usernameTextField" customClass="TextField" customModule="Check_Yo_Self" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="45" width="192" height="25"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <action selector="textFieldDidChange:" destination="Zqt-00-Rnf" eventType="editingChanged" id="Fsb-Go-Cfx"/>
-                                                    <action selector="textFieldEditingDidEnd:" destination="Zqt-00-Rnf" eventType="editingDidEnd" id="y0b-HO-Nd5"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Gc-Bk-1oL" userLabel="passcodeTextField" customClass="TextField" customModule="Check_Yo_Self" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="90" width="192" height="25"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
-                                                <connections>
-                                                    <action selector="textFieldDidChange:" destination="Zqt-00-Rnf" eventType="editingChanged" id="avO-oz-uLT"/>
-                                                    <action selector="textFieldEditingDidEnd:" destination="Zqt-00-Rnf" eventType="editingDidEnd" id="aXZ-d4-T4m"/>
-                                                </connections>
-                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="sFP-jc-USz">
+                                                <rect key="frame" x="0.0" y="70" width="192" height="40"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EYS-2O-kb8" userLabel="usernameTextField" customClass="TextField" customModule="Check_Yo_Self" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="192" height="17.5"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="textFieldDidChange:" destination="Zqt-00-Rnf" eventType="editingChanged" id="Fsb-Go-Cfx"/>
+                                                            <action selector="textFieldEditingDidEnd:" destination="Zqt-00-Rnf" eventType="editingDidEnd" id="y0b-HO-Nd5"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Gc-Bk-1oL" userLabel="passcodeTextField" customClass="TextField" customModule="Check_Yo_Self" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="22.5" width="192" height="17.5"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                                        <connections>
+                                                            <action selector="textFieldDidChange:" destination="Zqt-00-Rnf" eventType="editingChanged" id="avO-oz-uLT"/>
+                                                            <action selector="textFieldEditingDidEnd:" destination="Zqt-00-Rnf" eventType="editingDidEnd" id="aXZ-d4-T4m"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1VT-zf-80G" userLabel="loginButton">
-                                                <rect key="frame" x="0.0" y="135" width="192" height="25"/>
+                                                <rect key="frame" x="0.0" y="130" width="192" height="30"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -953,10 +969,12 @@
                                 <constraints>
                                     <constraint firstItem="Eqq-Kp-Kt1" firstAttribute="height" secondItem="zki-Un-lIB" secondAttribute="height" multiplier="0.8" id="8LU-De-aHe"/>
                                     <constraint firstItem="Q2E-h4-6oW" firstAttribute="top" secondItem="zki-Un-lIB" secondAttribute="top" id="MhZ-2f-K5Y"/>
+                                    <constraint firstItem="1VT-zf-80G" firstAttribute="height" secondItem="zki-Un-lIB" secondAttribute="height" multiplier="0.15" id="S5g-3B-nGb"/>
                                     <constraint firstItem="Eqq-Kp-Kt1" firstAttribute="centerX" secondItem="zki-Un-lIB" secondAttribute="centerX" id="SUx-HS-kkr"/>
                                     <constraint firstItem="Eqq-Kp-Kt1" firstAttribute="centerY" secondItem="zki-Un-lIB" secondAttribute="centerY" id="ULh-o8-vLD"/>
                                     <constraint firstAttribute="width" secondItem="zki-Un-lIB" secondAttribute="height" multiplier="1.2:1" id="Wga-Er-yhA"/>
                                     <constraint firstAttribute="trailing" secondItem="Q2E-h4-6oW" secondAttribute="trailing" id="a7d-J3-3Kc"/>
+                                    <constraint firstItem="4rb-mb-f2Q" firstAttribute="height" secondItem="Q2E-h4-6oW" secondAttribute="height" multiplier="0.25" id="fmB-tS-kmh"/>
                                     <constraint firstItem="Q2E-h4-6oW" firstAttribute="leading" secondItem="zki-Un-lIB" secondAttribute="leading" id="hvo-ro-XbZ"/>
                                     <constraint firstItem="Eqq-Kp-Kt1" firstAttribute="width" secondItem="zki-Un-lIB" secondAttribute="width" multiplier="0.8" id="iZg-L2-cJW"/>
                                     <constraint firstAttribute="bottom" secondItem="Q2E-h4-6oW" secondAttribute="bottom" id="zBU-Vj-NNM"/>

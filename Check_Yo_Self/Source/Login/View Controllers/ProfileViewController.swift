@@ -21,6 +21,11 @@ final class ProfileViewController: GeneralViewController {
     /// Questions grabbed from database asking user personal info.
     private var profileQuestions: [Question] = []
     
+    private var selectedColor: CubeColor!
+    private var selectedAgeGroup: AgeGroup!
+    private var selectedGenre: CollabrationGenre!
+    private var selectedIdentity: Identity!
+    
     /// Determines if all fields have been filled.
     private var inputIsValid: Bool {
         
@@ -38,8 +43,14 @@ final class ProfileViewController: GeneralViewController {
     // MARK: - Lifecycle -
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         loadProfileQuestions()
+        
+        selectedColor = User.current.favoriteColor
+        selectedAgeGroup = User.current.ageGroup
+        selectedGenre = User.current.favoriteGenre
+        selectedIdentity = User.current.identity
     }
     
     override func style() {
@@ -104,13 +115,45 @@ final class ProfileViewController: GeneralViewController {
     private func createAccount() {
         
         showProgressHUD()
+        updateUserWithSelections()
         
-        LoginFlowManager.shared.createAccount(for: User.current, success: {
-            self.hideProgressHUD()
-            self.performSegue(withIdentifier: "showCubeScreen", sender: self)
+        LoginFlowManager.shared.updateAccount(for: User.current, success: {
+            self.navigateToCubeScreen()
         }, failure: { errorString in
             self.handle(errorString)
         })
+    }
+    
+    ///
+    /// Updates current user with profile values selected in dropdowns.
+    ///
+    private func updateUserWithSelections() {
+        
+        User.current.favoriteColor = selectedColor
+        User.current.ageGroup = selectedAgeGroup
+        User.current.favoriteGenre = selectedGenre
+        User.current.identity = selectedIdentity
+    }
+    
+    ///
+    /// Performs correct sequence to reach *cubeViewController* based on if User is creating or editing profile.
+    ///
+    private func navigateToCubeScreen() {
+        
+        /// If this fails means user is updating profile and is not initial creation. Just dismiss this viewController.
+        guard let loginViewController = self.presentingViewController as? LoginViewController else {
+            self.hideProgressHUD()
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
+        
+        /// For first time creation launch *cubeViewController* from *loginViewController*
+        dismiss(animated: true) {
+            
+            self.hideProgressHUD()
+            
+            loginViewController.performSegue(withIdentifier: "showCubeScreen", sender: nil)
+        }
     }
     
 }
@@ -143,15 +186,20 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension ProfileViewController: DropdownMenuCellDelegate {
     
+    func dropdownMenuCell(_ cell: DropdownMenuCell, willActivatePicker pickerView: UIPickerView) {
+        
+        for cell in tableView.visibleCells {
+            (cell as? DropdownMenuCell)?.togglePickerView(on: false)
+        }
+    }
+    
     func dropdownMenuCell(_ cell: DropdownMenuCell, didSelectChoice choice: Choice, forQuestion question: Question) {
         
-        guard let currentUser = User.current else { return }
-        
         switch question.id {
-        case "PQ-000000": currentUser.favoriteColor = CubeColor.color(fromString: choice.profileValue)
-        case "PQ-000001": currentUser.ageGroup = AgeGroup.ageGroup(fromString: choice.profileValue)
-        case "PQ-000002": currentUser.favoriteGenre = CollabrationGenre.genre(fromString: choice.profileValue)
-        case "PQ-000003": currentUser.identity = Identity.identity(fromString: choice.profileValue)
+        case "PQ-000000": selectedColor = CubeColor.color(fromString: choice.profileValue)
+        case "PQ-000001": selectedAgeGroup = AgeGroup.ageGroup(fromString: choice.profileValue)
+        case "PQ-000002": selectedGenre = CollabrationGenre.genre(fromString: choice.profileValue)
+        case "PQ-000003": selectedIdentity = Identity.identity(fromString: choice.profileValue)
         default: break
         }
         
