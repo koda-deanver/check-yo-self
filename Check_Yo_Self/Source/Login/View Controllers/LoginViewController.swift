@@ -64,6 +64,16 @@ final class LoginViewController: GeneralViewController {
         createAccountButton.isHidden = true
     }
     
+    // MARK: - Public Methods -
+    
+    /// Used to present the cube screen for first time user and display tutorial video. Called from *ProfileViewController*.
+    func presentCubeScreenWithVideo() {
+        
+        guard let cubeViewController = storyboard?.instantiateViewController(withIdentifier: "cubeViewController") as? CubeViewController else { return }
+        cubeViewController.newPlayer = true
+        present(cubeViewController, animated: true, completion: nil)
+    }
+    
     // MARK: - Private methods -
     
     ///

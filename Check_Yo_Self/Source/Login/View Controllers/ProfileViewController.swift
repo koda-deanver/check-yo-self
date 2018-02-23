@@ -151,8 +151,7 @@ final class ProfileViewController: GeneralViewController {
         dismiss(animated: true) {
             
             self.hideProgressHUD()
-            
-            loginViewController.performSegue(withIdentifier: "showCubeScreen", sender: nil)
+            loginViewController.presentCubeScreenWithVideo()
         }
     }
     

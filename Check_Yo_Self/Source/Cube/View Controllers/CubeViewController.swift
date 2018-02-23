@@ -20,12 +20,14 @@ class CubeViewController: SkinnedViewController {
     
     // MARK: - Outlets -
     
-    @IBOutlet weak var titleLogo: UIImageView!
+    // Stats
+    
+    @IBOutlet weak var gemLabel: UILabel!
     
     // Main cube
-    @IBOutlet weak var cubeFace: UIImageView!
-    @IBOutlet weak var userPic: UIButton!
-    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var userBackdrop: UIImageView!
+    @IBOutlet weak var userImage: UIButton!
+    @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var phaseImage: UIImageView!
     
     /// Button that launches knowledge base screen.
@@ -37,21 +39,19 @@ class CubeViewController: SkinnedViewController {
     /// Button that launches connections screen.
     @IBOutlet weak var connectionsButton: UIButton!
     
-    @IBOutlet weak var gemLabel: UIButton!
-    
+    // Bottom buttons
     @IBOutlet weak var logoutButton: UIButton!
-    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var checkButton: UIButton!
     
     // MARK: - Lifecycle -
     
     override func style() {
-        setupButtons()
-    }
-    
-    ///
-    /// Style button with correct images and color.
-    ///
-    private func setupButtons() {
+        
+        gemLabel.text = String(User.current.gems)
+        gemLabel.textColor = User.current.favoriteColor.uiColor
+        
+        userBackdrop.image = User.current.favoriteColor.alertBackdrop
+        userLabel.text = User.current.username
         
         let buttons = [knowledgeBaseButton, profileButton, friendsButton, connectionsButton]
         let buttonImages = [#imageLiteral(resourceName: "KnowledgeBaseIcon"), #imageLiteral(resourceName: "ProfileIcon"), #imageLiteral(resourceName: "FriendsIcon"), #imageLiteral(resourceName: "ConnectionsIcon")]
@@ -65,22 +65,15 @@ class CubeViewController: SkinnedViewController {
             button.setImage(buttonImages[index], for: .normal)
             button.imageEdgeInsets = UIEdgeInsetsMake(inset, inset, inset, inset)
         }
-        
-        logoutButton.setBackgroundImage(User.current.favoriteColor.connectionBackdrop, for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(true)
-        
-        if newPlayer {
-            let videoURL = NSURL.fileURL(withPath: Bundle.main.path(forResource: "AppTutorialVideo", ofType:"mp4")!)
-            BSGCommon.playVideo(url: videoURL, onController: self)
-            newPlayer = false
-        }
-        
-        updateCubeProfile()
+        if newPlayer { playVideo() }
     }
+    
+    // MARK: - Public Methods -
     
     ///
     /// Reloads entire screen.
@@ -126,8 +119,17 @@ class CubeViewController: SkinnedViewController {
         }*/*/
     }
     
+    // MARK: - Private Methods -
     
-
+    ///
+    /// Plays introduction video presented by Sir Charles Kirby.
+    ///
+    private func playVideo() {
+        
+        let videoURL = NSURL.fileURL(withPath: Bundle.main.path(forResource: "AppTutorialVideo", ofType:"mp4")!)
+        BSGCommon.playVideo(url: videoURL, onController: self)
+        newPlayer = false
+    }
 }
 
 extension CubeViewController{
@@ -145,8 +147,27 @@ extension CubeViewController{
 
 extension CubeViewController {
     
-    @IBAction func knowledgeBaseButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "showKnowledgeBase", sender: self)
+    @IBAction func cubeProjectButtonPressed(_ sender: UIButton) {
+        showAlert(BSGCustomAlert(message: "Cube projects coming soon."))
+    }
+    
+    @IBAction func gemHitboxPressed(_ sender: UIButton) {
+        showAlert(BSGCustomAlert(message: "To redeem JabbRGems go to CollabRJabbR.com or tap the K button below!", options: [(text:"Sweet!", handler: {})]))
+    }
+    
+    @IBAction func userImagePressed(_ sender: UIButton) {
+        // Show alert if player has an avatar
+        if let avatar = PlayerData.sharedInstance.avatar{
+            /*self.showConnectionAlert(ConnectionAlert(title: "\(avatar.name)\nOccupation: \(avatar.discipline)", message: "\(avatar.bio)", okButtonText: "Keep", cancelButtonText: "Change", okButtonCompletion: {
+             
+             }, cancelButtonCompletion: {
+             let pickAvatarNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PickAvatarNavigation") as! UINavigationController
+             let pickAvatarViewController = pickAvatarNavigationController.viewControllers[0] as! PickAvatarViewController
+             pickAvatarViewController.delegate = self
+             pickAvatarViewController.oldAvatar = avatar
+             self.present(pickAvatarNavigationController, animated: true)
+             }))*/
+        }
     }
     
     /// Can't do this in storyboard because of double segue.
@@ -168,25 +189,15 @@ extension CubeViewController {
         performSegue(withIdentifier: "showFriendList", sender: self)
     }
     
-    @IBAction func userPicPressed(_ sender: UIButton) {
-        // Show alert if player has an avatar
-        if let avatar = PlayerData.sharedInstance.avatar{
-            /*self.showConnectionAlert(ConnectionAlert(title: "\(avatar.name)\nOccupation: \(avatar.discipline)", message: "\(avatar.bio)", okButtonText: "Keep", cancelButtonText: "Change", okButtonCompletion: {
-             
-             }, cancelButtonCompletion: {
-             let pickAvatarNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PickAvatarNavigation") as! UINavigationController
-             let pickAvatarViewController = pickAvatarNavigationController.viewControllers[0] as! PickAvatarViewController
-             pickAvatarViewController.delegate = self
-             pickAvatarViewController.oldAvatar = avatar
-             self.present(pickAvatarNavigationController, animated: true)
-             }))*/
-        }
+    @IBAction func knowledgeBaseButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "showKnowledgeBase", sender: self)
     }
     
-    @IBAction func gemLabelPressed(_ sender: UIButton) {
-        //print(QuestionStorage.sharedInstance)
-        // Show Gem Alert
-        /*self.showConnectionAlert(ConnectionAlert(title: "JabbRGems", message: "To reddem JabbRGems for ColLAB GEAR go to CollabRjabbR.com in the Membership Marketplace or just click the K button below!", okButtonText: "Cool"))*/
+    @IBAction func connectionsButtonPressed(_ sender: UIButton) {
+    }
+    
+    @IBAction func checkButtonPressed(_ sender: UIButton) {
+        showAlert(BSGCustomAlert(message: "Questions are under construction yo."))
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
@@ -197,8 +208,5 @@ extension CubeViewController {
         }),(text: "Cancel", handler: {})])
         
         showAlert(logoutAlert, inColor: User.current.favoriteColor)
-    }
-    
-    @IBAction func playButtonPressed(_ sender: UIButton) {
     }
 }
