@@ -1,6 +1,6 @@
 //
 //  Configuration.swift
-//  Check_Yo_Self
+//  check-yo-self
 //
 //  Created by Phil Rattazzi on 1/18/17.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.

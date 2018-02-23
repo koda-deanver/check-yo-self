@@ -47,6 +47,8 @@ class CubeViewController: SkinnedViewController {
     
     override func style() {
         
+        super.style()
+        
         gemLabel.text = String(User.current.gems)
         gemLabel.textColor = User.current.favoriteColor.uiColor
         

@@ -11,17 +11,27 @@ import UIKit
 /// Changes background based on profile.
 class SkinnedViewController: GeneralViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - Private Members -
+    
+    private var backgroundImageView: UIImageView!
+    
+    // MARK: - Lifecycle -
+    
+    override func style() {
+        super.style()
         setupBackdrop()
     }
+    
+    // MARK: - Private Methods -
     
     ///
     /// Style with correct backdrop based on age.
     ///
     private func setupBackdrop() {
         
-        let backgroundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.screenWidth, height: self.screenHeight))
+        if backgroundImageView != nil { backgroundImageView?.removeFromSuperview() }
+        
+        backgroundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.screenWidth, height: self.screenHeight))
         backgroundImageView.center = view.center
         backgroundImageView.image = User.current.ageGroup.backgroundImage
         

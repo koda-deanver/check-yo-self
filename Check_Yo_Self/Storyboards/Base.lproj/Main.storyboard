@@ -1264,7 +1264,7 @@
             </objects>
             <point key="canvasLocation" x="-79" y="-1197"/>
         </scene>
-        <!--Create New Account View Controller-->
+        <!--Create Account-->
         <scene sceneID="mgr-kC-dfb">
             <objects>
                 <viewController storyboardIdentifier="createNewAccountViewController" id="PEa-iB-K9k" customClass="CreateNewAccountViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
@@ -1353,10 +1353,10 @@
                             <constraint firstAttribute="trailing" secondItem="eMF-ao-qic" secondAttribute="trailing" id="wRz-Yu-5up"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="9D4-dO-YWi">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="GDR-Uy-ejI">
+                    <navigationItem key="navigationItem" title="Create Account" id="L7D-q0-gQ2">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="h2H-hT-wd1">
                             <connections>
-                                <action selector="backButtonPressed:" destination="PEa-iB-K9k" id="MkH-RM-M57"/>
+                                <action selector="backButtonPressed:" destination="PEa-iB-K9k" id="uOz-0O-Etr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1370,7 +1370,7 @@
             </objects>
             <point key="canvasLocation" x="1890" y="-1746"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Profile-->
         <scene sceneID="7VN-4r-4sP">
             <objects>
                 <viewController storyboardIdentifier="profileViewController" id="dhS-PX-xpl" customClass="ProfileViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
@@ -1471,6 +1471,14 @@
                             <constraint firstItem="NLQ-Ai-BtI" firstAttribute="top" secondItem="zPQ-6Z-EHQ" secondAttribute="bottom" id="iNF-1E-mee"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Profile" id="npG-VI-JDS">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="u1Q-j1-Pxf"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="niB-ud-bts">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="dhS-PX-xpl" id="0r2-kR-H62"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="finishButton" destination="1fy-xQ-do8" id="4jH-bI-UPq"/>
                         <outlet property="tableView" destination="NLQ-Ai-BtI" id="oFw-sr-MOD"/>
@@ -1478,7 +1486,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FOw-bk-mZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2837.5999999999999" y="-1746.4767616191905"/>
+            <point key="canvasLocation" x="2753" y="-1746"/>
         </scene>
         <!--Custom Tab Bar-->
         <scene sceneID="unx-48-zhD">

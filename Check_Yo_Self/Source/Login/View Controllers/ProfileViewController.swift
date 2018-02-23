@@ -118,6 +118,7 @@ final class ProfileViewController: GeneralViewController {
         updateUserWithSelections()
         
         LoginFlowManager.shared.updateAccount(for: User.current, success: {
+            NotificationManager.shared.postNotification(ofType: .profileUpdated)
             self.navigateToCubeScreen()
         }, failure: { errorString in
             self.handle(errorString)
@@ -154,7 +155,6 @@ final class ProfileViewController: GeneralViewController {
             loginViewController.presentCubeScreenWithVideo()
         }
     }
-    
 }
 
 // MARK: - Extension: UITableViewDataSource, UITableViewDelegate -
@@ -209,6 +209,10 @@ extension ProfileViewController: DropdownMenuCellDelegate {
 // MARK: - Extension: Actions -
 
 extension ProfileViewController {
+    
+    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
     
     @IBAction func finishButtonPressed(_ sender: UIButton) {
         createAccount()

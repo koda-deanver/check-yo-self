@@ -21,7 +21,10 @@ class GeneralViewController: UIViewController {
     // MARK: - Lifecycle -
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        NotificationManager.shared.addObserver(self, forNotificationType: .profileUpdated, handler: #selector(style))
         style()
     }
     
@@ -65,7 +68,7 @@ class GeneralViewController: UIViewController {
     
     // MARK: - Private Methods -
     
-    func style() {}
+    @objc func style() {}
     
     ///
     /// Description: Dismisses keyboard.
