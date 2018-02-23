@@ -13,7 +13,7 @@ final class ProfileViewController: GeneralViewController {
     
     // MARK: - Public Members -
     
-    // Determines if choices should be populated with previously selected values.
+    /// Determines if choices should be populated with previously selected values.
     var shouldPreloadChoices: Bool = false
     
     // MARK: - Private Members -
@@ -58,7 +58,7 @@ final class ProfileViewController: GeneralViewController {
         view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
         
         finishButton.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
-        finishButton.isEnabled = false
+        finishButton.isEnabled = inputIsValid
     }
     
     // MARK: - Private Methods -
@@ -128,7 +128,7 @@ final class ProfileViewController: GeneralViewController {
     /// Updates current user with profile values selected in dropdowns.
     ///
     private func updateUserWithSelections() {
-        
+    
         User.current.favoriteColor = selectedColor
         User.current.ageGroup = selectedAgeGroup
         User.current.favoriteGenre = selectedGenre

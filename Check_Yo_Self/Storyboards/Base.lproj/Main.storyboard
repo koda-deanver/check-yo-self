@@ -97,6 +97,9 @@
                                 <rect key="frame" x="15" y="251" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="ConnectionBackdropGray"/>
+                                <connections>
+                                    <action selector="knowledgeBaseButtonPressed:" destination="s06-6N-bN5" eventType="touchUpInside" id="7SC-LO-0ql"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F07-Oe-4Qc" userLabel="Devices Button">
                                 <rect key="frame" x="309" y="251" width="50" height="50"/>
@@ -201,6 +204,7 @@
                         <outlet property="userPic" destination="GQ1-VN-9X6" id="i0c-vK-uC3"/>
                         <outlet property="usernameLabel" destination="ZKa-X3-qNL" id="bCf-xv-vPT"/>
                         <segue destination="qgS-aL-ZV8" kind="presentation" identifier="showFriendList" id="FL1-zu-Ibt"/>
+                        <segue destination="IAd-pt-ZfE" kind="presentation" identifier="showKnowledgeBase" id="gHx-HK-CBH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dWn-fh-WCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -295,17 +299,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQV-XH-Htt">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wtt-4m-cMd" userLabel="webView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="TUd-sP-lST" firstAttribute="top" secondItem="gQV-XH-Htt" secondAttribute="bottom" id="AUz-aS-DDD"/>
-                            <constraint firstItem="gQV-XH-Htt" firstAttribute="leading" secondItem="X1b-Em-MHd" secondAttribute="leading" id="Bgq-xx-HJi"/>
-                            <constraint firstItem="gQV-XH-Htt" firstAttribute="top" secondItem="X1b-Em-MHd" secondAttribute="top" id="ZBp-uJ-Uqv"/>
-                            <constraint firstAttribute="trailing" secondItem="gQV-XH-Htt" secondAttribute="trailing" id="cGU-WE-GP0"/>
+                            <constraint firstItem="Wtt-4m-cMd" firstAttribute="top" secondItem="cSY-LS-OBS" secondAttribute="bottom" id="CFm-hv-Pcq"/>
+                            <constraint firstAttribute="trailing" secondItem="Wtt-4m-cMd" secondAttribute="trailing" id="GjP-d4-opf"/>
+                            <constraint firstItem="Wtt-4m-cMd" firstAttribute="leading" secondItem="X1b-Em-MHd" secondAttribute="leading" id="J23-lu-Z9S"/>
+                            <constraint firstItem="TUd-sP-lST" firstAttribute="top" secondItem="Wtt-4m-cMd" secondAttribute="bottom" id="ixg-b5-cxQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DIL-Uf-SBx">
@@ -316,12 +324,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="webView" destination="gQV-XH-Htt" id="zs4-wN-aLh"/>
+                        <outlet property="webView" destination="Wtt-4m-cMd" id="jgy-H5-mff"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2e-sS-sUz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2540" y="1665"/>
+            <point key="canvasLocation" x="-1586" y="1557"/>
         </scene>
         <!--Facebook Friends-->
         <scene sceneID="O1y-w5-ib6">
@@ -433,7 +441,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Plb-DI-0Lf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1823" y="1665"/>
+            <point key="canvasLocation" x="-884" y="1557"/>
         </scene>
         <!--Devices-->
         <scene sceneID="6DH-xE-vmP">
@@ -604,7 +612,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ALg-hJ-X8P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-796" y="1664.617691154423"/>
+            <point key="canvasLocation" x="-234" y="1557"/>
         </scene>
         <!--Play-->
         <scene sceneID="hcV-RS-M4l">
@@ -1227,7 +1235,6 @@
                     <connections>
                         <outlet property="finishButton" destination="1fy-xQ-do8" id="4jH-bI-UPq"/>
                         <outlet property="tableView" destination="NLQ-Ai-BtI" id="oFw-sr-MOD"/>
-                        <segue destination="oye-vC-dZ8" kind="show" identifier="showCubeScreen" id="HAB-If-do0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FOw-bk-mZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1532,7 +1539,7 @@
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9nH-jt-7G9">
-                                <rect key="frame" x="40.5" y="233" width="294" height="184"/>
+                                <rect key="frame" x="40" y="233" width="295" height="184"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9nH-jt-7G9" secondAttribute="height" multiplier="8:5" id="VGx-vl-ebd"/>
                                 </constraints>
@@ -1747,7 +1754,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fo4-uD-iyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2540" y="887"/>
+            <point key="canvasLocation" x="-1586" y="841"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VJW-09-XQJ">
@@ -1765,7 +1772,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yia-y7-PKC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1135" y="888"/>
+            <point key="canvasLocation" x="-233" y="841"/>
         </scene>
         <!--Connection Alert View Controller-->
         <scene sceneID="8S1-Ou-3fF">
@@ -1883,7 +1890,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xsI-hu-SjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1857" y="887"/>
+            <point key="canvasLocation" x="-884" y="841"/>
         </scene>
     </scenes>
     <resources>
@@ -1910,7 +1917,4 @@
         <image name="TabBarIconStats" width="24" height="24"/>
         <image name="TripleCheckSmall" width="90" height="51"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="6oq-HZ-WNf"/>
-    </inferredMetricsTieBreakers>
 </document>

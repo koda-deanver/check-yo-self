@@ -13,6 +13,8 @@ import Firebase
 /// Acts as home screen for the app.
 class CubeViewController: SkinnedViewController {
     
+    // MARK: - Public Members -
+    
     /// Determines whether to show video.
     var newPlayer = false
     
@@ -143,6 +145,25 @@ extension CubeViewController{
 
 extension CubeViewController {
     
+    @IBAction func knowledgeBaseButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "showKnowledgeBase", sender: self)
+    }
+    
+    /// Can't do this in storyboard because of double segue.
+    @IBAction func profileButtonPressed(_ sender: UIButton) {
+        
+        guard let profileViewController = self.storyboard?.instantiateViewController(withIdentifier: "profileViewController") as? ProfileViewController else { return }
+        
+        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: profileViewController, action: #selector(profileViewController.exit))
+        profileViewController.navigationItem.setLeftBarButton(backButton, animated: false)
+        profileViewController.shouldPreloadChoices = true
+        
+        let navigationController = UINavigationController(rootViewController: profileViewController)
+        navigationController.modalPresentationStyle = .overCurrentContext
+        
+        self.present(navigationController, animated: true, completion: nil)
+    }
+    
     @IBAction func friendsButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "showFriendList", sender: self)
     }
@@ -166,21 +187,6 @@ extension CubeViewController {
         //print(QuestionStorage.sharedInstance)
         // Show Gem Alert
         /*self.showConnectionAlert(ConnectionAlert(title: "JabbRGems", message: "To reddem JabbRGems for ColLAB GEAR go to CollabRjabbR.com in the Membership Marketplace or just click the K button below!", okButtonText: "Cool"))*/
-    }
-    
-    /// Can't do this in storyboard because of double segue.
-    @IBAction func profileButtonPressed(_ sender: UIButton) {
-        
-        guard let profileViewController = self.storyboard?.instantiateViewController(withIdentifier: "profileViewController") as? ProfileViewController else { return }
-        
-        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: profileViewController, action: #selector(profileViewController.exit))
-        profileViewController.navigationItem.setLeftBarButton(backButton, animated: false)
-        profileViewController.shouldPreloadChoices = true
-        
-        let navigationController = UINavigationController(rootViewController: profileViewController)
-        navigationController.modalPresentationStyle = .overCurrentContext
-        
-        self.present(navigationController, animated: true, completion: nil)
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIButton) {

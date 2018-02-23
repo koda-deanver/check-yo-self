@@ -1,34 +1,73 @@
-//********************************************************************
-//  KnowledgeBaseViewController.swift
-//  Check Yo Self
-//  Created by Phil on 1/5/17
 //
-//  Description: Used to view webpage with related info
-//********************************************************************
+//  KnowledgeBaseViewController.swift
+//  check-yo-self
+//
+//  Created by Phil Rattazzi on 1/5/17.
+//  Copyright © 2016 ThematicsLLC. All rights reserved.
+//
 
 import UIKit
+import WebKit
 
-class KnowledgeBaseViewController: GeneralViewController {
-
-    @IBOutlet weak var webView: UIWebView!
+/// Displays WebView with related CollabRJabbR info.
+class KnowledgeBaseViewController: SkinnedViewController {
     
-    //********************************************************************
-    // Action: backButton
-    // Description: Dismiss current screen and go back to Cube
-    //********************************************************************
-    @IBAction func backButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+    // MARK: - Private Members -
+    
+    private let knowledgeBaseURLString = "https://www.collab101.com/terms"
+    
+    // MARK: - Outlets -
+    
+    @IBOutlet weak var webView: WKWebView!
+    
+    // MARK: - Lifecycle -
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        setupWebview()
     }
     
-    //********************************************************************
-    // viewDidLoad
-    // Description: Load webpage into webView
-    //********************************************************************
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let knowledgeURL = URL(string: "https://www.collab101.com/terms")
-        let webRequest = URLRequest(url: knowledgeURL!)
-        self.webView.loadRequest(webRequest)
-        // Do any additional setup after loading the view.
+    // MARK: - Private Methods -
+    
+    ///
+    /// Load knowledge base into webview using URL specified in database.
+    ///
+    private func setupWebview() {
+        
+        guard let knowledgeBaseURL = URL(string: knowledgeBaseURLString) else {
+            showAlert(BSGCustomAlert(message: "Could not load Knowledge Base"))
+            return
+        }
+        
+        webView.alpha = 0.0
+        webView.navigationDelegate = self
+        showProgressHUD()
+        
+        let request = URLRequest(url: knowledgeBaseURL)
+        webView.load(request)
+    }
+}
+
+// MARK: - Extension: WKNavigationDelegate -
+
+extension KnowledgeBaseViewController: WKNavigationDelegate {
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        webView.alpha = 1.0
+        hideProgressHUD()
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        showAlert(BSGCustomAlert(message: "Could not load Knowledge Base"))
+    }
+}
+
+// MARK: - Actions -
+
+extension KnowledgeBaseViewController {
+    
+    @IBAction func backButton(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
