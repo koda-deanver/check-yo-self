@@ -55,18 +55,7 @@ class CubeViewController: SkinnedViewController {
         userBackdrop.image = User.current.favoriteColor.alertBackdrop
         userLabel.text = User.current.username
         
-        let buttons = [knowledgeBaseButton, profileButton, friendsButton, connectionsButton]
-        let buttonImages = [#imageLiteral(resourceName: "KnowledgeBaseIcon"), #imageLiteral(resourceName: "ProfileIcon"), #imageLiteral(resourceName: "FriendsIcon"), #imageLiteral(resourceName: "ConnectionsIcon")]
-        
-        for (index, button) in buttons.enumerated() {
-            
-            guard let button = button else { continue }
-            button.setBackgroundImage(User.current.favoriteColor.connectionBackdrop, for: .normal)
-            
-            let inset = button.frame.width * 0.1
-            button.setImage(buttonImages[index], for: .normal)
-            button.imageEdgeInsets = UIEdgeInsetsMake(inset, inset, inset, inset)
-        }
+        setupButtons()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -122,6 +111,25 @@ class CubeViewController: SkinnedViewController {
     }
     
     // MARK: - Private Methods -
+    
+    ///
+    /// Sets up and styles *knowledgeBaseButton*, *profileButton*, *friendsButton*, and *connectionsButton*.
+    ///
+    private func setupButtons() {
+        
+        let buttons = [knowledgeBaseButton, profileButton, friendsButton, connectionsButton]
+        let buttonImages = [#imageLiteral(resourceName: "KnowledgeBaseIcon"), #imageLiteral(resourceName: "ProfileIcon"), #imageLiteral(resourceName: "FriendsIcon"), #imageLiteral(resourceName: "ConnectionsIcon")]
+        
+        for (index, button) in buttons.enumerated() {
+            
+            guard let button = button else { continue }
+            button.setBackgroundImage(User.current.favoriteColor.connectionBackdrop, for: .normal)
+            
+            let inset = button.frame.width * 0.1
+            button.setImage(buttonImages[index], for: .normal)
+            button.imageEdgeInsets = UIEdgeInsetsMake(inset, inset, inset, inset)
+        }
+    }
     
     ///
     /// Plays introduction video presented by Sir Charles Kirby.
@@ -196,6 +204,7 @@ extension CubeViewController {
     }
     
     @IBAction func connectionsButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "showConnections", sender: self)
     }
     
     @IBAction func checkButtonPressed(_ sender: UIButton) {

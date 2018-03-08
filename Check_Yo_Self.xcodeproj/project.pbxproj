@@ -14,6 +14,10 @@
 		13523AF62011C34D00CDF58C /* LabelAndTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */; };
 		13523AF82011C52B00CDF58C /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */; };
 		13523AFB2011E1E500CDF58C /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */; };
+		136246CA204E61EF00778209 /* Connections.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136246C9204E61EF00778209 /* Connections.xib */; };
+		136246CC204E623C00778209 /* ConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136246CB204E623C00778209 /* ConnectionView.swift */; };
+		136246CE204E66D400778209 /* ConnectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136246CD204E66D400778209 /* ConnectionService.swift */; };
+		136246D1204FBF6300778209 /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136246D0204FBF6300778209 /* HealthKitService.swift */; };
 		137B1E0C203FEED700A70FE0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B1E0B203FEED700A70FE0 /* NotificationManager.swift */; };
 		138BF0272031403900119A52 /* BSGCustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF0252031403700119A52 /* BSGCustomAlert.swift */; };
 		138BF0282031403900119A52 /* BSGCustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF0262031403800119A52 /* BSGCustomAlertController.swift */; };
@@ -54,7 +58,7 @@
 		4A8346A91E203B6200BAF8F9 /* QuestionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468D1E203B6200BAF8F9 /* QuestionStorage.swift */; };
 		4A8346AA1E203B6200BAF8F9 /* CubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468F1E203B6200BAF8F9 /* CubeViewController.swift */; };
 		4A8346AB1E203B6200BAF8F9 /* DataEntryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346901E203B6200BAF8F9 /* DataEntryDetailsViewController.swift */; };
-		4A8346AC1E203B6200BAF8F9 /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346911E203B6200BAF8F9 /* DevicesViewController.swift */; };
+		4A8346AC1E203B6200BAF8F9 /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346911E203B6200BAF8F9 /* ConnectionsViewController.swift */; };
 		4A8346AD1E203B6200BAF8F9 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346921E203B6200BAF8F9 /* GeneralViewController.swift */; };
 		4A8346AE1E203B6200BAF8F9 /* KnowledgeBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346931E203B6200BAF8F9 /* KnowledgeBaseViewController.swift */; };
 		4A8346AF1E203B6200BAF8F9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346941E203B6200BAF8F9 /* LoginViewController.swift */; };
@@ -89,6 +93,10 @@
 		13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAndTextFieldCell.swift; sourceTree = "<group>"; };
 		13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountViewController.swift; sourceTree = "<group>"; };
 		13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
+		136246C9204E61EF00778209 /* Connections.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Connections.xib; sourceTree = "<group>"; };
+		136246CB204E623C00778209 /* ConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionView.swift; sourceTree = "<group>"; };
+		136246CD204E66D400778209 /* ConnectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionService.swift; sourceTree = "<group>"; };
+		136246D0204FBF6300778209 /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
 		137B1E0B203FEED700A70FE0 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		138BF0252031403700119A52 /* BSGCustomAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSGCustomAlert.swift; sourceTree = "<group>"; };
 		138BF0262031403800119A52 /* BSGCustomAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSGCustomAlertController.swift; sourceTree = "<group>"; };
@@ -133,7 +141,7 @@
 		4A83468D1E203B6200BAF8F9 /* QuestionStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionStorage.swift; sourceTree = "<group>"; };
 		4A83468F1E203B6200BAF8F9 /* CubeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CubeViewController.swift; sourceTree = "<group>"; };
 		4A8346901E203B6200BAF8F9 /* DataEntryDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataEntryDetailsViewController.swift; sourceTree = "<group>"; };
-		4A8346911E203B6200BAF8F9 /* DevicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
+		4A8346911E203B6200BAF8F9 /* ConnectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsViewController.swift; sourceTree = "<group>"; };
 		4A8346921E203B6200BAF8F9 /* GeneralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		4A8346931E203B6200BAF8F9 /* KnowledgeBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeBaseViewController.swift; sourceTree = "<group>"; };
 		4A8346941E203B6200BAF8F9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +188,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		136246CF204FBEFA00778209 /* HealthKit */ = {
+			isa = PBXGroup;
+			children = (
+				136246D0204FBF6300778209 /* HealthKitService.swift */,
+			);
+			path = HealthKit;
+			sourceTree = "<group>";
+		};
 		138BF0352032AC3C00119A52 /* Central Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,8 +227,9 @@
 				13E5ACE6202611ED00C92237 /* Stats */,
 				13E5ACEC202612A100C92237 /* Map */,
 				13E5ACEF2026131C00C92237 /* Knowledge Base */,
-				13E5ACE7202611FE00C92237 /* Devices */,
+				13E5ACE7202611FE00C92237 /* Connections */,
 				13E5ACE82026120800C92237 /* Friend List */,
+				136246CF204FBEFA00778209 /* HealthKit */,
 				4A83467F1E203B6200BAF8F9 /* FitBit */,
 				13E5ACE1202610F700C92237 /* Third Party */,
 				13E5ACDF202610C300C92237 /* BSG */,
@@ -342,13 +359,16 @@
 			path = Stats;
 			sourceTree = "<group>";
 		};
-		13E5ACE7202611FE00C92237 /* Devices */ = {
+		13E5ACE7202611FE00C92237 /* Connections */ = {
 			isa = PBXGroup;
 			children = (
 				13E5ACEB2026127A00C92237 /* View Controllers */,
 				4A06B5FB1E713C82008BDBE1 /* Connection.swift */,
+				136246C9204E61EF00778209 /* Connections.xib */,
+				136246CB204E623C00778209 /* ConnectionView.swift */,
+				136246CD204E66D400778209 /* ConnectionService.swift */,
 			);
-			path = Devices;
+			path = Connections;
 			sourceTree = "<group>";
 		};
 		13E5ACE82026120800C92237 /* Friend List */ = {
@@ -382,7 +402,7 @@
 		13E5ACEB2026127A00C92237 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4A8346911E203B6200BAF8F9 /* DevicesViewController.swift */,
+				4A8346911E203B6200BAF8F9 /* ConnectionsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -607,6 +627,7 @@
 				4AFB6CAF1E31545700CB8586 /* HookUp.mp3 in Resources */,
 				4AFB6CB11E31545700CB8586 /* ExtendedBeat.mp3 in Resources */,
 				4AADEAD81E30848000C062B5 /* Noodle.gif in Resources */,
+				136246CA204E61EF00778209 /* Connections.xib in Resources */,
 				4AFB6CAE1E31545700CB8586 /* HookDown.mp3 in Resources */,
 				4AFB6CB01E31545700CB8586 /* CheckVocals.mp3 in Resources */,
 				4A83469C1E203B6200BAF8F9 /* Main.storyboard in Resources */,
@@ -701,6 +722,7 @@
 				13E5ACF62026150A00C92237 /* CustomTabBar.swift in Sources */,
 				4A8346A51E203B6200BAF8F9 /* DataEntry.swift in Sources */,
 				4A06B5FC1E713C82008BDBE1 /* Connection.swift in Sources */,
+				136246CC204E623C00778209 /* ConnectionView.swift in Sources */,
 				4ABD51541E99558A00607CE8 /* PickAvatarViewController.swift in Sources */,
 				13382AB02017159500CAAB84 /* LoginFlowManager.swift in Sources */,
 				4AADEADA1E30887000C062B5 /* iOSDevCenters+GIF.swift in Sources */,
@@ -717,6 +739,7 @@
 				4A8346991E203B6200BAF8F9 /* AppDelegate.swift in Sources */,
 				138BF02E2031638C00119A52 /* TextField.swift in Sources */,
 				4A8346A41E203B6200BAF8F9 /* CustomTableViewCell.swift in Sources */,
+				136246CE204E66D400778209 /* ConnectionService.swift in Sources */,
 				132042AF2010692800DCE39E /* User.swift in Sources */,
 				13523AF82011C52B00CDF58C /* CreateNewAccountViewController.swift in Sources */,
 				4AA2D3CC1E2FFC6F00DBE986 /* Configuration.swift in Sources */,
@@ -728,9 +751,10 @@
 				13C099AA202D886200E356D5 /* DropdownMenuCell.swift in Sources */,
 				132042AB201062C300DCE39E /* BSGFirebaseService.swift in Sources */,
 				138BF03A2032B2E800119A52 /* ProfileInfo.swift in Sources */,
+				136246D1204FBF6300778209 /* HealthKitService.swift in Sources */,
 				137B1E0C203FEED700A70FE0 /* NotificationManager.swift in Sources */,
 				13C099A8202D865100E356D5 /* ProfileViewController.swift in Sources */,
-				4A8346AC1E203B6200BAF8F9 /* DevicesViewController.swift in Sources */,
+				4A8346AC1E203B6200BAF8F9 /* ConnectionsViewController.swift in Sources */,
 				4A8346A21E203B6200BAF8F9 /* String+Dates.swift in Sources */,
 				4A8346A71E203B6200BAF8F9 /* PlayerData.swift in Sources */,
 				4A83469E1E203B6200BAF8F9 /* FitbitAPI.swift in Sources */,

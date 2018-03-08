@@ -33,18 +33,7 @@ enum ErrorType{
     case data(String)
 }
 
-// List of connectable devices
-enum ConnectionType: String{
-    case cube = "Cube"
-    case facebook = "Facebook"
-    case health = "Health"
-    case fitbit = "Fitbit"
-    case maps = "Maps"
-    case musically = "Musically"
-    case emotiv = "Emotiv"
-    case occulus = "Occulus"
-    case thingyverse = "Thingyverse"
-}
+
 
 // Color of player and associated information
 /*enum CubeColor: String{

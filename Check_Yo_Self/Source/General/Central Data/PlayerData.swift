@@ -296,56 +296,6 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
             failure(.permissions(""))
         }
     }
-    
-    //********************************************************************
-    // getStepCountHK
-    // Description: Retrieve step count from HealthKit
-    //********************************************************************
-    func getStepCountHK(completion: @escaping (Int) -> Void, failure: @escaping (ErrorType) -> Void){
-        
-        //   Define the Step Quantity Type
-        let stepsCount = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)
-        
-        //   Get the start of the day
-        let date = NSDate()
-        let cal = Calendar(identifier: Calendar.Identifier.gregorian)
-        let newDate = cal.startOfDay(for: date as Date)
-        //  Set the Predicates & Interval
-        let predicate = HKQuery.predicateForSamples(withStart: newDate as Date, end: NSDate() as Date, options: .strictStartDate)
-        let interval: NSDateComponents = NSDateComponents()
-        interval.day = 1
-        
-        var stepCount: Double?
-        //  Perform the Query
-        let query = HKStatisticsCollectionQuery(quantityType: stepsCount!, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: newDate as Date, intervalComponents:interval as DateComponents)
-        
-        query.initialResultsHandler = { query, results, error in
-            if let error = error {
-                failure(.permissions(error.localizedDescription))
-            }else{
-                if let myResults = results{
-                    myResults.enumerateStatistics(from: date as Date, to: newDate as Date) {
-                        statistics, stop in
-                        
-                        if let quantity = statistics.sumQuantity() {
-                            stepCount = quantity.doubleValue(for: HKUnit.count())
-                            if let stepsDouble = stepCount{
-                                // Success grabbing steps
-                                completion(Int(stepsDouble))
-                            }else{
-                                failure(.permissions("Permissions Error"))
-                            }
-                        }else{
-                            failure(.permissions("Permissions Error"))
-                        }
-                    }
-                }else{
-                    failure(.permissions("Permissions Error"))
-                }
-            }
-        }
-        HKHealthStore().execute(query)
-    }
 
     
     //********************************************************************

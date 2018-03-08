@@ -31,11 +31,10 @@ extension UIViewController {
     /// Creates a new instance of BSGCustomAlertController and displays in as a child of current ViewController.
     ///
     /// - parameter alert: Custom alert to show.
-    /// - parameter color: Color to show alerts in.
     ///
-    func showAlert(_ alert: BSGCustomAlert, inColor color: CubeColor){
+    func showAlert(_ alert: BSGCustomAlert){
         
-        AlertController.changeColor(to: color)
+        AlertController.changeColor(to: User.current.favoriteColor)
         
         DispatchQueue.main.async{
             

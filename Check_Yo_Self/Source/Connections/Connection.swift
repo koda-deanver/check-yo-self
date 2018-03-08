@@ -1,28 +1,50 @@
-//********************************************************************
-//  Connection.swift
-//  Check Yo Self
-//  Created by Phil on 3/8/17
 //
-//  Description: Used to make loading data for connections easier. Handles
-// all connection with external data.
-//********************************************************************
+//  Connection.swift
+//  check-yo-self
+//
+//  Created by Phil on 3/6/18.
+//  Copyright © 2018 ThematicsLLC. All rights reserved.
+//
 
 import Foundation
 
-import FacebookLogin
-import FacebookCore
-import CoreLocation
+// MARK: - Enumerations -
 
-class Connection: NSObject{
+// List of connection types.
+enum ConnectionType: String{
+    case cube = "Cube"
+    case facebook = "Facebook"
+    case healthKit = "HealthKit"
+    case fitbit = "Fitbit"
+    case maps = "Maps"
+    case musically = "Musically"
+    case emotiv = "Emotiv"
+    case occulus = "Occulus"
+    case thingyverse = "Thingyverse"
+}
+
+/// Every possible state for *ConnectionView*.
+enum ConnectionState {
+    case connected, unconnected, pending
+}
+
+// MARK: - Class -
+
+struct Connection {
+    
+    // MARK: - Public Members -
+    
+    /// The type of connection. EX: Fitbit.
     let type: ConnectionType
-    var isConnected: Bool?
-
-    init(type: ConnectionType){
+    /// Current state of connection.
+    var state: ConnectionState = .unconnected
+    
+    // MARK: - Initializers -
+    
+    init(withType type: ConnectionType) {
         self.type = type
     }
-    
-    func checkConnection(){
-        switch self.type{
+        /*switch self.type{
         case .cube:
             self.isConnected = false
         case .facebook:
@@ -57,6 +79,6 @@ class Connection: NSObject{
         default:
             break
             
-        }
-    }
+        }*/
+    
 }

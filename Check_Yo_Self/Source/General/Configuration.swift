@@ -15,6 +15,8 @@ import FirebaseDatabase
 
 typealias Closure = () -> Void
 typealias ErrorClosure = (String) -> Void
+typealias BoolClosure = (Bool) -> Void
+typealias IntClosure = (Int) -> Void
 
 // MARK: - Constants -
 

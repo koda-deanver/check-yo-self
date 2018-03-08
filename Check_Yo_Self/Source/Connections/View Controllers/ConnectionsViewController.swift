@@ -1,43 +1,20 @@
-//********************************************************************
-//  DevicesViewController.swift
-//  Check Yo Self
-//  Created by Phil on 1/5/17
 //
-//  Description: Used to view and add devices that are being synced with
-//  the app
-//********************************************************************
+//  ConnectionsViewController.swift
+//  check-yo-self
+//
+//  Created by Phil on 3/6/18.
+//  Copyright © 2018 ThematicsLLC. All rights reserved.
+//
 
 import UIKit
-import HealthKit
-import FacebookLogin
-import FacebookCore
-import CoreLocation
 
-class DevicesViewController: GeneralViewController, AuthenticationProtocol {
+class ConnectionsViewController: SkinnedViewController {
+    
     lazy var healthStore = HKHealthStore()
     var authenticationController: AuthenticationController?
-    // Backdrops. Romm for 12 connections
-    @IBOutlet weak var backdrop0: UIButton!
+    
     @IBOutlet weak var connectionsLabel: UILabel!
-    @IBOutlet weak var backdrop1: UIButton!
-    @IBOutlet weak var backdrop2: UIButton!
-    @IBOutlet weak var backdrop3: UIButton!
-    @IBOutlet weak var backdrop4: UIButton!
-    @IBOutlet weak var backdrop5: UIButton!
-    @IBOutlet weak var backdrop6: UIButton!
-    @IBOutlet weak var backdrop7: UIButton!
-    @IBOutlet weak var backdrop8: UIButton!
-    @IBOutlet weak var backdrop9: UIButton!
-    @IBOutlet weak var backdrop10: UIButton!
-    @IBOutlet weak var backdrop11: UIButton!
-    var backdropArray: [UIButton]!
-    //********************************************************************
-    // Action: backButton
-    // Description: Dismiss current screen and go back to Cube
-    //********************************************************************
-    @IBAction func backButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
-    }
+    @IBOutlet weak var collectionView: UICollectionView!
     
     //********************************************************************
     // Action: connectionPressed
@@ -63,39 +40,6 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
         // Set connection label color
         self.connectionsLabel.textColor = CubeColor.green.uiColor
         loadAllConnections()
-        loadFutureConnections()
-    }
-    
-    //********************************************************************
-    // loadFutureConnections
-    // Description: Place images on future connections
-    //********************************************************************
-    func loadFutureConnections(){
-        for connectionIndex in Constants.connections.count...8{
-            // Set up Connection Image
-            let backdropDimension = self.backdropArray[connectionIndex].frame.width
-            let imageDimension = backdropDimension * 0.6
-            let connectionImageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: imageDimension, height: imageDimension)))
-            connectionImageView.center = CGPoint(x: backdropDimension/2, y: backdropDimension/2)
-            // Set correct image
-            var connectionImageName: String!
-            switch connectionIndex{
-            case 5:
-                connectionImageName = "Musically"
-            case 6:
-                connectionImageName = "Emotiv"
-            case 7:
-                connectionImageName = "Occulus"
-            case 8:
-                connectionImageName = "Thingyverse"
-            default:
-                break
-                
-            }
-            
-            connectionImageView.image = UIImage(named: connectionImageName)
-            self.backdropArray[connectionIndex].addSubview(connectionImageView)
-        }
     }
     
     //********************************************************************
@@ -153,72 +97,11 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
     }
     
     //********************************************************************
-    // checkConnection
-    // Description: Check status of individual connection
-    //********************************************************************
-    func checkConnection(connectionIndex: Int){
-        // Show pending animation
-        self.backdropArray[connectionIndex].isEnabled = false
-        self.backdropArray[connectionIndex].alpha = 0.5
-        self.backdropArray[connectionIndex].subviews[0].alpha = 0.5
-        let backdropDimension = self.backdropArray[connectionIndex].frame.width
-        let pendingDimension = backdropDimension * 0.6
-        let pendingImageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: pendingDimension, height: pendingDimension)))
-        pendingImageView.center = CGPoint(x: backdropDimension/2, y: backdropDimension/2)
-        // Show loading symbol in green
-        pendingImageView.image = #imageLiteral(resourceName: "LoadingSymbolGreen")
-        self.backdropArray[connectionIndex].addSubview(pendingImageView)
-        
-        // Start animation and checking for tested connection
-        startPendingAnimation(connectionIndex: connectionIndex, pendingImageView: pendingImageView)
-    }
-    
-    //********************************************************************
-    // startPendingAnimation
-    // Description: Show animation while waiting to see if connected
-    //********************************************************************
-    func startPendingAnimation(connectionIndex: Int, pendingImageView: UIImageView){
-        // Spin until connection status determined
-            UIView.animate(withDuration: 0.5, delay: 0.0,  animations: {
-                pendingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI))
-            }, completion: {
-                finished in
-            })
-            // Second half of spin (half delay for smooth transition)
-            UIView.animate(withDuration: 0.5, delay: 0.25,  animations: {
-                pendingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI * 2))
-            }, completion: {
-                finished in
-                self.countConnected()
-                // Base condition
-                if let isConnected = Constants.connections[connectionIndex].isConnected{
-                    pendingImageView.removeFromSuperview()
-                    if isConnected{
-                        let backdrop = self.backdropArray[connectionIndex]
-                        backdrop.setBackgroundImage(#imageLiteral(resourceName: "ConnectionBackdropGreen"), for: .normal)
-                        let checkImage = UIImageView(frame: CGRect(x: backdrop.frame.width/2, y: backdrop.frame.height/2, width: backdrop.frame.width/2, height: backdrop.frame.height/2))
-                        checkImage.image = #imageLiteral(resourceName: "ConnectedSymbol")
-                        backdrop.addSubview(checkImage)
-                    }else{
-                        self.backdropArray[connectionIndex].setBackgroundImage(#imageLiteral(resourceName: "ConnectionBackdropGray"), for: .normal)
-                    }
-                    self.backdropArray[connectionIndex].alpha = 1.0
-                    // Gets connectionImage
-                    self.backdropArray[connectionIndex].subviews[1].alpha = 1.0
-                    self.backdropArray[connectionIndex].isEnabled = true
-                }else{
-                    // Recursive condition
-                    self.startPendingAnimation(connectionIndex: connectionIndex, pendingImageView: pendingImageView)
-                }
-            })
-    }
-    
-    //********************************************************************
     // handleConnectionTouch
     // Description: Try to connect user to the chosen connection
     //********************************************************************
     func handleConnectionTouch(_ connection: Connection, connectionIndex: Int){
-        /*if let isConnected = connection.isConnected{
+        if let isConnected = connection.isConnected{
             // Reset to recheck
             switch connection.type{
             case .cube:
@@ -322,30 +205,10 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
             default:
                 break
             }
-        }*/
-    }
-    
-    //********************************************************************
-    // connectHealthKit
-    // Description: Request permissions from HealthKit
-    //********************************************************************
-    func connectHealthKit(completion: @escaping () -> Void, failure: @escaping (ErrorType) -> Void){
-        
-        var readTypes = Set<HKObjectType>()
-        readTypes.insert(HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!)
-        
-        healthStore.requestAuthorization(toShare: nil, read: readTypes) { (success, error) -> Void in
-            if let error = error {
-                failure(.permissions(error.localizedDescription))
-            }else{
-                if success {
-                    completion()
-                } else {
-                    failure(.permissions("Permissions failure"))
-                }
-            }
         }
     }
+    
+    
 
     //********************************************************************
     // authorizationDidFinish
@@ -381,7 +244,7 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
     // loadAllFacebookData
     // Description: Helper function to load player FB data upon first connect
     //********************************************************************
-    /*func loadAllFacebookData(){
+    func loadAllFacebookData(){
         // Load FB Data
         PlayerData.sharedInstance.loadPlayerFB(completion: {
             print("SUCCESS: Player FB data loaded")
@@ -412,6 +275,15 @@ class DevicesViewController: GeneralViewController, AuthenticationProtocol {
                 break
             }
         })
-    }*/
+    }
+}
+
+// MARK: - Extension: Actions -
+
+extension ConnectionsViewController {
+    
+     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+     }
 }
 
