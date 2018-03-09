@@ -723,8 +723,8 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="4mN-Uj-d0o" id="9pF-JR-G3d"/>
-                                    <outlet property="delegate" destination="4mN-Uj-d0o" id="QiM-yM-8ad"/>
+                                    <outlet property="dataSource" destination="4mN-Uj-d0o" id="A8M-RS-AKu"/>
+                                    <outlet property="delegate" destination="4mN-Uj-d0o" id="fq6-gZ-IQf"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -748,7 +748,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="collectionView" destination="F3R-kO-ay0" id="adw-K9-9dC"/>
+                        <outlet property="collectionView" destination="F3R-kO-ay0" id="JbT-zf-1B5"/>
                         <outlet property="connectionsLabel" destination="ujp-5v-ICO" id="XgV-SN-JsP"/>
                     </connections>
                 </viewController>

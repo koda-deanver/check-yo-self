@@ -13,6 +13,12 @@ import UIKit
 /// Screen displaying all possible connections. Connections that are being used display on a green backdrop.
 final class ConnectionsViewController: SkinnedViewController {
     
+    // MARK: - Private Members -
+    
+    private var connections: [Connection] { return ConnectionManager.shared.existingConnections }
+    
+    // MARK: - Outlets -
+    
     @IBOutlet weak var connectionsLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -28,9 +34,11 @@ extension ConnectionsViewController: UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "connectionCell", for: indexPath)
+        cell.backgroundColor = .red
         
         guard let connectionView = UINib.viewWithClass(classType: ConnectionView.self, fromNibNamed: "Connections") else { return cell }
+        connectionView.configure(for: connections[indexPath.row])
         connectionView.frame = cell.frame
         cell.addSubview(connectionView)
         
