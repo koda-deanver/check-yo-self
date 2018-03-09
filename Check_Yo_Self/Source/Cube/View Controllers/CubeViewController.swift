@@ -218,6 +218,6 @@ extension CubeViewController {
             self.dismiss(animated: true, completion: nil)
         }),(text: "Cancel", handler: {})])
         
-        showAlert(logoutAlert, inColor: User.current.favoriteColor)
+        showAlert(logoutAlert)
     }
 }

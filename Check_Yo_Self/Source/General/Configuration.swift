@@ -25,15 +25,6 @@ struct Constants {
     static let rowHeightNormal: CGFloat = 60.0
 
     static let firebaseRootPath = Database.database().reference(fromURL: "https://check-yo-self-18682434.firebaseio.com/")
-    
-    // Connection that are currently available
-    static let connections: [Connection] = [
-        Connection(type: .cube),
-        Connection(type: .facebook),
-        Connection(type: .health),
-        Connection(type: .fitbit),
-        Connection(type: .maps)
-    ]
 }
 
 // MARK: - Font -

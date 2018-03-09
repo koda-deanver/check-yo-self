@@ -9,7 +9,6 @@
 
 import UIKit
 import CoreLocation
-import HealthKit
 import FacebookLogin
 import FacebookCore
 import Firebase
@@ -263,39 +262,14 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
     // Description: Delegate method called when auth is changed
     //********************************************************************
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse{
+        /*if status == .authorizedWhenInUse{
             for connection in Constants.connections where connection.type == .maps{
                 connection.checkConnection()
             }
-        }
+        }*/
     }
     
-    //********************************************************************
-    // getHeartRateFB
-    // Description: Call to Fitbit to grab heart data for use when building data entry.
-    // heartDictionary is saved to PlayerData inside Fitbit call
-    //********************************************************************
-    func getHeartRateFB(completion: @escaping ([String: Int]?) -> Void, failure: @escaping (ErrorType) -> Void){
-        if let authToken = PlayerData.sharedInstance.fitbitToken{
-            FitbitAPI.sharedInstance.authorize(with: authToken)
-            HeartStats.getTodaysHeartStats(completion: { heartDictionary in
-                completion(heartDictionary)
-            }, failure: { fitbitError in
-                switch fitbitError{
-                case .connection(let error):
-                    print("CONNECTION ERROR: \(error)")
-                    failure(.connection(error))
-                case .data(let errorString):
-                    print("DATA ERROR: \(errorString)")
-                    failure(.data(errorString))
-                default:
-                    break
-                }
-            })
-        }else{
-            failure(.permissions(""))
-        }
-    }
+    
 
     
     //********************************************************************

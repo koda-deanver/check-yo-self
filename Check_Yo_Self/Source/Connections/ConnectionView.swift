@@ -39,15 +39,6 @@ class ConnectionView: UIView {
     // MARK: - Private Methods -
     
     ///
-    /// Start pending animation and attempt to connect to the connection.
-    ///
-    private func connect() {
-        
-        styleFor(.pending)
-        connection.connect() { self.styleFor(self.connection.state) }
-    }
-    
-    ///
     /// Style the view to match the specified state.
     ///
     /// - parameter state: The state of the connection view to style for.
@@ -88,6 +79,6 @@ extension ConnectionView {
     
     /// Attempt to connect to connection.
     @IBAction func backdropButtonPressed(_ sender: UIButton) {
-        connect()
+        // FIX: Do something or nah?
     }
 }

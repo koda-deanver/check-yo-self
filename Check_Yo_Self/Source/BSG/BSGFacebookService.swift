@@ -23,7 +23,12 @@ enum BSGFacebookError {
 }
 
 ///  Contains functions for interfacing with Facebook.
-class BSGFacebookService{
+class BSGFacebookService {
+    
+    // MARK: - Public Members -
+    
+    /// Bool indicating is user is currently logged in.
+    static var isLoggedIn: Bool { return AccessToken.current != nil }
     
     // MARK: - Static Methods -
     

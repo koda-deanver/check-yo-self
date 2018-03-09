@@ -157,10 +157,10 @@ class PlayViewController: GeneralViewController{
             self.phaseChange()
         }else if self.questionsAnswered == Configuration.questionsPerRound{
             // Old game was finished start a new one
-            startNewGame()
+           // startNewGame()
         }else if self.questionsAnswered == 0{
             // First game after loading (fixed error 2/8/17
-            startNewGame()
+            //startNewGame()
         }
 
     }
@@ -199,7 +199,7 @@ class PlayViewController: GeneralViewController{
     // Description: Grab new questions, reset all counters and start a new
     // game
     //********************************************************************
-    func startNewGame(){
+    /*func startNewGame(){
         // Catch next interstitial for game over
         if Configuration.showAds == true{
             Chartboost.cacheInterstitial(CBLocationGameOver)
@@ -245,7 +245,7 @@ class PlayViewController: GeneralViewController{
                 return
             }
         }
-    }
+    }*/
     
     //********************************************************************
     // updateStats

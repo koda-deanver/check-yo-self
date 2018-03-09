@@ -94,7 +94,7 @@ final class LoginViewController: GeneralViewController {
             guard users.count == 1 else {
                 let errorText = (users.count == 0) ? "Invalid username/passcode." : "Uh-oh Something is wrong with your account."
                 let alert = BSGCustomAlert(message: errorText, options: [(text: "Close", handler: {})])
-                self.showAlert(alert, inColor: .none)
+                self.showAlert(alert)
                 return
             }
             

@@ -12,15 +12,17 @@ import Foundation
 
 // List of connection types.
 enum ConnectionType: String{
-    case cube = "Cube"
     case facebook = "Facebook"
     case healthKit = "HealthKit"
     case fitbit = "Fitbit"
+    case cube = "Cube"
     case maps = "Maps"
     case musically = "Musically"
     case emotiv = "Emotiv"
     case occulus = "Occulus"
     case thingyverse = "Thingyverse"
+    
+    static var existing: [ConnectionType] = [.facebook, .healthKit, .fitbit]
 }
 
 /// Every possible state for *ConnectionView*.
@@ -28,7 +30,7 @@ enum ConnectionState {
     case connected, unconnected, pending
 }
 
-// MARK: - Class -
+// MARK: - Struct -
 
 struct Connection {
     
@@ -44,41 +46,4 @@ struct Connection {
     init(withType type: ConnectionType) {
         self.type = type
     }
-        /*switch self.type{
-        case .cube:
-            self.isConnected = false
-        case .facebook:
-            if AccessToken.current != nil{
-                self.isConnected = true
-            }else{
-                self.isConnected = false
-            }
-        case .health:
-            PlayerData.sharedInstance.getStepCountHK(completion: {_ in
-                self.isConnected = true
-            }, failure: {_ in
-                self.isConnected = false
-            })
-        case .fitbit:
-            PlayerData.sharedInstance.getHeartRateFB(completion: {_ in
-                self.isConnected = true
-            }, failure: {errorType in
-                switch errorType{
-                case .data:
-                    self.isConnected = true
-                default:
-                    self.isConnected = false
-                }
-            })
-        case .maps:
-            if PlayerData.sharedInstance.getLocation() != nil{
-                self.isConnected = true
-            }else{
-                self.isConnected = false
-            }
-        default:
-            break
-            
-        }*/
-    
 }

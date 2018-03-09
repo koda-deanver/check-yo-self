@@ -35,9 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configure Firebase shared instance
         FirebaseApp.configure()
         
-        // Alerts
-        AlertController.configure(withAnimationDuration: 0.25, backgroundImage: #imageLiteral(resourceName: "AlertBackdropGray"), messageFont: Font.main, messageTextColor: .black, buttonFont: Font.main, buttonTextColor: .black, buttonImage: #imageLiteral(resourceName: "GameButtonGray"))
-        
         return true
     }
     

@@ -84,9 +84,9 @@ class GeneralViewController: UIViewController {
     ///
     /// - parameter alert: Custom alert to show.
     ///
-    override func showAlert(_ alert: BSGCustomAlert){
+    func showAlert(_ alert: BSGCustomAlert){
         
-        let color = User.current.favoriteColor
+        let color = User.current != nil ? User.current.favoriteColor : .none
         BSGVerticalButtonAlertController.configure(withAnimationDuration: 0.25, backgroundImage: color.alertBackdrop, buttonTextColor: .black, buttonImage: color.buttonImage)
         
         let alertController = BSGVerticalButtonAlertController()

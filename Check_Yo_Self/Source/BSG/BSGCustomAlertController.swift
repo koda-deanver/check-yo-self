@@ -220,7 +220,7 @@ class BSGVerticalButtonAlertController: UIViewController {
 
 // MARK: - Extension: UIViewController -
 
-extension UIViewController{
+/*extension UIViewController{
     
     ///
     /// Show alert on any ViewController.
@@ -242,4 +242,4 @@ extension UIViewController{
             alertController.didMove(toParentViewController: self)
         }
     }
-}
+}*/
