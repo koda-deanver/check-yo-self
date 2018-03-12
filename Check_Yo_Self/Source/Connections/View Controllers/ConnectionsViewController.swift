@@ -22,6 +22,12 @@ final class ConnectionsViewController: SkinnedViewController {
     @IBOutlet weak var connectionsLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // MARK: - Lifecycle -
+    
+    override func style() {
+        super.style()
+        connectionsLabel.textColor = User.current.ageGroup.textColor
+    }
 }
 
 // MARK: - Extension: Collection View -
@@ -34,13 +40,9 @@ extension ConnectionsViewController: UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "connectionCell", for: indexPath)
-        cell.backgroundColor = .red
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "connectionCell", for: indexPath) as? ConnectionCell else { return UICollectionViewCell() }
         
-        guard let connectionView = UINib.viewWithClass(classType: ConnectionView.self, fromNibNamed: "Connections") else { return cell }
-        connectionView.configure(for: connections[indexPath.row])
-        connectionView.frame = cell.frame
-        cell.addSubview(connectionView)
+        cell.configure(for: connections[indexPath.row], containingViewController: self)
         
         return cell
     }

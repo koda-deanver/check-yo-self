@@ -16,7 +16,6 @@
 		13523AF62011C34D00CDF58C /* LabelAndTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */; };
 		13523AF82011C52B00CDF58C /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */; };
 		13523AFB2011E1E500CDF58C /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */; };
-		136246CA204E61EF00778209 /* Connections.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136246C9204E61EF00778209 /* Connections.xib */; };
 		136246CC204E623C00778209 /* ConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136246CB204E623C00778209 /* ConnectionView.swift */; };
 		136246CE204E66D400778209 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136246CD204E66D400778209 /* ConnectionManager.swift */; };
 		136246D1204FBF6300778209 /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136246D0204FBF6300778209 /* HealthKitService.swift */; };
@@ -96,7 +95,6 @@
 		13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAndTextFieldCell.swift; sourceTree = "<group>"; };
 		13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountViewController.swift; sourceTree = "<group>"; };
 		13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
-		136246C9204E61EF00778209 /* Connections.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Connections.xib; sourceTree = "<group>"; };
 		136246CB204E623C00778209 /* ConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionView.swift; sourceTree = "<group>"; };
 		136246CD204E66D400778209 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		136246D0204FBF6300778209 /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
@@ -349,7 +347,6 @@
 			children = (
 				13E5ACEB2026127A00C92237 /* View Controllers */,
 				4A06B5FB1E713C82008BDBE1 /* Connection.swift */,
-				136246C9204E61EF00778209 /* Connections.xib */,
 				136246CB204E623C00778209 /* ConnectionView.swift */,
 				136246CD204E66D400778209 /* ConnectionManager.swift */,
 				136246D0204FBF6300778209 /* HealthKitService.swift */,
@@ -614,7 +611,6 @@
 				4AFB6CAF1E31545700CB8586 /* HookUp.mp3 in Resources */,
 				4AFB6CB11E31545700CB8586 /* ExtendedBeat.mp3 in Resources */,
 				4AADEAD81E30848000C062B5 /* Noodle.gif in Resources */,
-				136246CA204E61EF00778209 /* Connections.xib in Resources */,
 				4AFB6CAE1E31545700CB8586 /* HookDown.mp3 in Resources */,
 				4AFB6CB01E31545700CB8586 /* CheckVocals.mp3 in Resources */,
 				4A83469C1E203B6200BAF8F9 /* Main.storyboard in Resources */,

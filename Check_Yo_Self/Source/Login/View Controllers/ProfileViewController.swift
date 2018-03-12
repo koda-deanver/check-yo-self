@@ -9,7 +9,7 @@
 import UIKit
 
 /// Present user with a series of questions that personalize thier account. These questions are taken from the database.
-final class ProfileViewController: GeneralViewController {
+final class ProfileViewController: SkinnedViewController {
     
     // MARK: - Public Members -
     
@@ -55,7 +55,12 @@ final class ProfileViewController: GeneralViewController {
     
     override func style() {
         
-        view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+        super.style()
+        
+        /// Make transparent if first time through from login.
+        if let _ = self.presentingViewController as? LoginViewController {
+            view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+        }
         
         finishButton.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
         finishButton.isEnabled = inputIsValid

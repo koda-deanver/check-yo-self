@@ -20,6 +20,14 @@ enum AgeGroup: String {
         }
     }
     
+    /// Color to style labels with.
+    var textColor: UIColor {
+        switch self {
+        case .youth: return .black
+        case .adult: return .white
+        }
+    }
+    
     ///
     /// Returns an AgeGroup if it matches string, otherwise defaults to adult.
     ///

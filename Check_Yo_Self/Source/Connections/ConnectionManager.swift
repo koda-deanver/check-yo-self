@@ -34,9 +34,9 @@ final class ConnectionManager {
     ///
     func connect(_ connection: Connection, viewController: GeneralViewController, completion: @escaping BoolClosure) {
         switch connection.type {
-        case .facebook: connectFacebook(viewController: viewController, completion: completion)
-        case .healthKit: connectHealthKit(viewController: viewController, completion: completion)
-        case .fitbit: connectFitbit(viewController: viewController, completion: completion)
+        case .facebook: connectFacebook(connection: connection, viewController: viewController, completion: completion)
+        case .healthKit: connectHealthKit(connection: connection, viewController: viewController, completion: completion)
+        case .fitbit: connectFitbit(connection: connection, viewController: viewController, completion: completion)
         default: break
         }
     }
@@ -67,8 +67,8 @@ final class ConnectionManager {
         
         switch connection.type {
         case .facebook: checkFacebookConnection(completion: completion)
-        case .healthKit: checkHealthKitConnection(completion: completion)
-        case .fitbit: checkFitbitConnection(completion: completion)
+        case .healthKit: checkHealthKitConnection(connection: connection, completion: completion)
+        case .fitbit: checkFitbitConnection(connection: connection, completion: completion)
         default: break
         }
     }
@@ -81,12 +81,16 @@ extension ConnectionManager {
     ///
     /// Prompt user to login to *Facebook*.
     ///
+    /// - parameter connection: The facebook connection.
     /// - parameter viewController: View controller on which to display alerts.
     /// - parameter completion: Handler containing Bool indicating if connection was established.
     ///
-    private func connectFacebook(viewController: GeneralViewController, completion: @escaping BoolClosure) {
+    private func connectFacebook(connection: Connection, viewController: GeneralViewController, completion: @escaping BoolClosure) {
         
         let alert = BSGCustomAlert(message: "Login to Facebook?", options: [(text: "Login", handler: {
+            
+            connection.state = .pending
+            
             BSGFacebookService.login(completion: {
                 completion(true)
             }, failure: { _ in
@@ -106,7 +110,7 @@ extension ConnectionManager {
     /// - parameter completion: Handler containing Bool indicating if connection is still present.
     ///
     private func explainFacebook(viewController: GeneralViewController, completion: @escaping BoolClosure) {
-        
+    
         let alert = BSGCustomAlert(message: "Facebook tracks your progress against friends on the leaderboard!", options: [(text: "Sweet", handler: {
             completion(true)
         }), (text: "Logout", handler: {
@@ -134,19 +138,21 @@ extension ConnectionManager {
     ///
     /// Ask for user permission and connect HealthKit.
     ///
+    /// - parameter connection: The *HealthKit* connection.
     /// - parameter viewController: View controller on which to display alerts.
     /// - parameter completion: Handler containing Bool indicating if connection was established.
     ///
-    private func connectHealthKit(viewController: GeneralViewController, completion: @escaping BoolClosure) {
+    private func connectHealthKit(connection: Connection, viewController: GeneralViewController, completion: @escaping BoolClosure) {
         
         let alert = BSGCustomAlert(message: "Connect HealthKit?", options: [(text: "Connect", handler: {
             
+            connection.state = .pending
             HealthKitService.authorize(success: {
                 completion(true)
             }, failure: { _ in
                 completion(false)
             })
-        })])
+        }), (text: "Cancel", handler: { completion(false) })])
         
         viewController.showAlert(alert)
     }
@@ -171,10 +177,12 @@ extension ConnectionManager {
     ///
     /// This method uses *getStepCount* to determine if there is a connection. There seems to be no direct way to determine if user has enabled HealthKit.
     ///
+    /// - parameter connection: The *HealthKit* connection.
     /// - parameter completion: Handler containing Bool indicating whether HealthKit is connected.
     ///
-    private func checkHealthKitConnection(completion: @escaping BoolClosure) {
+    private func checkHealthKitConnection(connection: Connection, completion: @escaping BoolClosure) {
         
+        connection.state = .pending
         HealthKitService.getStepCountHK(success: {_ in
             completion(true)
         }, failure: { _ in
@@ -190,12 +198,14 @@ extension ConnectionManager {
     ///
     /// Ask user to login to Fitbit account.
     ///
+    /// - parameter connection: The *Fitbit* connection.
     /// - parameter viewController: View controller on which to display alerts.
     /// - parameter completion: Handler containing Bool indicating if connection was established.
     ///
-    private func connectFitbit(viewController: GeneralViewController, completion: @escaping BoolClosure) {
+    private func connectFitbit(connection: Connection, viewController: GeneralViewController, completion: @escaping BoolClosure) {
         
         let alert = BSGCustomAlert(message: "Connect Fitbit?", options: [(text: "Connect", handler: {
+            connection.state = .pending
             FitbitManager.shared.login(from: viewController)
         }), (text: "Cancel", handler: { completion(false) })])
         
@@ -220,10 +230,12 @@ extension ConnectionManager {
     /// FIX: Check this connection more directly.
     /// This method uses *getTodaysHeartData* to determine if there is a connection.
     ///
+    /// - parameter connection: The *Fitbit* connection.
     /// - parameter completion: Handler containing Bool indicating whether Fitbit is connected.
     ///
-    private func checkFitbitConnection(completion: @escaping BoolClosure) {
+    private func checkFitbitConnection(connection: Connection, completion: @escaping BoolClosure) {
         
+        connection.state = .pending
         FitbitManager.shared.getTodaysHeartData(success: { _ in
             completion(true)
         }, failure: { _ in

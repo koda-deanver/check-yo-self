@@ -9,12 +9,14 @@
 import UIKit
 
 /// Holds view for single connection on *connectionsViewController*. EX: *Fitbit*, *HealthKit*.
-class ConnectionView: UIView {
+class ConnectionCell: UICollectionViewCell {
     
     // MARK - Private Members -
     
     /// Connection model object.
     private var connection: Connection!
+    /// Connections screen.
+    private var containingViewController: GeneralViewController?
     
     // MARK: - Outlets -
     
@@ -30,10 +32,16 @@ class ConnectionView: UIView {
     ///
     /// - parameter connection: The connection to set up view to represent.
     ///
-    func configure(for connection: Connection) {
+    func configure(for connection: Connection, containingViewController: GeneralViewController) {
         
+        self.containingViewController = containingViewController
         self.connection = connection
-        styleFor(connection.state)
+        connection.cell = self
+        
+        guard let image = connection.type.image else { return }
+        connectionImage.image = image
+        
+        style(for: connection.state)
     }
     
     // MARK: - Private Methods -
@@ -43,7 +51,7 @@ class ConnectionView: UIView {
     ///
     /// - parameter state: The state of the connection view to style for.
     ///
-    private func styleFor(_ state: ConnectionState) {
+    func style(for state: ConnectionState) {
       
         let backgroundImage = (connection.state == .connected) ? #imageLiteral(resourceName: "ConnectionBackdropGreen") : #imageLiteral(resourceName: "ConnectionBackdropGray")
         backdropButton.setBackgroundImage(backgroundImage, for: .normal)
@@ -68,17 +76,18 @@ class ConnectionView: UIView {
         UIView.animate(withDuration: 0.5, delay: 0.25,  animations: {
             self.loadingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi * 2))
         }, completion: { _ in
-            self.styleFor(self.connection.state)
+            self.style(for: self.connection.state)
         })
     }
 }
 
 // MARK: - Extension: Actions -
 
-extension ConnectionView {
+extension ConnectionCell {
     
     /// Attempt to connect to connection.
     @IBAction func backdropButtonPressed(_ sender: UIButton) {
-        // FIX: Do something or nah?
+        guard let viewController = containingViewController else { return }
+        connection.handleInteraction(viewController: viewController)
     }
 }
