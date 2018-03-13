@@ -27,9 +27,11 @@ final class LoginViewController: GeneralViewController {
     ///
     override func style() {
         
+        super.style()
+        
         view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.4)
         
-        messageLabel.font = UIFont(name: Font.main, size: Font.mediumSize)
+        messageLabel.font = UIFont(name: Font.heavy, size: Font.mediumSize)
         
         let usernameBlueprint = TextFieldBlueprint(withPlaceholder: "Username", maxCharacters: Configuration.usernameMaxLength, minCharacters: Configuration.usernameMinLength)
         usernameTextField.configure(withBlueprint: usernameBlueprint, delegate: nil)
@@ -37,10 +39,10 @@ final class LoginViewController: GeneralViewController {
         let passcodeBlueprint = TextFieldBlueprint(withPlaceholder: "Passcode", isSecure: true, maxCharacters: Configuration.passcodeLength, minCharacters: Configuration.passcodeLength, limitCharactersTo: CharacterType.numeric)
         passcodeTextField.configure(withBlueprint: passcodeBlueprint, delegate: nil)
         
-        loginButton.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
+        loginButton.titleLabel?.font = UIFont(name: Font.heavy, size: Font.mediumSize)
         loginButton.isEnabled = false
         
-        createAccountButton.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
+        createAccountButton.titleLabel?.font = UIFont(name: Font.heavy, size: Font.mediumSize)
     }
     
     /// To prevent temporarily showing this view behind the next.
@@ -94,7 +96,7 @@ final class LoginViewController: GeneralViewController {
             guard users.count == 1 else {
                 let errorText = (users.count == 0) ? "Invalid username/passcode." : "Uh-oh Something is wrong with your account."
                 let alert = BSGCustomAlert(message: errorText, options: [(text: "Close", handler: {})])
-                self.showAlert(alert, inColor: .none)
+                self.showAlert(alert)
                 return
             }
             

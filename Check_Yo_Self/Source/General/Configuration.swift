@@ -15,6 +15,8 @@ import FirebaseDatabase
 
 typealias Closure = () -> Void
 typealias ErrorClosure = (String) -> Void
+typealias BoolClosure = (Bool) -> Void
+typealias IntClosure = (Int) -> Void
 
 // MARK: - Constants -
 
@@ -23,26 +25,18 @@ struct Constants {
     static let rowHeightNormal: CGFloat = 60.0
 
     static let firebaseRootPath = Database.database().reference(fromURL: "https://check-yo-self-18682434.firebaseio.com/")
-    
-    // Connection that are currently available
-    static let connections: [Connection] = [
-        Connection(type: .cube),
-        Connection(type: .facebook),
-        Connection(type: .health),
-        Connection(type: .fitbit),
-        Connection(type: .maps)
-    ]
 }
 
 // MARK: - Font -
 
 struct Font {
-    static let main = "Arial"
+    static let heavy = "Chalkduster"
+    static let main = "Party LET"
     
     /// Size based on 60 pt for 9 inch iPad.
     static let mediumSize: CGFloat = (60 / 1536) * UIScreen.main.bounds.width
     static let smallSize: CGFloat = (40 / 1536) * UIScreen.main.bounds.width
-    static let largeSize: CGFloat = (80 / 1536) * UIScreen.main.bounds.width
+    static let largeSize: CGFloat = (100 / 1536) * UIScreen.main.bounds.width
 }
 
 // MARK: - Configuration -

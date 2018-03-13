@@ -76,4 +76,25 @@ class GeneralViewController: UIViewController {
     @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    ///
+    /// Show alert on any ViewController.
+    ///
+    /// Creates a new instance of BSGCustomAlertController and displays in as a child of current ViewController.
+    ///
+    /// - parameter alert: Custom alert to show.
+    ///
+    func showAlert(_ alert: BSGCustomAlert){
+        
+        let color = User.current != nil ? User.current.favoriteColor : .none
+        BSGVerticalButtonAlertController.configure(withAnimationDuration: 0.25, backgroundImage: color.alertBackdrop, buttonTextColor: .black, buttonImage: color.buttonImage)
+        
+        let alertController = BSGVerticalButtonAlertController()
+        alertController.alert = alert
+        self.addChildViewController(alertController)
+        alertController.view.frame = self.view.frame
+        alertController.view.layer.zPosition = 10
+        self.view.addSubview(alertController.view)
+        alertController.didMove(toParentViewController: self)
+    }
 }

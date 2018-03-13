@@ -107,7 +107,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No cube projects" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jO-OK-a2D" userLabel="cubeProjectLabel">
-                                                <rect key="frame" x="87" y="18" width="165.5" height="23.5"/>
+                                                <rect key="frame" x="87" y="18.5" width="165.5" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -355,10 +355,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gew-1j-Qp2" userLabel="buttonContainer">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WxB-bi-Ac0" userLabel="checkButton">
-                                                                <rect key="frame" x="37.5" y="11.5" width="300" height="50"/>
+                                                                <rect key="frame" x="37.5" y="12.5" width="300" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="WxB-bi-Ac0" secondAttribute="height" multiplier="6:1" id="ivV-h3-dFy"/>
                                                                 </constraints>
@@ -379,10 +379,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waC-Jl-ztr" userLabel="buttonContainer">
-                                                        <rect key="frame" x="0.0" y="74.5" width="375" height="75"/>
+                                                        <rect key="frame" x="0.0" y="75" width="375" height="74.5"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7U-le-Je2" userLabel="logoutButton">
-                                                                <rect key="frame" x="93" y="21" width="187.5" height="31.5"/>
+                                                                <rect key="frame" x="93" y="21" width="187.5" height="31"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="k7U-le-Je2" secondAttribute="height" multiplier="6:1" id="ikd-vB-fwt"/>
                                                                 </constraints>
@@ -433,6 +433,7 @@
                     <connections>
                         <outlet property="checkButton" destination="WxB-bi-Ac0" id="5Jw-40-Jha"/>
                         <outlet property="connectionsButton" destination="F07-Oe-4Qc" id="zNk-oV-6pB"/>
+                        <outlet property="cubeProjectsLabel" destination="4jO-OK-a2D" id="big-wr-5gO"/>
                         <outlet property="friendsButton" destination="dfS-tu-kdD" id="zZi-ic-R1q"/>
                         <outlet property="gemLabel" destination="d28-gf-teE" id="OHf-rj-42s"/>
                         <outlet property="knowledgeBaseButton" destination="Byj-Zt-X5a" id="W4c-mY-mgR"/>
@@ -444,6 +445,7 @@
                         <outlet property="userLabel" destination="ZKa-X3-qNL" id="JIn-KI-JKi"/>
                         <segue destination="qgS-aL-ZV8" kind="presentation" identifier="showFriendList" id="FL1-zu-Ibt"/>
                         <segue destination="IAd-pt-ZfE" kind="presentation" identifier="showKnowledgeBase" id="gHx-HK-CBH"/>
+                        <segue destination="2LN-s1-lwg" kind="presentation" identifier="showConnections" id="ycg-aP-kuw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dWn-fh-WCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -685,7 +687,7 @@
         <!--Devices-->
         <scene sceneID="6DH-xE-vmP">
             <objects>
-                <viewController id="4mN-Uj-d0o" userLabel="Devices" customClass="DevicesViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4mN-Uj-d0o" userLabel="Devices" customClass="ConnectionsViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="arr-Jq-3yg"/>
                         <viewControllerLayoutGuide type="bottom" id="Pdd-kR-yyp"/>
@@ -694,164 +696,109 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJJ-A2-R34">
-                                <rect key="frame" x="43" y="158" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="backdrop0"/>
-                                <state key="normal" backgroundImage="ConnectionBackdropGray"/>
-                                <state key="selected" backgroundImage="ConnectionBackdropGreen"/>
-                                <connections>
-                                    <action selector="connectionPressed:" destination="4mN-Uj-d0o" eventType="touchUpInside" id="qfG-Jh-18J"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNi-tr-8yr">
-                                <rect key="frame" x="259" y="158" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="backdrop2"/>
-                                <state key="normal" backgroundImage="ConnectionBackdropGray"/>
-                                <state key="selected" backgroundImage="ConnectionBackdropGreen"/>
-                                <connections>
-                                    <action selector="connectionPressed:" destination="4mN-Uj-d0o" eventType="touchUpInside" id="Zmw-qT-w9w"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKq-rC-Yw9">
-                                <rect key="frame" x="152" y="269" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="backdrop4"/>
-                                <state key="normal" backgroundImage="ConnectionBackdropGray"/>
-                                <state key="selected" backgroundImage="ConnectionBackdropGreen"/>
-                                <connections>
-                                    <action selector="connectionPressed:" destination="4mN-Uj-d0o" eventType="touchUpInside" id="xHl-ag-cS8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1G-6g-OzU">
-                                <rect key="frame" x="152" y="158" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="backdrop1"/>
-                                <state key="normal" backgroundImage="ConnectionBackdropGray"/>
-                                <state key="selected" backgroundImage="ConnectionBackdropGreen"/>
-                                <connections>
-                                    <action selector="connectionPressed:" destination="4mN-Uj-d0o" eventType="touchUpInside" id="EBJ-ae-LeM"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Xn-1F-lzh">
-                                <rect key="frame" x="43" y="269" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="backdrop3"/>
-                                <state key="normal" backgroundImage="ConnectionBackdropGray"/>
-                                <state key="selected" backgroundImage="ConnectionBackdropGreen"/>
-                                <connections>
-                                    <action selector="connectionPressed:" destination="4mN-Uj-d0o" eventType="touchUpInside" id="Fma-e4-sD8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYX-gm-NR2">
-                                <rect key="frame" x="152" y="382" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="backdrop7"/>
-                                <state key="normal" backgroundImage="ConnectionBackdropGray"/>
-                                <state key="selected" backgroundImage="ConnectionBackdropGreen"/>
-                                <connections>
-                                    <action selector="connectionPressed:" destination="4mN-Uj-d0o" eventType="touchUpInside" id="Tw1-7w-tDO"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXg-HI-Yny">
-                                <rect key="frame" x="259" y="382" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="backdrop7"/>
-                                <state key="normal" backgroundImage="ConnectionBackdropGray"/>
-                                <state key="selected" backgroundImage="ConnectionBackdropGreen"/>
-                                <connections>
-                                    <action selector="connectionPressed:" destination="4mN-Uj-d0o" eventType="touchUpInside" id="jbj-sf-CQR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWe-el-Uzq">
-                                <rect key="frame" x="43" y="487" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="backdrop7"/>
-                                <state key="normal" backgroundImage="ConnectionBackdropGray"/>
-                                <state key="selected" backgroundImage="ConnectionBackdropGreen"/>
-                                <connections>
-                                    <action selector="connectionPressed:" destination="4mN-Uj-d0o" eventType="touchUpInside" id="9rp-7d-RPX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8T-ao-Xh7">
-                                <rect key="frame" x="152" y="487" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="backdrop7"/>
-                                <state key="normal" backgroundImage="ConnectionBackdropGray"/>
-                                <state key="selected" backgroundImage="ConnectionBackdropGreen"/>
-                                <connections>
-                                    <action selector="connectionPressed:" destination="4mN-Uj-d0o" eventType="touchUpInside" id="U86-Kv-viL"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzH-tJ-O1z">
-                                <rect key="frame" x="259" y="487" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="backdrop7"/>
-                                <state key="normal" backgroundImage="ConnectionBackdropGray"/>
-                                <state key="selected" backgroundImage="ConnectionBackdropGreen"/>
-                                <connections>
-                                    <action selector="connectionPressed:" destination="4mN-Uj-d0o" eventType="touchUpInside" id="HNH-wz-R5a"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Connections: 0/4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujp-5v-ICO">
-                                <rect key="frame" x="81" y="88" width="212" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connections: 0/4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujp-5v-ICO" userLabel="connectionsLabel">
+                                <rect key="frame" x="16" y="64" width="343" height="66.5"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YiW-YU-y0P">
-                                <rect key="frame" x="259" y="269" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="backdrop5"/>
-                                <state key="normal" backgroundImage="ConnectionBackdropGray"/>
-                                <state key="selected" backgroundImage="ConnectionBackdropGreen"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="F3R-kO-ay0">
+                                <rect key="frame" x="16" y="130.5" width="343" height="536.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1v3-j3-er8">
+                                    <size key="itemSize" width="80" height="80"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="connectionCell" id="V3o-Wl-0qj" customClass="ConnectionCell" customModule="Check_Yo_Self" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4h-KC-4sN" userLabel="backdropButton">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                    <state key="normal" backgroundImage="ConnectionBackdropGray"/>
+                                                    <connections>
+                                                        <action selector="backdropButtonPressed:" destination="V3o-Wl-0qj" eventType="touchUpInside" id="ZR7-wV-84O"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Health" translatesAutoresizingMaskIntoConstraints="NO" id="TTk-YH-Aqk" userLabel="connectionImage">
+                                                    <rect key="frame" x="15.5" y="16" width="48" height="48"/>
+                                                </imageView>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoadingSymbolGreen" translatesAutoresizingMaskIntoConstraints="NO" id="vQ3-PU-j8j" userLabel="loadingImageView">
+                                                    <rect key="frame" x="19.5" y="20" width="40" height="40"/>
+                                                </imageView>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ConnectedSymbol" translatesAutoresizingMaskIntoConstraints="NO" id="Ous-g1-dhK" userLabel="checkmarkImage">
+                                                    <rect key="frame" x="40" y="40" width="40" height="40"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Ous-g1-dhK" firstAttribute="height" secondItem="V3o-Wl-0qj" secondAttribute="height" multiplier="0.5" id="0lt-QB-WU6"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ous-g1-dhK" secondAttribute="bottom" id="3Iu-Mr-ZFP"/>
+                                            <constraint firstItem="TTk-YH-Aqk" firstAttribute="height" secondItem="V3o-Wl-0qj" secondAttribute="height" multiplier="0.6" id="4fK-kP-IjE"/>
+                                            <constraint firstItem="vQ3-PU-j8j" firstAttribute="height" secondItem="V3o-Wl-0qj" secondAttribute="height" multiplier="0.5" id="AQc-Z4-WkI"/>
+                                            <constraint firstItem="X4h-KC-4sN" firstAttribute="leading" secondItem="V3o-Wl-0qj" secondAttribute="leading" id="NgA-uO-517"/>
+                                            <constraint firstItem="Ous-g1-dhK" firstAttribute="width" secondItem="V3o-Wl-0qj" secondAttribute="width" multiplier="0.5" id="PEF-jj-WXf"/>
+                                            <constraint firstItem="vQ3-PU-j8j" firstAttribute="centerY" secondItem="V3o-Wl-0qj" secondAttribute="centerY" id="U3K-5n-hI7"/>
+                                            <constraint firstItem="TTk-YH-Aqk" firstAttribute="width" secondItem="V3o-Wl-0qj" secondAttribute="width" multiplier="0.6" id="Wne-uc-lPQ"/>
+                                            <constraint firstItem="X4h-KC-4sN" firstAttribute="top" secondItem="V3o-Wl-0qj" secondAttribute="top" id="hee-ox-JxG"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ous-g1-dhK" secondAttribute="trailing" id="ht2-9f-yyb"/>
+                                            <constraint firstItem="vQ3-PU-j8j" firstAttribute="centerX" secondItem="V3o-Wl-0qj" secondAttribute="centerX" id="lgl-OF-j56"/>
+                                            <constraint firstItem="vQ3-PU-j8j" firstAttribute="width" secondItem="V3o-Wl-0qj" secondAttribute="width" multiplier="0.5" id="oRy-1t-HIt"/>
+                                            <constraint firstItem="TTk-YH-Aqk" firstAttribute="centerX" secondItem="V3o-Wl-0qj" secondAttribute="centerX" id="rTC-xb-dpR"/>
+                                            <constraint firstAttribute="bottom" secondItem="X4h-KC-4sN" secondAttribute="bottom" id="tEd-l2-z4m"/>
+                                            <constraint firstItem="TTk-YH-Aqk" firstAttribute="centerY" secondItem="V3o-Wl-0qj" secondAttribute="centerY" id="x2R-Kt-uGi"/>
+                                            <constraint firstAttribute="trailing" secondItem="X4h-KC-4sN" secondAttribute="trailing" id="yT6-Zw-Djt"/>
+                                        </constraints>
+                                        <size key="customSize" width="80" height="80"/>
+                                        <connections>
+                                            <outlet property="backdropButton" destination="X4h-KC-4sN" id="TiJ-e3-OLH"/>
+                                            <outlet property="checkmarkImage" destination="Ous-g1-dhK" id="rhP-93-Eni"/>
+                                            <outlet property="connectionImage" destination="TTk-YH-Aqk" id="bVY-X9-UxJ"/>
+                                            <outlet property="loadingImageView" destination="vQ3-PU-j8j" id="YCe-We-nv9"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
-                                    <action selector="connectionPressed:" destination="4mN-Uj-d0o" eventType="touchUpInside" id="oDX-fd-0Sv"/>
+                                    <outlet property="dataSource" destination="4mN-Uj-d0o" id="A8M-RS-AKu"/>
+                                    <outlet property="delegate" destination="4mN-Uj-d0o" id="fq6-gZ-IQf"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoT-mG-XhC">
-                                <rect key="frame" x="43" y="382" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="backdrop6"/>
-                                <state key="normal" backgroundImage="ConnectionBackdropGray"/>
-                                <state key="selected" backgroundImage="ConnectionBackdropGreen"/>
-                                <connections>
-                                    <action selector="connectionPressed:" destination="4mN-Uj-d0o" eventType="touchUpInside" id="cVb-Dl-7Y0"/>
-                                </connections>
-                            </button>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="F3R-kO-ay0" firstAttribute="leading" secondItem="9qS-I9-ZL3" secondAttribute="leadingMargin" id="09A-L1-Gqp"/>
+                            <constraint firstItem="Pdd-kR-yyp" firstAttribute="top" secondItem="F3R-kO-ay0" secondAttribute="bottom" id="H8f-89-BqG"/>
+                            <constraint firstItem="ujp-5v-ICO" firstAttribute="height" secondItem="9qS-I9-ZL3" secondAttribute="height" multiplier="0.1" id="SDc-pK-Bh6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="F3R-kO-ay0" secondAttribute="trailing" id="SGF-H0-dh9"/>
+                            <constraint firstItem="F3R-kO-ay0" firstAttribute="top" secondItem="ujp-5v-ICO" secondAttribute="bottom" id="h9U-lh-Dqo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ujp-5v-ICO" secondAttribute="trailing" id="mya-Pb-Sg4"/>
+                            <constraint firstItem="ujp-5v-ICO" firstAttribute="top" secondItem="arr-Jq-3yg" secondAttribute="bottom" id="rh2-Zw-36s"/>
+                            <constraint firstItem="ujp-5v-ICO" firstAttribute="leading" secondItem="9qS-I9-ZL3" secondAttribute="leadingMargin" id="ujM-L2-cvo"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2c8-rB-dSx">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="qh9-kU-TRQ">
                             <connections>
-                                <action selector="backButton:" destination="4mN-Uj-d0o" id="yYb-xf-pX0"/>
+                                <action selector="backButtonPressed:" destination="4mN-Uj-d0o" id="tSP-6Q-40f"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="backdrop0" destination="NJJ-A2-R34" id="VXD-dK-66e"/>
-                        <outlet property="backdrop1" destination="L1G-6g-OzU" id="VSf-k2-Cf0"/>
-                        <outlet property="backdrop10" destination="p8T-ao-Xh7" id="eqV-BF-t1e"/>
-                        <outlet property="backdrop11" destination="HzH-tJ-O1z" id="xRS-yI-0cK"/>
-                        <outlet property="backdrop2" destination="ZNi-tr-8yr" id="i82-B0-sda"/>
-                        <outlet property="backdrop3" destination="6Xn-1F-lzh" id="Y4M-nL-FVc"/>
-                        <outlet property="backdrop4" destination="OKq-rC-Yw9" id="SHd-dB-0xW"/>
-                        <outlet property="backdrop5" destination="YiW-YU-y0P" id="8wz-dV-CM3"/>
-                        <outlet property="backdrop6" destination="qoT-mG-XhC" id="4Kj-Q5-8Tq"/>
-                        <outlet property="backdrop7" destination="CYX-gm-NR2" id="rIP-Tv-AEi"/>
-                        <outlet property="backdrop8" destination="ZXg-HI-Yny" id="DGF-9G-nWs"/>
-                        <outlet property="backdrop9" destination="vWe-el-Uzq" id="9Tq-Wb-sqQ"/>
+                        <outlet property="collectionView" destination="F3R-kO-ay0" id="JbT-zf-1B5"/>
                         <outlet property="connectionsLabel" destination="ujp-5v-ICO" id="XgV-SN-JsP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ALg-hJ-X8P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-234" y="1557"/>
+            <point key="canvasLocation" x="-234.40000000000001" y="1556.6716641679161"/>
         </scene>
         <!--Play-->
         <scene sceneID="hcV-RS-M4l">
@@ -1170,7 +1117,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to CollabRjabbR account." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rb-mb-f2Q" userLabel="label">
                                                 <rect key="frame" x="0.0" y="0.0" width="192" height="50"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -2147,14 +2094,15 @@
         <image name="ArrowLeft" width="270" height="270"/>
         <image name="ArrowRight" width="270" height="270"/>
         <image name="Brainstorm" width="210" height="119"/>
+        <image name="ConnectedSymbol" width="320" height="320"/>
         <image name="ConnectionBackdropGray" width="640" height="640"/>
-        <image name="ConnectionBackdropGreen" width="640" height="640"/>
         <image name="DefaultUserPic" width="253" height="299"/>
         <image name="Fitbit" width="240" height="240"/>
         <image name="FriendsIcon" width="160" height="160"/>
         <image name="GameButtonGray" width="1280" height="640"/>
         <image name="Health" width="240" height="240"/>
         <image name="JabbRGem" width="300" height="300"/>
+        <image name="LoadingSymbolGreen" width="240" height="240"/>
         <image name="TabBarIconCheck" width="24" height="24"/>
         <image name="TabBarIconCube" width="24" height="24"/>
         <image name="TabBarIconMap" width="24" height="24"/>

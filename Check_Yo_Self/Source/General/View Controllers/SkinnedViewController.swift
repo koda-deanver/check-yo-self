@@ -38,4 +38,11 @@ class SkinnedViewController: GeneralViewController {
         self.view.addSubview(backgroundImageView)
         self.view.sendSubview(toBack: backgroundImageView)
     }
+    
+    ///
+    /// Removes background image.
+    ///
+    func removeBackdrop() {
+        backgroundImageView.removeFromSuperview()
+    }
 }

@@ -9,12 +9,14 @@
 import UIKit
 
 /// Present user with a series of questions that personalize thier account. These questions are taken from the database.
-final class ProfileViewController: GeneralViewController {
+final class ProfileViewController: SkinnedViewController {
     
     // MARK: - Public Members -
     
     /// Determines if choices should be populated with previously selected values.
-    var shouldPreloadChoices: Bool = false
+    var shouldPreloadChoices = false
+    /// Controls whether to style normally(when editing profile), or with transparent background(when creating for first time).
+    var displaysWithTransparentBackground = false
     
     // MARK: - Private Members -
     
@@ -55,9 +57,15 @@ final class ProfileViewController: GeneralViewController {
     
     override func style() {
         
-        view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+        super.style()
         
-        finishButton.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
+        /// Make transparent if first time through from login.
+        if displaysWithTransparentBackground {
+            view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+            removeBackdrop()
+        }
+        
+        finishButton.titleLabel?.font = UIFont(name: Font.heavy, size: Font.mediumSize)
         finishButton.isEnabled = inputIsValid
     }
     
@@ -172,7 +180,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         let question = profileQuestions[indexPath.row]
         let previousChoice = getPreviouslySelectedChoice(forQuestion: question)
         
-        cell.configure(withQuestion: question, selectedChoice: previousChoice, delegate: self)
+        cell.configure(withQuestion: question, color: User.current.ageGroup.textColor, selectedChoice: previousChoice, delegate: self)
         return cell
     }
     
