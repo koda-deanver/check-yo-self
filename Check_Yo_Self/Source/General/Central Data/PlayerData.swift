@@ -350,9 +350,9 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
                     let ageGroup = playerDictionary["AgeGroup"] as! String
                     self.isAdult = ageGroup == "Adult" ? true : false
                     if let avatarName = playerDictionary["AvatarName"] as? String{
-                        for avatar in Media.avatarList where avatarName == avatar.name{
+                        /*for avatar in Media.avatarList where avatarName == avatar.name{
                             self.avatar = avatar
-                        }
+                        }*/
                     }
                     completion()
                 }else{

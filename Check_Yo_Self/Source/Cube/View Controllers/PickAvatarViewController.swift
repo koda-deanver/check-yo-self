@@ -9,7 +9,7 @@
 
 import UIKit
 
-protocol PickAvatarViewControllerDelegate: class{
+/*protocol PickAvatarViewControllerDelegate: class{
     func pickAvatarViewControllerDidCancel(_ controller: PickAvatarViewController)
     func pickAvatarViewController(_ controller: PickAvatarViewController, didFinishChoosing avatar: Avatar)
 }
@@ -20,7 +20,7 @@ class PickAvatarViewController: UIViewController, UITableViewDelegate, UITableVi
     var oldAvatar: Avatar!
     var newAvatar: Avatar?
     // Complete avatar array
-    let avatarList = Media.avatarList
+    //let avatarList = Media.avatarList
     // Sorted avatar arrays
     var maleAvatars: [Avatar] = []
     var femaleAvatars: [Avatar] = []
@@ -122,4 +122,4 @@ class PickAvatarViewController: UIViewController, UITableViewDelegate, UITableVi
             doneButton.isEnabled = true
         }
     }
-}
+}*/
