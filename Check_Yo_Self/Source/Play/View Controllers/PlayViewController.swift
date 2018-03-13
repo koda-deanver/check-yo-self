@@ -50,11 +50,6 @@ class PlayViewController: GeneralViewController{
                 let valueOfChoice = currentQuestion.choices[i].pointValue
                 self.score += valueOfChoice
                 
-                // Check if answer to that question needs to be saved
-                if(creationPhase == .none){
-                    saveProfileChoice(valueOfChoice: valueOfChoice)
-                }
-                
                 self.questionsAnswered += 1
             }
         }
@@ -64,53 +59,6 @@ class PlayViewController: GeneralViewController{
             self.endTest()
         }
         
-    }
-    
-    //********************************************************************
-    // saveProfileChoice
-    // Description: Check if we need to save the answer
-    //********************************************************************
-    func saveProfileChoice(valueOfChoice: Int){
-        // Set up Avatar Male/Female
-        if questionsAnswered == 0{
-            // Set avatar to freeform until next question
-            switch valueOfChoice{
-            case -1:
-                self.phaseImage.image = #imageLiteral(resourceName: "Freeform1")
-                // Set to start index of female avatars
-                self.profileAvatarIndex = 0
-            case -2:
-                // Set to start index of male avatars
-                self.phaseImage.image = #imageLiteral(resourceName: "Freeform2")
-                self.profileAvatarIndex = 6
-            default:
-                self.phaseImage.image = #imageLiteral(resourceName: "Freeform3")
-            }
-            // Set up unique avatar
-        }else if questionsAnswered == 1{
-            // Get index of array of avatars
-            if let genderIndex = self.profileAvatarIndex{
-                self.profileAvatarIndex = genderIndex + (valueOfChoice + 2)
-                // Set new avatar
-                let newAvatar = Media.avatarList[self.profileAvatarIndex!]
-                self.phaseImage.image = newAvatar.image
-                PlayerData.sharedInstance.avatar = newAvatar
-            }
-            // Set up background
-        }else if questionsAnswered == 2{
-            let backdropInt = valueOfChoice + 3
-            self.backDrop.image = Media.alertBackdropList[backdropInt]
-            //PlayerData.sharedInstance.cubeColor = CubeColor.cubeColorForInt(backdropInt)!
-        }else if questionsAnswered == 3{
-            switch valueOfChoice{
-            case -2,-1,0:
-                PlayerData.sharedInstance.isAdult = false
-            case 1,2,3:
-                PlayerData.sharedInstance.isAdult = true
-            default:
-                break
-            }
-        }
     }
     
     //********************************************************************

@@ -57,6 +57,8 @@ class CubeViewController: SkinnedViewController {
         gemLabel.textColor = User.current.favoriteColor.uiColor
         
         userBackdrop.image = User.current.favoriteColor.alertBackdrop
+        let avatar = AvatarManager.shared.getAvatar(for: User.current)
+        userImage.setImage(avatar.image, for: .normal)
         userLabel.text = User.current.username
         userLabel.font = UIFont(name: Font.heavy, size: Font.largeSize)
         
@@ -147,17 +149,6 @@ class CubeViewController: SkinnedViewController {
         let videoURL = NSURL.fileURL(withPath: Bundle.main.path(forResource: "AppTutorialVideo", ofType:"mp4")!)
         BSGCommon.playVideo(url: videoURL, onController: self)
         newPlayer = false
-    }
-}
-
-extension CubeViewController{
-    func pickAvatarViewController(_ controller: PickAvatarViewController, didFinishChoosing avatar: Avatar) {
-        PlayerData.sharedInstance.avatar = avatar
-        self.dismiss(animated: true)
-    }
-    
-    func pickAvatarViewControllerDidCancel(_ controller: PickAvatarViewController) {
-        self.dismiss(animated: true)
     }
 }
 

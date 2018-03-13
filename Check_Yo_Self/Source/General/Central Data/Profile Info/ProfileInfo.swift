@@ -43,7 +43,7 @@ enum AgeGroup: String {
 
 /// Contains all genres of collabration used to choose avatar.
 enum CollabrationGenre: String {
-    case live, foodie, publications, lensed, selling, realEstate = "real-estate"
+    case general, live, foodie, publications, lensed, selling, realEstate = "real-estate"
     
     ///
     /// Returns a CollabrationGenre if it matches string, otherwise defaults to live.
@@ -62,8 +62,8 @@ enum CollabrationGenre: String {
 enum Identity: String {
     case straightMale = "male-straight"
     case gayMale = "male-gay"
-    case femaleStraight = "female-straight"
-    case femaleGay = "female-gay"
+    case straightFemale = "female-straight"
+    case gayFemale = "female-gay"
     case unknown = "unknown"
     
     ///
