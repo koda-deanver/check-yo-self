@@ -14,7 +14,9 @@ final class ProfileViewController: SkinnedViewController {
     // MARK: - Public Members -
     
     /// Determines if choices should be populated with previously selected values.
-    var shouldPreloadChoices: Bool = false
+    var shouldPreloadChoices = false
+    /// Controls whether to style normally(when editing profile), or with transparent background(when creating for first time).
+    var displaysWithTransparentBackground = false
     
     // MARK: - Private Members -
     
@@ -58,11 +60,12 @@ final class ProfileViewController: SkinnedViewController {
         super.style()
         
         /// Make transparent if first time through from login.
-        if let _ = self.presentingViewController as? LoginViewController {
+        if displaysWithTransparentBackground {
             view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+            removeBackdrop()
         }
         
-        finishButton.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
+        finishButton.titleLabel?.font = UIFont(name: Font.heavy, size: Font.mediumSize)
         finishButton.isEnabled = inputIsValid
     }
     
@@ -177,7 +180,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         let question = profileQuestions[indexPath.row]
         let previousChoice = getPreviouslySelectedChoice(forQuestion: question)
         
-        cell.configure(withQuestion: question, selectedChoice: previousChoice, delegate: self)
+        cell.configure(withQuestion: question, color: User.current.ageGroup.textColor, selectedChoice: previousChoice, delegate: self)
         return cell
     }
     

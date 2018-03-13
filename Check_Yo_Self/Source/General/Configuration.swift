@@ -30,12 +30,13 @@ struct Constants {
 // MARK: - Font -
 
 struct Font {
-    static let main = "Arial"
+    static let heavy = "Chalkduster"
+    static let main = "Party LET"
     
     /// Size based on 60 pt for 9 inch iPad.
     static let mediumSize: CGFloat = (60 / 1536) * UIScreen.main.bounds.width
     static let smallSize: CGFloat = (40 / 1536) * UIScreen.main.bounds.width
-    static let largeSize: CGFloat = (80 / 1536) * UIScreen.main.bounds.width
+    static let largeSize: CGFloat = (100 / 1536) * UIScreen.main.bounds.width
 }
 
 // MARK: - Configuration -

@@ -76,6 +76,15 @@ final class CreateNewAccountViewController: GeneralViewController {
             self.handle(errorString)
         })
     }
+    
+    ///
+    /// Adjust background of *profileViewController* to be transparent to match login flow.
+    ///
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let profileViewController = segue.destination as? ProfileViewController else { return }
+        profileViewController.displaysWithTransparentBackground = true
+    }
 }
 
 // MARK: - Extension: UITableView -

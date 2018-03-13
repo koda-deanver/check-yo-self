@@ -32,6 +32,7 @@ class DropdownMenuCell: UITableViewCell {
     // MARK: - Private Members -
     
     private var question: Question!
+    private var themeColor: UIColor = .white
     private weak var delegate: DropdownMenuCellDelegate?
     
     // MARK: - Outlets -
@@ -47,12 +48,14 @@ class DropdownMenuCell: UITableViewCell {
     ///
     /// The initial choice of the pickerView is set to the selectedChoice. If there is none, it defaults to the first choice.
     ///
-    func configure(withQuestion question: Question, selectedChoice: Choice?, delegate: DropdownMenuCellDelegate? = nil) {
+    func configure(withQuestion question: Question, color: UIColor, selectedChoice: Choice?, delegate: DropdownMenuCellDelegate? = nil) {
         
         self.question = question
+        self.themeColor = color
         self.delegate = delegate
         
-        label.textColor = .white
+        label.font = UIFont(name: Font.main, size: Font.mediumSize)
+        label.textColor = themeColor
         label.text = question.text
         
         let blueprint = TextFieldBlueprint(withPlaceholder: "Select an option.", isEditable: false)
@@ -64,6 +67,7 @@ class DropdownMenuCell: UITableViewCell {
             selectedIndex = index
         }
         pickerView.selectRow(selectedIndex, inComponent: 0, animated: false)
+        pickerView.showsSelectionIndicator = false
         pickerView.alpha = 0.0
     }
     
@@ -85,6 +89,12 @@ extension DropdownMenuCell: TextFieldDelegate {
         
         delegate?.dropdownMenuCell(self, willActivatePicker: pickerView)
         pickerView.alpha = 1.0
+        
+        if textField.isEmpty {
+            let defaultChoice = question.choices[0]
+            textField.text = defaultChoice.text
+            delegate?.dropdownMenuCell(self, didSelectChoice: defaultChoice, forQuestion: question)
+        }
     }
 }
 
@@ -104,7 +114,7 @@ extension DropdownMenuCell: UIPickerViewDataSource, UIPickerViewDelegate {
     
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: 100))
         label.font = UIFont(name: Font.main, size: 16.0)
-        label.textColor = .white
+        label.textColor = themeColor
         label.textAlignment = .center
         label.text = question.choices[row].text
     

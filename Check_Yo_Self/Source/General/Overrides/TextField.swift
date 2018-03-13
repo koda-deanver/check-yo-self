@@ -72,6 +72,12 @@ class TextField: UITextField {
     
     // MARK: - Public Members -
     
+    /// Determines if there is text in the textField.
+    var isEmpty: Bool {
+        guard let text = text else { return true }
+        return text.isEmpty
+    }
+    
     /// Determines if text in field falls between min and max characters.
     var inputIsValid: Bool {
         guard let text = text else { return false }

@@ -107,7 +107,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No cube projects" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jO-OK-a2D" userLabel="cubeProjectLabel">
-                                                <rect key="frame" x="87" y="18" width="165.5" height="23.5"/>
+                                                <rect key="frame" x="87" y="18.5" width="165.5" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -433,6 +433,7 @@
                     <connections>
                         <outlet property="checkButton" destination="WxB-bi-Ac0" id="5Jw-40-Jha"/>
                         <outlet property="connectionsButton" destination="F07-Oe-4Qc" id="zNk-oV-6pB"/>
+                        <outlet property="cubeProjectsLabel" destination="4jO-OK-a2D" id="big-wr-5gO"/>
                         <outlet property="friendsButton" destination="dfS-tu-kdD" id="zZi-ic-R1q"/>
                         <outlet property="gemLabel" destination="d28-gf-teE" id="OHf-rj-42s"/>
                         <outlet property="knowledgeBaseButton" destination="Byj-Zt-X5a" id="W4c-mY-mgR"/>
@@ -1116,7 +1117,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to CollabRjabbR account." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rb-mb-f2Q" userLabel="label">
                                                 <rect key="frame" x="0.0" y="0.0" width="192" height="50"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>

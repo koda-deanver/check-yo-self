@@ -20,28 +20,30 @@ class CubeViewController: SkinnedViewController {
     
     // MARK: - Outlets -
     
-    // Stats
+    // Cube Projects
+    @IBOutlet private weak var cubeProjectsLabel: UILabel!
     
-    @IBOutlet weak var gemLabel: UILabel!
+    // Stats
+    @IBOutlet private weak var gemLabel: UILabel!
     
     // Main cube
-    @IBOutlet weak var userBackdrop: UIImageView!
-    @IBOutlet weak var userImage: UIButton!
-    @IBOutlet weak var userLabel: UILabel!
-    @IBOutlet weak var phaseImage: UIImageView!
+    @IBOutlet private weak var userBackdrop: UIImageView!
+    @IBOutlet private weak var userImage: UIButton!
+    @IBOutlet private weak var userLabel: UILabel!
+    @IBOutlet private weak var phaseImage: UIImageView!
     
     /// Button that launches knowledge base screen.
-    @IBOutlet weak var knowledgeBaseButton: UIButton!
+    @IBOutlet private weak var knowledgeBaseButton: UIButton!
     /// Button that launches profile screen.
-    @IBOutlet weak var profileButton: UIButton!
+    @IBOutlet private weak var profileButton: UIButton!
     /// Button that launches friend list screen.
-    @IBOutlet weak var friendsButton: UIButton!
+    @IBOutlet private weak var friendsButton: UIButton!
     /// Button that launches connections screen.
-    @IBOutlet weak var connectionsButton: UIButton!
+    @IBOutlet private weak var connectionsButton: UIButton!
     
     // Bottom buttons
-    @IBOutlet weak var logoutButton: UIButton!
-    @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet private weak var logoutButton: UIButton!
+    @IBOutlet private weak var checkButton: UIButton!
     
     // MARK: - Lifecycle -
     
@@ -49,13 +51,19 @@ class CubeViewController: SkinnedViewController {
         
         super.style()
         
+        cubeProjectsLabel.font = UIFont(name: Font.heavy, size: Font.mediumSize)
+        
         gemLabel.text = String(User.current.gems)
         gemLabel.textColor = User.current.favoriteColor.uiColor
         
         userBackdrop.image = User.current.favoriteColor.alertBackdrop
         userLabel.text = User.current.username
+        userLabel.font = UIFont(name: Font.heavy, size: Font.largeSize)
         
-        setupButtons()
+        checkButton.titleLabel?.font = UIFont(name: Font.heavy, size: Font.largeSize)
+        logoutButton.titleLabel?.font = UIFont(name: Font.heavy, size: Font.mediumSize)
+        
+        setupMiniButtons()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -115,7 +123,7 @@ class CubeViewController: SkinnedViewController {
     ///
     /// Sets up and styles *knowledgeBaseButton*, *profileButton*, *friendsButton*, and *connectionsButton*.
     ///
-    private func setupButtons() {
+    private func setupMiniButtons() {
         
         let buttons = [knowledgeBaseButton, profileButton, friendsButton, connectionsButton]
         let buttonImages = [#imageLiteral(resourceName: "KnowledgeBaseIcon"), #imageLiteral(resourceName: "ProfileIcon"), #imageLiteral(resourceName: "FriendsIcon"), #imageLiteral(resourceName: "ConnectionsIcon")]
