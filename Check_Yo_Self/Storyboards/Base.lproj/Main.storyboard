@@ -598,20 +598,26 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ConnectionBackdropGray" translatesAutoresizingMaskIntoConstraints="NO" id="bmn-tp-4fZ" userLabel="backdrop">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlertBackdropGray" translatesAutoresizingMaskIntoConstraints="NO" id="nc9-os-ozd" userLabel="friendImageBackdrop">
+                                                    <rect key="frame" x="35" y="6.5" width="31" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="nc9-os-ozd" secondAttribute="height" multiplier="1:1" id="uoA-Jf-aze"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FriendsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="fRg-eu-1jA" userLabel="friendImage">
-                                                    <rect key="frame" x="37.5" y="4.5" width="34.5" height="35"/>
+                                                    <rect key="frame" x="37.5" y="10" width="25" height="24.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="fRg-eu-1jA" secondAttribute="height" multiplier="1:1" id="YmK-xP-hxM"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jon Snow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mew-c5-bpf" userLabel="nameLabel">
-                                                    <rect key="frame" x="82" y="11.5" width="74.5" height="20.5"/>
+                                                    <rect key="frame" x="72.5" y="11.5" width="74.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UNv-kz-Wz2" userLabel="gemStack">
-                                                    <rect key="frame" x="238.5" y="-0.5" width="99" height="44.5"/>
+                                                    <rect key="frame" x="247" y="-0.5" width="90.5" height="44.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mG-6Z-60T" userLabel="gemLabel">
                                                             <rect key="frame" x="0.0" y="12" width="63" height="20.5"/>
@@ -620,7 +626,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JabbRGem" translatesAutoresizingMaskIntoConstraints="NO" id="URH-nF-kv6" userLabel="gemImage">
-                                                            <rect key="frame" x="68" y="7" width="31" height="30.5"/>
+                                                            <rect key="frame" x="68" y="11.5" width="22.5" height="22"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="URH-nF-kv6" secondAttribute="height" multiplier="1:1" id="Uwg-GU-uUk"/>
                                                             </constraints>
@@ -631,24 +637,28 @@
                                             <constraints>
                                                 <constraint firstItem="mew-c5-bpf" firstAttribute="leading" secondItem="fRg-eu-1jA" secondAttribute="trailing" constant="10" id="DUe-aB-SSw"/>
                                                 <constraint firstAttribute="bottom" secondItem="bmn-tp-4fZ" secondAttribute="bottom" id="HaS-am-rH7"/>
+                                                <constraint firstItem="fRg-eu-1jA" firstAttribute="height" secondItem="nc9-os-ozd" secondAttribute="height" multiplier="0.8" id="IOy-ml-ltG"/>
+                                                <constraint firstItem="bmn-tp-4fZ" firstAttribute="centerY" secondItem="nc9-os-ozd" secondAttribute="centerY" id="KiO-Ym-T5c"/>
                                                 <constraint firstAttribute="trailing" secondItem="bmn-tp-4fZ" secondAttribute="trailing" id="N3E-al-N9c"/>
                                                 <constraint firstItem="fRg-eu-1jA" firstAttribute="centerY" secondItem="Ujd-g4-MPc" secondAttribute="centerY" id="Pbb-Sg-mwN"/>
                                                 <constraint firstItem="bmn-tp-4fZ" firstAttribute="leading" secondItem="Ujd-g4-MPc" secondAttribute="leading" id="TZb-cL-t5I"/>
                                                 <constraint firstItem="bmn-tp-4fZ" firstAttribute="top" secondItem="Ujd-g4-MPc" secondAttribute="top" id="Z2A-tj-qxl"/>
                                                 <constraint firstItem="UNv-kz-Wz2" firstAttribute="centerY" secondItem="Ujd-g4-MPc" secondAttribute="centerY" id="mh4-Um-hsi"/>
                                                 <constraint firstItem="mew-c5-bpf" firstAttribute="centerY" secondItem="Ujd-g4-MPc" secondAttribute="centerY" id="ovu-aH-x0E"/>
+                                                <constraint firstItem="nc9-os-ozd" firstAttribute="centerX" secondItem="fRg-eu-1jA" secondAttribute="centerX" id="wCl-5W-Ymz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="nc9-os-ozd" firstAttribute="height" secondItem="nmq-qX-oUP" secondAttribute="height" multiplier="0.7" id="0WX-cr-zjs"/>
                                             <constraint firstItem="UNv-kz-Wz2" firstAttribute="trailing" secondItem="nmq-qX-oUP" secondAttribute="centerX" multiplier="1.8" id="D1G-YE-Bxj"/>
                                             <constraint firstItem="fRg-eu-1jA" firstAttribute="leading" secondItem="nmq-qX-oUP" secondAttribute="centerX" multiplier="0.2" id="JhZ-fB-yoP"/>
                                             <constraint firstItem="UNv-kz-Wz2" firstAttribute="height" secondItem="nmq-qX-oUP" secondAttribute="height" id="LtQ-Db-psx"/>
-                                            <constraint firstItem="fRg-eu-1jA" firstAttribute="height" secondItem="nmq-qX-oUP" secondAttribute="height" multiplier="0.8" id="S6q-Fe-ppq"/>
-                                            <constraint firstItem="URH-nF-kv6" firstAttribute="height" secondItem="nmq-qX-oUP" secondAttribute="height" multiplier="0.7" id="kvH-fj-MXr"/>
+                                            <constraint firstItem="URH-nF-kv6" firstAttribute="height" secondItem="nmq-qX-oUP" secondAttribute="height" multiplier="0.5" id="kvH-fj-MXr"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="backdrop" destination="bmn-tp-4fZ" id="j5F-GG-7iD"/>
+                                            <outlet property="friendImageBackdrop" destination="nc9-os-ozd" id="8xy-rh-hPr"/>
                                             <outlet property="friendImageView" destination="fRg-eu-1jA" id="hMM-nF-SdN"/>
                                             <outlet property="gemLabel" destination="0mG-6Z-60T" id="bHg-ah-t03"/>
                                             <outlet property="nameLabel" destination="mew-c5-bpf" id="ghr-ry-qAc"/>

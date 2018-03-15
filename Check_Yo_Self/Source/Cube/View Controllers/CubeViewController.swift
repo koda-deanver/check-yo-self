@@ -54,6 +54,7 @@ class CubeViewController: SkinnedViewController {
         cubeProjectsLabel.font = UIFont(name: Font.heavy, size: Font.mediumSize)
         
         gemLabel.text = String(User.current.gems)
+        gemLabel.font = UIFont(name: Font.pure, size: Font.largeSize)
         gemLabel.textColor = User.current.favoriteColor.uiColor
         
         userBackdrop.image = User.current.favoriteColor.alertBackdrop
@@ -72,52 +73,6 @@ class CubeViewController: SkinnedViewController {
         
         super.viewDidAppear(true)
         if newPlayer { playVideo() }
-    }
-    
-    // MARK: - Public Methods -
-    
-    ///
-    /// Reloads entire screen.
-    ///
-    /// This is used when a player changes something about thier profile, or when a relevant stat changes.
-    ///
-    func updateCubeProfile(){
-        
-        /*let playerColor = User.current.favoriteColor
-        
-        usernameLabel.text = User.current.username
-        self.gemLabel.setTitle(String(format: "%d",PlayerData.sharedInstance.gemTotal), for: UIControlState.normal)
-        
-        self.gemLabel.setTitleColor(UIColor.white, for: .normal)
-        
-        // Phase Image
-        if PlayerData.sharedInstance.creationPhase != .none{
-            self.phaseImage.image = UIImage(named: PlayerData.sharedInstance.creationPhase.rawValue)
-        }
-        
-        // Avatar
-        if let facebookImageData = PlayerData.sharedInstance.facebookImageData{
-            let facebookImage = UIImage(data: facebookImageData as Data)
-            self.userPic.setImage(facebookImage, for: .normal)
-            self.userPic.layer.cornerRadius = userPic.frame.height * 0.4
-            self.userPic.layer.masksToBounds = true
-        }else{
-            // Assign avatar based on profile questions
-            if let avatar = PlayerData.sharedInstance.avatar{
-                self.userPic.setImage(avatar.image, for: .normal)
-            }
-        }
-        
-        // Backdrop
-        //self.cubeFace.image = Media.alertBackdropList[playerColor.intValue()]
-        
-        // Play Button
-        /*switch self.appSkin!{
-        case .adult:
-            self.playButton.setImage(#imageLiteral(resourceName: "PlayButtonWhite"), for: .normal)
-        case .child:
-            self.playButton.setImage(#imageLiteral(resourceName: "PlayButtonBlack"), for: .normal)
-        }*/*/
     }
     
     // MARK: - Private Methods -
@@ -165,18 +120,8 @@ extension CubeViewController {
     }
     
     @IBAction func userImagePressed(_ sender: UIButton) {
-        // Show alert if player has an avatar
-        if let avatar = PlayerData.sharedInstance.avatar{
-            /*self.showConnectionAlert(ConnectionAlert(title: "\(avatar.name)\nOccupation: \(avatar.discipline)", message: "\(avatar.bio)", okButtonText: "Keep", cancelButtonText: "Change", okButtonCompletion: {
-             
-             }, cancelButtonCompletion: {
-             let pickAvatarNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PickAvatarNavigation") as! UINavigationController
-             let pickAvatarViewController = pickAvatarNavigationController.viewControllers[0] as! PickAvatarViewController
-             pickAvatarViewController.delegate = self
-             pickAvatarViewController.oldAvatar = avatar
-             self.present(pickAvatarNavigationController, animated: true)
-             }))*/
-        }
+        let avatar = AvatarManager.shared.getAvatar(for: User.current)
+        showAlert(BSGCustomAlert(message: avatar.bio))
     }
     
     /// Can't do this in storyboard because of double segue.

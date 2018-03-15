@@ -22,7 +22,6 @@
 		137B1E0C203FEED700A70FE0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B1E0B203FEED700A70FE0 /* NotificationManager.swift */; };
 		138BF0272031403900119A52 /* BSGCustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF0252031403700119A52 /* BSGCustomAlert.swift */; };
 		138BF0282031403900119A52 /* BSGCustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF0262031403800119A52 /* BSGCustomAlertController.swift */; };
-		138BF02C2031418E00119A52 /* CubeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF02B2031418E00119A52 /* CubeColor.swift */; };
 		138BF02E2031638C00119A52 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF02D2031638C00119A52 /* TextField.swift */; };
 		138BF03220328D9E00119A52 /* BSGFacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF03120328D9E00119A52 /* BSGFacebookService.swift */; };
 		138BF0372032B25300119A52 /* SkinnedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF0362032B25300119A52 /* SkinnedViewController.swift */; };
@@ -70,7 +69,7 @@
 		4A877CD01E889BED009CE752 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A877CCF1E889BED009CE752 /* FriendCell.swift */; };
 		4A877CD31E889D5C009CE752 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A877CD21E889D5C009CE752 /* FriendListViewController.swift */; };
 		4AA2D39C1E24B35E00DBE986 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2D39B1E24B35E00DBE986 /* Media.swift */; };
-		4AA2D3A01E256A7D00DBE986 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2D39F1E256A7D00DBE986 /* Avatar.swift */; };
+		4AA2D3A01E256A7D00DBE986 /* AvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2D39F1E256A7D00DBE986 /* AvatarManager.swift */; };
 		4AA2D3CA1E2E8E4200DBE986 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA2D3C91E2E8E4200DBE986 /* CloudKit.framework */; };
 		4AA2D3CC1E2FFC6F00DBE986 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2D3CB1E2FFC6F00DBE986 /* Configuration.swift */; };
 		4AADEAD61E30826600C062B5 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AADEAD51E30826600C062B5 /* LoadingViewController.swift */; };
@@ -101,7 +100,6 @@
 		137B1E0B203FEED700A70FE0 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		138BF0252031403700119A52 /* BSGCustomAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSGCustomAlert.swift; sourceTree = "<group>"; };
 		138BF0262031403800119A52 /* BSGCustomAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSGCustomAlertController.swift; sourceTree = "<group>"; };
-		138BF02B2031418E00119A52 /* CubeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeColor.swift; sourceTree = "<group>"; };
 		138BF02D2031638C00119A52 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		138BF03120328D9E00119A52 /* BSGFacebookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSGFacebookService.swift; sourceTree = "<group>"; };
 		138BF0362032B25300119A52 /* SkinnedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinnedViewController.swift; sourceTree = "<group>"; };
@@ -154,7 +152,7 @@
 		4A877CCF1E889BED009CE752 /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		4A877CD21E889D5C009CE752 /* FriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		4AA2D39B1E24B35E00DBE986 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
-		4AA2D39F1E256A7D00DBE986 /* Avatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
+		4AA2D39F1E256A7D00DBE986 /* AvatarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarManager.swift; sourceTree = "<group>"; };
 		4AA2D3C91E2E8E4200DBE986 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		4AA2D3CB1E2FFC6F00DBE986 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		4AADEAD51E30826600C062B5 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -203,7 +201,7 @@
 		138BF0382032B2C300119A52 /* Profile Info */ = {
 			isa = PBXGroup;
 			children = (
-				138BF02B2031418E00119A52 /* CubeColor.swift */,
+				4AA2D39F1E256A7D00DBE986 /* AvatarManager.swift */,
 				138BF0392032B2E800119A52 /* ProfileInfo.swift */,
 			);
 			path = "Profile Info";
@@ -298,7 +296,6 @@
 			isa = PBXGroup;
 			children = (
 				13E5ACE92026122800C92237 /* View Controllers */,
-				4AA2D39F1E256A7D00DBE986 /* Avatar.swift */,
 			);
 			path = Cube;
 			sourceTree = "<group>";
@@ -742,7 +739,7 @@
 				4A8346A21E203B6200BAF8F9 /* String+Dates.swift in Sources */,
 				4A8346A71E203B6200BAF8F9 /* PlayerData.swift in Sources */,
 				4A83469E1E203B6200BAF8F9 /* FitbitAPI.swift in Sources */,
-				4AA2D3A01E256A7D00DBE986 /* Avatar.swift in Sources */,
+				4AA2D3A01E256A7D00DBE986 /* AvatarManager.swift in Sources */,
 				4A8346AE1E203B6200BAF8F9 /* KnowledgeBaseViewController.swift in Sources */,
 				4A06B5FA1E70F287008BDBE1 /* EnumList.swift in Sources */,
 				4A8346A01E203B6200BAF8F9 /* HeartStats.swift in Sources */,
@@ -757,7 +754,6 @@
 				13523AFB2011E1E500CDF58C /* BackgroundViewController.swift in Sources */,
 				1317BE7D205268D80095F0BB /* UINib+Extractor.swift in Sources */,
 				4A8346B11E203B6200BAF8F9 /* PlayViewController.swift in Sources */,
-				138BF02C2031418E00119A52 /* CubeColor.swift in Sources */,
 				4A83469D1E203B6200BAF8F9 /* AuthenticationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

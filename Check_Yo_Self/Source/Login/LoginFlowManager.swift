@@ -26,11 +26,6 @@ class LoginFlowManager {
     ///
     func updateAccount(for user: User, success: @escaping Closure, failure: @escaping ErrorClosure) {
         
-        guard user.ageGroup != nil, user.favoriteGenre != nil, user.identity != nil else {
-            failure("Enter all of your profile info!")
-            return
-        }
-        
         DataManager.shared.updateAccount(for: user, success: { _ in
             success()
         }, failure: failure)

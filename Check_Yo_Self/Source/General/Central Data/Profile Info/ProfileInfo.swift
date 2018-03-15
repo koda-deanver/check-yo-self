@@ -1,12 +1,85 @@
 //
-//  AgeGroup.swift
+//  ProfileInfo.swift
 //  check-yo-self
 //
 //  Created by Phil on 2/13/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
+//  Conatins enumerations for profile data of user.
+//
 
 import Foundation
+
+/// Represents the six colors of CollabrJabbr.
+enum CubeColor: String {
+    
+    case red, green, blue, cyan, magenta, yellow, none
+    
+    /// The background image for alerts.
+    var alertBackdrop: UIImage {
+        switch self {
+        case .red: return #imageLiteral(resourceName: "AlertBackdropRed")
+        case .green: return #imageLiteral(resourceName: "AlertBackdropGreen")
+        case .blue: return #imageLiteral(resourceName: "AlertBackdropBlue")
+        case .cyan: return #imageLiteral(resourceName: "AlertBackdropCyan")
+        case .magenta: return #imageLiteral(resourceName: "AlertBackdropMagenta")
+        case .yellow: return #imageLiteral(resourceName: "AlertBackdropYellow")
+        case .none: return #imageLiteral(resourceName: "AlertBackdropGray")
+        }
+    }
+    
+    /// The background image for connection buttons.
+    var connectionBackdrop: UIImage {
+        switch self {
+        case .red: return #imageLiteral(resourceName: "ConnectionBackdropRed")
+        case .green: return #imageLiteral(resourceName: "ConnectionBackdropGreen")
+        case .blue: return #imageLiteral(resourceName: "ConnectionBackdropBlue")
+        case .cyan: return #imageLiteral(resourceName: "ConnectionBackdropCyan")
+        case .magenta: return #imageLiteral(resourceName: "ConnectionBackdropMagenta")
+        case .yellow: return #imageLiteral(resourceName: "ConnectionBackdropYellow")
+        case .none: return #imageLiteral(resourceName: "ConnectionBackdropGray")
+        }
+    }
+    
+    /// The button image to display on alerts and in the game.
+    var buttonImage: UIImage {
+        switch self {
+        case .red: return #imageLiteral(resourceName: "GameButtonRed")
+        case .green: return #imageLiteral(resourceName: "GameButtonGreen")
+        case .blue: return #imageLiteral(resourceName: "GameButtonBlue")
+        case .cyan: return #imageLiteral(resourceName: "GameButtonCyan")
+        case .magenta: return #imageLiteral(resourceName: "GameButtonMagenta")
+        case .yellow: return #imageLiteral(resourceName: "GameButtonYellow")
+        case .none: return #imageLiteral(resourceName: "GameButtonGray")
+        }
+    }
+    
+    /// Color in UIColor form.
+    var uiColor: UIColor {
+        
+        switch self{
+        case .red: return UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        case .green: return UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
+        case .blue: return UIColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.0)
+        case .cyan: return UIColor(red: 0.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        case .magenta: return UIColor(red: 1.0, green: 0.0, blue: 1.0, alpha: 1.0)
+        case .yellow: return UIColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 1.0)
+        case .none: return UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1.0)
+        }
+    }
+    
+    ///
+    /// Returns a JabbrColor if it matches string, otherwise returns none.
+    ///
+    /// - parameter string: The string to match a color to.
+    ///
+    /// - returns: A color matching the given string, if there is one.
+    ///
+    static func color(fromString string: String?) -> CubeColor {
+        guard let string = string else { return .none }
+        return CubeColor(rawValue: string) ?? .none
+    }
+}
 
 /// Contains possible age groups that affect styling of background.
 enum AgeGroup: String {
@@ -65,6 +138,15 @@ enum Identity: String {
     case straightFemale = "female-straight"
     case gayFemale = "female-gay"
     case unknown = "unknown"
+    
+    /// Value to show in avatar description.
+    var displayedIdentity: String {
+        switch self {
+        case .straightMale, .gayMale: return "male"
+        case .straightFemale, .gayFemale: return "female"
+        case .unknown: return "unknown"
+        }
+    }
     
     ///
     /// Returns an Identity if one matches string, otherwise defaults to unknown.

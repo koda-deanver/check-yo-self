@@ -22,7 +22,7 @@ struct Avatar {
     /// Decriptive job title.
     let discipline: String
     /// A short description explaining why you relate to this avatar.
-    var bio: String { return discipline }
+    var bio: String { return "\(name) identifies as \(identity.displayedIdentity) and mainly plays in the \(genre) genre." }
     
     /// Used to locate avatar based on User.
     let genre: CollabrationGenre

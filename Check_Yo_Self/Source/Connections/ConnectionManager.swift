@@ -91,11 +91,12 @@ extension ConnectionManager {
             
             connection.state = .pending
             
-            BSGFacebookService.login(completion: {
+            DataManager.shared.loginFacebook(success: {
                 completion(true)
             }, failure: { _ in
                 completion(false)
             })
+
         }), (text: "Cancel", handler: { completion(false) })])
         
         viewController.showAlert(alert)

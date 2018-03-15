@@ -62,7 +62,7 @@ class DataManager {
     /// - parameter success: Returns user on successful create.
     /// - parameter failure: Failure handler containing error string.
     ///
-    func updateAccount(for user: User, success: @escaping (User) -> Void, failure: ErrorClosure?) {
+    func updateAccount(for user: User, success: ((User) -> Void)?, failure: ErrorClosure?) {
         
         let userPath = Constants.firebaseRootPath.child("clients/\(user.username)")
         
@@ -86,7 +86,7 @@ class DataManager {
         }
         
         BSGFirebaseService.updateData(atPath: userPath, values: values, success: {
-                success(user)
+                success?(user)
         }, failure: {
             failure?("Failed to create user.")
         })

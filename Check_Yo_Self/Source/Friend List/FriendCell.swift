@@ -19,6 +19,7 @@ class FriendCell: UITableViewCell {
     
     @IBOutlet weak var backdrop: UIImageView!
     
+    @IBOutlet weak var friendImageBackdrop: UIImageView!
     @IBOutlet weak var friendImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -29,15 +30,19 @@ class FriendCell: UITableViewCell {
     ///
     /// initial setup for cell.
     ///
+    /// - parameter friend: Friend to style cell for.
+    ///
     func configure(for friend: User){
         
-        backdrop.image = friend.favoriteColor.connectionBackdrop
-        
         if let friendID = friend.facebookID, let friendImage = BSGFacebookService.getImage(forID: friendID)  {
+            friendImageBackdrop.image = friend.favoriteColor.alertBackdrop
             friendImageView.image = friendImage
         }
         
         nameLabel.text = friend.username
+        nameLabel.font = UIFont(name: Font.main, size: Font.mediumSize)
+        
         gemLabel.text = String(friend.gems)
+        gemLabel.font = UIFont(name: Font.pure, size: Font.largeSize)
     }
 }
