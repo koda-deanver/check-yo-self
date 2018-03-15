@@ -30,15 +30,15 @@ class BSGFirebaseService {
     /// - parameter success: Successful update completion.
     /// - parameter failure: Handles failure to update data.
     ///
-    static func updateData(atPath path: DatabaseReference, values: [String: Any], success: @escaping Closure = {}, failure: @escaping Closure = {}) {
+    static func updateData(atPath path: DatabaseReference, values: [String: Any], success: Closure?, failure: Closure?) {
         
         checkConnection(completion: { isConnected in
             
             if isConnected {
                 path.updateChildValues(values)
-                success()
+                success?()
             } else {
-                failure()
+                failure?()
             }
         })
     }
@@ -50,7 +50,7 @@ class BSGFirebaseService {
     /// - parameter success: Successful completion containing snapshot of data.
     /// - parameter failure: Handles failure to get data.
     ///
-    static func fetchData(atPath path: DatabaseReference, success: @escaping (DataSnapshot) -> Void = {_ in }, failure: @escaping Closure = {}){
+    static func fetchData(atPath path: DatabaseReference, success: @escaping (DataSnapshot) -> Void, failure: Closure?){
         
         checkConnection(completion: { isConnected in
             
@@ -59,7 +59,7 @@ class BSGFirebaseService {
                     success(snapshot)
                 })
             } else {
-                failure()
+                failure?()
             }
         })
     }
@@ -71,15 +71,15 @@ class BSGFirebaseService {
     /// - parameter success: Successful completion containing snapshot of data.
     /// - parameter failure: Handles failure to get data.
     ///
-    static func removeData(atPath path: DatabaseReference, success: @escaping Closure, failure: @escaping Closure = {}) {
+    static func removeData(atPath path: DatabaseReference, success: Closure?, failure: Closure?) {
         
         checkConnection(completion: { isConnected in
             
             if isConnected {
                 path.removeValue()
-                success()
+                success?()
             } else {
-                failure()
+                failure?()
             }
         })
     }
@@ -100,7 +100,7 @@ class BSGFirebaseService {
         connectedRef.observeSingleEvent(of: .value, with: { snapshot in
             
             let isConnected = snapshot.value as? Bool ?? false
-            print(isConnected)
+            
             // Retry.
             if !isConnected && isFirstAttempt {
                 isFirstAttempt = false

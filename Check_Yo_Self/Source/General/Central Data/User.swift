@@ -75,4 +75,35 @@ class User {
         
         identity = Identity.identity(fromString: profileInfo[UserDatabaseField.identity.rawValue] as? String)
     }
+    
+    // MARK: - Public Methods -
+    
+    ///
+    /// Turns user into snapshot to be saved to database.
+    ///
+    /// - returns: Dictionary representation of user.
+    ///
+    func toSnapshot() -> [String: Any] {
+        
+        let profileSnapshot: [String: Any] = [
+            UserDatabaseField.favoriteColor.rawValue : "\(favoriteColor.rawValue)",
+            UserDatabaseField.ageGroup.rawValue : "\(ageGroup.rawValue)",
+            UserDatabaseField.favoriteGenre.rawValue : "\(favoriteGenre.rawValue)",
+            UserDatabaseField.identity.rawValue : "\(identity.rawValue)"
+        ]
+        
+        var userSnapshot: [String: Any] = [
+            UserDatabaseField.username.rawValue : "\(username)",
+            UserDatabaseField.password.rawValue : "\(password)",
+            "profile": profileSnapshot
+        ]
+        
+        // Add facebook info if present.
+        if let facebookID = facebookID, let facebookName = facebookName {
+            userSnapshot[UserDatabaseField.facebookID.rawValue] = "\(facebookID)"
+            userSnapshot[UserDatabaseField.facebookName.rawValue] = "\(facebookName)"
+        }
+        
+        return userSnapshot
+    }
 }

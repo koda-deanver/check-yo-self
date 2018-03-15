@@ -24,6 +24,7 @@ enum QuestionType: String {
     case make = "Make"
     case profile = "Profile"
     
+    /// Value of parent path on database.
     var databaseNode: String { return rawValue.lowercased() }
 }
 
@@ -89,5 +90,28 @@ struct Question {
         }
         
         choices = randomChoices
+    }
+    
+    ///
+    /// Turns question into snapshot to be saved to database.
+    ///
+    /// - returns: Dictionary representation of question.
+    ///
+    func toSnapshot() -> [String: Any] {
+        
+        var allChoicesSnapshot: [[String: String]] = []
+        
+        for choice in choices {
+            
+            var choiceSnapshot: [String: String] = ["text": choice.text, "point-value": String(choice.pointValue), "meh": ""]
+
+            if let profileValue = choice.profileValue {
+                choiceSnapshot["profile-value"] = profileValue
+            }
+            
+            allChoicesSnapshot.append(choiceSnapshot)
+        }
+        
+        return ["text": text, "id": id, "choices": allChoicesSnapshot]
     }
 }

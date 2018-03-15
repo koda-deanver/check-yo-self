@@ -131,14 +131,7 @@ extension LoginViewController {
         loginButton.isEnabled = username.count >= Configuration.usernameMinLength && passcode.count == Configuration.passcodeLength
     }
     
-    @IBAction func textFieldEditingDidEnd(_ sender: TextField) {
-        
-        /*if sender == usernameTextField {
-            passcodeTextField.becomeFirstResponder()
-        } else {
-            passcodeTextField.resignFirstResponder()
-        }*/
-    }
+    @IBAction func textFieldEditingDidEnd(_ sender: TextField) {}
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         

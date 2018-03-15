@@ -30,7 +30,7 @@ class DataManager {
     /// - parameter success: Called when there is no error and users are found/not found. Returns array.
     /// - parameter failure: Called when there is connection error.
     ///
-    func getUsers(matching query: [(field: UserDatabaseField, value: String)], success: @escaping ([User]) -> Void, failure: @escaping (String) -> Void) {
+    func getUsers(matching query: [(field: UserDatabaseField, value: String)], success: @escaping ([User]) -> Void, failure: ErrorClosure?) {
         
         fetchAllClients(success: { clients in
             
@@ -66,26 +66,7 @@ class DataManager {
         
         let userPath = Constants.firebaseRootPath.child("clients/\(user.username)")
         
-        let profile: [String: Any] = [
-            UserDatabaseField.favoriteColor.rawValue : "\(user.favoriteColor.rawValue)",
-            UserDatabaseField.ageGroup.rawValue : "\(user.ageGroup.rawValue)",
-            UserDatabaseField.favoriteGenre.rawValue : "\(user.favoriteGenre.rawValue)",
-            UserDatabaseField.identity.rawValue : "\(user.identity.rawValue)"
-        ]
-        
-        var values: [String: Any] = [
-            UserDatabaseField.username.rawValue : "\(user.username)",
-            UserDatabaseField.password.rawValue : "\(user.password)",
-            "profile": profile
-        ]
-        
-        // Add facebook info if present.
-        if let facebookID = user.facebookID, let facebookName = user.facebookName {
-            values[UserDatabaseField.facebookID.rawValue] = "\(facebookID)"
-            values[UserDatabaseField.facebookName.rawValue] = "\(facebookName)"
-        }
-        
-        BSGFirebaseService.updateData(atPath: userPath, values: values, success: {
+        BSGFirebaseService.updateData(atPath: userPath, values: user.toSnapshot(), success: {
                 success?(user)
         }, failure: {
             failure?("Failed to create user.")
@@ -98,14 +79,14 @@ class DataManager {
     /// - parameter success: Handler for successful load of questions.
     /// - parameter failure: Handler for failure to get questions.
     ///
-    func getQuestions(ofType questionType: QuestionType, success: @escaping ([Question]) -> Void, failure: @escaping ErrorClosure) {
+    func getQuestions(ofType questionType: QuestionType, success: @escaping ([Question]) -> Void, failure: ErrorClosure?) {
         
-        let path = Constants.firebaseRootPath.child("questions/\(questionType.databaseNode)")
+        let questionPath = Constants.firebaseRootPath.child("questions/\(questionType.databaseNode)")
         
-        BSGFirebaseService.fetchData(atPath: path, success: { snapshot in
-            print(snapshot)
+        BSGFirebaseService.fetchData(atPath: questionPath, success: { snapshot in
+            
             guard let questionSnapshots = snapshot.value as? [[String: Any]] else {
-                failure("Connection Error")
+                failure?("Connection Error")
                 return
             }
             
@@ -118,6 +99,30 @@ class DataManager {
             
             success(questions)
             
+        }, failure: nil)
+    }
+    
+    ///
+    /// Adds new questions to database.
+    ///
+    /// - parameter questionType: Type of questions to add.
+    /// - parameter questions: Questions objects to add.
+    /// - parameter success: Handler for successful update of questions.
+    /// - parameter failure: Handler for failure to update questions.
+    ///
+    func updateQuestions(ofType questionType: QuestionType, questions: [Question], success: Closure?, failure: ErrorClosure?) {
+        
+        let questionPath = Constants.firebaseRootPath.child("questions")
+        
+        var questionSnapshots: [Any] = []
+        for question in questions {
+            questionSnapshots.append(question.toSnapshot())
+        }
+        
+        BSGFirebaseService.updateData(atPath: questionPath, values: [questionType.databaseNode: questionSnapshots], success: {
+            success?()
+        }, failure: {
+            failure?("Failed to update questions.")
         })
     }
     
@@ -155,19 +160,19 @@ class DataManager {
     /// - parameter success: Returns client dictionary.
     /// - parameter failure: Connection error blocked attempt at reading clients.
     ///
-    private func fetchAllClients(success: @escaping ([String: Any]) -> Void, failure: @escaping (String) -> Void) {
+    private func fetchAllClients(success: @escaping ([String: Any]) -> Void, failure: ErrorClosure?) {
         
         BSGFirebaseService.fetchData(atPath: Constants.firebaseRootPath.child("clients"), success: { snapshot in
             
             guard let clients = snapshot.value as? [String: Any] else {
-                failure("Connection Error")
+                failure?("Connection Error")
                 return
             }
         
             success(clients)
             
         }, failure: {
-            failure("Connection Error.")
+            failure?("Connection Error.")
         })
     }
 
