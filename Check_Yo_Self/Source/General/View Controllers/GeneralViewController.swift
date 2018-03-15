@@ -25,6 +25,10 @@ class GeneralViewController: UIViewController {
         super.viewDidLoad()
         
         NotificationManager.shared.addObserver(self, forNotificationType: .profileUpdated, handler: #selector(style))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         style()
     }
     

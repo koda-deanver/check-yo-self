@@ -27,12 +27,13 @@ final class QuestionsViewController: SkinnedViewController {
         
         questionLabel.text = "\(questionsAnswered + 1). \(currentQuestion.text)"
         
-        let buttons: [UIButton] = [redButton, greenButton, blueButton, cyanButton, magentaButton, yellowButton]
-        
         for (index, choice) in currentQuestion.choices.enumerated() {
-            buttons[index].setTitle(choice.text, for: .normal)
+            allButtons[index].setTitle(choice.text, for: .normal)
         }
     }}
+    
+    /// Array of all choice buttons.
+    private var allButtons: [UIButton] { return [redButton, greenButton, blueButton, cyanButton, magentaButton, yellowButton] }
     
     // MARK: - Outlets -
     
@@ -54,22 +55,24 @@ final class QuestionsViewController: SkinnedViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(true)
+        startQuestions()
+    }
+    
+    override func style() {
         
-        showProgressHUD()
+        super.style()
         
-        QuestionService.get(Configuration.questionsPerRound, questionsOfType: questionType, success: { questions in
-            
-            hideProgressHUD()
-            
-            self.questions = questions
-            
-            self.showAlert(BSGCustomAlert(message: "Answer these 20 questions and score JabbRGems.", options: [(text: "Go", handler: {
-                self.startQuestions()
-            })]))
-            
-        }, failure: { error in
-            handle(error)
-        })
+        usernameLabel.text = User.current.username
+        usernameLabel.font = UIFont(name: Font.main, size: Font.largeSize)
+        
+        scoreLabel.text = String(User.current.gems)
+        scoreLabel.font = UIFont(name: Font.pure, size: Font.largeSize)
+        
+        phaseImage.image = questionType.image
+        
+        for button in allButtons {
+            button.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
+        }
     }
     
     ///
@@ -77,39 +80,44 @@ final class QuestionsViewController: SkinnedViewController {
     ///
     private func startQuestions() {
         
-        // Catch next interstitial for game over.
-        if Configuration.showAds == true{
-            Chartboost.cacheInterstitial(CBLocationGameOver)
-        }
+        reset()
+        showProgressHUD()
         
-        self.questionsAnswered = 0
-        self.score = 0
-        self.startTime = Date.init()
-        
-        presentQuestion()
-    }
-    
-    //********************************************************************
-    // updateStats
-    // Description: Set player score and name labels
-    //********************************************************************
-    func updateStats() {
-        
-        usernameLabel.text = User.current.username
-        scoreLabel.text = String(User.current.gems)
-        phaseImage.image = questionType.image
+        QuestionService.get(Configuration.questionsPerRound, questionsOfType: questionType, success: { questions in
+            
+            self.hideProgressHUD()
+            
+            self.questions = questions
+            
+            self.showAlert(BSGCustomAlert(message: "Answer these 20 questions and score JabbRGems.", options: [(text: "Go", handler: {
+                
+                // Catch next interstitial for game over.
+                if Configuration.showAds == true{
+                    Chartboost.cacheInterstitial(CBLocationGameOver)
+                }
+                
+                self.questionsAnswered = 0
+                self.score = 0
+                self.startTime = Date.init()
+                
+                self.presentQuestion()
+            })]))
+            
+        }, failure: { error in
+            self.handle(error)
+        })
     }
     
     ///
-    /// Resets button text when beginning new question round.
+    /// Resets things when beginning new question round.
     ///
-    private func resetButtons(){
-        for view in self.view.subviews{
-            if let button = view as? UIButton{
-                button.titleLabel?.text = "???"
-            }
-        }
+    private func reset(){
+        
         self.questionLabel.text = "???"
+        
+        for button in allButtons {
+            button.titleLabel?.text = "???"
+        }
     }
     
     ///
