@@ -30,6 +30,8 @@ final class QuestionsViewController: SkinnedViewController {
         for (index, choice) in currentQuestion.choices.enumerated() {
             allButtons[index].setTitle(choice.text, for: .normal)
         }
+        
+        SpeechController.speak(currentQuestion.text)
     }}
     
     /// Array of all choice buttons.
@@ -37,18 +39,18 @@ final class QuestionsViewController: SkinnedViewController {
     
     // MARK: - Outlets -
     
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var phaseImage: UIImageView!
-    @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var backDrop: UIImageView!
+    @IBOutlet private weak var usernameLabel: UILabel!
+    @IBOutlet private weak var scoreLabel: UILabel!
+    @IBOutlet private weak var phaseImage: UIImageView!
+    @IBOutlet private weak var questionLabel: UILabel!
+    @IBOutlet private weak var backDrop: UIImageView!
     
-    @IBOutlet weak var redButton: UIButton!
-    @IBOutlet weak var greenButton: UIButton!
-    @IBOutlet weak var blueButton: UIButton!
-    @IBOutlet weak var cyanButton: UIButton!
-    @IBOutlet weak var magentaButton: UIButton!
-    @IBOutlet weak var yellowButton: UIButton!
+    @IBOutlet private weak var redButton: UIButton!
+    @IBOutlet private weak var greenButton: UIButton!
+    @IBOutlet private weak var blueButton: UIButton!
+    @IBOutlet private weak var cyanButton: UIButton!
+    @IBOutlet private weak var magentaButton: UIButton!
+    @IBOutlet private weak var yellowButton: UIButton!
     
     // MARK: - Lifecycle -
     

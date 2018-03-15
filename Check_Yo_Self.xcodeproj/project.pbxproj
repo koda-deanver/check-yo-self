@@ -13,6 +13,7 @@
 		132042AD2010682300DCE39E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132042AC2010682300DCE39E /* DataManager.swift */; };
 		132042AF2010692800DCE39E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132042AE2010692800DCE39E /* User.swift */; };
 		13382AB02017159500CAAB84 /* LoginFlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13382AAF2017159500CAAB84 /* LoginFlowManager.swift */; };
+		134D3CF2205A413E00D11AB4 /* SpeechController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134D3CF1205A413E00D11AB4 /* SpeechController.swift */; };
 		13523AF62011C34D00CDF58C /* LabelAndTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */; };
 		13523AF82011C52B00CDF58C /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */; };
 		13523AFB2011E1E500CDF58C /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */; };
@@ -91,6 +92,7 @@
 		132042AC2010682300DCE39E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		132042AE2010692800DCE39E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		13382AAF2017159500CAAB84 /* LoginFlowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlowManager.swift; sourceTree = "<group>"; };
+		134D3CF1205A413E00D11AB4 /* SpeechController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechController.swift; sourceTree = "<group>"; };
 		13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAndTextFieldCell.swift; sourceTree = "<group>"; };
 		13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountViewController.swift; sourceTree = "<group>"; };
 		13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				4AA2D39B1E24B35E00DBE986 /* Media.swift */,
 				4A06B5F91E70F287008BDBE1 /* EnumList.swift */,
 				4A8346781E203B6200BAF8F9 /* AppDelegate.swift */,
+				134D3CF1205A413E00D11AB4 /* SpeechController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -714,6 +717,7 @@
 				4A8346B01E203B6200BAF8F9 /* MapViewController.swift in Sources */,
 				4AA2D39C1E24B35E00DBE986 /* Media.swift in Sources */,
 				4A8346A81E203B6200BAF8F9 /* Question.swift in Sources */,
+				134D3CF2205A413E00D11AB4 /* SpeechController.swift in Sources */,
 				4A8346AF1E203B6200BAF8F9 /* LoginViewController.swift in Sources */,
 				4A8346B31E203B6200BAF8F9 /* StatsViewController.swift in Sources */,
 				4A8346991E203B6200BAF8F9 /* AppDelegate.swift in Sources */,
