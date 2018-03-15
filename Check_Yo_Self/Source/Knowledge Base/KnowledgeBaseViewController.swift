@@ -59,7 +59,7 @@ extension KnowledgeBaseViewController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        showAlert(BSGCustomAlert(message: "Could not load Knowledge Base"))
+        handle(error.localizedDescription)
     }
 }
 

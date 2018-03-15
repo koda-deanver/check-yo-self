@@ -54,7 +54,7 @@
 		4A8346A61E203B6200BAF8F9 /* LocationMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468A1E203B6200BAF8F9 /* LocationMarker.swift */; };
 		4A8346A71E203B6200BAF8F9 /* PlayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468B1E203B6200BAF8F9 /* PlayerData.swift */; };
 		4A8346A81E203B6200BAF8F9 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468C1E203B6200BAF8F9 /* Question.swift */; };
-		4A8346A91E203B6200BAF8F9 /* QuestionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468D1E203B6200BAF8F9 /* QuestionStorage.swift */; };
+		4A8346A91E203B6200BAF8F9 /* QuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468D1E203B6200BAF8F9 /* QuestionService.swift */; };
 		4A8346AA1E203B6200BAF8F9 /* CubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468F1E203B6200BAF8F9 /* CubeViewController.swift */; };
 		4A8346AB1E203B6200BAF8F9 /* DataEntryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346901E203B6200BAF8F9 /* DataEntryDetailsViewController.swift */; };
 		4A8346AC1E203B6200BAF8F9 /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346911E203B6200BAF8F9 /* ConnectionsViewController.swift */; };
@@ -62,7 +62,7 @@
 		4A8346AE1E203B6200BAF8F9 /* KnowledgeBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346931E203B6200BAF8F9 /* KnowledgeBaseViewController.swift */; };
 		4A8346AF1E203B6200BAF8F9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346941E203B6200BAF8F9 /* LoginViewController.swift */; };
 		4A8346B01E203B6200BAF8F9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346951E203B6200BAF8F9 /* MapViewController.swift */; };
-		4A8346B11E203B6200BAF8F9 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346961E203B6200BAF8F9 /* PlayViewController.swift */; };
+		4A8346B11E203B6200BAF8F9 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346961E203B6200BAF8F9 /* QuestionsViewController.swift */; };
 		4A8346B21E203B6200BAF8F9 /* StatsNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346971E203B6200BAF8F9 /* StatsNavViewController.swift */; };
 		4A8346B31E203B6200BAF8F9 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346981E203B6200BAF8F9 /* StatsViewController.swift */; };
 		4A8346B71E203E4000BAF8F9 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8346B61E203E4000BAF8F9 /* HealthKit.framework */; };
@@ -136,7 +136,7 @@
 		4A83468A1E203B6200BAF8F9 /* LocationMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationMarker.swift; sourceTree = "<group>"; };
 		4A83468B1E203B6200BAF8F9 /* PlayerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerData.swift; sourceTree = "<group>"; };
 		4A83468C1E203B6200BAF8F9 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
-		4A83468D1E203B6200BAF8F9 /* QuestionStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionStorage.swift; sourceTree = "<group>"; };
+		4A83468D1E203B6200BAF8F9 /* QuestionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionService.swift; sourceTree = "<group>"; };
 		4A83468F1E203B6200BAF8F9 /* CubeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CubeViewController.swift; sourceTree = "<group>"; };
 		4A8346901E203B6200BAF8F9 /* DataEntryDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataEntryDetailsViewController.swift; sourceTree = "<group>"; };
 		4A8346911E203B6200BAF8F9 /* ConnectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsViewController.swift; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 		4A8346931E203B6200BAF8F9 /* KnowledgeBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeBaseViewController.swift; sourceTree = "<group>"; };
 		4A8346941E203B6200BAF8F9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4A8346951E203B6200BAF8F9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		4A8346961E203B6200BAF8F9 /* PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
+		4A8346961E203B6200BAF8F9 /* QuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		4A8346971E203B6200BAF8F9 /* StatsNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsNavViewController.swift; sourceTree = "<group>"; };
 		4A8346981E203B6200BAF8F9 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		4A8346B41E203E3F00BAF8F9 /* Check_Yo_Self.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Check_Yo_Self.entitlements; sourceTree = "<group>"; };
@@ -305,7 +305,7 @@
 			children = (
 				13E5ACE42026117700C92237 /* View Controllers */,
 				4A83468C1E203B6200BAF8F9 /* Question.swift */,
-				4A83468D1E203B6200BAF8F9 /* QuestionStorage.swift */,
+				4A83468D1E203B6200BAF8F9 /* QuestionService.swift */,
 			);
 			path = Play;
 			sourceTree = "<group>";
@@ -313,7 +313,7 @@
 		13E5ACE42026117700C92237 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4A8346961E203B6200BAF8F9 /* PlayViewController.swift */,
+				4A8346961E203B6200BAF8F9 /* QuestionsViewController.swift */,
 				4A438D7C1E31E46600C2253C /* CheckViewController.swift */,
 			);
 			path = "View Controllers";
@@ -727,7 +727,7 @@
 				4A8346AD1E203B6200BAF8F9 /* GeneralViewController.swift in Sources */,
 				1317BE7B20524F2A0095F0BB /* FitbitManager.swift in Sources */,
 				4A438D7D1E31E46600C2253C /* CheckViewController.swift in Sources */,
-				4A8346A91E203B6200BAF8F9 /* QuestionStorage.swift in Sources */,
+				4A8346A91E203B6200BAF8F9 /* QuestionService.swift in Sources */,
 				4A8346A61E203B6200BAF8F9 /* LocationMarker.swift in Sources */,
 				13C099AA202D886200E356D5 /* DropdownMenuCell.swift in Sources */,
 				132042AB201062C300DCE39E /* BSGFirebaseService.swift in Sources */,
@@ -753,7 +753,7 @@
 				4A877CD31E889D5C009CE752 /* FriendListViewController.swift in Sources */,
 				13523AFB2011E1E500CDF58C /* BackgroundViewController.swift in Sources */,
 				1317BE7D205268D80095F0BB /* UINib+Extractor.swift in Sources */,
-				4A8346B11E203B6200BAF8F9 /* PlayViewController.swift in Sources */,
+				4A8346B11E203B6200BAF8F9 /* QuestionsViewController.swift in Sources */,
 				4A83469D1E203B6200BAF8F9 /* AuthenticationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

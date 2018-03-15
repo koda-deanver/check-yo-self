@@ -813,7 +813,7 @@
         <!--Play-->
         <scene sceneID="hcV-RS-M4l">
             <objects>
-                <viewController storyboardIdentifier="PlayScene" title="Play" id="avA-NG-c4e" customClass="PlayViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayScene" title="Play" id="avA-NG-c4e" customClass="QuestionsViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ujp-OH-jVB"/>
                         <viewControllerLayoutGuide type="bottom" id="WJq-Y1-wPo"/>

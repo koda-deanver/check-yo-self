@@ -74,59 +74,6 @@ class DataManager {
     }
     
     ///
-    /// Get questions of specified type from database.
-    ///
-    /// - parameter success: Handler for successful load of questions.
-    /// - parameter failure: Handler for failure to get questions.
-    ///
-    func getQuestions(ofType questionType: QuestionType, success: @escaping ([Question]) -> Void, failure: ErrorClosure?) {
-        
-        let questionPath = Constants.firebaseRootPath.child("questions/\(questionType.databaseNode)")
-        
-        BSGFirebaseService.fetchData(atPath: questionPath, success: { snapshot in
-            
-            guard let questionSnapshots = snapshot.value as? [[String: Any]] else {
-                failure?("Connection Error")
-                return
-            }
-            
-            var questions: [Question] = []
-            
-            for snapshot in questionSnapshots {
-                guard let question = Question(withSnapshot: snapshot, type: questionType) else { continue }
-                questions.append(question)
-            }
-            
-            success(questions)
-            
-        }, failure: nil)
-    }
-    
-    ///
-    /// Adds new questions to database.
-    ///
-    /// - parameter questionType: Type of questions to add.
-    /// - parameter questions: Questions objects to add.
-    /// - parameter success: Handler for successful update of questions.
-    /// - parameter failure: Handler for failure to update questions.
-    ///
-    func updateQuestions(ofType questionType: QuestionType, questions: [Question], success: Closure?, failure: ErrorClosure?) {
-        
-        let questionPath = Constants.firebaseRootPath.child("questions")
-        
-        var questionSnapshots: [Any] = []
-        for question in questions {
-            questionSnapshots.append(question.toSnapshot())
-        }
-        
-        BSGFirebaseService.updateData(atPath: questionPath, values: [questionType.databaseNode: questionSnapshots], success: {
-            success?()
-        }, failure: {
-            failure?("Failed to update questions.")
-        })
-    }
-    
-    ///
     /// Log user into Facebook and save id and name.
     ///
     /// - parameter success: Handler for successfu login to Facebook.

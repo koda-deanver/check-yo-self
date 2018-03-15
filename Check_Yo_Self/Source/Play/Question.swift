@@ -12,7 +12,11 @@
 import UIKit
 import FirebaseDatabase
 
+// MARK: - Typealias -
+
 typealias Choice = (text: String, pointValue: Int, profileValue: String?)
+
+// MARK: - Enumeration -
 
 /// Represents types of questions.
 enum QuestionType: String {
@@ -24,9 +28,39 @@ enum QuestionType: String {
     case make = "Make"
     case profile = "Profile"
     
+    /// Message displays as intermediary alerts in *QuestionViewController*.
+    var progressAlertMessages: [String] {
+        
+        switch self {
+        // Unused. Profile is now on separate screen.
+        case .profile: return ["let us know about your personal physical rhythms", "let us know about your personal physical rhythms", "let us know about your personal relationship to the sun", "let us know about your personal physical practices"]
+        case .check: return ["explore your condition walking in to the meeting", "explore your feelings about your creative contribution", "help you examine your surroundings", "help you examine your fellow CollabRaters"]
+        case .brainstorm: return ["push the boundries of your surroundings", "push the boundries of your team", "push the boundries of yourself", "explore ways to place your BRAINSTORMS into DEVELOPMENT"]
+        case .develop: return ["expand the teams' ideas", "expand your ideas", "stretch the definition and boundries of the project", "explore ways to develop your product and to get you ready to ALLIGN"]
+        case .align: return ["group the teams' ideas into buckets", "prioritize the buckets using your stated reasoning", "stretch the definition and boundries of the project", "explore ways to allign your game and get you closer to IMPROVING"]
+        case .improve: return ["explore ways to improve your ultimate product", "explore ways to improve your progress towards the MAKING", "explore ways to improve your self worth", "explore ways to improve your team's confidence too"]
+        case .make: return [ "help you assess your product", "help CollabRjabbR assess your product", "relate your product to your personal stated goal", "relate your goal to your team's stated goal"]
+        }
+    }
+    
+    /// Image representing question type.
+    var image: UIImage? {
+        switch self {
+        case .profile: return nil
+        case .check: return #imageLiteral(resourceName: "TripleCheck")
+        case .brainstorm: return #imageLiteral(resourceName: "Brainstorm")
+        case .develop: return #imageLiteral(resourceName: "Develop")
+        case .align: return #imageLiteral(resourceName: "Align")
+        case .improve: return #imageLiteral(resourceName: "Improve")
+        case .make: return #imageLiteral(resourceName: "Make")
+        }
+    }
+    
     /// Value of parent path on database.
     var databaseNode: String { return rawValue.lowercased() }
 }
+
+// MARK: - Struct -
 
 /// Model for a question with 6 choices.
 struct Question {

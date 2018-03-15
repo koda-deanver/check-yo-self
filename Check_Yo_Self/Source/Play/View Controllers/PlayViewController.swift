@@ -1,17 +1,15 @@
-//********************************************************************
-//  PlayViewController.swift
-//  Check Yo Self
-//  Created by Phil on 12/1/16
 //
-//  Description: The game screen where players answer questions
-//********************************************************************
+//  QuestionsViewController.swift
+//  check-yo-self
+//
+//  Created by Phil on 12/1/16.
+//  Copyright © 2018 ThematicsLLC. All rights reserved.
+//
 
 import UIKit
-import HealthKit
-import MapKit
-import CoreLocation
 
-class PlayViewController: GeneralViewController{
+/// Screen where player is asked a questions and presented with 6 colored choices.
+class PlayViewController: SkinnedViewController {
     var gameQuestions: [Question]?
     var questionsAnswered: Int = 0
     var profileAvatarIndex: Int?
@@ -19,11 +17,6 @@ class PlayViewController: GeneralViewController{
     lazy var startTime: Date = {
         return Date.init()
     }()
-    var creationPhase: CreationPhase = PlayerData.sharedInstance.creationPhase
-    
-    // Round Data
-    var roundStepCount: Int?
-    var roundHeartDictionary: [String: Int]?
     
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!

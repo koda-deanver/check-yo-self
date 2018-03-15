@@ -78,7 +78,7 @@ final class ProfileViewController: SkinnedViewController {
         
         showProgressHUD()
         
-        DataManager.shared.getQuestions(ofType: .profile, success: { questions in
+        QuestionService.getQuestions(ofType: .profile, success: { questions in
             
             self.hideProgressHUD()
             
