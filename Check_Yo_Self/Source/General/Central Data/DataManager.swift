@@ -10,6 +10,16 @@ import Foundation
 import FirebaseCore
 import FirebaseDatabase
 
+// MARK: - Enumeration -
+
+/// All types of data that are saved to UserDefaults.
+enum LocalData: String {
+    case questionType
+}
+
+// MARK: - Class -
+
+/// Class used for saving and retreiving data.
 class DataManager {
     
     // MARK: - Public Members -
@@ -97,6 +107,25 @@ class DataManager {
         }, failure: { _ in
             failure?("Failed to login to Facebook")
         })
+    }
+    
+    ///
+    /// Get value stored in Userefaults.
+    ///
+    /// - parameter localTypeType: The type of value to save.
+    ///
+    func getLocalValue(for localDataType: LocalData) -> String? {
+        return UserDefaults.standard.value(forKey: localDataType.rawValue) as? String
+    }
+    
+    ///
+    /// Saves the specified value for specified data type in UserDefaults.
+    ///
+    /// - parameter value: The value to save.
+    /// - parameter localTypeType: The type of value to save.
+    ///
+    func saveLocalValue(_ value: String, for localDataType: LocalData) {
+        UserDefaults.standard.set(value, forKey: localDataType.rawValue)
     }
     
     // MARK: - Private Methods -

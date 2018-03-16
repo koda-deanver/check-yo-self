@@ -11,16 +11,18 @@ import UIKit
 /// Screen where player is asked a questions and presented with 6 colored choices.
 final class QuestionsViewController: SkinnedViewController {
     
-    // MARK: - Public Members -
-    
-    var questionType: QuestionType = .make
-    
     // MARK: - Private Members -
     
     private var questions: [Question] = []
     private var questionsAnswered: Int = 0
     private var score: Int = 0
     private var startTime: Date?
+    
+    /// The type of questions being displayed.
+    private var questionType: QuestionType {
+        guard let typeKey = DataManager.shared.getLocalValue(for: .questionType), let type = QuestionType(rawValue: typeKey) else { return .brainstorm }
+        return type
+    }
     
     /// The currently displaying question.
     private var currentQuestion: Question! { didSet {

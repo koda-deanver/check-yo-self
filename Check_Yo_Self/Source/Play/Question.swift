@@ -28,6 +28,18 @@ enum QuestionType: String {
     case make = "Make"
     case profile = "Profile"
     
+    /// Description of the purpose of this type of question.
+    var description: String {
+        switch self {
+        case .check: return "Answer these 20Questions when you CHECKIn & Out of every MEETUp in order to Check Yo Self & Score JabbrGems!"
+        case .brainstorm: return "PLAY this Phase of 20Questions when you are in the spitballin’, throwin’ it all against the wall, thinkin’ outside the box kind of CollabRation & Score more JabbrGems!"
+        case .develop: return "PLAY this Phase of 20Questions when your Team is looking to expand the scope of your Project, enhance your CollabRation & Score more JabbrGems!"
+        case .align: return "PLAY this Phase of 20Questions after you define the parameters of your Team’s Project, and put all 6 Players’ Elements into the CUBE & Score more JabbrGems!"
+        case .improve: return "PLAY this Phase of 20Questions when you are individually ready to take your CUBE Project to another level and maybe you aren’t sure what steps to take towards Effective CollabRation & Score more JabbrGems!"
+        case .make: return "PLAY this Phase of 20Questions when your Team Project is feelin’ good about the data built in your CUBE and looking to EXPORT the Elements of your Project, share your CollabRation with the world & exchange GEMs for ColLAB GEAR!"
+        case .profile: return "Answer these questions to deck out your profile yo."
+        }
+    }
     /// Message displays as intermediary alerts in *QuestionViewController*.
     var progressAlertMessages: [String] {
         

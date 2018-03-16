@@ -1,181 +1,126 @@
-//********************************************************************
-//  MapViewController.swift
-//  Check Yo Self
-//  Created by Phil on 12/7/16
 //
-//  Description: Allow user to change between phases
-//********************************************************************
+//  MapViwController.swift
+//  check-yo-self
+//
+//  Created by Phil on 12/7/16.
+//  Copyright © 2018 ThematicsLLC. All rights reserved.
+//
 
 import UIKit
 
-class MapViewController: GeneralViewController {
-    var tempCreationPhase = PlayerData.sharedInstance.creationPhase
-    @IBOutlet weak var bigPhaseImage: UIButton!
+/// Allows switching between question types.
+final class MapViewController: SkinnedViewController {
     
-    @IBOutlet weak var creationPhaseSlider: UISlider!
-    @IBOutlet weak var phaseDescription: UITextView!
-    //********************************************************************
-    // Action: bigImagePressed
-    // Description: Launch current phase
-    //********************************************************************
-    @IBAction func bigImagePressed(_ sender: UIButton) {
-        self.tabBarController?.selectedIndex = 1
-    }
+    // MARK: - Private Members -
     
-    //********************************************************************
-    // Action: arrowPressed
-    // Description: ChangePhase by pressing arrow
-    //********************************************************************
-    @IBAction func arrowPressed(_ sender: UIButton) {
-        let currentPhaseValue = Int(self.creationPhaseSlider.value)
-        var newPhaseValue: Int
-        // Left Arrow Tapped
-        if sender.accessibilityIdentifier == "leftArrow"{
-            newPhaseValue = incrementSliderValue(currentPhaseValue, by: -1)
-            changePhaseTo(phaseForSliderValue(newPhaseValue))
-        // Right Arrow Tapped
-        }else{
-            newPhaseValue = incrementSliderValue(currentPhaseValue, by: 1)
-            changePhaseTo(phaseForSliderValue(newPhaseValue))
+    /// All question types displayed on map screen.
+    private let questionTypes: [QuestionType] = [.brainstorm, .develop, .align,  .improve, .make]
+    
+    /// The currently selected question type. This is automatically saved in UserDefaults as it is changed. This is not interacted with directly and is set only through slider.
+    private var currentQuestionType: QuestionType {
+        
+        get {
+            guard let typeKey = DataManager.shared.getLocalValue(for: .questionType), let type = QuestionType(rawValue: typeKey) else { return .brainstorm }
+            return type
+        }
+        set {
+            bigImage.setImage(newValue.image, for: .normal)
+            textView.text = newValue.description
+            
+            DataManager.shared.saveLocalValue(newValue.rawValue, for: .questionType)
         }
     }
     
-    //********************************************************************
-    // Action: infoButtonPressed
-    // Description: Run tutorial video
-    //********************************************************************
-    @IBAction func infoButtonPressed(_ sender: UIButton) {
+    /// The current position of the slider. Acts as intermediary for *currentQuestionType*.
+    private var currentSliderPosition: Int {
         
-        let videoURL = NSURL.fileURL(withPath: Bundle.main.path(forResource: "MapTutorialVideo", ofType:"mp4")!)
-        BSGCommon.playVideo(url: videoURL, onController: self)
-    }
-
-    //********************************************************************
-    // Action: creationPhaseSliderMoved
-    // Description: Get ready to change phase once user goes back to Play screen
-    //********************************************************************
-    @IBAction func creationPhaseSliderMoved(_ sender: UISlider) {
-        let sliderState = Int(sender.value)
-        changePhaseTo(phaseForSliderValue(sliderState))
+        get {
+            for index in 0 ..< questionTypes.count where questionTypes[index] == currentQuestionType {
+                return index
+            }
+            return 0
+        }
+        set {
+            slider.value = Float(newValue)
+            currentQuestionType = questionTypes[newValue]
+        }
     }
     
-    //********************************************************************
-    // viewDidLoad
-    // Description: Setup slider to reflect current phase
-    //********************************************************************
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - Outlets -
+    
+    @IBOutlet private weak var bigImage: UIButton!
+    @IBOutlet private weak var textView: UITextView!
+    @IBOutlet private weak var slider: UISlider!
+    
+    // MARK: - Lifecycle -
+    
+    override func style() {
         
-        // FIX
-        // Set up swipe recognizers
-        /*let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(MapViewController.handleSwipe(sender:)))
+        super.style()
+        
+        textView.font = UIFont(name: Font.main, size: Font.mediumSize)
+        textView.textColor = User.current.ageGroup.textColor
+        
+        slider.minimumValue = 0.0
+        slider.maximumValue = Float(questionTypes.count - 1)
+        
+        // This is not a mistake and is used to get initial position of slider through UserDefaults.
+        let initialSliderPosition = currentSliderPosition
+        currentSliderPosition = initialSliderPosition
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(MapViewController.handleSwipe(sender:)))
         swipeLeft.direction = .left
         view.addGestureRecognizer(swipeLeft)
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(MapViewController.handleSwipe(sender:)))
         swipeRight.direction = .right
-        view.addGestureRecognizer(swipeRight)*/
+        view.addGestureRecognizer(swipeRight)
     }
     
-    //********************************************************************
-    // handleSwipe
-    // Description: Control phase changing by swipe
-    //********************************************************************
-    func handleSwipe(sender: UISwipeGestureRecognizer){
-        let currentPhaseValue = Int(self.creationPhaseSlider.value)
-        var newPhaseValue: Int
-        if sender.direction == .left{
-            newPhaseValue = incrementSliderValue(currentPhaseValue, by: -1)
-            changePhaseTo(phaseForSliderValue(newPhaseValue))
-        }else if sender.direction == .right{
-            newPhaseValue = incrementSliderValue(currentPhaseValue, by: 1)
-            changePhaseTo(phaseForSliderValue(newPhaseValue))
-        }else{
-            print("Invalid swipe")
+    ///
+    /// Cycle through to next phase on swipe.
+    ///
+    @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
+    
+        switch sender.direction {
+        case .left: incrementSlider(by: -1)
+        case .right: incrementSlider(by: 1)
+        default: return
         }
     }
     
-    //********************************************************************
-    // incrementSliderValue
-    // Description: Return value of next stage
-    //********************************************************************
-    func incrementSliderValue(_ value: Int, by increment: Int) -> Int{
-        var newValue = value + increment
-        if newValue >= Configuration.validPhases{
-            newValue = Configuration.validPhases - 1
-        }else if newValue < 0{
-            newValue = 0
-        }
-        return newValue
-    }
-    
-    //********************************************************************
-    // viewDidAppear
-    // Description: Setup slider to reflect current phase
-    //********************************************************************
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+    ///
+    /// Increment slider by specified amount.
+    ///
+    /// If slider is at max or min already, it will not move.
+    ///
+    /// - parameter increment: Value to increment slider by.
+    ///
+    private func incrementSlider(by increment: Int) {
         
-        // Load phase from player
-        self.changePhaseTo(PlayerData.sharedInstance.creationPhase)
+        let newSliderPosition = currentSliderPosition + increment
+        
+        guard newSliderPosition >= 0 && newSliderPosition < questionTypes.count else {
+            return
+        }
+        currentSliderPosition = newSliderPosition
+    }
+}
+
+// MARK: - Extension: Actions -
+
+extension MapViewController {
+    
+    @IBAction private func bigImagePressed(_ sender: UIButton) {
+        self.tabBarController?.selectedIndex = 1
     }
     
-    //********************************************************************
-    // phaseForSliderValue
-    // Description: Return phase based on slider position
-    //********************************************************************
-    func phaseForSliderValue(_ sliderValue: Int) -> CreationPhase{
-        switch(sliderValue){
-        case 0:
-            return .check
-        case 1:
-            return .brainstorm
-        case 2:
-            return .develop
-        case 3:
-            return .align
-        case 4:
-            return .improve
-        case 5:
-            return .make
-        default:
-            return .none
-        }
+    @IBAction func arrowPressed(_ sender: UIButton) {
+        sender.accessibilityIdentifier == "leftArrow" ? incrementSlider(by: -1) : incrementSlider(by: 1)
     }
     
-    //********************************************************************
-    // changePhaseTo
-    // Description: Setup slider to reflect current phase
-    //********************************************************************
-    func changePhaseTo(_ phase: CreationPhase){
-        switch(phase){
-        case .check:
-            creationPhaseSlider.value = 0
-            phaseDescription.text = "Answer these 20Questions when you CHECKIn & Out of every MEETUp in order to Check Yo Self & Score JabbrGems!"
-            bigPhaseImage.setImage(#imageLiteral(resourceName: "TripleCheck"), for: UIControlState.normal)
-        case .brainstorm:
-            creationPhaseSlider.value = 1
-            phaseDescription.text = "PLAY this Phase of 20Questions when you are in the spitballin’, throwin’ it all against the wall, thinkin’ outside the box kind of CollabRation & Score more JabbrGems!"
-            bigPhaseImage.setImage(#imageLiteral(resourceName: "Brainstorm"), for: UIControlState.normal)
-        case .develop:
-            creationPhaseSlider.value = 2
-            phaseDescription.text = "PLAY this Phase of 20Questions when your Team is looking to expand the scope of your Project, enhance your CollabRation & Score more JabbrGems!"
-            bigPhaseImage.setImage(#imageLiteral(resourceName: "Develop"), for: UIControlState.normal)
-        case .align:
-            creationPhaseSlider.value = 3
-            phaseDescription.text = "PLAY this Phase of 20Questions after you define the parameters of your Team’s Project, and put all 6 Players’ Elements into the CUBE & Score more JabbrGems!"
-            bigPhaseImage.setImage(#imageLiteral(resourceName: "Align"), for: UIControlState.normal)
-        case .improve:
-            creationPhaseSlider.value = 4
-            phaseDescription.text = "PLAY this Phase of 20Questions when you are individually ready to take your CUBE Project to another level and maybe you aren’t sure what steps to take towards Effective CollabRation & Score more JabbrGems!"
-            bigPhaseImage.setImage(#imageLiteral(resourceName: "Improve"), for: UIControlState.normal)
-        case .make:
-            creationPhaseSlider.value = 5
-            phaseDescription.text = "PLAY this Phase of 20Questions when your Team Project is feelin’ good about the data built in your CUBE and looking to EXPORT the Elements of your Project, share your CollabRation with the world & exchange GEMs for ColLAB GEAR!"
-            bigPhaseImage.setImage(#imageLiteral(resourceName: "Make"), for: UIControlState.normal)
-        case .none:
-            break
-        }
-        PlayerData.sharedInstance.creationPhase = phase
+    @IBAction func creationPhaseSliderMoved(_ sender: UISlider) {
+        let newSliderPosition = Int(sender.value)
+        currentSliderPosition = newSliderPosition
     }
 }

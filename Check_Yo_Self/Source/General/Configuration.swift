@@ -32,9 +32,9 @@ struct Constants {
 struct Font {
     
     /// Font used to style titles and important things.
-    static let heavy = "Chalkduster"
+    static let heavy = "Arial Rounded MT Bold"
     /// Font used for the bulk of the app.
-    static let main = "Party LET"
+    static let main = "Arial"
     /// Font used for things that should never really be styled.
     static let pure = "Arial Rounded MT Bold"
     
@@ -55,7 +55,6 @@ struct Configuration {
     
     // Questions
     static let questionsPerRound = 20
-    static let validPhases = 6 /* not including profile */
     
     // For username
     static let usernameMinLength = 1
