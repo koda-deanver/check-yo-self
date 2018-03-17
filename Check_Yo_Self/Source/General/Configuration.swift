@@ -50,8 +50,8 @@ struct Font {
 
 struct Configuration {
     
-    // Ads
-    static let showAds = false
+    /// Percentage of time ad is shown when finishing game.
+    static let adFrequency = 50
     
     // Questions
     static let questionsPerRound = 20

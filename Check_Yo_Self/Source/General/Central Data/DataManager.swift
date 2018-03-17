@@ -109,6 +109,52 @@ class DataManager {
         })
     }
     
+    ///
+    /// Adds record of game to database.
+    ///
+    /// - parameter questionType: The type of question answered in game.
+    /// - parameter score: The number of points scored in game.
+    /// - parameter startTime: The date when game was started.
+    /// - parameter completion: Completion handler for either successful or failed creation of game record.
+    ///
+    func addGameRecord(ofType questionType: QuestionType, score: Int, startTime: Date, completion: Closure?) {
+        
+        var steps: Int?
+        var heartData: HeartData?
+        
+        HealthKitService.getStepCountHK(success: { dailySteps in
+            steps = dailySteps
+            getHeart()
+        }, failure: { error in
+            getHeart()
+        })
+        
+        func getHeart() {
+            FitbitManager.shared.getTodaysHeartData(success: { data in
+                heartData = data
+                createRecord()
+            }, failure: { error in
+                createRecord()
+            })
+        }
+        
+        func createRecord() {
+            
+            let endTime = Date.init()
+            let location = LocationManager.shared.location
+            
+            let gameRecord = GameRecord(type: questionType, score: score, startTime: startTime, endTime: endTime, location: location, steps: steps, heartData: heartData, gemsEarned: 10)
+            
+            let gameDataPath = Constants.firebaseRootPath.child("check-yo-self/game-data")
+            
+            BSGFirebaseService.updateData(atPath: gameDataPath, values: gameRecord.toSnapshot(), success: {
+                completion?()
+            }, failure: {
+                completion?()
+            })
+        }
+    }
+    
     // MARK: - Private Methods -
     
     ///
@@ -156,27 +202,5 @@ extension DataManager {
     ///
     func saveLocalValue(_ value: String, for localDataType: LocalData) {
         UserDefaults.standard.set(value, forKey: localDataType.rawValue)
-    }
-    
-    func addGameRecord(ofType questionType: QuestionType, score: Int, startTime: Date) {
-        
-        /*let dataEntry = DataEntry(phase: phase, score: score, startTime: startTime, location: location, steps: steps, heartDictionary: heartDictionary)
-         if phase == .none{
-         // Initial profile setup
-         if dataArray.isEmpty{
-         self.dataArray.append(dataEntry)
-         // Award gems based on profile pick first time only
-         self.gemTotal += (self.playsPerDay * 10)
-         }else{
-         // User is changing profile
-         self.dataArray[0] = dataEntry
-         }
-         self.creationPhase = .check
-         }else{
-         self.dataArray.append(dataEntry)
-         dataEntry.gemsEarned = calculateGems(score: score, steps: steps, heartDictionary: heartDictionary)
-         self.gemTotal += dataEntry.gemsEarned
-         }
-         //self.archivePlayer()*/
     }
 }

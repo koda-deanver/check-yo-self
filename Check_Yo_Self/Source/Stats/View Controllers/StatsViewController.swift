@@ -11,7 +11,8 @@ import UIKit
 class StatsViewController: UITableViewController {
     let MAX_ENTRIES = 180
     var filterPhase: CreationPhase = .none
-    var filteredData: [DataEntry] = []
+    var filteredData: [GameRecord] = []
+    var shouldShowAd: Bool!
     
     @IBOutlet weak var phaseFilterButton: UIBarButtonItem!
     
@@ -99,6 +100,12 @@ class StatsViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        if shouldShowAd { Chartboost.showInterstitial(CBLocationGameOver) }
+    }
+    
     //********************************************************************
     // numberOfSections
     // Description: Always return 1 section
@@ -122,8 +129,8 @@ class StatsViewController: UITableViewController {
     //********************************************************************
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DataCell", for: indexPath) as! CustomTableViewCell
-        let dataEntry: DataEntry = self.filteredData[indexPath.row]
-        cell.dataEntry = dataEntry
+        let dataEntry = self.filteredData[indexPath.row]
+        //cell.dataEntry = dataEntry
         return cell
     }
     

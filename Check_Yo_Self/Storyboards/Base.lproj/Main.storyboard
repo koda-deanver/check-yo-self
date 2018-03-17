@@ -1020,26 +1020,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pHj-Hx-LKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="224.80000000000001" y="40.929535232383813"/>
-        </scene>
-        <!--Check-->
-        <scene sceneID="V9J-rV-Opk">
-            <objects>
-                <viewController title="Check" id="BJw-Gb-9Ck" customClass="CheckViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="NC6-b0-wc6"/>
-                        <viewControllerLayoutGuide type="bottom" id="oih-JH-mZB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="E17-6q-j3Y">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Check" image="TabBarIconCheck" id="4GD-NH-egx"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f5Q-VS-fjU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="952.79999999999995" y="40.929535232383813"/>
+            <point key="canvasLocation" x="265" y="42"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="KvL-ia-8Pt">
@@ -1462,7 +1443,6 @@
                     <connections>
                         <segue destination="s06-6N-bN5" kind="relationship" relationship="viewControllers" id="v2N-VC-LBu"/>
                         <segue destination="avA-NG-c4e" kind="relationship" relationship="viewControllers" id="jEB-Xa-5cN"/>
-                        <segue destination="BJw-Gb-9Ck" kind="relationship" relationship="viewControllers" id="Cf6-TJ-Fm2"/>
                         <segue destination="lMa-Qf-flh" kind="relationship" relationship="viewControllers" id="Mae-bO-ruY"/>
                         <segue destination="5gm-EC-Spv" kind="relationship" relationship="viewControllers" id="6KE-NO-Wbq"/>
                     </connections>
@@ -1556,7 +1536,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BHA-H2-wf4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1000.8" y="840.62968515742136"/>
+            <point key="canvasLocation" x="1390" y="746"/>
         </scene>
         <!--DataEntryDetails-->
         <scene sceneID="Wbd-2A-woP">
@@ -1797,7 +1777,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PF0-jJ-00x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1340" y="2257.4212893553226"/>
+            <point key="canvasLocation" x="1390" y="2159"/>
         </scene>
         <!--Map-->
         <scene sceneID="MP1-mK-OMt">
@@ -1884,7 +1864,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nbE-z5-aTi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2732" y="36.431784107946029"/>
+            <point key="canvasLocation" x="2190" y="39"/>
         </scene>
         <!--StatsNav-->
         <scene sceneID="abx-1v-Svv">
@@ -1907,7 +1887,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6I7-mQ-0vt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1940" y="39.130434782608695"/>
+            <point key="canvasLocation" x="1390" y="41"/>
         </scene>
         <!--DataEntryDetailsNav-->
         <scene sceneID="s38-X0-E6Q">
@@ -1925,7 +1905,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="snF-m4-MYZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1340" y="1556.6716641679161"/>
+            <point key="canvasLocation" x="1390" y="1459"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sS5-Bz-FDs">
@@ -2098,7 +2078,6 @@
         <image name="Health" width="240" height="240"/>
         <image name="JabbRGem" width="300" height="300"/>
         <image name="LoadingSymbolGreen" width="240" height="240"/>
-        <image name="TabBarIconCheck" width="24" height="24"/>
         <image name="TabBarIconCube" width="24" height="24"/>
         <image name="TabBarIconMap" width="24" height="24"/>
         <image name="TabBarIconPlay" width="24" height="24"/>

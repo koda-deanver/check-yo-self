@@ -20,13 +20,8 @@ typealias Choice = (text: String, pointValue: Int, profileValue: String?)
 
 /// Represents types of questions.
 enum QuestionType: String {
-    case check = "Check"
-    case brainstorm = "Brainstorm"
-    case develop = "Develop"
-    case align = "Align"
-    case improve = "Improve"
-    case make = "Make"
-    case profile = "Profile"
+    
+    case check, brainstorm, develop, align, improve, make, profile
     
     /// Description of the purpose of this type of question.
     var description: String {

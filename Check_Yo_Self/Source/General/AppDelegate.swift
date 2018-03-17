@@ -77,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Set up notification if user doesn't relaunch app before trigger
         let content = UNMutableNotificationContent()
-        content.title = "Hey \(PlayerData.sharedInstance.displayName)"
+        //content.title = "Hey \(PlayerData.sharedInstance.displayName)"
         content.subtitle = "We miss you!"
         content.body = "Don't forget to Check Yo Self and make the most of your day."
         

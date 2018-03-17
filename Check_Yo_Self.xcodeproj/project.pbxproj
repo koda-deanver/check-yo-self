@@ -34,7 +34,6 @@
 		4A06B5F81E709F1B008BDBE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A06B5F71E709F1B008BDBE1 /* GoogleService-Info.plist */; };
 		4A06B5FA1E70F287008BDBE1 /* EnumList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B5F91E70F287008BDBE1 /* EnumList.swift */; };
 		4A06B5FC1E713C82008BDBE1 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B5FB1E713C82008BDBE1 /* Connection.swift */; };
-		4A438D7D1E31E46600C2253C /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A438D7C1E31E46600C2253C /* CheckViewController.swift */; };
 		4A438D821E31EB5400C2253C /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A438D811E31EB5400C2253C /* Chartboost.framework */; };
 		4A438D841E31EB8000C2253C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A438D831E31EB8000C2253C /* StoreKit.framework */; };
 		4A438D861E31EB8600C2253C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A438D851E31EB8600C2253C /* UIKit.framework */; };
@@ -52,13 +51,11 @@
 		4A8346A01E203B6200BAF8F9 /* HeartStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346831E203B6200BAF8F9 /* HeartStats.swift */; };
 		4A8346A21E203B6200BAF8F9 /* String+Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346851E203B6200BAF8F9 /* String+Dates.swift */; };
 		4A8346A41E203B6200BAF8F9 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346881E203B6200BAF8F9 /* CustomTableViewCell.swift */; };
-		4A8346A51E203B6200BAF8F9 /* DataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346891E203B6200BAF8F9 /* DataEntry.swift */; };
+		4A8346A51E203B6200BAF8F9 /* GameRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346891E203B6200BAF8F9 /* GameRecord.swift */; };
 		4A8346A61E203B6200BAF8F9 /* LocationMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468A1E203B6200BAF8F9 /* LocationMarker.swift */; };
-		4A8346A71E203B6200BAF8F9 /* PlayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468B1E203B6200BAF8F9 /* PlayerData.swift */; };
 		4A8346A81E203B6200BAF8F9 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468C1E203B6200BAF8F9 /* Question.swift */; };
 		4A8346A91E203B6200BAF8F9 /* QuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468D1E203B6200BAF8F9 /* QuestionService.swift */; };
 		4A8346AA1E203B6200BAF8F9 /* CubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83468F1E203B6200BAF8F9 /* CubeViewController.swift */; };
-		4A8346AB1E203B6200BAF8F9 /* DataEntryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346901E203B6200BAF8F9 /* DataEntryDetailsViewController.swift */; };
 		4A8346AC1E203B6200BAF8F9 /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346911E203B6200BAF8F9 /* ConnectionsViewController.swift */; };
 		4A8346AD1E203B6200BAF8F9 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346921E203B6200BAF8F9 /* GeneralViewController.swift */; };
 		4A8346AE1E203B6200BAF8F9 /* KnowledgeBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346931E203B6200BAF8F9 /* KnowledgeBaseViewController.swift */; };
@@ -115,7 +112,6 @@
 		4A06B5F71E709F1B008BDBE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A06B5F91E70F287008BDBE1 /* EnumList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumList.swift; sourceTree = "<group>"; };
 		4A06B5FB1E713C82008BDBE1 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
-		4A438D7C1E31E46600C2253C /* CheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		4A438D811E31EB5400C2253C /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chartboost.framework; path = Check_Yo_Self/Frameworks/Chartboost.framework; sourceTree = "<group>"; };
 		4A438D831E31EB8000C2253C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4A438D851E31EB8600C2253C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -136,7 +132,7 @@
 		4A8346851E203B6200BAF8F9 /* String+Dates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Dates.swift"; sourceTree = "<group>"; };
 		4A8346861E203B6200BAF8F9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A8346881E203B6200BAF8F9 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		4A8346891E203B6200BAF8F9 /* DataEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataEntry.swift; sourceTree = "<group>"; };
+		4A8346891E203B6200BAF8F9 /* GameRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameRecord.swift; sourceTree = "<group>"; };
 		4A83468A1E203B6200BAF8F9 /* LocationMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationMarker.swift; sourceTree = "<group>"; };
 		4A83468B1E203B6200BAF8F9 /* PlayerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerData.swift; sourceTree = "<group>"; };
 		4A83468C1E203B6200BAF8F9 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
@@ -330,7 +326,6 @@
 			isa = PBXGroup;
 			children = (
 				4A8346961E203B6200BAF8F9 /* QuestionsViewController.swift */,
-				4A438D7C1E31E46600C2253C /* CheckViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -350,7 +345,7 @@
 			children = (
 				13E5ACEA2026126900C92237 /* View Controllers */,
 				4A83468A1E203B6200BAF8F9 /* LocationMarker.swift */,
-				4A8346891E203B6200BAF8F9 /* DataEntry.swift */,
+				4A8346891E203B6200BAF8F9 /* GameRecord.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -714,7 +709,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13E5ACF62026150A00C92237 /* CustomTabBar.swift in Sources */,
-				4A8346A51E203B6200BAF8F9 /* DataEntry.swift in Sources */,
+				4A8346A51E203B6200BAF8F9 /* GameRecord.swift in Sources */,
 				4A06B5FC1E713C82008BDBE1 /* Connection.swift in Sources */,
 				136246CC204E623C00778209 /* ConnectionView.swift in Sources */,
 				4ABD51541E99558A00607CE8 /* PickAvatarViewController.swift in Sources */,
@@ -742,7 +737,6 @@
 				13523AF62011C34D00CDF58C /* LabelAndTextFieldCell.swift in Sources */,
 				4A8346AD1E203B6200BAF8F9 /* GeneralViewController.swift in Sources */,
 				1317BE7B20524F2A0095F0BB /* FitbitManager.swift in Sources */,
-				4A438D7D1E31E46600C2253C /* CheckViewController.swift in Sources */,
 				4A8346A91E203B6200BAF8F9 /* QuestionService.swift in Sources */,
 				4A8346A61E203B6200BAF8F9 /* LocationMarker.swift in Sources */,
 				13C099AA202D886200E356D5 /* DropdownMenuCell.swift in Sources */,
@@ -753,7 +747,6 @@
 				13C099A8202D865100E356D5 /* ProfileViewController.swift in Sources */,
 				4A8346AC1E203B6200BAF8F9 /* ConnectionsViewController.swift in Sources */,
 				4A8346A21E203B6200BAF8F9 /* String+Dates.swift in Sources */,
-				4A8346A71E203B6200BAF8F9 /* PlayerData.swift in Sources */,
 				4A83469E1E203B6200BAF8F9 /* FitbitAPI.swift in Sources */,
 				4AA2D3A01E256A7D00DBE986 /* AvatarManager.swift in Sources */,
 				4A8346AE1E203B6200BAF8F9 /* KnowledgeBaseViewController.swift in Sources */,
@@ -763,7 +756,6 @@
 				4A8346B21E203B6200BAF8F9 /* StatsNavViewController.swift in Sources */,
 				4A877CD01E889BED009CE752 /* FriendCell.swift in Sources */,
 				138BF03220328D9E00119A52 /* BSGFacebookService.swift in Sources */,
-				4A8346AB1E203B6200BAF8F9 /* DataEntryDetailsViewController.swift in Sources */,
 				138BF0372032B25300119A52 /* SkinnedViewController.swift in Sources */,
 				138BF0272031403900119A52 /* BSGCustomAlert.swift in Sources */,
 				4A877CD31E889D5C009CE752 /* FriendListViewController.swift in Sources */,

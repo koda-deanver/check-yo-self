@@ -96,7 +96,7 @@ final class QuestionsViewController: SkinnedViewController {
             self.showAlert(BSGCustomAlert(message: "Answer these 20 questions and score JabbRGems.", options: [(text: "Go", handler: {
                 
                 // Catch next interstitial for game over.
-                if Configuration.showAds == true{
+                if Configuration.adFrequency > 0 {
                     Chartboost.cacheInterstitial(CBLocationGameOver)
                 }
                 
@@ -159,7 +159,7 @@ final class QuestionsViewController: SkinnedViewController {
         }
         
         guard questionsAnswered < (questions.count) else {
-            endTest()
+            finish()
             return
         }
         
@@ -167,44 +167,40 @@ final class QuestionsViewController: SkinnedViewController {
     }
     
     ///
+    /// Cleanup for game including adding a record to database, and possibly showing ad.
     ///
-    ///
-    private func endTest(){
-        print("FUCK YO")
-        /*PlayerData.sharedInstance.addDataEntry(phase: self.creationPhase, score: self.score, startTime: self.startTime, location: PlayerData.sharedInstance.getLocation(), steps: self.roundStepCount, heartDictionary: self.roundHeartDictionary)
-        // Save to firebase after every play and profile change
+    private func finish(){
         
-        self.score > 0 ? BSGCommon.playSound("HookUp", ofType: "mp3") : BSGCommon.playSound("HookDown", ofType: "mp3")
-        var title: String
-        var message: String
-        var pageIndex: Int
-        // User profile complete
-        if(creationPhase == .none){
-            title = "Profile Complete!"
-            message = "Feel free to change your profile at any time"
-            // Go to Cube screen
-            pageIndex = 0
-        }else{
-            title = "You scored \(self.score)POINTs!"
-            message = "Check Yo STATS & be MINDFUL in all your CollabRjabbRing..."
-            // Go to Stats screen
-            pageIndex = 3
-        }
-        /*self.showConnectionAlert(ConnectionAlert(title: title, message: message, okButtonText: "OK", okButtonCompletion: {
-                        self.backDrop.image = nil
-            self.resetButtons()
-            self.updateStats()
+        score > 0 ? BSGCommon.playSound("HookUp", ofType: "mp3") : BSGCommon.playSound("HookDown", ofType: "mp3")
+        
+        guard let startTime = startTime else { return }
+        
+        DataManager.shared.addGameRecord(ofType: questionType, score: score, startTime: startTime) {
             
-            // Show interstitial at game over 70%
-            if Configuration.showAds == true{
-                let showAd = Int(arc4random_uniform(10)) + 1
-                if showAd >= 7{
-                    Chartboost.showInterstitial(CBLocationGameOver)
-                }
-            }
-            self.setTabsActive(true)
-            self.tabBarController?.selectedIndex = pageIndex
-        }))*/*/
+            let alert = BSGCustomAlert(message: "You scored \(self.score)POINTs!", options: [(text: "Word", handler: {
+                self.showStats()
+            })])
+            self.showAlert(alert)
+        }
+    }
+    
+    ///
+    /// Brings user to stats screen with optional ad.
+    ///
+    /// An ad is shown with a frequency specified in the configuration in the database.
+    ///
+    private func showStats() {
+        
+        var shouldShowAd: Bool!
+        if Configuration.adFrequency > 0 && Configuration.adFrequency <= 100 {
+            
+            let index = Int(arc4random_uniform(100))
+            shouldShowAd = index > Configuration.adFrequency
+        }
+        
+        guard let statsNav = tabBarController?.viewControllers?[2] as? UINavigationController, let statsViewController = statsNav.viewControllers[0] as? StatsViewController else { return }
+        statsViewController.shouldShowAd = shouldShowAd
+        tabBarController?.selectedIndex = 2
     }
 }
 

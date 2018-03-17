@@ -14,8 +14,8 @@ import FacebookCore
 import Firebase
 import CoreLocation
 
-class PlayerData: NSObject, NSCoding {
-    static var sharedInstance = PlayerData()
+class PlayerData {
+    /*//static var sharedInstance = PlayerData()
     
     var gemTotal: Int{
         didSet{
@@ -30,16 +30,16 @@ class PlayerData: NSObject, NSCoding {
         var plays = 0
         let calender = Calendar(identifier: .gregorian)
         // Add one for each time game is played today
-        for entry in dataArray where calender.isDateInToday(entry.endTime){
+        /*for entry in dataArray where calender.isDateInToday(entry.endTime){
             // Profile phase doesn't count toward plays
             if entry.phase != .none{
                 plays += 1
             }
-        }
+        }*/
         return plays
     }
     // Number of times per today player can earn gems for playing
-    var playsPerDay: Int{
+    /*var playsPerDay: Int{
         let profileScore = dataArray[0].score
         switch(profileScore){
         case -40 ... -1:
@@ -53,11 +53,9 @@ class PlayerData: NSObject, NSCoding {
         default:
             return 0
         }
-    }
+    }*/
     
     var runCheckOnce: Bool = false
-    var dataArray: [DataEntry]
-    var tableIndex: DataEntry? = nil
     var creationPhase: CreationPhase
     var fitbitToken: String?
     
@@ -77,48 +75,10 @@ class PlayerData: NSObject, NSCoding {
     // Designated Initializer
     // Description: Initialize all variables of class
     //********************************************************************
-    private init(gemTotal: Int, creationPhase: CreationPhase, dataArray: [DataEntry], fitbitToken: String?){
+    private init(gemTotal: Int, creationPhase: CreationPhase, dataArray: [GameRecord], fitbitToken: String?){
         self.gemTotal = gemTotal
         self.creationPhase = creationPhase
-        self.dataArray = dataArray
         self.fitbitToken = fitbitToken
-    }
-    
-    //********************************************************************
-    // Convenience Initializer
-    // Description: Check if PlayerData has been saved, and call default
-    // initializer with either new object orsaved one
-    //********************************************************************
-    private override convenience init(){
-        //UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-        // Saved player exists. Load it
-        if let savedPlayerData = UserDefaults.standard.object(forKey: "playerDataArchive") as! Data?{
-            let savedPlayer = NSKeyedUnarchiver.unarchiveObject(with: savedPlayerData) as! PlayerData
-            self.init(gemTotal: savedPlayer.gemTotal, creationPhase: savedPlayer.creationPhase, dataArray: savedPlayer.dataArray, fitbitToken: savedPlayer.fitbitToken)
-            print("PLAYER LOADED\n\(self)")
-        // No saved player. Create a new one
-        }else{
-            let emptyDataArray: [DataEntry] = []
-            self.init(gemTotal: 0, creationPhase: .none, dataArray: emptyDataArray, fitbitToken: nil)
-            print("NEW PLAYER CREATED\n\(self)")
-        }
-    }
-    
-    //********************************************************************
-    // Required Convenience Initializer
-    // Description: Required to initialize from archived object
-    //********************************************************************
-    convenience required init?(coder aDecoder: NSCoder) {
-        let gemTotal = aDecoder.decodeInteger(forKey: "gemTotal")
-        let phaseValue = aDecoder.decodeObject(forKey: "phase") as! String
-        let creationPhase = CreationPhase(rawValue: phaseValue)!
-        let dataArray = aDecoder.decodeObject(forKey: "dataArray") as! [DataEntry]
-        var savedFitbitToken: String?
-        if let fitbitToken = aDecoder.decodeObject(forKey: "fitbitToken") as? String{
-            savedFitbitToken = fitbitToken
-        }
-        
-        self.init(gemTotal: gemTotal, creationPhase: creationPhase, dataArray: dataArray, fitbitToken: savedFitbitToken)
     }
     
     //********************************************************************
@@ -128,7 +88,7 @@ class PlayerData: NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.gemTotal, forKey:"gemTotal")
         aCoder.encode(self.creationPhase.rawValue, forKey:"phase")
-        aCoder.encode(self.dataArray, forKey:"dataArray")
+        //aCoder.encode(self.dataArray, forKey:"dataArray")
         // Save Token is there is one
         if let authToken = self.fitbitToken{
             aCoder.encode(authToken, forKey:"authToken")
@@ -234,7 +194,7 @@ class PlayerData: NSObject, NSCoding {
     override var description: String{
         let nameString = self.displayName
         var descriptionString = "Player Name: \(nameString)\n"
-        var gamesPlayed = self.dataArray.count - 1
+        //var gamesPlayed = self.dataArray.count - 1
         if(gamesPlayed < 0){
             gamesPlayed = 0
         }
@@ -257,4 +217,6 @@ class PlayerData: NSObject, NSCoding {
             print(gameString)
         }
     }
+ */
 }
+
