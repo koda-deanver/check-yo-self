@@ -8,16 +8,14 @@
 //********************************************************************
 
 import UIKit
-import CoreLocation
+
 import FacebookLogin
 import FacebookCore
 import Firebase
+import CoreLocation
 
-class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
+class PlayerData: NSObject, NSCoding {
     static var sharedInstance = PlayerData()
-    
-    // Used to get Player Location from anywhere in the app
-    var locationManager: CLLocationManager?
     
     var gemTotal: Int{
         didSet{
@@ -142,7 +140,7 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
     // Description: Create new DataEntry object and add to dataArray
     //********************************************************************
     func addDataEntry(phase: CreationPhase, score: Int, startTime: Date, location: CLLocation?, steps: Int?, heartDictionary: [String: Int]?){
-        let dataEntry = DataEntry(phase: phase, score: score, startTime: startTime, location: location, steps: steps, heartDictionary: heartDictionary)
+        /*let dataEntry = DataEntry(phase: phase, score: score, startTime: startTime, location: location, steps: steps, heartDictionary: heartDictionary)
         if phase == .none{
             // Initial profile setup
             if dataArray.isEmpty{
@@ -159,7 +157,7 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
             dataEntry.gemsEarned = calculateGems(score: score, steps: steps, heartDictionary: heartDictionary)
             self.gemTotal += dataEntry.gemsEarned
         }
-        self.archivePlayer()
+        //self.archivePlayer()*/
     }
     
     //********************************************************************
@@ -226,142 +224,6 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
             let positiveInt = abs(number)
             let roundedDown = positiveInt - (positiveInt % 10)
             return (-roundedDown)
-        }
-    }
-    
-    //********************************************************************
-    // archivePlayer
-    // Description: Save player to user defaults
-    //********************************************************************
-    func archivePlayer(){
-        let playerDataArchive = NSKeyedArchiver.archivedData(withRootObject: self)
-        UserDefaults.standard.set(playerDataArchive, forKey: "playerDataArchive")
-        print("PLAYER ARCHIVED\n\(self)")
-    }
-    
-    //********************************************************************
-    // deletePlayer
-    // Description: Delete player from user defaults and create new instance
-    //********************************************************************
-    func deletePlayer(){
-        //UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-        print("PLAYER DELETED\n\(self)")
-        PlayerData.sharedInstance = PlayerData()
-    }
-    
-    //********************************************************************
-    // getLocation
-    // Description: Return player location is maps are authorized
-    //********************************************************************
-    func getLocation() -> CLLocation?{
-        return self.locationManager?.location
-    }
-    
-    //********************************************************************
-    // locationManager(didChangeAuthorization
-    // Description: Delegate method called when auth is changed
-    //********************************************************************
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        /*if status == .authorizedWhenInUse{
-            for connection in Constants.connections where connection.type == .maps{
-                connection.checkConnection()
-            }
-        }*/
-    }
-    
-    
-
-    
-    //********************************************************************
-    // loadPlayerFB
-    // Description: Grab updated name and pic from facebook and save locally
-    // Erros: Connection, Facebook, Data
-    //********************************************************************
-    func loadPlayerFB(completion: @escaping () -> Void = {}, failure: @escaping (ErrorType) -> Void = {_ in }){
-        if AccessToken.current != nil {
-            let connection = GraphRequestConnection()
-            connection.add(GraphRequest(graphPath: "me", parameters: ["fields": "id, name"])) { httpResponse, result in
-                switch result {
-                case .success(let response):
-                    if let facebookDictionary = response.dictionaryValue{
-                        // Player needs to have name and ID
-                        if let userID = facebookDictionary ["id"] as? String{
-                            self.facebookID = userID
-                            let picURL = URL(string: "https://graph.facebook.com/\(userID)/picture?type=large")!
-                            let picData = NSData(contentsOf: picURL)
-                            // Save image data to player
-                            self.facebookImageData = picData
-                            // Reload labels and pic
-                            completion()
-                        }else{
-                            failure(.data("Name/ID"))
-                        }
-                    }
-                case .failed(let error):
-                    failure(.connection(error))
-                }
-            }
-            connection.start()
-        }else{
-            failure(.permissions("Access Token"))
-        }
-    }
-
-    //********************************************************************
-    // savePlayerFirebase
-    // Description: Save import data to Firebase
-    //********************************************************************
-    func savePlayerFirebase(completion: () -> (), failure: (ErrorType) -> ()){
-        if let user = Auth.auth().currentUser{
-            let rootNode = Database.database().reference(fromURL: "https://check-yo-self-18682434.firebaseio.com/")
-            let playerNode = rootNode.child("Users/\(user.uid)")
-           
-            let playerStats: [String: Any] = [
-                "DisplayName": self.displayName,
-                "CubeColor": self.cubeColor.rawValue,
-                "Gems": self.gemTotal,
-                "AgeGroup": self.isAdult ? "Adult" : "Child",
-                "AvatarName": self.avatar != nil ? self.avatar!.name : "",
-                "FacebookID": self.facebookID != nil ? self.facebookID! : ""
-            ]
-            playerNode.updateChildValues(playerStats)
-            completion()
-        }else{
-            failure(.permissions("No current Firebase User"))
-        }
-    }
-    
-    //********************************************************************
-    // loadPlayerFirebase
-    // Description: Get stored player data from firebase
-    //********************************************************************
-    func loadPlayerFirebase(completion: @escaping () -> (), failure: @escaping (ErrorType) -> ()){
-        if let user = Auth.auth().currentUser{
-            let rootNode = Database.database().reference(fromURL: "https://check-yo-self-18682434.firebaseio.com/")
-            let playerNode = rootNode.child("Users/\(user.uid)")
-            playerNode.observeSingleEvent(of: .value, with: {
-                snapshot in
-                if let playerDictionary = snapshot.value as? [String: Any]{
-                    self.displayName = playerDictionary["DisplayName"] as! String
-                    let cubeColorString = playerDictionary["CubeColor"] as! String
-                    self.cubeColor = CubeColor(rawValue: cubeColorString)!
-                    // Get gem total from local for now
-                    //self.gemTotal = playerDictionary["Gems"] as! Int
-                    let ageGroup = playerDictionary["AgeGroup"] as! String
-                    self.isAdult = ageGroup == "Adult" ? true : false
-                    if let avatarName = playerDictionary["AvatarName"] as? String{
-                        /*for avatar in Media.avatarList where avatarName == avatar.name{
-                            self.avatar = avatar
-                        }*/
-                    }
-                    completion()
-                }else{
-                    failure(.data("Empty Dictionary"))
-                }
-                
-            })
-        }else{
-            failure(.permissions("No current Firebase User"))
         }
     }
     

@@ -28,11 +28,12 @@ enum ConnectionType: String{
         case .facebook: return #imageLiteral(resourceName: "Facebook")
         case .healthKit: return #imageLiteral(resourceName: "Health")
         case .fitbit: return #imageLiteral(resourceName: "Fitbit")
+        case .maps: return #imageLiteral(resourceName: "Maps")
         default: return nil
         }
     }
     
-    static var existing: [ConnectionType] = [.facebook, .healthKit, .fitbit]
+    static var existing: [ConnectionType] = [.facebook, .healthKit, .fitbit, .maps]
 }
 
 /// Every possible state for *ConnectionView*.

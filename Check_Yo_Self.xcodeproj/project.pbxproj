@@ -14,6 +14,7 @@
 		132042AF2010692800DCE39E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132042AE2010692800DCE39E /* User.swift */; };
 		13382AB02017159500CAAB84 /* LoginFlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13382AAF2017159500CAAB84 /* LoginFlowManager.swift */; };
 		134D3CF2205A413E00D11AB4 /* SpeechController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134D3CF1205A413E00D11AB4 /* SpeechController.swift */; };
+		134DA2E8205CB10900FD4940 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DA2E7205CB10900FD4940 /* LocationManager.swift */; };
 		13523AF62011C34D00CDF58C /* LabelAndTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */; };
 		13523AF82011C52B00CDF58C /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */; };
 		13523AFB2011E1E500CDF58C /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */; };
@@ -93,6 +94,7 @@
 		132042AE2010692800DCE39E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		13382AAF2017159500CAAB84 /* LoginFlowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlowManager.swift; sourceTree = "<group>"; };
 		134D3CF1205A413E00D11AB4 /* SpeechController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechController.swift; sourceTree = "<group>"; };
+		134DA2E7205CB10900FD4940 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		13523AF52011C34D00CDF58C /* LabelAndTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAndTextFieldCell.swift; sourceTree = "<group>"; };
 		13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountViewController.swift; sourceTree = "<group>"; };
 		13523AFA2011E1E500CDF58C /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		134DA2E5205CB0DC00FD4940 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				136246CD204E66D400778209 /* ConnectionManager.swift */,
+				136246D0204FBF6300778209 /* HealthKitService.swift */,
+				1317BE7A20524F2A0095F0BB /* FitbitManager.swift */,
+				134DA2E7205CB10900FD4940 /* LocationManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		138BF0352032AC3C00119A52 /* Central Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,12 +358,10 @@
 		13E5ACE7202611FE00C92237 /* Connections */ = {
 			isa = PBXGroup;
 			children = (
+				134DA2E5205CB0DC00FD4940 /* Managers */,
 				13E5ACEB2026127A00C92237 /* View Controllers */,
 				4A06B5FB1E713C82008BDBE1 /* Connection.swift */,
 				136246CB204E623C00778209 /* ConnectionView.swift */,
-				136246CD204E66D400778209 /* ConnectionManager.swift */,
-				136246D0204FBF6300778209 /* HealthKitService.swift */,
-				1317BE7A20524F2A0095F0BB /* FitbitManager.swift */,
 			);
 			path = Connections;
 			sourceTree = "<group>";
@@ -708,6 +719,7 @@
 				136246CC204E623C00778209 /* ConnectionView.swift in Sources */,
 				4ABD51541E99558A00607CE8 /* PickAvatarViewController.swift in Sources */,
 				13382AB02017159500CAAB84 /* LoginFlowManager.swift in Sources */,
+				134DA2E8205CB10900FD4940 /* LocationManager.swift in Sources */,
 				4AADEADA1E30887000C062B5 /* iOSDevCenters+GIF.swift in Sources */,
 				4A55D7101E79B6BB00EFB9B5 /* BSGCommon.swift in Sources */,
 				4A8346AA1E203B6200BAF8F9 /* CubeViewController.swift in Sources */,

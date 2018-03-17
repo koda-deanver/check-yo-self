@@ -6,55 +6,37 @@
 //  Description: Used to store a data from a single game entry
 //********************************************************************
 
-import UIKit
-import MapKit
+import Foundation
+import CoreLocation
 
-enum HeartCategory: String{
-    case restingHeartRate
-    case peakMinutes
-    case cardioMinutes
-    case fatBurnMinutes
-}
-
-class DataEntry: NSObject, NSCoding {
-    let phase: CreationPhase
+/// Represents a single previously played game.
+struct GameRecord {
+    
+    // MARK: - Public Members -
+    
+    let questionType: QuestionType
     let score: Int
     let startTime: Date
     let endTime: Date
-    let location: CLLocation?
+    var location: CLLocation?
     var steps: Int?
-    var heartDictionary: [String: Int]?
+    var heartData: HeartData?
     var gemsEarned: Int
     
-    //********************************************************************
-    // Designated Initializer
-    // Description: Initialize all variables of class
-    //********************************************************************
-    init(phase: CreationPhase, score: Int, startTime: Date, endTime: Date, location: CLLocation?, steps: Int?, heartDictionary: [String: Int]?, gemsEarned: Int){
-        self.phase = phase
+    // MARK: - Initializers -
+    
+    init(type: QuestionType, score: Int, startTime: Date, endTime: Date, location: CLLocation?, steps: Int?, heartData: HeartData?, gemsEarned: Int) {
+        self.questionType = type
         self.score = score
         self.startTime = startTime
         self.endTime = endTime
         self.location = location
         self.steps = steps
-        self.heartDictionary = heartDictionary
+        self.heartData = heartData
         self.gemsEarned = gemsEarned
     }
     
-    //********************************************************************
-    // Convenience Initializer
-    // Description: Called at the end of a game with game arguments
-    //********************************************************************
-    convenience init(phase: CreationPhase, score: Int, startTime: Date, location: CLLocation?, steps: Int?, heartDictionary: [String: Int]?){
-        let endTime = Date.init()
-        self.init(phase: phase, score: score, startTime: startTime, endTime: endTime, location: location, steps: steps, heartDictionary: heartDictionary, gemsEarned: 0)
-    }
-    
-    //********************************************************************
-    // Required Convenience Initializer
-    // Description: Required to initialize from archived object
-    //********************************************************************
-    convenience required init?(coder aDecoder: NSCoder) {
+    init?(coder aDecoder: NSCoder) {
         let phaseValue = aDecoder.decodeObject(forKey: "phase") as! String
         let phase = CreationPhase(rawValue: phaseValue)!
         let score = aDecoder.decodeInteger(forKey: "score")

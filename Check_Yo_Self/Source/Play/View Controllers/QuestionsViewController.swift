@@ -173,21 +173,7 @@ final class QuestionsViewController: SkinnedViewController {
         print("FUCK YO")
         /*PlayerData.sharedInstance.addDataEntry(phase: self.creationPhase, score: self.score, startTime: self.startTime, location: PlayerData.sharedInstance.getLocation(), steps: self.roundStepCount, heartDictionary: self.roundHeartDictionary)
         // Save to firebase after every play and profile change
-        PlayerData.sharedInstance.savePlayerFirebase(completion: {
-            print("SUCCESS: Player Firebase data saved")
-        }, failure: { errorType in
-            print("--LOAD PLAYER FIREBASE--")
-            switch errorType{
-            case .connection(let error):
-                print("CONNECTION ERROR: \(error)")
-            case .permissions(let errorString):
-                print("PERMISSIONS ERROR: \(errorString)")
-            case .data(let errorString):
-                print("DATA ERROR: \(errorString)")
-            default:
-                break
-            }
-        })
+        
         self.score > 0 ? BSGCommon.playSound("HookUp", ofType: "mp3") : BSGCommon.playSound("HookDown", ofType: "mp3")
         var title: String
         var message: String
@@ -220,18 +206,6 @@ final class QuestionsViewController: SkinnedViewController {
             self.tabBarController?.selectedIndex = pageIndex
         }))*/*/
     }
-    
-    //********************************************************************
-    // setTabsActive
-    // Description: Turn off or on touch on all tabs
-    //********************************************************************
-    func setTabsActive(_ flag: Bool){
-        for i in 0...4{
-            let tabBarItem = tabBarController?.tabBar.items?[i]
-            tabBarItem?.isEnabled = flag
-        }
-    }
-
 }
 
 // MARK: - Extension: Actions -

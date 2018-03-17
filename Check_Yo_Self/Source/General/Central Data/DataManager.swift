@@ -109,25 +109,6 @@ class DataManager {
         })
     }
     
-    ///
-    /// Get value stored in Userefaults.
-    ///
-    /// - parameter localTypeType: The type of value to save.
-    ///
-    func getLocalValue(for localDataType: LocalData) -> String? {
-        return UserDefaults.standard.value(forKey: localDataType.rawValue) as? String
-    }
-    
-    ///
-    /// Saves the specified value for specified data type in UserDefaults.
-    ///
-    /// - parameter value: The value to save.
-    /// - parameter localTypeType: The type of value to save.
-    ///
-    func saveLocalValue(_ value: String, for localDataType: LocalData) {
-        UserDefaults.standard.set(value, forKey: localDataType.rawValue)
-    }
-    
     // MARK: - Private Methods -
     
     ///
@@ -152,4 +133,50 @@ class DataManager {
         })
     }
 
+}
+
+// MARK: - Extension: Local -
+
+extension DataManager {
+    
+    ///
+    /// Get value stored in Userefaults.
+    ///
+    /// - parameter localTypeType: The type of value to save.
+    ///
+    func getLocalValue(for localDataType: LocalData) -> String? {
+        return UserDefaults.standard.value(forKey: localDataType.rawValue) as? String
+    }
+    
+    ///
+    /// Saves the specified value for specified data type in UserDefaults.
+    ///
+    /// - parameter value: The value to save.
+    /// - parameter localTypeType: The type of value to save.
+    ///
+    func saveLocalValue(_ value: String, for localDataType: LocalData) {
+        UserDefaults.standard.set(value, forKey: localDataType.rawValue)
+    }
+    
+    func addGameRecord(ofType questionType: QuestionType, score: Int, startTime: Date) {
+        
+        /*let dataEntry = DataEntry(phase: phase, score: score, startTime: startTime, location: location, steps: steps, heartDictionary: heartDictionary)
+         if phase == .none{
+         // Initial profile setup
+         if dataArray.isEmpty{
+         self.dataArray.append(dataEntry)
+         // Award gems based on profile pick first time only
+         self.gemTotal += (self.playsPerDay * 10)
+         }else{
+         // User is changing profile
+         self.dataArray[0] = dataEntry
+         }
+         self.creationPhase = .check
+         }else{
+         self.dataArray.append(dataEntry)
+         dataEntry.gemsEarned = calculateGems(score: score, steps: steps, heartDictionary: heartDictionary)
+         self.gemTotal += dataEntry.gemsEarned
+         }
+         //self.archivePlayer()*/
+    }
 }

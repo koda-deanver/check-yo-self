@@ -37,6 +37,7 @@ final class ConnectionManager {
         case .facebook: connectFacebook(connection: connection, viewController: viewController, completion: completion)
         case .healthKit: connectHealthKit(connection: connection, viewController: viewController, completion: completion)
         case .fitbit: connectFitbit(connection: connection, viewController: viewController, completion: completion)
+        case .maps: connectMaps(connection: connection, viewController: viewController, completion: completion)
         default: break
         }
     }
@@ -53,6 +54,7 @@ final class ConnectionManager {
         case .facebook: explainFacebook(viewController: viewController, completion: completion)
         case .healthKit: explainHealthKit(viewController: viewController, completion: completion)
         case .fitbit: explainFitbit(viewController: viewController, completion: completion)
+        case .maps: explainMaps(viewController: viewController, completion: completion)
         default: break
         }
     }
@@ -69,6 +71,7 @@ final class ConnectionManager {
         case .facebook: checkFacebookConnection(completion: completion)
         case .healthKit: checkHealthKitConnection(connection: connection, completion: completion)
         case .fitbit: checkFitbitConnection(connection: connection, completion: completion)
+        case .maps: checkMapsConnection(connection: connection, completion: completion)
         default: break
         }
     }
@@ -242,5 +245,48 @@ extension ConnectionManager {
         }, failure: { _ in
             completion(false)
         })
+    }
+}
+
+// MARK: - Extension: Maps -
+
+extension ConnectionManager {
+    
+    ///
+    /// Ask user for permission to use location.
+    ///
+    /// - parameter connection: The *Maps* connection.
+    /// - parameter viewController: View controller on which to display alerts.
+    /// - parameter completion: Handler containing Bool indicating if connection was established.
+    ///
+    private func connectMaps(connection: Connection, viewController: GeneralViewController, completion: @escaping BoolClosure) {
+        LocationManager.shared.configure()
+        checkMapsConnection(connection: connection, completion: completion)
+    }
+    
+    
+    ///
+    /// Displays alert explaining the purpose of *Maps* in the app.
+    ///
+    /// - parameter viewController: View controller on which to display alerts.
+    /// - parameter completion: Handler containing Bool indicating if connection is still present.
+    ///
+    private func explainMaps(viewController: GeneralViewController, completion: @escaping BoolClosure) {
+        
+        let alert = BSGCustomAlert(message: "Tracking your location!")
+        viewController.showAlert(alert)
+    }
+    
+    ///
+    /// Checks if there is currently a connection to maps.
+    ///
+    /// If a location can be obtained, there is a connection.
+    ///
+    /// - parameter connection: The *Maps* connection.
+    /// - parameter completion: Handler containing Bool indicating whether Maps is connected.
+    ///
+    private func checkMapsConnection(connection: Connection, completion: @escaping BoolClosure) {
+        let connected = LocationManager.shared.location != nil
+        completion(connected)
     }
 }

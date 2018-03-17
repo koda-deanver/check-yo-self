@@ -51,7 +51,7 @@ class StatsViewController: UITableViewController {
     //********************************************************************
     @IBAction func deleteUserData(_ sender: Any) {
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-        PlayerData.sharedInstance.deletePlayer()
+        //PlayerData.sharedInstance.deletePlayer()
         let newView: LoginViewController = self.storyboard!.instantiateViewController(withIdentifier: "LoginScene") as! LoginViewController
         self.present(newView, animated: true, completion: nil)
     }
@@ -63,9 +63,9 @@ class StatsViewController: UITableViewController {
     //********************************************************************
     func filterData() -> Int{
         self.filteredData.removeAll()
-        let totalDataCount = PlayerData.sharedInstance.dataArray.count
+        //let totalDataCount = PlayerData.sharedInstance.dataArray.count
         var count = 0
-        for index in 1 ..< totalDataCount{
+        /*for index in 1 ..< totalDataCount{
             if count >= MAX_ENTRIES{
                 return count
             }
@@ -81,7 +81,7 @@ class StatsViewController: UITableViewController {
                     count += 1
                 }
             }
-        }
+        }*/
         return count
     }
     
@@ -91,9 +91,9 @@ class StatsViewController: UITableViewController {
     //********************************************************************
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        if PlayerData.sharedInstance.playsToday >= PlayerData.sharedInstance.playsPerDay{
+        /*if PlayerData.sharedInstance.playsToday >= PlayerData.sharedInstance.playsPerDay{
             /*self.showConnectionAlert(ConnectionAlert(title: "CONGRATS! You've reached your daily limit of redeemable JabbRGems!", message: "Feel free to play indefinitely to run up the points on on your TEAM & earn more gems when you CHECKIn tomorrow", okButtonText: "Alright"))*/
-        }
+        }*/
         self.filterPhase = .none
         self.phaseFilterButton.title = "All Phases"
         tableView.reloadData()
@@ -133,6 +133,6 @@ class StatsViewController: UITableViewController {
     // page
     //********************************************************************
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        PlayerData.sharedInstance.tableIndex = filteredData[indexPath.row]
+        //PlayerData.sharedInstance.tableIndex = filteredData[indexPath.row]
     }
 }
