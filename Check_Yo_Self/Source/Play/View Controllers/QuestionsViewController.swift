@@ -153,7 +153,7 @@ final class QuestionsViewController: SkinnedViewController {
         
         for choice in currentQuestion.choices {
             if choice.text == selectedChoiceText {
-                score += choice.pointValue
+                if let pointValue = choice.pointValue { score += pointValue }
                 questionsAnswered += 1
             }
         }

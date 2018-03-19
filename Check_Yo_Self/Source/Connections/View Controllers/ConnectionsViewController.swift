@@ -13,10 +13,6 @@ import UIKit
 /// Screen displaying all possible connections. Connections that are being used display on a green backdrop.
 final class ConnectionsViewController: SkinnedViewController {
     
-    // MARK: - Private Members -
-    
-    private var connections: [Connection] { return ConnectionManager.shared.existingConnections }
-    
     // MARK: - Outlets -
     
     @IBOutlet weak var connectionsLabel: UILabel!
@@ -27,6 +23,16 @@ final class ConnectionsViewController: SkinnedViewController {
     override func style() {
         super.style()
         connectionsLabel.textColor = User.current.ageGroup.textColor
+        NotificationManager.shared.addObserver(self, forNotificationType: .connectionUpdated, handler: #selector(countConnections))
+    }
+    
+    // MARK: - Private Methods -
+    
+    @objc private func countConnections() {
+        
+        let count = ConnectionManager.shared.connectedConnections
+        connectionsLabel.text = "Connections: \(count)/\(ConnectionManager.shared.existingConnections.count)"
+        connectionsLabel.textColor = (count == ConnectionManager.shared.existingConnections.count) ? CubeColor.green.uiColor : User.current.ageGroup.textColor
     }
 }
 
@@ -42,7 +48,7 @@ extension ConnectionsViewController: UICollectionViewDataSource, UICollectionVie
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "connectionCell", for: indexPath) as? ConnectionCell else { return UICollectionViewCell() }
         
-        cell.configure(for: connections[indexPath.row], containingViewController: self)
+        cell.configure(for: ConnectionManager.shared.existingConnections[indexPath.row], containingViewController: self)
         
         return cell
     }

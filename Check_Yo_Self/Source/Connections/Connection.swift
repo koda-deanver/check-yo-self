@@ -51,7 +51,9 @@ class Connection {
     let type: ConnectionType
     /// Current state of connection.
     var state: ConnectionState = .unconnected {
-        didSet { cell?.style(for: state) }
+        didSet {
+            cell?.style(for: state)
+        }
     }
     /// cell that is displaying connection.
     weak var cell: ConnectionCell?
@@ -60,29 +62,5 @@ class Connection {
     
     init(withType type: ConnectionType) {
         self.type = type
-    }
-    
-    // MARK: - Public Methods -
-    
-    ///
-    /// Attempt to connect or disconnect based on state.
-    ///
-    func handleInteraction(viewController: GeneralViewController) {
-    
-        if state == .connected {
-            
-            ConnectionManager.shared.disconnect(self, viewController: viewController, completion: { isConnected in
-                
-                let newState: ConnectionState = isConnected ? .connected : .unconnected
-                self.state = newState
-            })
-        } else if state == .unconnected {
-            
-            ConnectionManager.shared.connect(self, viewController: viewController, completion: { isConnected in
-                
-                let newState: ConnectionState = isConnected ? .connected : .unconnected
-                self.state = newState
-            })
-        }
     }
 }

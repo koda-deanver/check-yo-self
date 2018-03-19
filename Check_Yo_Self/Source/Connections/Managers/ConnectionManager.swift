@@ -10,6 +10,8 @@ import Foundation
 
 // MARK: - Class -
 
+typealias ConnectionCompleteClosure = (Connection, Bool) -> Void
+
 /// Consists methods for connecting, disconnecting, and checking connection for all devices. Some connections do not allow disconnecting (such as HealthKit which must be turned off from the settings menu). In these cases the *disconnect* handler does something else but keeps the same name.
 final class ConnectionManager {
     
@@ -17,27 +19,43 @@ final class ConnectionManager {
     
     /// Singleton instance.
     static let shared = ConnectionManager()
+    
     /// Array of all currently implemented connections.
-    var existingConnections: [Connection] {
+    lazy var existingConnections: [Connection] = {
         let connections = ConnectionType.existing.map({
             return Connection(withType: $0)
         })
         return connections
+    }()
+    
+    /// Number of connections with state set to .connected
+    var connectedConnections: Int {
+        
+        var connectedCount = 0
+        
+        for connection in existingConnections where connection.state == .connected {
+            connectedCount += 1
+        }
+        return connectedCount
     }
+    
+    // MARK: - Public Methods -
     
     ///
     /// Attempt to connect the specified connection.
     ///
     /// - parameter connection: The desired connection to connect to.
     /// - parameter viewController: View controller on which to display alerts.
-    /// - parameter completion: Handler containing Bool indicating if connection was established.
     ///
-    func connect(_ connection: Connection, viewController: GeneralViewController, completion: @escaping BoolClosure) {
+    func connect(_ connection: Connection, viewController: GeneralViewController) {
+        
+        connection.state = .pending
+        
         switch connection.type {
-        case .facebook: connectFacebook(connection: connection, viewController: viewController, completion: completion)
-        case .healthKit: connectHealthKit(connection: connection, viewController: viewController, completion: completion)
-        case .fitbit: connectFitbit(connection: connection, viewController: viewController, completion: completion)
-        case .maps: connectMaps(connection: connection, viewController: viewController, completion: completion)
+        case .facebook: connectFacebook(connection: connection, viewController: viewController)
+        case .healthKit: connectHealthKit(connection: connection, viewController: viewController)
+        case .fitbit: connectFitbit(connection: connection, viewController: viewController)
+        case .maps: connectMaps(connection: connection, viewController: viewController)
         default: break
         }
     }
@@ -47,14 +65,16 @@ final class ConnectionManager {
     ///
     /// - parameter connection: The desired connection to connect to.
     /// - parameter viewController: View controller on which to display alerts.
-    /// - parameter completion: Handler containing Bool indicating if connection was established.
     ///
-    func disconnect(_ connection: Connection, viewController: GeneralViewController, completion: @escaping BoolClosure) {
+    func disconnect(_ connection: Connection, viewController: GeneralViewController) {
+        
+        connection.state = .pending
+        
         switch connection.type {
-        case .facebook: explainFacebook(viewController: viewController, completion: completion)
-        case .healthKit: explainHealthKit(viewController: viewController, completion: completion)
-        case .fitbit: explainFitbit(viewController: viewController, completion: completion)
-        case .maps: explainMaps(viewController: viewController, completion: completion)
+        case .facebook: explainFacebook(connection: connection, viewController: viewController)
+        case .healthKit: explainHealthKit(connection: connection, viewController: viewController)
+        case .fitbit: explainFitbit(connection: connection, viewController: viewController)
+        case .maps: explainMaps(connection: connection, viewController: viewController)
         default: break
         }
     }
@@ -63,16 +83,34 @@ final class ConnectionManager {
     /// Checks whether the specified connection is connected.
     ///
     /// - parameter connection: The desired connection to connect to.
-    /// - parameter completion: Handler containing Bool indicating if connection was established.
     ///
-    func checkConnection(for connection: Connection, completion: @escaping BoolClosure) {
+    func checkConnection(for connection: Connection) {
+        
+        connection.state = .pending
         
         switch connection.type {
-        case .facebook: checkFacebookConnection(completion: completion)
-        case .healthKit: checkHealthKitConnection(connection: connection, completion: completion)
-        case .fitbit: checkFitbitConnection(connection: connection, completion: completion)
-        case .maps: checkMapsConnection(connection: connection, completion: completion)
+        case .facebook: checkFacebookConnection(connection: connection)
+        case .healthKit: checkHealthKitConnection(connection: connection)
+        case .fitbit: checkFitbitConnection(connection: connection)
+        case .maps: checkMapsConnection(connection: connection)
         default: break
+        }
+    }
+    
+    // MARK: - Private Methods -
+    
+    ///
+    /// Handler after check connection, connect or disconnect is complete.
+    ///
+    /// - parameter connection: The desired connection to connect to.
+    /// - parameter isConnected: Bool indicating if connection has been established.
+    ///
+    private func actionComplete(_ connection: Connection, _ isConnected: Bool) {
+        
+        DispatchQueue.main.async {
+            let newState: ConnectionState = isConnected ? .connected : .unconnected
+            connection.state = newState
+            NotificationManager.shared.postNotification(ofType: .connectionUpdated)
         }
     }
 }
@@ -86,21 +124,18 @@ extension ConnectionManager {
     ///
     /// - parameter connection: The facebook connection.
     /// - parameter viewController: View controller on which to display alerts.
-    /// - parameter completion: Handler containing Bool indicating if connection was established.
     ///
-    private func connectFacebook(connection: Connection, viewController: GeneralViewController, completion: @escaping BoolClosure) {
+    private func connectFacebook(connection: Connection, viewController: GeneralViewController) {
         
         let alert = BSGCustomAlert(message: "Login to Facebook?", options: [(text: "Login", handler: {
             
-            connection.state = .pending
-            
             DataManager.shared.loginFacebook(success: {
-                completion(true)
+                self.actionComplete(connection, true)
             }, failure: { _ in
-                completion(false)
+                self.actionComplete(connection, false)
             })
 
-        }), (text: "Cancel", handler: { completion(false) })])
+        }), (text: "Cancel", handler: { self.actionComplete(connection, false) })])
         
         viewController.showAlert(alert)
     }
@@ -110,16 +145,16 @@ extension ConnectionManager {
     ///
     /// - note: This method also offers the option to logout.
     ///
+    /// - parameter connection: The facebook connection.
     /// - parameter viewController: View controller on which to display alerts.
-    /// - parameter completion: Handler containing Bool indicating if connection is still present.
     ///
-    private func explainFacebook(viewController: GeneralViewController, completion: @escaping BoolClosure) {
+    private func explainFacebook(connection: Connection, viewController: GeneralViewController) {
     
         let alert = BSGCustomAlert(message: "Facebook tracks your progress against friends on the leaderboard!", options: [(text: "Sweet", handler: {
-            completion(true)
+            self.actionComplete(connection, true)
         }), (text: "Logout", handler: {
             BSGFacebookService.logout()
-            completion(false)
+            self.actionComplete(connection, false)
         })])
         
         viewController.showAlert(alert)
@@ -128,10 +163,10 @@ extension ConnectionManager {
     ///
     /// Checks if user is currently logged in to *Facebook*.
     ///
-    /// - parameter completion: Handler containing Bool indicating whether user is logged in.
+    /// - parameter connection: The facebook connection.
     ///
-    private func checkFacebookConnection(completion: @escaping BoolClosure) {
-        completion(BSGFacebookService.isLoggedIn)
+    private func checkFacebookConnection(connection: Connection) {
+        actionComplete(connection, BSGFacebookService.isLoggedIn)
     }
 }
 
@@ -144,19 +179,17 @@ extension ConnectionManager {
     ///
     /// - parameter connection: The *HealthKit* connection.
     /// - parameter viewController: View controller on which to display alerts.
-    /// - parameter completion: Handler containing Bool indicating if connection was established.
     ///
-    private func connectHealthKit(connection: Connection, viewController: GeneralViewController, completion: @escaping BoolClosure) {
+    private func connectHealthKit(connection: Connection, viewController: GeneralViewController) {
         
         let alert = BSGCustomAlert(message: "Connect HealthKit?", options: [(text: "Connect", handler: {
             
-            connection.state = .pending
             HealthKitService.authorize(success: {
-                completion(true)
+                self.checkHealthKitConnection(connection: connection)
             }, failure: { _ in
-                completion(false)
+                self.actionComplete(connection, false)
             })
-        }), (text: "Cancel", handler: { completion(false) })])
+        }), (text: "Cancel", handler: { self.actionComplete(connection, false) })])
         
         viewController.showAlert(alert)
     }
@@ -164,13 +197,13 @@ extension ConnectionManager {
     ///
     /// Displays alert explaining the purpose of *HealthKit* in the app.
     ///
+    /// - parameter connection: The *HealthKit* connection.
     /// - parameter viewController: View controller on which to display alerts.
-    /// - parameter completion: Handler containing Bool indicating if connection is still present.
     ///
-    private func explainHealthKit(viewController: GeneralViewController, completion: @escaping BoolClosure) {
+    private func explainHealthKit(connection: Connection, viewController: GeneralViewController) {
         
         let alert = BSGCustomAlert(message: "Your daily steps are earning you more gems!", options: [(text: "Ok", handler: {
-            completion(true)
+            self.actionComplete(connection, true)
         })])
         
         viewController.showAlert(alert)
@@ -182,15 +215,13 @@ extension ConnectionManager {
     /// This method uses *getStepCount* to determine if there is a connection. There seems to be no direct way to determine if user has enabled HealthKit.
     ///
     /// - parameter connection: The *HealthKit* connection.
-    /// - parameter completion: Handler containing Bool indicating whether HealthKit is connected.
     ///
-    private func checkHealthKitConnection(connection: Connection, completion: @escaping BoolClosure) {
+    private func checkHealthKitConnection(connection: Connection) {
         
-        connection.state = .pending
         HealthKitService.getStepCountHK(success: {_ in
-            completion(true)
+            self.actionComplete(connection, true)
         }, failure: { _ in
-            completion(false)
+            self.actionComplete(connection, false)
         })
     }
 }
@@ -204,14 +235,15 @@ extension ConnectionManager {
     ///
     /// - parameter connection: The *Fitbit* connection.
     /// - parameter viewController: View controller on which to display alerts.
-    /// - parameter completion: Handler containing Bool indicating if connection was established.
     ///
-    private func connectFitbit(connection: Connection, viewController: GeneralViewController, completion: @escaping BoolClosure) {
+    private func connectFitbit(connection: Connection, viewController: GeneralViewController) {
         
         let alert = BSGCustomAlert(message: "Connect Fitbit?", options: [(text: "Connect", handler: {
-            connection.state = .pending
-            FitbitManager.shared.login(from: viewController)
-        }), (text: "Cancel", handler: { completion(false) })])
+            
+            FitbitManager.shared.login(from: viewController) { isConnected in
+                self.actionComplete(connection, isConnected)
+            }
+        }), (text: "Cancel", handler: { self.actionComplete(connection, false) })])
         
         viewController.showAlert(alert)
     }
@@ -219,12 +251,14 @@ extension ConnectionManager {
     ///
     /// Displays alert explaining the purpose of *Fitbit* in the app.
     ///
+    /// - parameter connection: The *Fitbit* connection.
     /// - parameter viewController: View controller on which to display alerts.
-    /// - parameter completion: Handler containing Bool indicating if connection is still present.
     ///
-    private func explainFitbit(viewController: GeneralViewController, completion: @escaping BoolClosure) {
+    private func explainFitbit(connection: Connection, viewController: GeneralViewController) {
         
-        let alert = BSGCustomAlert(message: "Your heart rate and daily activity boost your scores and earn gems!")
+        let alert = BSGCustomAlert(message: "Your heart rate and daily activity boost your scores and earn gems!", options: [(text: "Cool", handler: {
+            self.actionComplete(connection, true)
+        })])
         viewController.showAlert(alert)
     }
     
@@ -235,15 +269,13 @@ extension ConnectionManager {
     /// This method uses *getTodaysHeartData* to determine if there is a connection.
     ///
     /// - parameter connection: The *Fitbit* connection.
-    /// - parameter completion: Handler containing Bool indicating whether Fitbit is connected.
     ///
-    private func checkFitbitConnection(connection: Connection, completion: @escaping BoolClosure) {
+    private func checkFitbitConnection(connection: Connection) {
         
-        connection.state = .pending
         FitbitManager.shared.getTodaysHeartData(success: { _ in
-            completion(true)
+            self.actionComplete(connection, true)
         }, failure: { _ in
-            completion(false)
+            self.actionComplete(connection, false)
         })
     }
 }
@@ -257,23 +289,24 @@ extension ConnectionManager {
     ///
     /// - parameter connection: The *Maps* connection.
     /// - parameter viewController: View controller on which to display alerts.
-    /// - parameter completion: Handler containing Bool indicating if connection was established.
     ///
-    private func connectMaps(connection: Connection, viewController: GeneralViewController, completion: @escaping BoolClosure) {
+    private func connectMaps(connection: Connection, viewController: GeneralViewController) {
         LocationManager.shared.configure()
-        checkMapsConnection(connection: connection, completion: completion)
+        checkMapsConnection(connection: connection)
     }
     
     
     ///
     /// Displays alert explaining the purpose of *Maps* in the app.
     ///
+    /// - parameter connection: The *Maps* connection.
     /// - parameter viewController: View controller on which to display alerts.
-    /// - parameter completion: Handler containing Bool indicating if connection is still present.
     ///
-    private func explainMaps(viewController: GeneralViewController, completion: @escaping BoolClosure) {
+    private func explainMaps(connection: Connection, viewController: GeneralViewController) {
         
-        let alert = BSGCustomAlert(message: "Tracking your location!")
+        let alert = BSGCustomAlert(message: "Tracking your location!", options: [(text: "Cool", handler: {
+            self.actionComplete(connection, true)
+        })])
         viewController.showAlert(alert)
     }
     
@@ -283,10 +316,9 @@ extension ConnectionManager {
     /// If a location can be obtained, there is a connection.
     ///
     /// - parameter connection: The *Maps* connection.
-    /// - parameter completion: Handler containing Bool indicating whether Maps is connected.
     ///
-    private func checkMapsConnection(connection: Connection, completion: @escaping BoolClosure) {
-        let connected = LocationManager.shared.location != nil
-        completion(connected)
+    private func checkMapsConnection(connection: Connection) {
+        let isConnected = LocationManager.shared.location != nil
+        actionComplete(connection, isConnected)
     }
 }

@@ -64,7 +64,13 @@ struct GameRecord {
     ///
     func toSnapshot() -> [String: Any] {
         
-        let snapshot: [String: Any] = ["type": questionType.rawValue, "score": score, "gems-earned": gemsEarned]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yy-MM-dd_HH:mm:ss"
+        
+        let startTimeString = dateFormatter.string(from: startTime)
+        let endTimeString = dateFormatter.string(from: endTime)
+        
+        let snapshot: [String: Any] = ["type": questionType.rawValue, "score": score, "gems-earned": gemsEarned, "start-time": startTimeString, "end-time": endTimeString]
         
         return snapshot
     }

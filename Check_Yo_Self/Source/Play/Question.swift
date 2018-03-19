@@ -14,7 +14,7 @@ import FirebaseDatabase
 
 // MARK: - Typealias -
 
-typealias Choice = (text: String, pointValue: Int, profileValue: String?)
+typealias Choice = (text: String, pointValue: Int?, profileValue: String?)
 
 // MARK: - Enumeration -
 
@@ -102,7 +102,8 @@ struct Question {
         var choices: [Choice] = []
         for choice in choiceSnapshot {
             guard let text = choice["text"] as? String else { return nil }
-            let pointValue = choice["point-value"] as? Int ?? 0
+            let pointValueString = choice["point-value"] as? String
+            let pointValue = pointValueString != nil ? Int(pointValueString!) : 0
             let profileValue = choice["profile-value"] as? String
             
             choices.append((text: text, pointValue: pointValue, profileValue: profileValue))
@@ -144,8 +145,12 @@ struct Question {
         
         for choice in choices {
             
-            var choiceSnapshot: [String: String] = ["text": choice.text, "point-value": String(choice.pointValue), "meh": ""]
+            var choiceSnapshot: [String: String] = ["text": choice.text]
 
+            if let pointValue = choice.pointValue {
+                choiceSnapshot["point-value"] = String(pointValue)
+            }
+            
             if let profileValue = choice.profileValue {
                 choiceSnapshot["profile-value"] = profileValue
             }

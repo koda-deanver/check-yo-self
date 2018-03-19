@@ -15,6 +15,7 @@ import FirebaseDatabase
 /// All types of data that are saved to UserDefaults.
 enum LocalData: String {
     case questionType
+    case fitbitToken
 }
 
 // MARK: - Class -
@@ -145,9 +146,15 @@ class DataManager {
             
             let gameRecord = GameRecord(type: questionType, score: score, startTime: startTime, endTime: endTime, location: location, steps: steps, heartData: heartData, gemsEarned: 10)
             
-            let gameDataPath = Constants.firebaseRootPath.child("check-yo-self/game-data")
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yy-MM-dd_HH:mm:ss"
+            let startTimeString = dateFormatter.string(from: gameRecord.startTime)
             
-            BSGFirebaseService.updateData(atPath: gameDataPath, values: gameRecord.toSnapshot(), success: {
+            let gameSnapshot = gameRecord.toSnapshot()
+            
+            let gameDataPath = Constants.firebaseRootPath.child("check-yo-self/game-data/\(User.current.username)/\(startTimeString)")
+            
+            BSGFirebaseService.updateData(atPath: gameDataPath, values: gameSnapshot, success: {
                 completion?()
             }, failure: {
                 completion?()
