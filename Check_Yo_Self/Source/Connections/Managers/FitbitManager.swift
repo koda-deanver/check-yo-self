@@ -20,6 +20,15 @@ struct HeartData {
     let cardioMinutes: Int
     /// Number of minutes spent in the *peak* zone throughout the day.
     let peakMinutes: Int
+    
+    ///
+    /// Prepare to save to database.
+    ///
+    /// - returns: Dictionary representation of Heart Data.
+    ///
+    func toSnapshot() -> [String: Any] {
+        return ["resting-heart-rate": String(restingHeartRate), "fat-burn-minutes": String(fatBurnMinutes), "cardio-minutes": String(cardioMinutes), "peak-minutes": String(peakMinutes)]
+    }
 }
 
 /// Provide interface to get information from *Fitbit*.

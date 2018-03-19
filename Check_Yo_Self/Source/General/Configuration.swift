@@ -52,6 +52,7 @@ struct Configuration {
     
     /// Percentage of time ad is shown when finishing game.
     static let adFrequency = 50
+    static let gameRecordMax = 100
     
     // Questions
     static let questionsPerRound = 20

@@ -21,8 +21,20 @@ typealias Choice = (text: String, pointValue: Int?, profileValue: String?)
 /// Represents types of questions.
 enum QuestionType: String {
     
-    case check, brainstorm, develop, align, improve, make, profile
+    case profile, check, brainstorm, develop, align, improve, make
     
+    /// Title of the QuestionType beginning with capital letter.
+    var displayString: String {
+        switch self {
+        case .profile: return "Profile"
+        case .check: return "Check"
+        case .brainstorm: return "Brainstorm"
+        case .develop: return "Develop"
+        case .align: return "Align"
+        case .improve: return "Improve"
+        case .make: return "Make"
+        }
+    }
     /// Description of the purpose of this type of question.
     var description: String {
         switch self {
@@ -65,6 +77,9 @@ enum QuestionType: String {
     
     /// Value of parent path on database.
     var databaseNode: String { return rawValue.lowercased() }
+    
+    /// Array of all question types.
+    static var all: [QuestionType] = [profile, check, brainstorm, develop, align, improve, make]
 }
 
 // MARK: - Struct -

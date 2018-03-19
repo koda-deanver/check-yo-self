@@ -70,6 +70,7 @@ class DataManager {
     ///
     /// Create a new user with specified credentials.
     ///
+    /// - parameter user: The user to update.
     /// - parameter success: Returns user on successful create.
     /// - parameter failure: Failure handler containing error string.
     ///
@@ -152,7 +153,7 @@ class DataManager {
             
             let gameSnapshot = gameRecord.toSnapshot()
             
-            let gameDataPath = Constants.firebaseRootPath.child("check-yo-self/game-data/\(User.current.username)/\(startTimeString)")
+            let gameDataPath = Constants.firebaseRootPath.child("check-yo-self/game-records/\(User.current.username)/\(startTimeString)")
             
             BSGFirebaseService.updateData(atPath: gameDataPath, values: gameSnapshot, success: {
                 completion?()
@@ -160,6 +161,38 @@ class DataManager {
                 completion?()
             })
         }
+    }
+    
+    ///
+    /// Gets array of game records from database.
+    ///
+    /// - parameter user: The user to get records for.
+    /// - parameter success: Success handler containing gameRecords.
+    /// - parameter failure: Failure handler containing error string.
+    ///
+    func getGameRecords(forUser user: User, success: (([GameRecord]) -> Void)?, failure: ErrorClosure?) {
+        
+        BSGFirebaseService.fetchData(atPath: Constants.firebaseRootPath.child("check-yo-self/game-records/\(User.current.username)"), success: { snapshot in
+           
+            guard let gameRecordSnapshots = snapshot.value as? [String: Any] else {
+                failure?("Connection Error")
+                return
+            }
+            
+            var gameRecords: [GameRecord] = []
+            
+            for snapshot in gameRecordSnapshots {
+                
+                guard let snapshot = snapshot.value as? [String: Any], let gameRecord = GameRecord(withSnapshot: snapshot) else { continue }
+                
+                gameRecords.append(gameRecord)
+            }
+            
+            success?(gameRecords)
+    
+        }, failure: {
+            failure?("Connection Error.")
+        })
     }
     
     // MARK: - Private Methods -

@@ -198,7 +198,7 @@ final class QuestionsViewController: SkinnedViewController {
             shouldShowAd = index > Configuration.adFrequency
         }
         
-        guard let statsNav = tabBarController?.viewControllers?[2] as? UINavigationController, let statsViewController = statsNav.viewControllers[0] as? StatsViewController else { return }
+        guard let statsNav = tabBarController?.viewControllers?[2] as? UINavigationController, let statsViewController = statsNav.viewControllers[0] as? GameRecordsViewController else { return }
         statsViewController.shouldShowAd = shouldShowAd
         tabBarController?.selectedIndex = 2
     }

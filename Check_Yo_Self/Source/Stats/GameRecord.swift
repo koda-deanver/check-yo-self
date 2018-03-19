@@ -38,11 +38,16 @@ struct GameRecord {
         self.gemsEarned = gemsEarned
     }
     
-    init?(withSnapshot snapshot: [String: Any], type questionType: QuestionType) {
+    init?(withSnapshot snapshot: [String: Any]) {
         
         guard let questionTypeValue = snapshot["type"] as? String, let questionType = QuestionType(rawValue: questionTypeValue) else { return nil }
         guard let score = snapshot["score"] as? Int, let gemsEarned = snapshot["gems-earned"] as? Int else { return nil }
-        guard let startTime = snapshot["start-time"] as? Date, let endTime = snapshot["end-time"] as? Date else { return nil }
+        guard let startTimeString = snapshot["start-time"] as? String, let endTimeString = snapshot["end-time"] as? String else { return nil }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yy-MM-dd_HH:mm:ss"
+        
+        guard let startTime = dateFormatter.date(from: startTimeString), let endTime = dateFormatter.date(from: endTimeString) else { return nil }
         
         self.questionType = questionType
         self.score = score
@@ -70,7 +75,11 @@ struct GameRecord {
         let startTimeString = dateFormatter.string(from: startTime)
         let endTimeString = dateFormatter.string(from: endTime)
         
-        let snapshot: [String: Any] = ["type": questionType.rawValue, "score": score, "gems-earned": gemsEarned, "start-time": startTimeString, "end-time": endTimeString]
+        var snapshot: [String: Any] = ["type": questionType.rawValue, "score": score, "gems-earned": gemsEarned, "start-time": startTimeString, "end-time": endTimeString]
+        
+        if let heartData = heartData {
+            snapshot["heart-data"] = heartData.toSnapshot()
+        }
         
         return snapshot
     }
