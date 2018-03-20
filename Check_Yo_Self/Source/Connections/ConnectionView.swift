@@ -42,6 +42,7 @@ class ConnectionCell: UICollectionViewCell {
         connectionImage.image = image
         
         style(for: connection.state)
+        refresh()
     }
     
     // MARK: - Private Methods -
@@ -61,6 +62,13 @@ class ConnectionCell: UICollectionViewCell {
         loadingImageView.isHidden = !(state == .pending)
     
         if state == .pending { showPendingAnimation() }
+    }
+    
+    ///
+    /// Checks connection status.
+    ///
+    func refresh() {
+        ConnectionManager.shared.checkConnection(for: connection)
     }
   
     ///
@@ -87,7 +95,9 @@ extension ConnectionCell {
     
     /// Attempt to connect to connection.
     @IBAction func backdropButtonPressed(_ sender: UIButton) {
+        
         guard let viewController = containingViewController else { return }
-        connection.handleInteraction(viewController: viewController)
+        
+        connection.state == .connected ? ConnectionManager.shared.disconnect(connection, viewController: viewController) : ConnectionManager.shared.connect(connection, viewController: viewController)
     }
 }

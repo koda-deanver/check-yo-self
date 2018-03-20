@@ -20,6 +20,15 @@ struct HeartData {
     let cardioMinutes: Int
     /// Number of minutes spent in the *peak* zone throughout the day.
     let peakMinutes: Int
+    
+    ///
+    /// Prepare to save to database.
+    ///
+    /// - returns: Dictionary representation of Heart Data.
+    ///
+    func toSnapshot() -> [String: Any] {
+        return ["resting-heart-rate": String(restingHeartRate), "fat-burn-minutes": String(fatBurnMinutes), "cardio-minutes": String(cardioMinutes), "peak-minutes": String(peakMinutes)]
+    }
 }
 
 /// Provide interface to get information from *Fitbit*.
@@ -36,7 +45,15 @@ final class FitbitManager {
     private lazy var authenticationController = AuthenticationController(delegate: self)
     // FIX: Probly not good to save this here.
     /// Saved authorization token used when retreiving data.
-    private var currentToken: String?
+    private var currentToken: String? {
+        get { return DataManager.shared.getLocalValue(for: .fitbitToken) }
+        set {
+            guard let newValue = newValue else { return }
+            DataManager.shared.saveLocalValue(newValue, for: .fitbitToken)
+        }
+    }
+    /// Closure run when login is complete.
+    private var loginCompletion: BoolClosure?
     
     // MARK: - Public Methods -
     
@@ -45,7 +62,8 @@ final class FitbitManager {
     ///
     /// - parameter viewController: View controller to display login screen from.
     ///
-    func login(from viewController: GeneralViewController) {
+    func login(from viewController: GeneralViewController, completion: BoolClosure?) {
+        self.loginCompletion = completion
         authenticationController.login(fromParentViewController: viewController)
     }
     
@@ -128,5 +146,6 @@ extension FitbitManager: AuthenticationProtocol {
             return
         }
         currentToken = authToken
+        loginCompletion?(success)
     }
 }

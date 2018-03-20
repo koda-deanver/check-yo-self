@@ -15,6 +15,7 @@ import FirebaseDatabase
 /// All types of data that are saved to UserDefaults.
 enum LocalData: String {
     case questionType
+    case fitbitToken
 }
 
 // MARK: - Class -
@@ -69,6 +70,7 @@ class DataManager {
     ///
     /// Create a new user with specified credentials.
     ///
+    /// - parameter user: The user to update.
     /// - parameter success: Returns user on successful create.
     /// - parameter failure: Failure handler containing error string.
     ///
@@ -110,22 +112,87 @@ class DataManager {
     }
     
     ///
-    /// Get value stored in Userefaults.
+    /// Adds record of game to database.
     ///
-    /// - parameter localTypeType: The type of value to save.
+    /// - parameter questionType: The type of question answered in game.
+    /// - parameter score: The number of points scored in game.
+    /// - parameter startTime: The date when game was started.
+    /// - parameter completion: Completion handler for either successful or failed creation of game record.
     ///
-    func getLocalValue(for localDataType: LocalData) -> String? {
-        return UserDefaults.standard.value(forKey: localDataType.rawValue) as? String
+    func addGameRecord(ofType questionType: QuestionType, score: Int, startTime: Date, completion: Closure?) {
+        
+        var steps: Int?
+        var heartData: HeartData?
+        
+        HealthKitService.getStepCountHK(success: { dailySteps in
+            steps = dailySteps
+            getHeart()
+        }, failure: { error in
+            getHeart()
+        })
+        
+        func getHeart() {
+            FitbitManager.shared.getTodaysHeartData(success: { data in
+                heartData = data
+                createRecord()
+            }, failure: { error in
+                createRecord()
+            })
+        }
+        
+        func createRecord() {
+            
+            let endTime = Date.init()
+            let location = LocationManager.shared.location
+            
+            let gameRecord = GameRecord(type: questionType, score: score, startTime: startTime, endTime: endTime, location: location, steps: steps, heartData: heartData, gemsEarned: 10)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yy-MM-dd_HH:mm:ss"
+            let startTimeString = dateFormatter.string(from: gameRecord.startTime)
+            
+            let gameSnapshot = gameRecord.toSnapshot()
+            
+            let gameDataPath = Constants.firebaseRootPath.child("check-yo-self/game-records/\(User.current.username)/\(startTimeString)")
+            
+            BSGFirebaseService.updateData(atPath: gameDataPath, values: gameSnapshot, success: {
+                completion?()
+            }, failure: {
+                completion?()
+            })
+        }
     }
     
     ///
-    /// Saves the specified value for specified data type in UserDefaults.
+    /// Gets array of game records from database.
     ///
-    /// - parameter value: The value to save.
-    /// - parameter localTypeType: The type of value to save.
+    /// - parameter user: The user to get records for.
+    /// - parameter success: Success handler containing gameRecords.
+    /// - parameter failure: Failure handler containing error string.
     ///
-    func saveLocalValue(_ value: String, for localDataType: LocalData) {
-        UserDefaults.standard.set(value, forKey: localDataType.rawValue)
+    func getGameRecords(forUser user: User, success: (([GameRecord]) -> Void)?, failure: ErrorClosure?) {
+        
+        BSGFirebaseService.fetchData(atPath: Constants.firebaseRootPath.child("check-yo-self/game-records/\(User.current.username)"), success: { snapshot in
+           
+            guard let gameRecordSnapshots = snapshot.value as? [String: Any] else {
+                failure?("Connection Error")
+                return
+            }
+            
+            var gameRecords: [GameRecord] = []
+            
+            for snapshot in gameRecordSnapshots {
+                
+                guard let snapshot = snapshot.value as? [String: Any], let gameRecord = GameRecord(withSnapshot: snapshot) else { continue }
+                
+                gameRecords.append(gameRecord)
+            }
+            
+            success?(gameRecords)
+    
+        }, failure: {
+            failure?("Connection Error.")
+        })
     }
     
     // MARK: - Private Methods -
@@ -152,4 +219,28 @@ class DataManager {
         })
     }
 
+}
+
+// MARK: - Extension: Local -
+
+extension DataManager {
+    
+    ///
+    /// Get value stored in Userefaults.
+    ///
+    /// - parameter localTypeType: The type of value to save.
+    ///
+    func getLocalValue(for localDataType: LocalData) -> String? {
+        return UserDefaults.standard.value(forKey: localDataType.rawValue) as? String
+    }
+    
+    ///
+    /// Saves the specified value for specified data type in UserDefaults.
+    ///
+    /// - parameter value: The value to save.
+    /// - parameter localTypeType: The type of value to save.
+    ///
+    func saveLocalValue(_ value: String, for localDataType: LocalData) {
+        UserDefaults.standard.set(value, forKey: localDataType.rawValue)
+    }
 }

@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 //import CoreLocation
 
-class DataEntryDetailsViewController: GeneralViewController {
+/*class DataEntryDetailsViewController: GeneralViewController {
     let regionRadius: CLLocationDistance = 1000
     
     @IBOutlet weak var phaseImage: UIImageView!
@@ -38,10 +38,10 @@ class DataEntryDetailsViewController: GeneralViewController {
     // Description: Recenter map if user gets lost
     //********************************************************************
     @IBAction func centerMapButtonPressed(_ sender: UIButton) {
-        let dataEntry = PlayerData.sharedInstance.tableIndex!
-        if dataEntry.location != nil{
-            centerMapOnLocation(location: dataEntry.location!)
-        }
+        //let dataEntry = PlayerData.sharedInstance.tableIndex!
+        //if dataEntry.location != nil{
+            //centerMapOnLocation(location: dataEntry.location!)
+        //}
     }
     
     //********************************************************************
@@ -50,7 +50,7 @@ class DataEntryDetailsViewController: GeneralViewController {
     //********************************************************************
     override func viewDidLoad() {
         super.viewDidLoad()
-        let dataEntry = PlayerData.sharedInstance.tableIndex!
+        //let dataEntry = PlayerData.sharedInstance.tableIndex!
         if dataEntry.phase == .check{
             self.phaseImage.image = #imageLiteral(resourceName: "TripleCheck")
         }else{
@@ -91,7 +91,7 @@ class DataEntryDetailsViewController: GeneralViewController {
             self.stepCountLabel.text = String(steps)
         }
         // Display Heart Rate
-        if let heartRateInfo = dataEntry.heartDictionary{
+        /*if let heartRateInfo = dataEntry.heartDictionary{
             if let restingHeartRate = heartRateInfo[HeartCategory.restingHeartRate.rawValue]{
                 self.heartRateLabel.text = "\(restingHeartRate)"
             }
@@ -104,7 +104,7 @@ class DataEntryDetailsViewController: GeneralViewController {
             if let peakMinutes = heartRateInfo[HeartCategory.peakMinutes.rawValue]{
                 self.peakLabel.text = "\(peakMinutes)"
             }
-        }
+        }*/
     }
     
     //********************************************************************
@@ -116,4 +116,4 @@ class DataEntryDetailsViewController: GeneralViewController {
                                                                   regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }
-}
+}*/

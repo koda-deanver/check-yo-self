@@ -14,20 +14,27 @@ import FirebaseDatabase
 
 // MARK: - Typealias -
 
-typealias Choice = (text: String, pointValue: Int, profileValue: String?)
+typealias Choice = (text: String, pointValue: Int?, profileValue: String?)
 
 // MARK: - Enumeration -
 
 /// Represents types of questions.
 enum QuestionType: String {
-    case check = "Check"
-    case brainstorm = "Brainstorm"
-    case develop = "Develop"
-    case align = "Align"
-    case improve = "Improve"
-    case make = "Make"
-    case profile = "Profile"
     
+    case profile, check, brainstorm, develop, align, improve, make
+    
+    /// Title of the QuestionType beginning with capital letter.
+    var displayString: String {
+        switch self {
+        case .profile: return "Profile"
+        case .check: return "Check"
+        case .brainstorm: return "Brainstorm"
+        case .develop: return "Develop"
+        case .align: return "Align"
+        case .improve: return "Improve"
+        case .make: return "Make"
+        }
+    }
     /// Description of the purpose of this type of question.
     var description: String {
         switch self {
@@ -70,6 +77,9 @@ enum QuestionType: String {
     
     /// Value of parent path on database.
     var databaseNode: String { return rawValue.lowercased() }
+    
+    /// Array of all question types.
+    static var all: [QuestionType] = [profile, check, brainstorm, develop, align, improve, make]
 }
 
 // MARK: - Struct -
@@ -107,7 +117,8 @@ struct Question {
         var choices: [Choice] = []
         for choice in choiceSnapshot {
             guard let text = choice["text"] as? String else { return nil }
-            let pointValue = choice["point-value"] as? Int ?? 0
+            let pointValueString = choice["point-value"] as? String
+            let pointValue = pointValueString != nil ? Int(pointValueString!) : 0
             let profileValue = choice["profile-value"] as? String
             
             choices.append((text: text, pointValue: pointValue, profileValue: profileValue))
@@ -149,8 +160,12 @@ struct Question {
         
         for choice in choices {
             
-            var choiceSnapshot: [String: String] = ["text": choice.text, "point-value": String(choice.pointValue), "meh": ""]
+            var choiceSnapshot: [String: String] = ["text": choice.text]
 
+            if let pointValue = choice.pointValue {
+                choiceSnapshot["point-value"] = String(pointValue)
+            }
+            
             if let profileValue = choice.profileValue {
                 choiceSnapshot["profile-value"] = profileValue
             }

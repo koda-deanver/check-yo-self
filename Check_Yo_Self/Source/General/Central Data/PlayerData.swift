@@ -8,16 +8,14 @@
 //********************************************************************
 
 import UIKit
-import CoreLocation
+
 import FacebookLogin
 import FacebookCore
 import Firebase
+import CoreLocation
 
-class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
-    static var sharedInstance = PlayerData()
-    
-    // Used to get Player Location from anywhere in the app
-    var locationManager: CLLocationManager?
+class PlayerData {
+    /*//static var sharedInstance = PlayerData()
     
     var gemTotal: Int{
         didSet{
@@ -32,16 +30,16 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
         var plays = 0
         let calender = Calendar(identifier: .gregorian)
         // Add one for each time game is played today
-        for entry in dataArray where calender.isDateInToday(entry.endTime){
+        /*for entry in dataArray where calender.isDateInToday(entry.endTime){
             // Profile phase doesn't count toward plays
             if entry.phase != .none{
                 plays += 1
             }
-        }
+        }*/
         return plays
     }
     // Number of times per today player can earn gems for playing
-    var playsPerDay: Int{
+    /*var playsPerDay: Int{
         let profileScore = dataArray[0].score
         switch(profileScore){
         case -40 ... -1:
@@ -55,11 +53,9 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
         default:
             return 0
         }
-    }
+    }*/
     
     var runCheckOnce: Bool = false
-    var dataArray: [DataEntry]
-    var tableIndex: DataEntry? = nil
     var creationPhase: CreationPhase
     var fitbitToken: String?
     
@@ -79,48 +75,10 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
     // Designated Initializer
     // Description: Initialize all variables of class
     //********************************************************************
-    private init(gemTotal: Int, creationPhase: CreationPhase, dataArray: [DataEntry], fitbitToken: String?){
+    private init(gemTotal: Int, creationPhase: CreationPhase, dataArray: [GameRecord], fitbitToken: String?){
         self.gemTotal = gemTotal
         self.creationPhase = creationPhase
-        self.dataArray = dataArray
         self.fitbitToken = fitbitToken
-    }
-    
-    //********************************************************************
-    // Convenience Initializer
-    // Description: Check if PlayerData has been saved, and call default
-    // initializer with either new object orsaved one
-    //********************************************************************
-    private override convenience init(){
-        //UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-        // Saved player exists. Load it
-        if let savedPlayerData = UserDefaults.standard.object(forKey: "playerDataArchive") as! Data?{
-            let savedPlayer = NSKeyedUnarchiver.unarchiveObject(with: savedPlayerData) as! PlayerData
-            self.init(gemTotal: savedPlayer.gemTotal, creationPhase: savedPlayer.creationPhase, dataArray: savedPlayer.dataArray, fitbitToken: savedPlayer.fitbitToken)
-            print("PLAYER LOADED\n\(self)")
-        // No saved player. Create a new one
-        }else{
-            let emptyDataArray: [DataEntry] = []
-            self.init(gemTotal: 0, creationPhase: .none, dataArray: emptyDataArray, fitbitToken: nil)
-            print("NEW PLAYER CREATED\n\(self)")
-        }
-    }
-    
-    //********************************************************************
-    // Required Convenience Initializer
-    // Description: Required to initialize from archived object
-    //********************************************************************
-    convenience required init?(coder aDecoder: NSCoder) {
-        let gemTotal = aDecoder.decodeInteger(forKey: "gemTotal")
-        let phaseValue = aDecoder.decodeObject(forKey: "phase") as! String
-        let creationPhase = CreationPhase(rawValue: phaseValue)!
-        let dataArray = aDecoder.decodeObject(forKey: "dataArray") as! [DataEntry]
-        var savedFitbitToken: String?
-        if let fitbitToken = aDecoder.decodeObject(forKey: "fitbitToken") as? String{
-            savedFitbitToken = fitbitToken
-        }
-        
-        self.init(gemTotal: gemTotal, creationPhase: creationPhase, dataArray: dataArray, fitbitToken: savedFitbitToken)
     }
     
     //********************************************************************
@@ -130,7 +88,7 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.gemTotal, forKey:"gemTotal")
         aCoder.encode(self.creationPhase.rawValue, forKey:"phase")
-        aCoder.encode(self.dataArray, forKey:"dataArray")
+        //aCoder.encode(self.dataArray, forKey:"dataArray")
         // Save Token is there is one
         if let authToken = self.fitbitToken{
             aCoder.encode(authToken, forKey:"authToken")
@@ -142,7 +100,7 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
     // Description: Create new DataEntry object and add to dataArray
     //********************************************************************
     func addDataEntry(phase: CreationPhase, score: Int, startTime: Date, location: CLLocation?, steps: Int?, heartDictionary: [String: Int]?){
-        let dataEntry = DataEntry(phase: phase, score: score, startTime: startTime, location: location, steps: steps, heartDictionary: heartDictionary)
+        /*let dataEntry = DataEntry(phase: phase, score: score, startTime: startTime, location: location, steps: steps, heartDictionary: heartDictionary)
         if phase == .none{
             // Initial profile setup
             if dataArray.isEmpty{
@@ -159,7 +117,7 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
             dataEntry.gemsEarned = calculateGems(score: score, steps: steps, heartDictionary: heartDictionary)
             self.gemTotal += dataEntry.gemsEarned
         }
-        self.archivePlayer()
+        //self.archivePlayer()*/
     }
     
     //********************************************************************
@@ -230,149 +188,13 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
     }
     
     //********************************************************************
-    // archivePlayer
-    // Description: Save player to user defaults
-    //********************************************************************
-    func archivePlayer(){
-        let playerDataArchive = NSKeyedArchiver.archivedData(withRootObject: self)
-        UserDefaults.standard.set(playerDataArchive, forKey: "playerDataArchive")
-        print("PLAYER ARCHIVED\n\(self)")
-    }
-    
-    //********************************************************************
-    // deletePlayer
-    // Description: Delete player from user defaults and create new instance
-    //********************************************************************
-    func deletePlayer(){
-        //UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-        print("PLAYER DELETED\n\(self)")
-        PlayerData.sharedInstance = PlayerData()
-    }
-    
-    //********************************************************************
-    // getLocation
-    // Description: Return player location is maps are authorized
-    //********************************************************************
-    func getLocation() -> CLLocation?{
-        return self.locationManager?.location
-    }
-    
-    //********************************************************************
-    // locationManager(didChangeAuthorization
-    // Description: Delegate method called when auth is changed
-    //********************************************************************
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        /*if status == .authorizedWhenInUse{
-            for connection in Constants.connections where connection.type == .maps{
-                connection.checkConnection()
-            }
-        }*/
-    }
-    
-    
-
-    
-    //********************************************************************
-    // loadPlayerFB
-    // Description: Grab updated name and pic from facebook and save locally
-    // Erros: Connection, Facebook, Data
-    //********************************************************************
-    func loadPlayerFB(completion: @escaping () -> Void = {}, failure: @escaping (ErrorType) -> Void = {_ in }){
-        if AccessToken.current != nil {
-            let connection = GraphRequestConnection()
-            connection.add(GraphRequest(graphPath: "me", parameters: ["fields": "id, name"])) { httpResponse, result in
-                switch result {
-                case .success(let response):
-                    if let facebookDictionary = response.dictionaryValue{
-                        // Player needs to have name and ID
-                        if let userID = facebookDictionary ["id"] as? String{
-                            self.facebookID = userID
-                            let picURL = URL(string: "https://graph.facebook.com/\(userID)/picture?type=large")!
-                            let picData = NSData(contentsOf: picURL)
-                            // Save image data to player
-                            self.facebookImageData = picData
-                            // Reload labels and pic
-                            completion()
-                        }else{
-                            failure(.data("Name/ID"))
-                        }
-                    }
-                case .failed(let error):
-                    failure(.connection(error))
-                }
-            }
-            connection.start()
-        }else{
-            failure(.permissions("Access Token"))
-        }
-    }
-
-    //********************************************************************
-    // savePlayerFirebase
-    // Description: Save import data to Firebase
-    //********************************************************************
-    func savePlayerFirebase(completion: () -> (), failure: (ErrorType) -> ()){
-        if let user = Auth.auth().currentUser{
-            let rootNode = Database.database().reference(fromURL: "https://check-yo-self-18682434.firebaseio.com/")
-            let playerNode = rootNode.child("Users/\(user.uid)")
-           
-            let playerStats: [String: Any] = [
-                "DisplayName": self.displayName,
-                "CubeColor": self.cubeColor.rawValue,
-                "Gems": self.gemTotal,
-                "AgeGroup": self.isAdult ? "Adult" : "Child",
-                "AvatarName": self.avatar != nil ? self.avatar!.name : "",
-                "FacebookID": self.facebookID != nil ? self.facebookID! : ""
-            ]
-            playerNode.updateChildValues(playerStats)
-            completion()
-        }else{
-            failure(.permissions("No current Firebase User"))
-        }
-    }
-    
-    //********************************************************************
-    // loadPlayerFirebase
-    // Description: Get stored player data from firebase
-    //********************************************************************
-    func loadPlayerFirebase(completion: @escaping () -> (), failure: @escaping (ErrorType) -> ()){
-        if let user = Auth.auth().currentUser{
-            let rootNode = Database.database().reference(fromURL: "https://check-yo-self-18682434.firebaseio.com/")
-            let playerNode = rootNode.child("Users/\(user.uid)")
-            playerNode.observeSingleEvent(of: .value, with: {
-                snapshot in
-                if let playerDictionary = snapshot.value as? [String: Any]{
-                    self.displayName = playerDictionary["DisplayName"] as! String
-                    let cubeColorString = playerDictionary["CubeColor"] as! String
-                    self.cubeColor = CubeColor(rawValue: cubeColorString)!
-                    // Get gem total from local for now
-                    //self.gemTotal = playerDictionary["Gems"] as! Int
-                    let ageGroup = playerDictionary["AgeGroup"] as! String
-                    self.isAdult = ageGroup == "Adult" ? true : false
-                    if let avatarName = playerDictionary["AvatarName"] as? String{
-                        /*for avatar in Media.avatarList where avatarName == avatar.name{
-                            self.avatar = avatar
-                        }*/
-                    }
-                    completion()
-                }else{
-                    failure(.data("Empty Dictionary"))
-                }
-                
-            })
-        }else{
-            failure(.permissions("No current Firebase User"))
-        }
-    }
-    
-    //********************************************************************
     // description
     // Description: Output string representation of PlayerData to the console
     //********************************************************************
     override var description: String{
         let nameString = self.displayName
         var descriptionString = "Player Name: \(nameString)\n"
-        var gamesPlayed = self.dataArray.count - 1
+        //var gamesPlayed = self.dataArray.count - 1
         if(gamesPlayed < 0){
             gamesPlayed = 0
         }
@@ -395,4 +217,6 @@ class PlayerData: NSObject, NSCoding, CLLocationManagerDelegate {
             print(gameString)
         }
     }
+ */
 }
+

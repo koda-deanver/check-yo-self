@@ -13,14 +13,14 @@ class CustomTabBar: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        self.tabBar.tintColor = PlayerData.sharedInstance.cubeColor.uiColor
+        /*self.tabBar.tintColor = PlayerData.sharedInstance.cubeColor.uiColor
         if PlayerData.sharedInstance.isAdult{
             self.tabBar.barTintColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0)
             self.tabBar.unselectedItemTintColor = UIColor.white
         }else{
             self.tabBar.barTintColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1.0)
             self.tabBar.unselectedItemTintColor = UIColor.black
-        }
+        }*/
     }
     
 }

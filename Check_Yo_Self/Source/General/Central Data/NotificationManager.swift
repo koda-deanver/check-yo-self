@@ -11,12 +11,13 @@ import Foundation
 /// Represents every type of notification throughout app.
 enum NotificationType {
     
-    case profileUpdated
+    case profileUpdated, connectionUpdated
     
     /// The notification object for this type.
     var notification: Notification {
         switch self {
         case .profileUpdated: return Notification(name: Notification.Name("profileUpdated"))
+        case .connectionUpdated: return Notification(name: Notification.Name("connectionUpdated"))
         }
     }
 }
