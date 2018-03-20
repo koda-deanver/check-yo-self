@@ -2,17 +2,18 @@
 //  BackgroundViewController.swift
 //  check-yo-self
 //
-//  Created by Phil Rattazzi on 1/19/18.
+//  Created by phil on 1/19/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
 import UIKit
 
-/// Looms in background for the duration of app displaying background image.
+/// Looms in background for the duration of app displaying background image. Only view controllers with clear background can see it.
 class BackgroundViewController: GeneralViewController {
     
     // MARK: - Private Members -
     
+    /// Used to keep background image same width as the screen. Height is variable based on device.
     private var backgroundImageAspectRatio: CGFloat = 2.165
     
     // MARK: - Lifecycle -

@@ -1,8 +1,8 @@
 //
 //  NotificationManager.swift
-//  Check_Yo_Self
+//  check-yo-self
 //
-//  Created by Phil on 2/23/18.
+//  Created by phil on 2/23/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
@@ -23,7 +23,7 @@ enum NotificationType {
 }
 
 /// Provides interface for posting and listening to events.
-class NotificationManager {
+final class NotificationManager {
     
     static let shared = NotificationManager()
     

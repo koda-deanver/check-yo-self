@@ -2,7 +2,7 @@
 //  LoginViewController.swift
 //  check-yo-self
 //
-//  Created by Phil Rattazzi on 1/3/17.
+//  Created by phil on 1/3/17.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 

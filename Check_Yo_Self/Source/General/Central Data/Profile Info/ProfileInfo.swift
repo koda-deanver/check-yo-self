@@ -2,7 +2,7 @@
 //  ProfileInfo.swift
 //  check-yo-self
 //
-//  Created by Phil on 2/13/18.
+//  Created by phil on 2/13/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 //  Conatins enumerations for profile data of user.

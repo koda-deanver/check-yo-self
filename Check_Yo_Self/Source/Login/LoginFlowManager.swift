@@ -2,14 +2,14 @@
 //  LoginFlowManager.swift
 //  check-yo-self
 //
-//  Created by Phil Rattazzi on 1/23/18.
+//  Created by phil on 1/23/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
 import Foundation
 
 /// Function for controlling login and account creation process.
-class LoginFlowManager {
+final class LoginFlowManager {
     
     // MARK: - Public Members -
     

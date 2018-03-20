@@ -2,7 +2,7 @@
 //  Connection.swift
 //  check-yo-self
 //
-//  Created by Phil on 3/6/18.
+//  Created by phil on 3/6/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
@@ -41,9 +41,9 @@ enum ConnectionState {
     case connected, unconnected, pending
 }
 
-// MARK: - Struct -
+// MARK: - Class -
 
-class Connection {
+final class Connection {
     
     // MARK: - Public Members -
     

@@ -2,7 +2,7 @@
 //  GeneralViewController.swift
 //  check-yo-self
 //
-//  Created by Phil Rattazzi on 12/1/16.
+//  Created by phil on 12/1/16.
 //  Copyright © 2016 ThematicsLLC. All rights reserved.
 //
 
@@ -24,23 +24,12 @@ class GeneralViewController: UIViewController {
         
         super.viewDidLoad()
         
+        style()
+        hideKeyboardWhenTappedAround()
         NotificationManager.shared.addObserver(self, forNotificationType: .profileUpdated, handler: #selector(style))
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        style()
-    }
-    
     // MARK: - Public Methods -
-    
-    ///
-    /// Hides keyboard when user taps on screen.
-    ///
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
     
     ///
     /// Start progress indicator.
@@ -70,17 +59,6 @@ class GeneralViewController: UIViewController {
         self.showAlert(alert)
     }
     
-    // MARK: - Private Methods -
-    
-    @objc func style() {}
-    
-    ///
-    /// Description: Dismisses keyboard.
-    ///
-    @objc private func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
     ///
     /// Show alert on any ViewController.
     ///
@@ -100,5 +78,24 @@ class GeneralViewController: UIViewController {
         alertController.view.layer.zPosition = 10
         self.view.addSubview(alertController.view)
         alertController.didMove(toParentViewController: self)
+    }
+    
+    // MARK: - Private Methods -
+    
+    @objc func style() {}
+    
+    ///
+    /// Sets up dismissal of keyboard when user taps on screen.
+    ///
+    private func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    ///
+    /// Dismisses keyboard.
+    ///
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

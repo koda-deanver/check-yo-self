@@ -2,7 +2,7 @@
 //  LoadingViewController.swift
 //  check-yo-self
 //
-//  Created by Phil on 1/19/17.
+//  Created by phil on 1/19/17.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
@@ -22,16 +22,14 @@ final class LoadingViewController: GeneralViewController {
         super.viewDidLoad()
         
         // Animation and sound
-        self.loadingGif.image = UIImage.gifImageWithName(name: "Noodle")
-        BSGCommon.playSound("CheckVocals", ofType: "mp3")
+        self.loadingGif.image = UIImage.gifImageWithName(name: "logo-shake")
+        BSGCommon.playSound("chorus-instrumental", ofType: "mp3")
         
         // Authorize firebase
         Auth.auth().signInAnonymously(){
             user, error in
             if let error = error{
-                print("FIREBASE ERROR: \(error)")
-            }else{
-                print(user!.uid)
+                print(error.localizedDescription)
             }
         }
     }

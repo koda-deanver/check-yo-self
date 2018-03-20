@@ -2,7 +2,7 @@
 //  DataManager.swift
 //  check-yo-self
 //
-//  Created by Phil Rattazzi on 1/18/18.
+//  Created by phil on 1/18/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
@@ -49,7 +49,7 @@ class DataManager {
            
             searchingUsers: for userRecord in clients {
                 
-                guard let userInfo = userRecord.value as? [String: Any], let user = User(withUserInfo: userInfo) else { continue }
+                guard let userInfo = userRecord.value as? [String: Any], let user = User(withSnapshot: userInfo) else { continue }
                 
                 // Filter users that do not meet conditions
                 for condition in query {
@@ -124,7 +124,7 @@ class DataManager {
         var steps: Int?
         var heartData: HeartData?
         
-        HealthKitService.getStepCountHK(success: { dailySteps in
+        HealthKitManager.shared.getStepCountHK(success: { dailySteps in
             steps = dailySteps
             getHeart()
         }, failure: { error in

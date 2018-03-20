@@ -1,5 +1,5 @@
 //
-//  ConnectionButton.swift
+//  ConnectionCell.swift
 //  check-yo-self
 //
 //  Created by Phil on 3/6/18.

@@ -2,7 +2,7 @@
 //  ConnectionManager.swift
 //  check-yo-self
 //
-//  Created by Phil on 3/6/18.
+//  Created by phil on 3/6/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
@@ -184,7 +184,7 @@ extension ConnectionManager {
         
         let alert = BSGCustomAlert(message: "Connect HealthKit?", options: [(text: "Connect", handler: {
             
-            HealthKitService.authorize(success: {
+            HealthKitManager.shared.authorize(success: {
                 self.checkHealthKitConnection(connection: connection)
             }, failure: { _ in
                 self.actionComplete(connection, false)
@@ -218,7 +218,7 @@ extension ConnectionManager {
     ///
     private func checkHealthKitConnection(connection: Connection) {
         
-        HealthKitService.getStepCountHK(success: {_ in
+        HealthKitManager.shared.getStepCountHK(success: {_ in
             self.actionComplete(connection, true)
         }, failure: { _ in
             self.actionComplete(connection, false)

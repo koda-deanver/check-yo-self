@@ -2,7 +2,7 @@
 //  AvatarManager.swift
 //  check-yo-self
 //
-//  Created by Phil Rattazzi on 1/10/17.
+//  Created by phil on 1/10/17.
 //  Copyright © 2017 ThematicsLLC. All rights reserved.
 //
 

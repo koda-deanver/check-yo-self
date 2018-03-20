@@ -2,7 +2,7 @@
 //  SpeechManager.swift
 //  check-yo-self
 //
-//  Created by Phil on 3/15/18.
+//  Created by phil on 3/15/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
@@ -29,16 +29,22 @@ enum Speaker {
 // MARK: - Class -
 
 /// Able to have a variety of speakers speak any string.
-class SpeechManager {
+final class SpeechManager {
     
-    private static let synthesizer = AVSpeechSynthesizer()
+    // MARK: - Public Members -
+    
+    static let shared = SpeechManager()
+    
+    // MARK: - Private Members -
+    
+    private let synthesizer = AVSpeechSynthesizer()
     
     // MARK: - Public Methods -
     
     ///
     /// Causes speaker to start reading the specified string.
     ///
-    static func speak(_ text: String) {
+    func speak(_ text: String) {
         stop()
         let utterance = AVSpeechUtterance(string: text)
         utterance.rate = 0.5
@@ -50,7 +56,7 @@ class SpeechManager {
     ///
     /// Stops speaker dead in thier tracks.
     ///
-    static func stop() {
+    func stop() {
         synthesizer.stopSpeaking(at: .immediate)
     }
 }

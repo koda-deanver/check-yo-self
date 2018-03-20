@@ -2,15 +2,14 @@
 //  KnowledgeBaseViewController.swift
 //  check-yo-self
 //
-//  Created by Phil Rattazzi on 1/5/17.
+//  Created by phil on 1/5/17.
 //  Copyright © 2016 ThematicsLLC. All rights reserved.
 //
 
-import UIKit
 import WebKit
 
 /// Displays WebView with related CollabRJabbR info.
-class KnowledgeBaseViewController: SkinnedViewController {
+final class KnowledgeBaseViewController: SkinnedViewController {
     
     // MARK: - Private Members -
     

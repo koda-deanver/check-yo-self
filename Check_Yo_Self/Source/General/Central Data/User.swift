@@ -2,7 +2,7 @@
 //  User.swift
 //  check-yo-self
 //
-//  Created by Phil on 1/18/18.
+//  Created by phil on 1/18/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
@@ -52,20 +52,20 @@ class User {
         self.password = password
     }
     
-    init?(withUserInfo userInfo: [String: Any]) {
+    init?(withSnapshot snapshot: [String: Any]) {
         
-        guard let username = userInfo[UserDatabaseField.username.rawValue] as? String, let password = userInfo[UserDatabaseField.password.rawValue] as? String else { return nil }
+        guard let username = snapshot[UserDatabaseField.username.rawValue] as? String, let password = snapshot[UserDatabaseField.password.rawValue] as? String else { return nil }
         
         self.username = username
         self.password = password
         
-        let gemsString = userInfo[UserDatabaseField.gems.rawValue] as? String ?? "0"
+        let gemsString = snapshot[UserDatabaseField.gems.rawValue] as? String ?? "0"
         gems = Int(gemsString) ?? 0
         
-        facebookID = userInfo[UserDatabaseField.facebookID.rawValue] as? String
-        facebookName = userInfo[UserDatabaseField.facebookName.rawValue] as? String
+        facebookID = snapshot[UserDatabaseField.facebookID.rawValue] as? String
+        facebookName = snapshot[UserDatabaseField.facebookName.rawValue] as? String
         
-        guard let profileInfo = userInfo["profile"] as? [String: Any] else { return nil }
+        guard let profileInfo = snapshot["profile"] as? [String: Any] else { return nil }
         
         favoriteColor = CubeColor.color(fromString: profileInfo[UserDatabaseField.favoriteColor.rawValue] as? String)
         

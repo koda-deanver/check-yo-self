@@ -1,8 +1,8 @@
 //
 //  LabelAndTextFieldCell.swift
-//  Check_Yo_Self
+//  check-yo-self
 //
-//  Created by Phil on 1/19/18.
+//  Created by phil on 1/19/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
@@ -16,6 +16,7 @@ protocol LabelAndTextFieldCellDelegate: class {
 
 // MARK: - Class -
 
+/// Table cell displaying single label and text field.
 class LabelAndTextFieldCell: UITableViewCell {
     
     // MARK: - Public Members -

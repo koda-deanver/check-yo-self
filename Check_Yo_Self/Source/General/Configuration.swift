@@ -2,7 +2,7 @@
 //  Configuration.swift
 //  check-yo-self
 //
-//  Created by Phil Rattazzi on 1/18/17.
+//  Created by phil on 1/18/17.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 //  Acts as control center for app. Various aspects can be tweaked here.

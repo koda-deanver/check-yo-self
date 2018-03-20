@@ -2,16 +2,14 @@
 //  CubeViewController.swift
 //  check-yo-self
 //
-//  Created by Phil Rattazzi on 12/9/16.
+//  Created by phil on 12/9/16.
 //  Copyright © 2016 ThematicsLLC. All rights reserved.
 //
 
 import UIKit
-import MapKit
-import Firebase
 
 /// Acts as home screen for the app.
-class CubeViewController: SkinnedViewController {
+final class CubeViewController: SkinnedViewController {
     
     // MARK: - Public Members -
     
@@ -101,7 +99,7 @@ class CubeViewController: SkinnedViewController {
     ///
     private func playVideo() {
         
-        let videoURL = NSURL.fileURL(withPath: Bundle.main.path(forResource: "AppTutorialVideo", ofType:"mp4")!)
+        let videoURL = NSURL.fileURL(withPath: Bundle.main.path(forResource: "welcome", ofType:"mp4")!)
         BSGCommon.playVideo(url: videoURL, onController: self)
         newPlayer = false
     }

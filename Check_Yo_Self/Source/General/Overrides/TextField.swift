@@ -1,8 +1,8 @@
 //
 //  TextField.swift
-//  Check_Yo_Self
+//  check-yo-self
 //
-//  Created by Phil on 2/12/18.
+//  Created by phil on 2/12/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
@@ -105,6 +105,14 @@ class TextField: UITextField {
 extension TextField: UITextFieldDelegate {
     
     ///
+    /// Allows dismissing of keyboard when tapping return.
+    ///
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        resignFirstResponder()
+        return true
+    }
+    
+    ///
     /// Start editing if enabled in blueprint. Parent delegate method is called either way.
     ///
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -113,7 +121,7 @@ extension TextField: UITextFieldDelegate {
     }
     
     ///
-    /// Allow changing characters if below the max character limit in blueprint.
+    /// Allows changing characters if below the max character limit in blueprint.
     ///
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         

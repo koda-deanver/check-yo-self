@@ -2,15 +2,14 @@
 //  Question.swift
 //  check-yo-self
 //
-//  Created by Phil Rattazzi on 12/1/16.
+//  Created by phil on 12/1/16.
 //  Copyright © 2016 ThematicsLLC. All rights reserved.
 //
-//  Update 2/9/18 by Phil Rattazzi.
+//  Update 2/9/18 by phil.
 //  Changed to struct and removed NSCoding features.
 //
 
 import UIKit
-import FirebaseDatabase
 
 // MARK: - Typealias -
 

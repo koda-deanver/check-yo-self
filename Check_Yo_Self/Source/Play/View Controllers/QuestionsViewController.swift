@@ -2,7 +2,7 @@
 //  QuestionsViewController.swift
 //  check-yo-self
 //
-//  Created by Phil on 12/1/16.
+//  Created by phil on 12/1/16.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
@@ -33,7 +33,7 @@ final class QuestionsViewController: SkinnedViewController {
             allButtons[index].setTitle(choice.text, for: .normal)
         }
         
-        SpeechController.speak(currentQuestion.text)
+        SpeechManager.shared.speak(currentQuestion.text)
     }}
     
     /// Array of all choice buttons.
@@ -171,7 +171,7 @@ final class QuestionsViewController: SkinnedViewController {
     ///
     private func finish(){
         
-        score > 0 ? BSGCommon.playSound("HookUp", ofType: "mp3") : BSGCommon.playSound("HookDown", ofType: "mp3")
+        score > 0 ? BSGCommon.playSound("hook-up", ofType: "mp3") : BSGCommon.playSound("hook-down", ofType: "mp3")
         
         guard let startTime = startTime else { return }
         

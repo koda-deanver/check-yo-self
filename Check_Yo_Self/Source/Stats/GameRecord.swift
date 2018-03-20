@@ -2,13 +2,12 @@
 //  GameRecord.swift
 //  check-yo-self
 //
-//  Created by Phil on 12/2/16.
+//  Created by phil on 12/2/16.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 //  Updated from local object DataEntry 3/16/18
 //
 
-import Foundation
 import CoreLocation
 
 /// Represents a single previously played game.

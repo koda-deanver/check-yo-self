@@ -2,14 +2,14 @@
 //  LocationManager.swift
 //  check-yo-self
 //
-//  Created by Phil on 3/16/18.
+//  Created by phil on 3/16/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
 import CoreLocation
 
 /// Provides services related to location.
-class LocationManager: NSObject {
+final class LocationManager: NSObject {
     
     /// MARK: - Public Members -
     
@@ -30,17 +30,5 @@ class LocationManager: NSObject {
     ///
     func configure() {
         locationManager.requestWhenInUseAuthorization()
-    }
-}
-
-// MARK: - Extension: CLLocationManagerDelegate -
-
-extension LocationManager: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
-        if status == .authorizedWhenInUse {
-            /// FIX: Connected
-        }
     }
 }

@@ -2,7 +2,7 @@
 //  GameRecordCell.swift
 //  check-yo-self
 //
-//  Created by Phil on 12/2/16.
+//  Created by phil on 12/2/16.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 

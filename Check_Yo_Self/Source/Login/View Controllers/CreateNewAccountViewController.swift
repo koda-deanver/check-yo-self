@@ -2,7 +2,7 @@
 //  CreateNewAccountViewController.swift
 //  check-yo-self
 //
-//  Created by Phil Rattazzi on 1/19/18.
+//  Created by phil on 1/19/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 

@@ -1,6 +1,6 @@
 //
 //  BridgingHeader.h
-//  Check_Yo_Self
+//  check-yo-self
 //
 //  Created by phil on 1/20/17.
 //  Copyright © 2017 Brook Street Games. All rights reserved.

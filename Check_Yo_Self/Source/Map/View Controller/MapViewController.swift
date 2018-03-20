@@ -2,7 +2,7 @@
 //  MapViwController.swift
 //  check-yo-self
 //
-//  Created by Phil on 12/7/16.
+//  Created by phil on 12/7/16.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
@@ -63,6 +63,7 @@ final class MapViewController: SkinnedViewController {
         
         slider.minimumValue = 0.0
         slider.maximumValue = Float(questionTypes.count - 1)
+        slider.tintColor = User.current.favoriteColor.uiColor
         
         // This is not a mistake and is used to get initial position of slider through UserDefaults.
         let initialSliderPosition = currentSliderPosition

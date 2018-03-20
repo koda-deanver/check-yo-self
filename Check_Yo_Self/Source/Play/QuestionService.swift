@@ -2,7 +2,7 @@
 //  QuestionsService.swift
 //  check-yo-self
 //
-//  Created by Phil on 12/1/16.
+//  Created by phil on 12/1/16.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 //  Update: Changed from QuestionStorage 3/15/18. Questions now come directly from Firebase with no local saving.

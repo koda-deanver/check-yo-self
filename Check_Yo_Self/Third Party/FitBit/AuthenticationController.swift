@@ -29,7 +29,7 @@ class AuthenticationController: NSObject, SFSafariViewControllerDelegate {
 	init(delegate: AuthenticationProtocol?) {
 		self.delegate = delegate
 		super.init()
-		NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: NotificationConstants.launchNotification), object: nil, queue: nil, using: { [weak self] (notification: Notification) in
+		NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "fitbit-launched"), object: nil, queue: nil, using: { [weak self] (notification: Notification) in
 			// Parse and extract token
 			let success: Bool
 			if let token = AuthenticationController.extractToken(notification, key: "#access_token") {

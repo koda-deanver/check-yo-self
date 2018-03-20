@@ -2,7 +2,7 @@
 //  FriendListViewController.swift
 //  check-yo-self
 //
-//  Created by Phil Rattazzi on 3/26/17.
+//  Created by phil on 3/26/17.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 

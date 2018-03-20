@@ -1,8 +1,8 @@
 //
 //  SkinnedViewController.swift
-//  Check_Yo_Self
+//  check-yo-self
 //
-//  Created by Phil on 2/13/18.
+//  Created by phil on 2/13/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
@@ -38,6 +38,8 @@ class SkinnedViewController: GeneralViewController {
         self.view.addSubview(backgroundImageView)
         self.view.sendSubview(toBack: backgroundImageView)
     }
+    
+    // MARK: - Public Methods -
     
     ///
     /// Removes background image.

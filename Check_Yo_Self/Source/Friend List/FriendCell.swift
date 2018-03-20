@@ -2,14 +2,14 @@
 //  CubeColor.swift
 //  check-yo-self
 //
-//  Created by Phil on 3/26/17.
+//  Created by phil on 3/26/17.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
 import UIKit
 
 /// TableViewCell displaying information about a Facebook friend.
-class FriendCell: UITableViewCell {
+final class FriendCell: UITableViewCell {
     
     // MARK: - Private Members -
     

@@ -1,17 +1,25 @@
 //
-//  HealthKitService.swift
+//  HealthKitManager.swift
 //  check-yo-self
 //
-//  Created by Phil on 3/7/18.
+//  Created by phil on 3/7/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 
 import HealthKit
 
 /// Interface for connected to and retreiving data from *HealthKit*.
-class HealthKitService {
+final class HealthKitManager {
+
+    // MARK: - Public Members -
     
-    static var healthStore = HKHealthStore()
+    static let shared = HealthKitManager()
+    
+    // MARK: - Private Members -
+    
+    private var healthStore = HKHealthStore()
+    
+    // MARK: - Public Methods -
     
     ///
     /// Attempt to authorize *HealthKit*.
@@ -19,7 +27,7 @@ class HealthKitService {
     /// - parameter success: Handler for successful connection to HealthKit.
     /// - parameter failure: Handler for failing to connect to HealthKit.
     ///
-    static func authorize(success: @escaping Closure, failure: @escaping ErrorClosure){
+    func authorize(success: @escaping Closure, failure: @escaping ErrorClosure){
         
         var readTypes = Set<HKObjectType>()
         readTypes.insert(HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!)
@@ -43,7 +51,7 @@ class HealthKitService {
     /// - parameter success: Handler for successful step grab containing step count.
     /// - parameter failure: Handler for failure to get steps.
     ///
-    static func getStepCountHK(success: @escaping IntClosure, failure: @escaping ErrorClosure){
+    func getStepCountHK(success: @escaping IntClosure, failure: @escaping ErrorClosure){
         
         // Define the Step Quantity Type
         let stepsCount = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)

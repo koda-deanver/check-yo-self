@@ -2,7 +2,7 @@
 //  FitbitManager.swift
 //  check-yo-self
 //
-//  Created by Phil on 3/9/18.
+//  Created by phil on 3/9/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  ConnectionsViewController.swift
 //  check-yo-self
 //
-//  Created by Phil on 3/6/18.
+//  Created by phil on 3/6/18.
 //  Copyright © 2018 ThematicsLLC. All rights reserved.
 //
 //  This replaced the old *DevicesViewController* and now uses collectionView.
