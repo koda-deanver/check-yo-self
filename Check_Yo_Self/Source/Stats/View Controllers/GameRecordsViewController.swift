@@ -37,10 +37,14 @@ final class GameRecordsViewController: SkinnedViewController {
         showProgressHUD()
         
         DataManager.shared.getGameRecords(forUser: User.current, success: { gameRecords in
+            
             self.hideProgressHUD()
             self.allRecords = gameRecords
+            
+            self.filterButton.title = "All Types"
             self.filteredRecords = self.filter(self.allRecords, forType: self.currentType)
             self.tableView.reloadData()
+            
         }, failure: { error in
             self.handle(error)
         })
@@ -81,7 +85,6 @@ final class GameRecordsViewController: SkinnedViewController {
         
         return filteredRecords
     }
-    
 }
 
 // MARK: - Extension: UITableViewDataSource, UITableViewDelegate -
@@ -110,12 +113,18 @@ extension GameRecordsViewController: UITableViewDataSource, UITableViewDelegate 
 extension GameRecordsViewController {
     
     @IBAction func filterButtonPressed(_ sender: UIBarButtonItem) {
-        
+      
         for index in 0 ..< QuestionType.all.count where QuestionType.all[index] == currentType {
-            let newIndex = (index < QuestionType.all.count - 1) ? index + 1 : 0
+            
+            var newIndex = index + 1
+            if newIndex >= QuestionType.all.count { newIndex = 0 }
+            
             currentType = QuestionType.all[newIndex]
-            filterButton.title = QuestionType.all[newIndex].displayString
+            filterButton.title = currentType == .profile ? "All Types" : currentType.displayString
+            filteredRecords = filter(allRecords, forType: currentType)
             tableView.reloadData()
+            
+            break
         }
     }
 }

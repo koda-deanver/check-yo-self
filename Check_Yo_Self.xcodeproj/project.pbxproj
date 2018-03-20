@@ -62,7 +62,6 @@
 		4A8346AF1E203B6200BAF8F9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346941E203B6200BAF8F9 /* LoginViewController.swift */; };
 		4A8346B01E203B6200BAF8F9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346951E203B6200BAF8F9 /* MapViewController.swift */; };
 		4A8346B11E203B6200BAF8F9 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346961E203B6200BAF8F9 /* QuestionsViewController.swift */; };
-		4A8346B21E203B6200BAF8F9 /* StatsNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346971E203B6200BAF8F9 /* StatsNavViewController.swift */; };
 		4A8346B31E203B6200BAF8F9 /* GameRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8346981E203B6200BAF8F9 /* GameRecordsViewController.swift */; };
 		4A8346B71E203E4000BAF8F9 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8346B61E203E4000BAF8F9 /* HealthKit.framework */; };
 		4A877CD01E889BED009CE752 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A877CCF1E889BED009CE752 /* FriendCell.swift */; };
@@ -145,7 +144,6 @@
 		4A8346941E203B6200BAF8F9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4A8346951E203B6200BAF8F9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4A8346961E203B6200BAF8F9 /* QuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
-		4A8346971E203B6200BAF8F9 /* StatsNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsNavViewController.swift; sourceTree = "<group>"; };
 		4A8346981E203B6200BAF8F9 /* GameRecordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameRecordsViewController.swift; sourceTree = "<group>"; };
 		4A8346B41E203E3F00BAF8F9 /* Check_Yo_Self.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Check_Yo_Self.entitlements; sourceTree = "<group>"; };
 		4A8346B61E203E4000BAF8F9 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -383,7 +381,6 @@
 			isa = PBXGroup;
 			children = (
 				4A8346901E203B6200BAF8F9 /* DataEntryDetailsViewController.swift */,
-				4A8346971E203B6200BAF8F9 /* StatsNavViewController.swift */,
 				4A8346981E203B6200BAF8F9 /* GameRecordsViewController.swift */,
 			);
 			path = "View Controllers";
@@ -753,7 +750,6 @@
 				4A06B5FA1E70F287008BDBE1 /* EnumList.swift in Sources */,
 				4A8346A01E203B6200BAF8F9 /* HeartStats.swift in Sources */,
 				138BF0282031403900119A52 /* BSGCustomAlertController.swift in Sources */,
-				4A8346B21E203B6200BAF8F9 /* StatsNavViewController.swift in Sources */,
 				4A877CD01E889BED009CE752 /* FriendCell.swift in Sources */,
 				138BF03220328D9E00119A52 /* BSGFacebookService.swift in Sources */,
 				138BF0372032B25300119A52 /* SkinnedViewController.swift in Sources */,
