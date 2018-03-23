@@ -8,6 +8,13 @@
 
 import UIKit
 
+/// Hold information about a single game stat.
+struct GameStat {
+    let image: UIImage
+    let name: String
+    let value: String
+}
+
 /// Holds single stat from connection in *GameRecordDetails*.
 final class GameStatCell: UITableViewCell {
     
@@ -22,19 +29,18 @@ final class GameStatCell: UITableViewCell {
     ///
     /// Setup for cell.
     ///
-    /// - parameter image: Image to display on left of cell.
-    /// - parameter title: Text to display in middle label.
-    /// - parameter value: Text to display in right hand label.
+    /// - parameter connectionGameStat: Single stat obtained from a connection.
     ///
-    func configure(withImage image: UIImage, title: String, value: String) {
+    func configure(withStat stat: GameStat) {
         
-        statImageView.image = image
+        statImageView.image = stat.image
         
-        titleLabel.text = title
-        titleLabel.font = UIFont(name: Font.main, size: Font.mediumSize)
+        titleLabel.text = stat.name
+        titleLabel.font = UIFont(name: Font.main, size: Font.smallSize)
+        titleLabel.textColor = User.current.ageGroup.textColor
         
-        valueLabel.text = value
-        valueLabel.font = UIFont(name: Font.main, size: Font.mediumSize)
-        valueLabel.textColor = User.current.favoriteColor.uiColor
+        valueLabel.text = stat.value
+        valueLabel.font = UIFont(name: Font.pure, size: Font.smallSize)
+        valueLabel.textColor = User.current.ageGroup.textColor
     }
 }

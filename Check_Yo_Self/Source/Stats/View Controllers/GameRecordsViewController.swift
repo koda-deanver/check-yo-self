@@ -93,6 +93,7 @@ final class GameRecordsViewController: SkinnedViewController {
     /// Send selected game to *GameRecordDetailsViewController*.
     ///
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         guard let gameRecordDetailsViewController = segue.destination as? GameRecordDetailsViewController else { return }
         gameRecordDetailsViewController.gameRecord = selectedGame
     }
@@ -118,8 +119,8 @@ extension GameRecordsViewController: UITableViewDataSource, UITableViewDelegate 
         return Constants.rowHeightNormal
     }
     
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         selectedGame = filteredRecords[indexPath.row]
         performSegue(withIdentifier: "showGameRecordDetails", sender: self)
     }
