@@ -23,6 +23,9 @@ final class GameRecordsViewController: SkinnedViewController {
     private var allRecords: [GameRecord] = []
     private var filteredRecords: [GameRecord] = []
     
+    /// Used to pass game record through segue on selection.
+    private var selectedGame: GameRecord?
+    
     // MARK: - Outlets -
     
     @IBOutlet private weak var filterButton: UIBarButtonItem!
@@ -85,6 +88,15 @@ final class GameRecordsViewController: SkinnedViewController {
         
         return filteredRecords
     }
+    
+    ///
+    /// Send selected game to *GameRecordDetailsViewController*.
+    ///
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let gameRecordDetailsViewController = segue.destination as? GameRecordDetailsViewController else { return }
+        gameRecordDetailsViewController.gameRecord = selectedGame
+    }
 }
 
 // MARK: - Extension: UITableViewDataSource, UITableViewDelegate -
@@ -106,6 +118,13 @@ extension GameRecordsViewController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.rowHeightNormal
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        selectedGame = filteredRecords[indexPath.row]
+        performSegue(withIdentifier: "showGameRecordDetails", sender: self)
+    }
+    
 }
 
 // MARK: - Extension: Actions -

@@ -22,6 +22,7 @@ typealias IntClosure = (Int) -> Void
 
 struct Constants {
     
+    static let rowHeightSmall: CGFloat = 40.0
     static let rowHeightNormal: CGFloat = 60.0
 
     static let firebaseRootPath = Database.database().reference(fromURL: "https://check-yo-self-18682434.firebaseio.com/")
@@ -34,7 +35,7 @@ struct Font {
     /// Font used to style titles and important things.
     static let heavy = "Arial Rounded MT Bold"
     /// Font used for the bulk of the app.
-    static let main = "Arial"
+    static let main = "Chalkduster"
     /// Font used for things that should never really be styled.
     static let pure = "Arial Rounded MT Bold"
     
