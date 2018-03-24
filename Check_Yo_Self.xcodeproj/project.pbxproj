@@ -128,7 +128,6 @@
 		4A8346881E203B6200BAF8F9 /* GameRecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameRecordCell.swift; sourceTree = "<group>"; };
 		4A8346891E203B6200BAF8F9 /* GameRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameRecord.swift; sourceTree = "<group>"; };
 		4A83468A1E203B6200BAF8F9 /* LocationMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationMarker.swift; sourceTree = "<group>"; };
-		4A83468B1E203B6200BAF8F9 /* PlayerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerData.swift; sourceTree = "<group>"; };
 		4A83468C1E203B6200BAF8F9 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		4A83468D1E203B6200BAF8F9 /* QuestionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionService.swift; sourceTree = "<group>"; };
 		4A83468F1E203B6200BAF8F9 /* CubeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CubeViewController.swift; sourceTree = "<group>"; };
@@ -219,7 +218,6 @@
 				138BF0382032B2C300119A52 /* Profile Info */,
 				137B1E0B203FEED700A70FE0 /* NotificationManager.swift */,
 				132042AC2010682300DCE39E /* DataManager.swift */,
-				4A83468B1E203B6200BAF8F9 /* PlayerData.swift */,
 				132042AE2010692800DCE39E /* User.swift */,
 			);
 			path = "Central Data";

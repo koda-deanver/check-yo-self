@@ -142,23 +142,26 @@ class DataManager {
         
         func createRecord() {
             
-            let endTime = Date.init()
-            let location = LocationManager.shared.location
-            
-            let gameRecord = GameRecord(type: questionType, score: score, startTime: startTime, endTime: endTime, location: location, steps: steps, heartData: heartData, gemsEarned: 10)
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yy-MM-dd_HH:mm:ss"
-            let startTimeString = dateFormatter.string(from: gameRecord.startTime)
-            
-            let gameSnapshot = gameRecord.toSnapshot()
-            
-            let gameDataPath = Constants.firebaseRootPath.child("check-yo-self/game-records/\(User.current.uid)/\(startTimeString)")
-            
-            BSGFirebaseService.updateData(atPath: gameDataPath, values: gameSnapshot, success: {
-                completion?()
-            }, failure: {
-                completion?()
+            determineIfShouldAwardGems(completion: { shouldAwardGems in
+                
+                let endTime = Date.init()
+                let location = LocationManager.shared.location
+                
+                let gameRecord = GameRecord(type: questionType, score: score, startTime: startTime, endTime: endTime, location: location, steps: steps, heartData: heartData, shouldAwardGems: shouldAwardGems)
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yy-MM-dd_HH:mm:ss"
+                let startTimeString = dateFormatter.string(from: gameRecord.startTime)
+                
+                let gameSnapshot = gameRecord.toSnapshot()
+                
+                let gameDataPath = Constants.firebaseRootPath.child("check-yo-self/game-records/\(User.current.uid)/\(startTimeString)")
+                
+                BSGFirebaseService.updateData(atPath: gameDataPath, values: gameSnapshot, success: {
+                    completion?()
+                }, failure: {
+                    completion?()
+                })
             })
         }
     }
@@ -216,6 +219,32 @@ class DataManager {
             
         }, failure: {
             failure?("Connection Error.")
+        })
+    }
+    
+    ///
+    /// Determines if gems should be awarded.
+    ///
+    /// Gems are awarded if the number of plays today are less than the max number of plays per day specified in configuration. The the plays today cannot be detrmines, default to **NOT** awarding gems.
+    ///
+    /// - parameter completion: Completion handler containing bool indicating if gems should be awarded.
+    ///
+    private func determineIfShouldAwardGems(completion: BoolClosure?) {
+        
+        DataManager.shared.getGameRecords(forUser: User.current, success: { gameRecords in
+            
+            let calendar = Calendar(identifier: .gregorian)
+            var dailyPlays = 0
+            
+            for game in gameRecords where calendar.isDateInToday(game.endTime) {
+                dailyPlays += 1
+            }
+            
+            let shouldAwardGems = dailyPlays < GameConfiguration.playsPerDay
+            completion?(shouldAwardGems)
+            
+        }, failure: { _ in
+            completion?(false)
         })
     }
 

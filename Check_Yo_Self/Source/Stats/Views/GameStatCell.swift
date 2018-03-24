@@ -40,7 +40,7 @@ final class GameStatCell: UITableViewCell {
         titleLabel.textColor = User.current.ageGroup.textColor
         
         valueLabel.text = stat.value
-        valueLabel.font = UIFont(name: Font.pure, size: Font.smallSize)
+        valueLabel.font = UIFont(name: Font.pure, size: Font.mediumSize)
         valueLabel.textColor = User.current.ageGroup.textColor
     }
 }

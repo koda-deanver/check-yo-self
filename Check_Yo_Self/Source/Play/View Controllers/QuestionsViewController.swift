@@ -174,8 +174,11 @@ final class QuestionsViewController: SkinnedViewController {
         score > 0 ? BSGCommon.playSound("hook-up", ofType: "mp3") : BSGCommon.playSound("hook-down", ofType: "mp3")
         
         guard let startTime = startTime else { return }
+        showProgressHUD()
         
         DataManager.shared.addGameRecord(ofType: questionType, score: score, startTime: startTime) {
+            
+            self.hideProgressHUD()
             
             let alert = BSGCustomAlert(message: "You scored \(self.score)POINTs!", options: [(text: "Word", handler: {
                 self.showStats()

@@ -22,11 +22,12 @@ struct GameRecord {
     var location: CLLocation?
     var steps: Int?
     var heartData: HeartData?
-    var gemsEarned: Int
+    var gemsEarned: Int = 0
     
     // MARK: - Initializers -
     
-    init(type: QuestionType, score: Int, startTime: Date, endTime: Date, location: CLLocation?, steps: Int?, heartData: HeartData?, gemsEarned: Int) {
+    init(type: QuestionType, score: Int, startTime: Date, endTime: Date, location: CLLocation?, steps: Int?, heartData: HeartData?, shouldAwardGems: Bool) {
+        
         self.questionType = type
         self.score = score
         self.startTime = startTime
@@ -34,7 +35,8 @@ struct GameRecord {
         self.location = location
         self.steps = steps
         self.heartData = heartData
-        self.gemsEarned = gemsEarned
+        
+        self.gemsEarned = shouldAwardGems ? calculateGems() : 0
     }
     
     init?(withSnapshot snapshot: [String: Any]) {
@@ -81,5 +83,44 @@ struct GameRecord {
         }
         
         return snapshot
+    }
+    
+    // MARK: - Private Methods -
+    
+    ///
+    /// Calculates the number of gems earned for this game and sets *gemsEarned*.
+    ///
+    /// - returns: Number of gems awarded.
+    ///
+    @discardableResult private mutating func calculateGems() -> Int {
+        
+        // TODO: Add player per day
+        
+        let scorePortion = (score / 2)
+        
+        var stepPortion: Int = 0
+        if let stepCount = steps {
+            
+            stepPortion = (stepCount <= 10000) ? (stepCount / 1000) : 10 + ((stepCount - 10000) / 2000)
+        }
+        
+        var fitbitMultiplier: Double = 1.0
+        if let heartData = heartData {
+            // Courtesy mult for fitbit connection.
+            fitbitMultiplier += 0.1
+            // Resting heart rate retrieved and is less than 60
+            if heartData.restingHeartRate > 0 && heartData.restingHeartRate < 60 { fitbitMultiplier += 0.1 }
+            // Multipliers for minutes in heart zones.
+            if heartData.peakMinutes >= 2 { fitbitMultiplier += 0.1 }
+            if heartData.cardioMinutes >= 10 { fitbitMultiplier += 0.1 }
+            if heartData.fatBurnMinutes >= 60 { fitbitMultiplier += 0.1 }
+        }
+        
+        let questionTypeMultipler = (questionType == .check) ? 1.0 : 2.0
+        
+        let rawGems = Double(scorePortion + stepPortion) * fitbitMultiplier * questionTypeMultipler
+        let finalGems = Int((rawGems) + 1)
+        
+        return finalGems
     }
 }

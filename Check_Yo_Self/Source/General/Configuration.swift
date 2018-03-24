@@ -74,6 +74,7 @@ struct GameConfiguration {
     
     static let gameRecordMax = 100
     static let questionsPerRound = 20
+    static let playsPerDay = 3
 }
 
 ///
