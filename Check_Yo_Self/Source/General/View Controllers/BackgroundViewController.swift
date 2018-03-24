@@ -15,6 +15,8 @@ class BackgroundViewController: GeneralViewController {
     
     /// Used to keep background image same width as the screen. Height is variable based on device.
     private var backgroundImageAspectRatio: CGFloat = 2.165
+    /// Used to only show *syncingViewController* once.
+    private var didSync = false
     
     // MARK: - Lifecycle -
     
@@ -27,7 +29,13 @@ class BackgroundViewController: GeneralViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
-        performSegue(withIdentifier: "showLogin", sender: self)
+        
+        if !didSync {
+            performSegue(withIdentifier: "showSyncing", sender: self)
+            didSync = true
+        } else {
+            performSegue(withIdentifier: "showLogin", sender: self)
+        }
     }
     
     // MARK: - Private methods -

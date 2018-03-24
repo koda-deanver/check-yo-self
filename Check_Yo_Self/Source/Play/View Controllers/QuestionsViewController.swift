@@ -87,7 +87,7 @@ final class QuestionsViewController: SkinnedViewController {
         reset()
         showProgressHUD()
         
-        QuestionService.get(Configuration.questionsPerRound, questionsOfType: questionType, success: { questions in
+        QuestionService.get(GameConfiguration.questionsPerRound, questionsOfType: questionType, success: { questions in
             
             self.hideProgressHUD()
             
@@ -96,7 +96,7 @@ final class QuestionsViewController: SkinnedViewController {
             self.showAlert(BSGCustomAlert(message: "Answer these 20 questions and score JabbRGems.", options: [(text: "Go", handler: {
                 
                 // Catch next interstitial for game over.
-                if Configuration.adFrequency > 0 {
+                if GameConfiguration.adFrequency > 0 {
                     Chartboost.cacheInterstitial(CBLocationGameOver)
                 }
                 
@@ -192,10 +192,10 @@ final class QuestionsViewController: SkinnedViewController {
     private func showStats() {
         
         var shouldShowAd: Bool!
-        if Configuration.adFrequency > 0 && Configuration.adFrequency <= 100 {
+        if GameConfiguration.adFrequency > 0 && GameConfiguration.adFrequency <= 100 {
             
             let index = Int(arc4random_uniform(100))
-            shouldShowAd = index > Configuration.adFrequency
+            shouldShowAd = index > GameConfiguration.adFrequency
         }
         
         guard let statsNav = tabBarController?.viewControllers?[2] as? UINavigationController, let statsViewController = statsNav.viewControllers[0] as? GameRecordsViewController else { return }

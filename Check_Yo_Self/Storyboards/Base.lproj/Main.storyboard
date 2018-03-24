@@ -892,10 +892,10 @@
             </objects>
             <point key="canvasLocation" x="2729" y="-1595"/>
         </scene>
-        <!--Loading View Controller-->
+        <!--Syncing View Controller-->
         <scene sceneID="KvL-ia-8Pt">
             <objects>
-                <viewController id="P5S-Ad-vke" customClass="LoadingViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="P5S-Ad-vke" customClass="SyncingViewController" customModule="Check_Yo_Self" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="90m-XY-Vd7"/>
                         <viewControllerLayoutGuide type="bottom" id="RMe-xg-CSH"/>
@@ -930,12 +930,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="loadingGif" destination="0Yv-cr-27W" id="KSh-fZ-HTv"/>
+                        <outlet property="gif" destination="0Yv-cr-27W" id="iI7-vs-9Et"/>
+                        <outlet property="label" destination="cTg-zG-sYj" id="LRS-zB-uNk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jW1-dA-ibv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1017" y="-1998"/>
+            <point key="canvasLocation" x="-1103" y="-1952"/>
         </scene>
         <!--Background View Controller-->
         <scene sceneID="mOO-7B-SHI">
@@ -952,11 +953,12 @@
                     </view>
                     <connections>
                         <segue destination="Zqt-00-Rnf" kind="presentation" identifier="showLogin" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="CZ1-ff-Hy9"/>
+                        <segue destination="P5S-Ad-vke" kind="presentation" identifier="showSyncing" modalTransitionStyle="crossDissolve" id="oo3-J0-Fy2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9mi-Ve-NKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1018" y="-1198"/>
+            <point key="canvasLocation" x="-1102" y="-1200"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="EZQ-Kq-4fK">

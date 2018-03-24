@@ -83,7 +83,7 @@ final class GameRecordsViewController: SkinnedViewController {
             filteredRecords.append(record)
             filteredRecordCount += 1
             
-            if filteredRecordCount >= Configuration.gameRecordMax { break }
+            if filteredRecordCount >= GameConfiguration.gameRecordMax { break }
         }
         
         return filteredRecords

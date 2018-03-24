@@ -37,7 +37,7 @@ class User {
     // Required
     let uid: String
     let email: String
-    var gems: Int = 0
+    var gems: Int = 0 { didSet{ if gems < 0 { gems = 0 }}}
     
     // Optional
     var gamertag: String?

@@ -15,7 +15,7 @@ import Firebase
 import CoreLocation
 
 class PlayerData {
-    /*//static var sharedInstance = PlayerData()
+    static var sharedInstance = PlayerData()
     
     var gemTotal: Int{
         didSet{
@@ -55,22 +55,6 @@ class PlayerData {
         }
     }*/
     
-    var runCheckOnce: Bool = false
-    var creationPhase: CreationPhase
-    var fitbitToken: String?
-    
-    // Saved to Firebase
-    var displayName: String = "???"
-    var cubeColor: CubeColor = .none
-    var avatar: Avatar?
-    var isAdult: Bool = true
-    // gemTotal saved as well
-    
-    // Facebook
-    var facebookID: String?
-    var facebookImageData: NSData?
-    //var friendList: [Friend] = []
-    
     //********************************************************************
     // Designated Initializer
     // Description: Initialize all variables of class
@@ -79,20 +63,6 @@ class PlayerData {
         self.gemTotal = gemTotal
         self.creationPhase = creationPhase
         self.fitbitToken = fitbitToken
-    }
-    
-    //********************************************************************
-    // encode
-    // Description: Enable PlayerData to be archived
-    //********************************************************************
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(self.gemTotal, forKey:"gemTotal")
-        aCoder.encode(self.creationPhase.rawValue, forKey:"phase")
-        //aCoder.encode(self.dataArray, forKey:"dataArray")
-        // Save Token is there is one
-        if let authToken = self.fitbitToken{
-            aCoder.encode(authToken, forKey:"authToken")
-        }
     }
     
     //********************************************************************
@@ -186,37 +156,4 @@ class PlayerData {
             return (-roundedDown)
         }
     }
-    
-    //********************************************************************
-    // description
-    // Description: Output string representation of PlayerData to the console
-    //********************************************************************
-    override var description: String{
-        let nameString = self.displayName
-        var descriptionString = "Player Name: \(nameString)\n"
-        //var gamesPlayed = self.dataArray.count - 1
-        if(gamesPlayed < 0){
-            gamesPlayed = 0
-        }
-        descriptionString += "Games Played: \(gamesPlayed)\n"
-        return descriptionString
-    }
-    
-    //********************************************************************
-    // printAllGames
-    // Description: Print all games after of regular print
-    //********************************************************************
-    func printAllGames(){
-        print(self)
-        var gameString: String = ""
-        if self.dataArray.isEmpty == false{
-            gameString += "Profile: \(dataArray[0])\n"
-            for i in 1 ..< dataArray.count{
-                gameString += "Game #\(i): \(dataArray[i])\n"
-            }
-            print(gameString)
-        }
-    }
- */
 }
-
