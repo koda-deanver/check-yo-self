@@ -13,17 +13,19 @@ import Foundation
 /// Fields that can be accessed on database.
 enum UserDatabaseField: String {
     
-    case username = "username"
-    case password = "passcode"
+    case uid = "uid"
+    case email = "email"
+    case password = "password"
     case gems = "gems"
+    
+    case gamertag = "gamertag"
+    case facebookID = "facebook-id"
+    case facebookName = "facebook-name"
     
     case favoriteColor = "favorite-color"
     case ageGroup = "age-group"
     case favoriteGenre = "favorite-genre"
     case identity = "identity"
-    
-    case facebookID = "facebook-id"
-    case facebookName = "facebook-name"
 }
 
 // MARK: - Class -
@@ -33,35 +35,43 @@ class User {
     
     static var current: User!
     
-    let username: String
+    // Required
+    let uid: String
+    let email: String
     let password: String
     var gems: Int = 0
     
+    // Optional
+    var gamertag: String?
+    var facebookID: String?
+    var facebookName: String?
+    
+    // Profile
     var favoriteColor: CubeColor = .none
     var ageGroup: AgeGroup = .adult
     var favoriteGenre: CollabrationGenre = .foodie
     var identity: Identity = .unknown
     
-    var facebookID: String?
-    var facebookName: String?
-    
     // MARK: - Initializers -
     
-    init(withUsername username: String, password: String) {
-        self.username = username
+    init(withID uid: String, email: String, password: String) {
+        self.uid = uid
+        self.email = email
         self.password = password
     }
     
     init?(withSnapshot snapshot: [String: Any]) {
         
-        guard let username = snapshot[UserDatabaseField.username.rawValue] as? String, let password = snapshot[UserDatabaseField.password.rawValue] as? String else { return nil }
+        guard let uid = snapshot[UserDatabaseField.uid.rawValue] as? String, let email = snapshot[UserDatabaseField.email.rawValue] as? String, let password = snapshot[UserDatabaseField.password.rawValue] as? String else { return nil }
         
-        self.username = username
+        self.uid = uid
+        self.email = email
         self.password = password
         
         let gemsString = snapshot[UserDatabaseField.gems.rawValue] as? String ?? "0"
         gems = Int(gemsString) ?? 0
         
+        gamertag = snapshot[UserDatabaseField.gamertag.rawValue] as? String
         facebookID = snapshot[UserDatabaseField.facebookID.rawValue] as? String
         facebookName = snapshot[UserDatabaseField.facebookName.rawValue] as? String
         
@@ -93,15 +103,21 @@ class User {
         ]
         
         var userSnapshot: [String: Any] = [
-            UserDatabaseField.username.rawValue : "\(username)",
-            UserDatabaseField.password.rawValue : "\(password)",
+            UserDatabaseField.uid.rawValue: uid,
+            UserDatabaseField.email.rawValue: email,
+            UserDatabaseField.password.rawValue: password,
             "profile": profileSnapshot
         ]
         
+        // Add gamertag if present.
+        if let gamertag = gamertag {
+            userSnapshot[UserDatabaseField.gamertag.rawValue] = gamertag
+        }
+        
         // Add facebook info if present.
         if let facebookID = facebookID, let facebookName = facebookName {
-            userSnapshot[UserDatabaseField.facebookID.rawValue] = "\(facebookID)"
-            userSnapshot[UserDatabaseField.facebookName.rawValue] = "\(facebookName)"
+            userSnapshot[UserDatabaseField.facebookID.rawValue] = facebookID
+            userSnapshot[UserDatabaseField.facebookName.rawValue] = facebookName
         }
         
         return userSnapshot

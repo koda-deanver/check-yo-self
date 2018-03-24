@@ -988,7 +988,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="sFP-jc-USz">
                                                 <rect key="frame" x="0.0" y="70" width="192" height="40"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EYS-2O-kb8" userLabel="usernameTextField" customClass="TextField" customModule="Check_Yo_Self" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EYS-2O-kb8" userLabel="emailTextField" customClass="TextField" customModule="Check_Yo_Self" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="192" height="17.5"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -998,11 +998,11 @@
                                                             <action selector="textFieldEditingDidEnd:" destination="Zqt-00-Rnf" eventType="editingDidEnd" id="y0b-HO-Nd5"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Gc-Bk-1oL" userLabel="passcodeTextField" customClass="TextField" customModule="Check_Yo_Self" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Gc-Bk-1oL" userLabel="passwordTextField" customClass="TextField" customModule="Check_Yo_Self" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="22.5" width="192" height="17.5"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                         <connections>
                                                             <action selector="textFieldDidChange:" destination="Zqt-00-Rnf" eventType="editingChanged" id="avO-oz-uLT"/>
                                                             <action selector="textFieldEditingDidEnd:" destination="Zqt-00-Rnf" eventType="editingDidEnd" id="aXZ-d4-T4m"/>
@@ -1062,11 +1062,11 @@
                     </view>
                     <connections>
                         <outlet property="createAccountButton" destination="aMU-cb-RQd" id="rCL-4F-Npn"/>
+                        <outlet property="emailTextField" destination="EYS-2O-kb8" id="H0y-YL-Nnp"/>
                         <outlet property="loginButton" destination="1VT-zf-80G" id="yLq-Lg-aOG"/>
                         <outlet property="loginView" destination="zki-Un-lIB" id="nQH-pc-SX3"/>
                         <outlet property="messageLabel" destination="4rb-mb-f2Q" id="EiH-V6-EAX"/>
-                        <outlet property="passcodeTextField" destination="4Gc-Bk-1oL" id="e3i-zs-PhU"/>
-                        <outlet property="usernameTextField" destination="EYS-2O-kb8" id="ph8-At-sbS"/>
+                        <outlet property="passwordTextField" destination="4Gc-Bk-1oL" id="AgN-Xh-7Df"/>
                         <segue destination="seB-r1-mAs" kind="presentation" identifier="showCreateNewAccount" modalTransitionStyle="coverVertical" id="IvV-Is-De6"/>
                         <segue destination="oye-vC-dZ8" kind="show" identifier="showCubeScreen" id="6oq-HZ-WNf"/>
                     </connections>

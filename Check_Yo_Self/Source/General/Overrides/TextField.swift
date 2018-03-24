@@ -15,8 +15,9 @@ struct CharacterType {
     static let alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
     static let numeric = ["0","1","2","3","4","5","6","7","8","9"]
     static let specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*"]
+    static let extra = ["."]
     
-    static let all = alphabet + numeric + specialCharacters
+    static let all = alphabet + numeric + specialCharacters + extra
 }
 
 // MARK: - Protocol -
@@ -38,6 +39,8 @@ struct TextFieldBlueprint {
     let isEditable: Bool
     /// Determines if characters are hidden
     let isSecure: Bool
+    /// Determines if field needs to be filled to move on.
+    let isRequired: Bool
     /// Maximum number of characters that can be typed in field.
     let maxCharacters: Int
     /// Minimum number of characters to return valid input. Does **NOT** stop field from containing less.
@@ -47,10 +50,11 @@ struct TextFieldBlueprint {
     
     // MARK: - Initializers -
     
-    init(withPlaceholder placeholder: String, isEditable: Bool = true, isSecure: Bool = false, maxCharacters: Int = 99, minCharacters: Int = 0, limitCharactersTo validCharacters: [String] = CharacterType.all) {
+    init(withPlaceholder placeholder: String, isEditable: Bool = true, isSecure: Bool = false, isRequired: Bool = true, maxCharacters: Int = 99, minCharacters: Int = 0, limitCharactersTo validCharacters: [String] = CharacterType.all) {
         self.placeholder = placeholder
         self.isEditable = isEditable
         self.isSecure = isSecure
+        self.isRequired = isRequired
         self.maxCharacters = maxCharacters
         self.minCharacters = minCharacters
         self.validCharacters = validCharacters
@@ -81,6 +85,7 @@ class TextField: UITextField {
     /// Determines if text in field falls between min and max characters.
     var inputIsValid: Bool {
         guard let text = text else { return false }
+        if !blueprint.isRequired { return true }
         return text.count >= (blueprint.minCharacters) && text.count <= (blueprint.maxCharacters)
     }
     

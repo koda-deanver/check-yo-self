@@ -76,7 +76,7 @@ class DataManager {
     ///
     func updateAccount(for user: User, success: ((User) -> Void)?, failure: ErrorClosure?) {
         
-        let userPath = Constants.firebaseRootPath.child("clients/\(user.username)")
+        let userPath = Constants.firebaseRootPath.child("clients/\(user.uid)")
         
         BSGFirebaseService.updateData(atPath: userPath, values: user.toSnapshot(), success: {
                 success?(user)
@@ -153,7 +153,7 @@ class DataManager {
             
             let gameSnapshot = gameRecord.toSnapshot()
             
-            let gameDataPath = Constants.firebaseRootPath.child("check-yo-self/game-records/\(User.current.username)/\(startTimeString)")
+            let gameDataPath = Constants.firebaseRootPath.child("check-yo-self/game-records/\(User.current.uid)/\(startTimeString)")
             
             BSGFirebaseService.updateData(atPath: gameDataPath, values: gameSnapshot, success: {
                 completion?()
@@ -172,7 +172,7 @@ class DataManager {
     ///
     func getGameRecords(forUser user: User, success: (([GameRecord]) -> Void)?, failure: ErrorClosure?) {
         
-        BSGFirebaseService.fetchData(atPath: Constants.firebaseRootPath.child("check-yo-self/game-records/\(User.current.username)"), success: { snapshot in
+        BSGFirebaseService.fetchData(atPath: Constants.firebaseRootPath.child("check-yo-self/game-records/\(User.current.uid)"), success: { snapshot in
            
             guard let gameRecordSnapshots = snapshot.value as? [String: Any] else {
                 failure?("Connection Error")

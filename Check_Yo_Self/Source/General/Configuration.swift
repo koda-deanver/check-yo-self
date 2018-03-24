@@ -59,11 +59,9 @@ struct Configuration {
     static let questionsPerRound = 20
     
     // For username
-    static let usernameMinLength = 1
-    static let usernameMaxLength = 20
-    static let passcodeLength = 6
-    
-    // Alerts
-    static let daysUntilComebackAlert = 2
+    static let gamertagMinLength = 1
+    static let gamertagMaxLength = 20
+    static let passwordMinLength = 8
+    static let passwordMaxLength = 16
 }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 ///  Prompt user to enter necessary information to create a new account.
 final class CreateNewAccountViewController: GeneralViewController {
@@ -14,12 +15,15 @@ final class CreateNewAccountViewController: GeneralViewController {
     // MARK: - Private Members -
     
     private let newAccountFields: [TextFieldBlueprint] = [
-        TextFieldBlueprint(withPlaceholder: "Username", maxCharacters: Configuration.usernameMaxLength, minCharacters: Configuration.usernameMinLength),
-        TextFieldBlueprint(withPlaceholder: "Passcode", isSecure: true, maxCharacters: Configuration.passcodeLength, minCharacters: Configuration.passcodeLength, limitCharactersTo: CharacterType.numeric)
+        // Firebase will handle making sure email is valid format. I hope.
+        TextFieldBlueprint(withPlaceholder: "Email"),
+        TextFieldBlueprint(withPlaceholder: "Password", isSecure: true, maxCharacters: Configuration.passwordMaxLength, minCharacters: Configuration.passwordMinLength),
+        TextFieldBlueprint(withPlaceholder: "Gamertag (Optional)", isRequired: false, maxCharacters: Configuration.gamertagMaxLength, minCharacters: Configuration.gamertagMinLength)
     ]
     
-    private var username: String? { return (tableView.visibleCells[0] as? LabelAndTextFieldCell)?.currentText }
+    private var email: String? { return (tableView.visibleCells[0] as? LabelAndTextFieldCell)?.currentText }
     private var password: String? { return (tableView.visibleCells[1] as? LabelAndTextFieldCell)?.currentText }
+    private var gamertag: String? { return (tableView.visibleCells[2] as? LabelAndTextFieldCell)?.currentText }
     
     // MARK: - Outlets -
     
@@ -62,19 +66,60 @@ final class CreateNewAccountViewController: GeneralViewController {
     ///
     /// Submit current fields to create new user acccount.
     ///
-    func submitFields() {
+    /// - note: Gamertag is only validated if there is input in the gamertag field. Otherwise, an account is created without one.
+    ///
+    private func submitFields() {
         
-        guard let username = username, let password = password else { return }
-        User.current = User(withUsername: username, password: password)
-        
+        guard let email = email, let password = password else { return }
         showProgressHUD()
         
-        LoginFlowManager.shared.validateCredentials(for: User.current, success: {
-            self.hideProgressHUD()
-            self.performSegue(withIdentifier: "showProfile", sender: self)
-        }, failure: { errorString in
-            self.handle(errorString)
-        })
+        /// If gamertag was entered, validate it.
+        if let gamertag = gamertag, !gamertag.isEmpty {
+            
+            LoginFlowManager.shared.validateNewGamertag(gamertag, success: { gamertag in
+                
+                self.hideProgressHUD()
+                self.createAccount(withEmail: email, password: password, gamertag: gamertag)
+            }, failure: { error in
+                self.handle(error)
+            })
+        } else {
+            
+            hideProgressHUD()
+            createAccount(withEmail: email, password: password, gamertag: nil)
+        }
+    }
+    
+    ///
+    /// Create user account on Firebase if credentials are valid.
+    ///
+    /// This is where email is checked for uniqueness and validness. (Password and gamertag have been validated by this point).
+    ///
+    /// - parameter email: Unvalidated email entered by user.
+    /// - parameter password: Password of correct length and characters enforced by TextField.
+    /// - parameter gamertag: Validated gamertag or nil.
+    ///
+    private func createAccount(withEmail email: String, password: String, gamertag: String?) {
+        
+        self.showAlert(BSGCustomAlert(message: "Create account? You can't go back after proceeding.", options: [(text: "Create", handler: {
+            
+            self.showProgressHUD()
+            
+            Auth.auth().createUser(withEmail: email, password: password, completion: { user, error in
+                
+                self.hideProgressHUD()
+                
+                guard error == nil, let user = user else {
+                    self.handle(error?.localizedDescription ?? "Failed to create account.")
+                    return
+                }
+                
+                User.current = User(withID: user.uid, email: email, password: password)
+                User.current.gamertag = gamertag
+                self.performSegue(withIdentifier: "showProfile", sender: self)
+            })
+        }), (text: "Wait", handler: {})]))
+        
     }
     
     ///

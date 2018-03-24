@@ -15,8 +15,8 @@ final class LoginViewController: GeneralViewController {
     
     @IBOutlet private weak var loginView: UIView!
     @IBOutlet private weak var messageLabel: UILabel!
-    @IBOutlet private weak var usernameTextField: TextField!
-    @IBOutlet private weak var passcodeTextField: TextField!
+    @IBOutlet private weak var emailTextField: TextField!
+    @IBOutlet private weak var passwordTextField: TextField!
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var createAccountButton: UIButton!
     
@@ -33,11 +33,11 @@ final class LoginViewController: GeneralViewController {
         
         messageLabel.font = UIFont(name: Font.heavy, size: Font.mediumSize)
         
-        let usernameBlueprint = TextFieldBlueprint(withPlaceholder: "Username", maxCharacters: Configuration.usernameMaxLength, minCharacters: Configuration.usernameMinLength)
-        usernameTextField.configure(withBlueprint: usernameBlueprint, delegate: nil)
+        let emailBlueprint = TextFieldBlueprint(withPlaceholder: "Email")
+        emailTextField.configure(withBlueprint: emailBlueprint, delegate: nil)
         
-        let passcodeBlueprint = TextFieldBlueprint(withPlaceholder: "Passcode", isSecure: true, maxCharacters: Configuration.passcodeLength, minCharacters: Configuration.passcodeLength, limitCharactersTo: CharacterType.numeric)
-        passcodeTextField.configure(withBlueprint: passcodeBlueprint, delegate: nil)
+        let passwordBlueprint = TextFieldBlueprint(withPlaceholder: "Password", isSecure: true, maxCharacters: Configuration.passwordMaxLength, minCharacters: Configuration.passwordMinLength)
+        passwordTextField.configure(withBlueprint: passwordBlueprint, delegate: nil)
         
         loginButton.titleLabel?.font = UIFont(name: Font.heavy, size: Font.mediumSize)
         loginButton.isEnabled = false
@@ -81,33 +81,18 @@ final class LoginViewController: GeneralViewController {
     ///
     /// Checks if user exists, and if password matches.
     ///
-    /// - parameter username: Username input from user.
+    /// - parameter email: Email input from user.
     /// - parameter password: Password input from user.
     ///
-    private func validateLogin(username: String, password: String){
+    private func validateLogin(email: String, password: String){
         
         showProgressHUD()
         
-        DataManager.shared.getUsers(matching: [(field: .username, value: username), (field: .password, value: password)],success: { users in
-            
+        LoginFlowManager.shared.login(withEmail: email, password: password, success: {
             self.hideProgressHUD()
-            self.clearTextFields()
-            
-            guard users.count == 1 else {
-                let errorText = (users.count == 0) ? "Invalid username/passcode." : "Uh-oh Something is wrong with your account."
-                let alert = BSGCustomAlert(message: errorText, options: [(text: "Close", handler: {})])
-                self.showAlert(alert)
-                return
-            }
-            
-            let user = users[0]
-            User.current = user
-            
             self.performSegue(withIdentifier: "showCubeScreen", sender: self)
-            
-        }, failure: { errorMessage in
-            self.clearTextFields()
-            self.handle(errorMessage)
+        }, failure: { error in
+            self.handle(error)
         })
     }
     
@@ -115,8 +100,8 @@ final class LoginViewController: GeneralViewController {
     /// Clears username and passcode text fields.
     ///
     private func clearTextFields() {
-        usernameTextField.text = ""
-        passcodeTextField.text = ""
+        emailTextField.text = ""
+        passwordTextField.text = ""
     }
 }
 
@@ -126,18 +111,16 @@ extension LoginViewController {
     
     @IBAction func textFieldDidChange(_ sender: UITextField) {
         
-        guard let username = usernameTextField.text, let passcode = passcodeTextField.text else { return }
-        
-        loginButton.isEnabled = username.count >= Configuration.usernameMinLength && passcode.count == Configuration.passcodeLength
+        loginButton.isEnabled = emailTextField.inputIsValid && passwordTextField.inputIsValid
     }
     
     @IBAction func textFieldEditingDidEnd(_ sender: TextField) {}
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         
-        guard let username = usernameTextField.text, let passcode = passcodeTextField.text else { return }
+        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         
-        validateLogin(username: username, password: passcode)
+        validateLogin(email: email, password: password)
     }
     
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
