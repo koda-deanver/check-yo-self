@@ -54,7 +54,7 @@ final class GameRecordDetailsViewController: SkinnedViewController {
             
             centerMapOnLocation(location: location)
             
-            let marker = LocationMarker(title: User.current.uid, locationName: dateFormatter.string(from: gameRecord.endTime), discipline: "This is where you finished this game!", coordinate: (location.coordinate))
+            let marker = LocationMarker(title: User.current.displayName, locationName: dateFormatter.string(from: gameRecord.endTime), discipline: "Location at game completion.", coordinate: (location.coordinate))
             mapView.addAnnotation(marker)
         }
         

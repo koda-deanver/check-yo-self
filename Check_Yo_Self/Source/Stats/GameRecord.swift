@@ -56,8 +56,15 @@ struct GameRecord {
         self.startTime = startTime
         self.endTime = endTime
         
-        self.location = snapshot["location"] as? CLLocation
-        self.steps = snapshot["step-count"] as? Int
+        // Optional
+        if let coordinate = snapshot["location"] as? String {
+            if let latitude = Double(coordinate.components(separatedBy: "_")[0]), let longitude = Double(coordinate.components(separatedBy: "_")[1]) {
+                
+                self.location = CLLocation(latitude: latitude, longitude: longitude)
+            }
+        }
+        
+        self.steps = snapshot["daily-steps"] as? Int
         self.heartData = snapshot["heart-data"] as? HeartData
     }
     
@@ -78,9 +85,15 @@ struct GameRecord {
         
         var snapshot: [String: Any] = ["type": questionType.rawValue, "score": score, "gems-earned": gemsEarned, "start-time": startTimeString, "end-time": endTimeString]
         
-        if let heartData = heartData {
-            snapshot["heart-data"] = heartData.toSnapshot()
+        // Optional
+        if let location = location {
+            let latitude = location.coordinate.latitude
+            let longitude = location.coordinate.longitude
+            let coordinate = "\(latitude)_\(longitude)"
+            snapshot["location"] = coordinate
         }
+        if let steps = steps { snapshot["daily-steps"] = steps }
+        if let heartData = heartData { snapshot["heart-data"] = heartData.toSnapshot() }
         
         return snapshot
     }

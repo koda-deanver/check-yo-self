@@ -905,7 +905,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jW1-dA-ibv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1103" y="-1952"/>
+            <point key="canvasLocation" x="-1103" y="-2056"/>
         </scene>
         <!--Background View Controller-->
         <scene sceneID="mOO-7B-SHI">
