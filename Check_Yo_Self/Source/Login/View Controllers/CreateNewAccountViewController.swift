@@ -17,13 +17,13 @@ final class CreateNewAccountViewController: GeneralViewController {
     private let newAccountFields: [TextFieldBlueprint] = [
         // Firebase will handle making sure email is valid format. I hope.
         TextFieldBlueprint(withPlaceholder: "Email"),
-        TextFieldBlueprint(withPlaceholder: "Password", isSecure: true, maxCharacters: Configuration.passwordMaxLength, minCharacters: Configuration.passwordMinLength),
+        TextFieldBlueprint(withPlaceholder: "Password", maxCharacters: Configuration.passwordMaxLength, minCharacters: Configuration.passwordMinLength),
         TextFieldBlueprint(withPlaceholder: "Gamertag (Optional)", isRequired: false, maxCharacters: Configuration.gamertagMaxLength, minCharacters: Configuration.gamertagMinLength)
     ]
     
-    private var email: String? { return (tableView.visibleCells[0] as? LabelAndTextFieldCell)?.currentText }
-    private var password: String? { return (tableView.visibleCells[1] as? LabelAndTextFieldCell)?.currentText }
-    private var gamertag: String? { return (tableView.visibleCells[2] as? LabelAndTextFieldCell)?.currentText }
+    private var email: String { return (tableView.visibleCells[0] as? LabelAndTextFieldCell)?.currentText ?? "" }
+    private var password: String { return (tableView.visibleCells[1] as? LabelAndTextFieldCell)?.currentText ?? "" }
+    private var gamertag: String { return (tableView.visibleCells[2] as? LabelAndTextFieldCell)?.currentText ?? "" }
     
     // MARK: - Outlets -
     
@@ -70,16 +70,22 @@ final class CreateNewAccountViewController: GeneralViewController {
     ///
     private func submitFields() {
         
-        guard let email = email, let password = password else { return }
+        let passwordValidationTuple = LoginFlowManager.shared.validateNewPassword(password)
+        
+        guard passwordValidationTuple.0 == true else {
+            showAlert(BSGCustomAlert(message: passwordValidationTuple.1))
+            return
+        }
+        
         showProgressHUD()
         
         /// If gamertag was entered, validate it.
-        if let gamertag = gamertag, !gamertag.isEmpty {
+        if !gamertag.isEmpty {
             
-            LoginFlowManager.shared.validateNewGamertag(gamertag, success: { gamertag in
+            LoginFlowManager.shared.validateNewGamertag(gamertag, success: {
                 
                 self.hideProgressHUD()
-                self.createAccount(withEmail: email, password: password, gamertag: gamertag)
+                self.createAccount(withEmail: self.email, password: self.password, gamertag: self.gamertag)
             }, failure: { error in
                 self.handle(error)
             })
@@ -93,7 +99,7 @@ final class CreateNewAccountViewController: GeneralViewController {
     ///
     /// Create user account on Firebase if credentials are valid.
     ///
-    /// This is where email is checked for uniqueness and validness. (Password and gamertag have been validated by this point).
+    /// This is where email is checked for uniqueness and validness. (Password and gamertag have been validated by this point). Email is validated last which is weird but no way around this without creating user before password and gamertag are validated.
     ///
     /// - parameter email: Unvalidated email entered by user.
     /// - parameter password: Password of correct length and characters enforced by TextField.
@@ -114,7 +120,7 @@ final class CreateNewAccountViewController: GeneralViewController {
                     return
                 }
                 
-                User.current = User(withID: user.uid, email: email, password: password)
+                User.current = User(withID: user.uid, email: email)
                 User.current.gamertag = gamertag
                 self.performSegue(withIdentifier: "showProfile", sender: self)
             })

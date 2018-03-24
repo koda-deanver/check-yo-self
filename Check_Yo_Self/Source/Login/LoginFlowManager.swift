@@ -37,7 +37,7 @@ final class LoginFlowManager {
                 return
             }
             
-            DataManager.shared.getUsers(matching: [(field: .uid, value: uid), (field: .password, value: password)], success: { users in
+            DataManager.shared.getUsers(matching: [(field: .uid, value: uid)], success: { users in
                 
                 guard users.count == 1 else {
                     let errorText = (users.count == 0) ? "Could not find data for user." : "Uh-oh Something is wrong with your account."
@@ -60,36 +60,64 @@ final class LoginFlowManager {
     /// - parameter success: Handler for successful account creation.
     /// - parameter failure: Handler for failed account creation.
     ///
-    func updateAccount(for user: User, success: @escaping Closure, failure: @escaping ErrorClosure) {
+    func updateAccount(for user: User, success: Closure?, failure: ErrorClosure?) {
         
         DataManager.shared.updateAccount(for: user, success: { _ in
-            success()
+            success?()
         }, failure: failure)
     }
     
     ///
-    /// Check that gamertag is available and meets requirements.
+    /// Validates password for length, and containing at least one uppercase letter, number, and special character.
     ///
-    /// - note: The length is already valid because textField allowed the input.
+    /// - note: The length is already valid because textField allowed the input, checked here again as precaution.
+    ///
+    /// - parameter password: The password to validate.
+    ///
+    /// - returns: True if password is valid, false along with errorString if it is not.
+    ///
+    func validateNewPassword(_ password: String) -> (Bool, String) {
+        
+        guard password.count >= Configuration.passwordMinLength && password.count <= Configuration.passwordMaxLength else { return (false, "Password must be between \(Configuration.passwordMinLength) and \(Configuration.passwordMaxLength) characters.") }
+        
+        var containsUpperCase = false
+        var containsNumber = false
+        var containsSpecial = false
+        
+        for character in password {
+            
+            if CharacterType.uppercaseLetters.contains(String(character)) { containsUpperCase = true }
+            if CharacterType.numeric.contains(String(character)) { containsNumber = true }
+            if CharacterType.specialCharacters.contains(String(character)) { containsSpecial = true }
+        }
+        
+        guard containsUpperCase, containsNumber, containsSpecial else { return (false, "Password must contain an uppercase letter, a number, and a special character.") }
+        
+        return (true, "")
+    }
+    
+    ///
+    /// Validates gamertag for length, availability, and starting with a letter.
+    ///
+    /// - note: The length is already valid because textField allowed the input, checked here again as precaution.
     ///
     /// - parameter username: Gamertag to validate.
     /// - parameter success: Success handler containing valid username.
     /// - parameter failure: Failure handler passing error string.
     ///
-    func validateNewGamertag(_ gamertag: String, success: @escaping (String) -> Void, failure: @escaping (String) -> Void) {
+    func validateNewGamertag(_ gamertag: String, success: Closure?, failure: ErrorClosure?) {
         
         // Must contain letter as first character.
         let firstChar = gamertag[gamertag.startIndex ... gamertag.startIndex]
-        guard CharacterType.alphabet.contains(firstChar.lowercased()) else {
-            failure("Gamertag must start with a letter")
+        guard CharacterType.alphabet.contains(String(firstChar)) else {
+            failure?("Gamertag must start with a letter")
             return
         }
         
         // Check for availability.
         DataManager.shared.getUsers(matching: [(field: .gamertag, value: gamertag)], success: { users in
             
-            users.isEmpty ? success(gamertag) : failure("Gamertag Taken")
+            users.isEmpty ? success?() : failure?("Gamertag Taken")
         }, failure: failure)
-
     }
 }

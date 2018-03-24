@@ -15,7 +15,6 @@ enum UserDatabaseField: String {
     
     case uid = "uid"
     case email = "email"
-    case password = "password"
     case gems = "gems"
     
     case gamertag = "gamertag"
@@ -38,7 +37,6 @@ class User {
     // Required
     let uid: String
     let email: String
-    let password: String
     var gems: Int = 0
     
     // Optional
@@ -54,19 +52,17 @@ class User {
     
     // MARK: - Initializers -
     
-    init(withID uid: String, email: String, password: String) {
+    init(withID uid: String, email: String) {
         self.uid = uid
         self.email = email
-        self.password = password
     }
     
     init?(withSnapshot snapshot: [String: Any]) {
         
-        guard let uid = snapshot[UserDatabaseField.uid.rawValue] as? String, let email = snapshot[UserDatabaseField.email.rawValue] as? String, let password = snapshot[UserDatabaseField.password.rawValue] as? String else { return nil }
+        guard let uid = snapshot[UserDatabaseField.uid.rawValue] as? String, let email = snapshot[UserDatabaseField.email.rawValue] as? String else { return nil }
         
         self.uid = uid
         self.email = email
-        self.password = password
         
         let gemsString = snapshot[UserDatabaseField.gems.rawValue] as? String ?? "0"
         gems = Int(gemsString) ?? 0
@@ -105,7 +101,6 @@ class User {
         var userSnapshot: [String: Any] = [
             UserDatabaseField.uid.rawValue: uid,
             UserDatabaseField.email.rawValue: email,
-            UserDatabaseField.password.rawValue: password,
             "profile": profileSnapshot
         ]
         

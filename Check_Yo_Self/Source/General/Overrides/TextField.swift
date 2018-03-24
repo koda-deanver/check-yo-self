@@ -12,11 +12,16 @@ import UIKit
 
 /// Convenience struct for distiguishing valid character sets for textFields in the cells.
 struct CharacterType {
-    static let alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    
+    // Singular
+    static let uppercaseLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    static let lowercaseLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
     static let numeric = ["0","1","2","3","4","5","6","7","8","9"]
     static let specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*"]
     static let extra = ["."]
     
+    // Combos
+    static let alphabet = uppercaseLetters + lowercaseLetters
     static let all = alphabet + numeric + specialCharacters + extra
 }
 
@@ -132,7 +137,7 @@ extension TextField: UITextFieldDelegate {
         
         guard let text = text else { return false }
         
-        guard blueprint.validCharacters.contains(string.lowercased()) || string == "" else { return false }
+        guard blueprint.validCharacters.contains(string) || string == "" else { return false }
         
         return text.count < blueprint.maxCharacters || string == ""
     }
