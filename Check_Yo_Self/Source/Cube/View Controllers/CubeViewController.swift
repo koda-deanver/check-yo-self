@@ -58,7 +58,7 @@ final class CubeViewController: SkinnedViewController {
         userBackdrop.image = User.current.favoriteColor.alertBackdrop
         let avatar = AvatarManager.shared.getAvatar(for: User.current)
         userImage.setImage(avatar.image, for: .normal)
-        userLabel.text = User.current.username
+        userLabel.text = User.current.gamertag
         userLabel.font = UIFont(name: Font.heavy, size: Font.largeSize)
         
         checkButton.titleLabel?.font = UIFont(name: Font.heavy, size: Font.largeSize)

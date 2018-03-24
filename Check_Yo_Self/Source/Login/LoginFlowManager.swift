@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 /// Function for controlling login and account creation process.
 final class LoginFlowManager {
@@ -16,6 +17,41 @@ final class LoginFlowManager {
     static let shared = LoginFlowManager()
     
     // MARK: - Public Methods -
+    
+    ///
+    /// Authenticated user and logs in.
+    ///
+    /// Firebase authentication is used to validate email and password. Then user is located in database and saved in *User.current* object.
+    ///
+    /// - parameter email: The email used to sign up.
+    /// - parameter password: The password associated with email.
+    /// - parameter success: Handler for successful login.
+    /// - parameter failure: Handler for failure to login.
+    ///
+    func login(withEmail email: String, password: String, success: Closure?, failure: ErrorClosure?) {
+        
+        Auth.auth().signIn(withEmail: email, password: password, completion: { user, error in
+            
+            guard let uid = user?.uid, error == nil else {
+                failure?("Login failed.")
+                return
+            }
+            
+            DataManager.shared.getUsers(matching: [(field: .uid, value: uid), (field: .password, value: password)], success: { users in
+                
+                guard users.count == 1 else {
+                    let errorText = (users.count == 0) ? "Could not find data for user." : "Uh-oh Something is wrong with your account."
+                    failure?(errorText)
+                    return
+                }
+                
+                let user = users[0]
+                User.current = user
+                success?()
+                
+            }, failure: failure)
+        })
+    }
     
     ///
     /// Create account with current credentials.
@@ -32,47 +68,27 @@ final class LoginFlowManager {
     }
     
     ///
-    /// Ensure username is available and fits criteria.
+    /// Check that gamertag is available and meets requirements.
     ///
-    /// - parameter user: The user to validate credentials for.
-    /// - parameter success: Handler for successful credential validation.
-    /// - parameter failure: Handler for failed credential validation.
+    /// - note: The length is already valid because textField allowed the input.
     ///
-    func validateCredentials(for user: User, success: @escaping Closure, failure: @escaping ErrorClosure) {
-        
-        validateNewUsername(user.username, success: { username in
-            success()
-        }, failure : failure )
-    }
-    
-    // MARK: - Private Methods -
-    
-    ///
-    /// Check that username is available and meets requirements.
-    ///
-    /// - parameter username: Username to validate.
+    /// - parameter username: Gamertag to validate.
     /// - parameter success: Success handler containing valid username.
     /// - parameter failure: Failure handler passing error string.
     ///
-    private func validateNewUsername(_ username: String, success: @escaping (String) -> Void, failure: @escaping (String) -> Void) {
-        
-        // Must meet minimum length.
-        guard username.count >= Configuration.usernameMinLength && username.count <= Configuration.usernameMaxLength else {
-            failure("Username must be between \(Configuration.usernameMinLength) and \(Configuration.usernameMaxLength) characters")
-            return
-        }
+    func validateNewGamertag(_ gamertag: String, success: @escaping (String) -> Void, failure: @escaping (String) -> Void) {
         
         // Must contain letter as first character.
-        let firstChar = username[username.startIndex ... username.startIndex]
+        let firstChar = gamertag[gamertag.startIndex ... gamertag.startIndex]
         guard CharacterType.alphabet.contains(firstChar.lowercased()) else {
-            failure("Username must start with a letter")
+            failure("Gamertag must start with a letter")
             return
         }
         
         // Check for availability.
-        DataManager.shared.getUsers(matching: [(field: .username, value: username)], success: { users in
+        DataManager.shared.getUsers(matching: [(field: .gamertag, value: gamertag)], success: { users in
             
-            users.isEmpty ? success(username) : failure("Username Taken")
+            users.isEmpty ? success(gamertag) : failure("Gamertag Taken")
         }, failure: failure)
 
     }
