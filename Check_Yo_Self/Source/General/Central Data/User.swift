@@ -15,6 +15,9 @@ enum UserDatabaseField: String {
     
     case uid = "uid"
     case email = "email"
+    case firstName = "first-name"
+    case lastName = "last-name"
+    
     case gems = "gems"
     
     case gamertag = "gamertag"
@@ -37,6 +40,8 @@ class User {
     // Required
     let uid: String
     let email: String
+    let firstName: String
+    let lastName: String
     var gems: Int = 0 { didSet{ if gems < 0 { gems = 0 }}}
     
     // Optional
@@ -50,19 +55,26 @@ class User {
     var favoriteGenre: CollabrationGenre = .foodie
     var identity: Identity = .unknown
     
+    /// Name to display around app.
+    var displayName: String { return gamertag ?? firstName }
+    
     // MARK: - Initializers -
     
-    init(withID uid: String, email: String) {
+    init(withID uid: String, email: String, firstName: String, lastName: String) {
         self.uid = uid
         self.email = email
+        self.firstName = firstName
+        self.lastName = lastName
     }
     
     init?(withSnapshot snapshot: [String: Any]) {
         
-        guard let uid = snapshot[UserDatabaseField.uid.rawValue] as? String, let email = snapshot[UserDatabaseField.email.rawValue] as? String else { return nil }
+        guard let uid = snapshot[UserDatabaseField.uid.rawValue] as? String, let email = snapshot[UserDatabaseField.email.rawValue] as? String, let firstName = snapshot[UserDatabaseField.firstName.rawValue] as? String, let lastName = snapshot[UserDatabaseField.lastName.rawValue] as? String else { return nil }
         
         self.uid = uid
         self.email = email
+        self.firstName = firstName
+        self.lastName = lastName
         
         let gemsString = snapshot[UserDatabaseField.gems.rawValue] as? String ?? "0"
         gems = Int(gemsString) ?? 0
@@ -101,6 +113,8 @@ class User {
         var userSnapshot: [String: Any] = [
             UserDatabaseField.uid.rawValue: uid,
             UserDatabaseField.email.rawValue: email,
+            UserDatabaseField.firstName.rawValue: firstName,
+            UserDatabaseField.lastName.rawValue: lastName,
             "profile": profileSnapshot
         ]
         

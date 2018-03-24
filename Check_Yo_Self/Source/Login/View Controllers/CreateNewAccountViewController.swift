@@ -17,13 +17,17 @@ final class CreateNewAccountViewController: GeneralViewController {
     private let newAccountFields: [TextFieldBlueprint] = [
         // Firebase will handle making sure email is valid format. I hope.
         TextFieldBlueprint(withPlaceholder: "Email"),
-        TextFieldBlueprint(withPlaceholder: "Password", maxCharacters: Configuration.passwordMaxLength, minCharacters: Configuration.passwordMinLength),
-        TextFieldBlueprint(withPlaceholder: "Gamertag (Optional)", isRequired: false, maxCharacters: Configuration.gamertagMaxLength, minCharacters: Configuration.gamertagMinLength)
+        TextFieldBlueprint(withPlaceholder: "Password", minCharacters: Configuration.passwordMinLength),
+        TextFieldBlueprint(withPlaceholder: "First Name", limitCharactersTo: CharacterType.alphabet),
+        TextFieldBlueprint(withPlaceholder: "Last Name", limitCharactersTo: CharacterType.alphabet),
+        TextFieldBlueprint(withPlaceholder: "Gamertag (Optional)", isRequired: false, maxCharacters: Configuration.gamertagMaxLength)
     ]
     
     private var email: String { return (tableView.visibleCells[0] as? LabelAndTextFieldCell)?.currentText ?? "" }
     private var password: String { return (tableView.visibleCells[1] as? LabelAndTextFieldCell)?.currentText ?? "" }
-    private var gamertag: String { return (tableView.visibleCells[2] as? LabelAndTextFieldCell)?.currentText ?? "" }
+    private var firstName: String { return (tableView.visibleCells[2] as? LabelAndTextFieldCell)?.currentText ?? "" }
+    private var lastName: String { return (tableView.visibleCells[3] as? LabelAndTextFieldCell)?.currentText ?? "" }
+    private var gamertag: String { return (tableView.visibleCells[4] as? LabelAndTextFieldCell)?.currentText ?? "" }
     
     // MARK: - Outlets -
     
@@ -85,14 +89,14 @@ final class CreateNewAccountViewController: GeneralViewController {
             LoginFlowManager.shared.validateNewGamertag(gamertag, success: {
                 
                 self.hideProgressHUD()
-                self.createAccount(withEmail: self.email, password: self.password, gamertag: self.gamertag)
+                self.createAccount(withEmail: self.email, password: self.password, firstName: self.firstName, lastName: self.lastName, gamertag: self.gamertag)
             }, failure: { error in
                 self.handle(error)
             })
         } else {
             
             hideProgressHUD()
-            createAccount(withEmail: email, password: password, gamertag: nil)
+            createAccount(withEmail: email, password: password, firstName: firstName, lastName: lastName, gamertag: nil)
         }
     }
     
@@ -105,7 +109,7 @@ final class CreateNewAccountViewController: GeneralViewController {
     /// - parameter password: Password of correct length and characters enforced by TextField.
     /// - parameter gamertag: Validated gamertag or nil.
     ///
-    private func createAccount(withEmail email: String, password: String, gamertag: String?) {
+    private func createAccount(withEmail email: String, password: String, firstName: String, lastName: String, gamertag: String?) {
         
         self.showAlert(BSGCustomAlert(message: "Create account? You can't go back after proceeding.", options: [(text: "Create", handler: {
             
@@ -120,8 +124,9 @@ final class CreateNewAccountViewController: GeneralViewController {
                     return
                 }
                 
-                User.current = User(withID: user.uid, email: email)
+                User.current = User(withID: user.uid, email: email, firstName: firstName, lastName: lastName)
                 User.current.gamertag = gamertag
+                
                 self.performSegue(withIdentifier: "showProfile", sender: self)
             })
         }), (text: "Wait", handler: {})]))

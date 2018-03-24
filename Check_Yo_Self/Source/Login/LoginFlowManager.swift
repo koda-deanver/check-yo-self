@@ -78,7 +78,7 @@ final class LoginFlowManager {
     ///
     func validateNewPassword(_ password: String) -> (Bool, String) {
         
-        guard password.count >= Configuration.passwordMinLength && password.count <= Configuration.passwordMaxLength else { return (false, "Password must be between \(Configuration.passwordMinLength) and \(Configuration.passwordMaxLength) characters.") }
+        guard password.count >= Configuration.passwordMinLength else { return (false, "Password must be at least \(Configuration.passwordMinLength) characters.") }
         
         var containsUpperCase = false
         var containsNumber = false
@@ -106,6 +106,11 @@ final class LoginFlowManager {
     /// - parameter failure: Failure handler passing error string.
     ///
     func validateNewGamertag(_ gamertag: String, success: Closure?, failure: ErrorClosure?) {
+        
+        guard gamertag.count <= Configuration.gamertagMaxLength else {
+            failure?("Gamertag must be fewer than \(Configuration.gamertagMaxLength) characters.")
+            return
+        }
         
         // Must contain letter as first character.
         let firstChar = gamertag[gamertag.startIndex ... gamertag.startIndex]

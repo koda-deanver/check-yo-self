@@ -36,7 +36,7 @@ final class LoginViewController: GeneralViewController {
         let emailBlueprint = TextFieldBlueprint(withPlaceholder: "Email")
         emailTextField.configure(withBlueprint: emailBlueprint, delegate: nil)
         
-        let passwordBlueprint = TextFieldBlueprint(withPlaceholder: "Password", isSecure: true, maxCharacters: Configuration.passwordMaxLength, minCharacters: Configuration.passwordMinLength)
+        let passwordBlueprint = TextFieldBlueprint(withPlaceholder: "Password", isSecure: true, minCharacters: Configuration.passwordMinLength)
         passwordTextField.configure(withBlueprint: passwordBlueprint, delegate: nil)
         
         loginButton.titleLabel?.font = UIFont(name: Font.heavy, size: Font.mediumSize)

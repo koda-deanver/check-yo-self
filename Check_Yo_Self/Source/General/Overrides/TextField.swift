@@ -55,7 +55,7 @@ struct TextFieldBlueprint {
     
     // MARK: - Initializers -
     
-    init(withPlaceholder placeholder: String, isEditable: Bool = true, isSecure: Bool = false, isRequired: Bool = true, maxCharacters: Int = 99, minCharacters: Int = 0, limitCharactersTo validCharacters: [String] = CharacterType.all) {
+    init(withPlaceholder placeholder: String, isEditable: Bool = true, isSecure: Bool = false, isRequired: Bool = true, maxCharacters: Int = 30, minCharacters: Int = 1, limitCharactersTo validCharacters: [String] = CharacterType.all) {
         self.placeholder = placeholder
         self.isEditable = isEditable
         self.isSecure = isSecure

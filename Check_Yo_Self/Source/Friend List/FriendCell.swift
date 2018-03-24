@@ -39,7 +39,7 @@ final class FriendCell: UITableViewCell {
             friendImageView.image = friendImage
         }
         
-        nameLabel.text = friend.gamertag
+        nameLabel.text = friend.displayName
         nameLabel.font = UIFont(name: Font.main, size: Font.mediumSize)
         
         gemLabel.text = String(friend.gems)

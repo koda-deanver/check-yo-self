@@ -73,7 +73,7 @@ final class QuestionsViewController: SkinnedViewController {
         
         super.style()
         
-        nameLabel.text = User.current.gamertag ?? User.current.email
+        nameLabel.text = User.current.displayName
         nameLabel.font = UIFont(name: Font.main, size: Font.mediumSize)
         nameLabel.textColor = User.current.ageGroup.textColor
         

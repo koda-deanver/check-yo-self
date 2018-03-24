@@ -53,11 +53,9 @@ struct Font {
 struct Configuration {
     
     // MARK: - From Database -
-    
-    static var gamertagMinLength = 1
+
     static var gamertagMaxLength = 20
     static var passwordMinLength = 8
-    static var passwordMaxLength = 20
 }
 
 // MARK: - GameConfiguration -
@@ -91,10 +89,8 @@ func loadConfiguration(_ completion: Closure?) {
             return
         }
         
-        Configuration.gamertagMinLength = configuration["gamertag-length-min"] as? Int ?? Configuration.gamertagMinLength
         Configuration.gamertagMaxLength = configuration["gamertag-length-max"] as? Int ?? Configuration.gamertagMaxLength
         Configuration.passwordMinLength = configuration["password-length-min"] as? Int ?? Configuration.passwordMinLength
-        Configuration.passwordMaxLength = configuration["password-length-max"] as? Int ?? Configuration.passwordMaxLength
         
         loadGameConfiguration(completion)
     }, failure: { loadGameConfiguration(completion) })
