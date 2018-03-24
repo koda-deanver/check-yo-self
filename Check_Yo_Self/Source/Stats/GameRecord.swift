@@ -22,7 +22,7 @@ struct GameRecord {
     var location: CLLocation?
     var steps: Int?
     var heartData: HeartData?
-    var gemsEarned: Int = 0 { didSet { User.current.gems += gemsEarned }}
+    var gemsEarned: Int = 0
     
     // MARK: - Initializers -
     
@@ -121,6 +121,7 @@ struct GameRecord {
         let rawGems = Double(scorePortion + stepPortion) * fitbitMultiplier * questionTypeMultipler
         let finalGems = Int((rawGems) + 1)
         
+        User.current.gems += finalGems
         return finalGems
     }
 }

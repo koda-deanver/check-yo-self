@@ -43,12 +43,17 @@ final class GameRecordsViewController: SkinnedViewController {
             
             self.hideProgressHUD()
             self.allRecords = gameRecords
+            self.allRecords.sort(by: { $1.startTime < $0.startTime })
             
             self.filterButton.title = "All Types"
             self.filteredRecords = self.filter(self.allRecords, forType: self.currentType)
             self.tableView.reloadData()
             
         }, failure: { error in
+            
+            self.allRecords = []
+            self.filteredRecords = []
+            self.tableView.reloadData()
             self.handle(error)
         })
     }

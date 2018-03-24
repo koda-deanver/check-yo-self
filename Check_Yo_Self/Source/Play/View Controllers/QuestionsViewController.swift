@@ -77,11 +77,17 @@ final class QuestionsViewController: SkinnedViewController {
         nameLabel.font = UIFont(name: Font.main, size: Font.mediumSize)
         nameLabel.textColor = User.current.ageGroup.textColor
         
-        gemsLabel.font = UIFont(name: Font.pure, size: Font.mediumSize)
+        gemsLabel.font = UIFont(name: Font.heavy, size: Font.largeSize)
         gemsLabel.textColor = User.current.favoriteColor.uiColor
+        
+        questionLabel.font = UIFont(name: Font.main, size: Font.mediumSize)
+        questionLabel.textColor = User.current.ageGroup.textColor
         
         for button in allButtons {
             button.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
+            button.titleLabel?.lineBreakMode = .byWordWrapping
+            button.titleLabel?.numberOfLines = 2
+            button.titleEdgeInsets = UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0)
         }
     }
     
@@ -156,10 +162,12 @@ final class QuestionsViewController: SkinnedViewController {
         
         let nextQuestion = questions[questionsAnswered]
         
-        if self.questionsAnswered % 5 == 0{
+        if self.questionsAnswered % 5 == 0
+        {
+            
             let index = self.questionsAnswered / 5
-            let message = questionType.progressAlertMessages[index]
-            self.showAlert(BSGCustomAlert(message: message, options: [(text: "Go", handler: {
+            let purpose = questionType.progressAlertMessages[index]
+            self.showAlert(BSGCustomAlert(message: "These questions \(purpose)", options: [(text: "Go", handler: {
                 self.currentQuestion = nextQuestion
             })]))
         }else{

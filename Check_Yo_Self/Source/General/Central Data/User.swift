@@ -69,15 +69,13 @@ class User {
     
     init?(withSnapshot snapshot: [String: Any]) {
         
-        guard let uid = snapshot[UserDatabaseField.uid.rawValue] as? String, let email = snapshot[UserDatabaseField.email.rawValue] as? String, let firstName = snapshot[UserDatabaseField.firstName.rawValue] as? String, let lastName = snapshot[UserDatabaseField.lastName.rawValue] as? String else { return nil }
+        guard let uid = snapshot[UserDatabaseField.uid.rawValue] as? String, let email = snapshot[UserDatabaseField.email.rawValue] as? String, let firstName = snapshot[UserDatabaseField.firstName.rawValue] as? String, let lastName = snapshot[UserDatabaseField.lastName.rawValue] as? String, let gems = snapshot[UserDatabaseField.gems.rawValue] as? Int else { return nil }
         
         self.uid = uid
         self.email = email
         self.firstName = firstName
         self.lastName = lastName
-        
-        let gemsString = snapshot[UserDatabaseField.gems.rawValue] as? String ?? "0"
-        gems = Int(gemsString) ?? 0
+        self.gems = gems
         
         gamertag = snapshot[UserDatabaseField.gamertag.rawValue] as? String
         facebookID = snapshot[UserDatabaseField.facebookID.rawValue] as? String
@@ -115,6 +113,7 @@ class User {
             UserDatabaseField.email.rawValue: email,
             UserDatabaseField.firstName.rawValue: firstName,
             UserDatabaseField.lastName.rawValue: lastName,
+            UserDatabaseField.gems.rawValue: gems,
             "profile": profileSnapshot
         ]
         

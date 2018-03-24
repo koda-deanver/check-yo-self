@@ -71,9 +71,10 @@ final class LoginViewController: GeneralViewController {
     /// Used to present the cube screen for first time user and display tutorial video. Called from *ProfileViewController*.
     func presentCubeScreenWithVideo() {
         
-        guard let cubeViewController = storyboard?.instantiateViewController(withIdentifier: "cubeViewController") as? CubeViewController else { return }
+        guard let customTabBar = storyboard?.instantiateViewController(withIdentifier: "customTabBar") as? CustomTabBar, let cubeViewController = customTabBar.viewControllers?[0] as? CubeViewController else { return }
         cubeViewController.newPlayer = true
-        present(cubeViewController, animated: true, completion: nil)
+        
+        present(customTabBar, animated: true, completion: nil)
     }
     
     // MARK: - Private methods -

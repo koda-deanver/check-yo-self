@@ -157,6 +157,9 @@ class DataManager {
                 
                 let gameDataPath = Constants.firebaseRootPath.child("check-yo-self/game-records/\(User.current.uid)/\(startTimeString)")
                 
+                // Need to update user gems here.
+                self.updateAccount(for: User.current, success: nil, failure: nil)
+                
                 BSGFirebaseService.updateData(atPath: gameDataPath, values: gameSnapshot, success: {
                     completion?()
                 }, failure: {
@@ -178,7 +181,7 @@ class DataManager {
         BSGFirebaseService.fetchData(atPath: Constants.firebaseRootPath.child("check-yo-self/game-records/\(User.current.uid)"), success: { snapshot in
            
             guard let gameRecordSnapshots = snapshot.value as? [String: Any] else {
-                failure?("No game data found.")
+                success?([])
                 return
             }
             
