@@ -51,14 +51,13 @@ final class CubeViewController: SkinnedViewController {
         
         cubeProjectsLabel.font = UIFont(name: Font.heavy, size: Font.mediumSize)
         
-        gemLabel.text = String(User.current.gems)
         gemLabel.font = UIFont(name: Font.pure, size: Font.largeSize)
         gemLabel.textColor = User.current.favoriteColor.uiColor
         
         userBackdrop.image = User.current.favoriteColor.alertBackdrop
         let avatar = AvatarManager.shared.getAvatar(for: User.current)
         userImage.setImage(avatar.image, for: .normal)
-        userLabel.text = User.current.gamertag
+        userLabel.text = User.current.gamertag ?? User.current.email
         userLabel.font = UIFont(name: Font.heavy, size: Font.largeSize)
         
         checkButton.titleLabel?.font = UIFont(name: Font.heavy, size: Font.largeSize)
@@ -70,6 +69,8 @@ final class CubeViewController: SkinnedViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(true)
+        
+        gemLabel.text = String(User.current.gems)
         if newPlayer { playVideo() }
     }
     
@@ -150,7 +151,10 @@ extension CubeViewController {
     }
     
     @IBAction func checkButtonPressed(_ sender: UIButton) {
-        showAlert(BSGCustomAlert(message: "Questions are under construction yo."))
+        
+        guard let viewController = tabBarController?.viewControllers?[1] as? QuestionsViewController else { return }
+        viewController.isCheckYoSelfGame = true
+        tabBarController?.selectedIndex = 1
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIButton) {

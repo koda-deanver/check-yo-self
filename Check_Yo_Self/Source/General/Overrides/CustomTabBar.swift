@@ -8,8 +8,14 @@
 
 import UIKit
 
-class CustomTabBar: UITabBarController, UITabBarControllerDelegate {
+/// Provides custom coloring and other methods.
+class CustomTabBar: UITabBarController {
 
+    // MARK: - Public Members -
+    
+    /// It true, the user is presented with confirmation alert before switching tabs.
+    var shouldPromptForTabSwitch = false
+    
     // MARK: - Lifecycle -
     
     override func viewDidLoad() {
@@ -36,6 +42,29 @@ class CustomTabBar: UITabBarController, UITabBarControllerDelegate {
         
         for item in tabBarItems {
             item.isEnabled = shouldEnable
+        }
+    }
+}
+
+// MARK: - UITabBarControllerDelegate -
+
+extension CustomTabBar: UITabBarControllerDelegate {
+    
+    ///
+    /// Ask user before navigating away from *QuestionsViewController* mid-game.
+    ///
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        
+        if shouldPromptForTabSwitch {
+            guard let currentViewController = tabBarController.selectedViewController as? GeneralViewController else { return false }
+            currentViewController.showAlert(BSGCustomAlert(message: "Exit game? You will lose your progress.", options: [(text: "Exit", handler: {
+                
+                self.shouldPromptForTabSwitch = false
+                self.selectedViewController = viewController
+            }), (text: "Cancel", handler: {})]))
+            return false
+        } else {
+            return true
         }
     }
 }

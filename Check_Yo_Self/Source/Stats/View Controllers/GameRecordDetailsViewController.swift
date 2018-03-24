@@ -75,7 +75,7 @@ final class GameRecordDetailsViewController: SkinnedViewController {
     private func buildGameStatArray() {
         
         let gems = gameRecord.gemsEarned
-        let gemValue = gems > 0 ? "+\(gems)" : "-\(gems)"
+        let gemValue = gems >= 0 ? "+\(gems)" : "-\(gems)"
         let gemStat = GameStat(image: #imageLiteral(resourceName: "JabbRGem"), name: "Gems Earned", value: gemValue)
         
         let startTimeStat = GameStat(image: #imageLiteral(resourceName: "TabBarIconStats"), name: "Started", value: dateFormatter.string(from: gameRecord.startTime))

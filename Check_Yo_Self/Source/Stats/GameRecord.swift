@@ -22,7 +22,7 @@ struct GameRecord {
     var location: CLLocation?
     var steps: Int?
     var heartData: HeartData?
-    var gemsEarned: Int = 0
+    var gemsEarned: Int = 0 { didSet { User.current.gems += gemsEarned }}
     
     // MARK: - Initializers -
     

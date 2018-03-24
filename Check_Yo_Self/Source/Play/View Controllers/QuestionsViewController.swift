@@ -11,6 +11,11 @@ import UIKit
 /// Screen where player is asked a questions and presented with 6 colored choices.
 final class QuestionsViewController: SkinnedViewController {
     
+    // MARK: - Public Members -
+    
+    /// If true, a check game will be played instead of current question type set in *mapViewController*.
+    var isCheckYoSelfGame = false
+    
     // MARK: - Private Members -
     
     private var questions: [Question] = []
@@ -20,6 +25,9 @@ final class QuestionsViewController: SkinnedViewController {
     
     /// The type of questions being displayed.
     private var questionType: QuestionType {
+        
+        if isCheckYoSelfGame { return .check }
+        
         guard let typeKey = DataManager.shared.getLocalValue(for: .questionType), let type = QuestionType(rawValue: typeKey) else { return .brainstorm }
         return type
     }
@@ -41,11 +49,10 @@ final class QuestionsViewController: SkinnedViewController {
     
     // MARK: - Outlets -
     
-    @IBOutlet private weak var usernameLabel: UILabel!
-    @IBOutlet private weak var scoreLabel: UILabel!
-    @IBOutlet private weak var phaseImage: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var gemsLabel: UILabel!
+    @IBOutlet private weak var centerImage: UIImageView!
     @IBOutlet private weak var questionLabel: UILabel!
-    @IBOutlet private weak var backDrop: UIImageView!
     
     @IBOutlet private weak var redButton: UIButton!
     @IBOutlet private weak var greenButton: UIButton!
@@ -66,13 +73,12 @@ final class QuestionsViewController: SkinnedViewController {
         
         super.style()
         
-        usernameLabel.text = User.current.gamertag ?? User.current.email
-        usernameLabel.font = UIFont(name: Font.main, size: Font.largeSize)
+        nameLabel.text = User.current.gamertag ?? User.current.email
+        nameLabel.font = UIFont(name: Font.main, size: Font.mediumSize)
+        nameLabel.textColor = User.current.ageGroup.textColor
         
-        scoreLabel.text = String(User.current.gems)
-        scoreLabel.font = UIFont(name: Font.pure, size: Font.largeSize)
-        
-        phaseImage.image = questionType.image
+        gemsLabel.font = UIFont(name: Font.pure, size: Font.mediumSize)
+        gemsLabel.textColor = User.current.favoriteColor.uiColor
         
         for button in allButtons {
             button.titleLabel?.font = UIFont(name: Font.main, size: Font.mediumSize)
@@ -91,9 +97,13 @@ final class QuestionsViewController: SkinnedViewController {
             
             self.hideProgressHUD()
             
+            self.update()
             self.questions = questions
             
             self.showAlert(BSGCustomAlert(message: "Answer these 20 questions and score JabbRGems.", options: [(text: "Go", handler: {
+                
+                /// Ask user before leaving mid-game.
+                (self.tabBarController as? CustomTabBar)?.shouldPromptForTabSwitch = true
                 
                 // Catch next interstitial for game over.
                 if GameConfiguration.adFrequency > 0 {
@@ -105,6 +115,8 @@ final class QuestionsViewController: SkinnedViewController {
                 self.startTime = Date.init()
                 
                 self.presentQuestion()
+            }), (text: "Not Now", handler: {
+                self.tabBarController?.selectedIndex = 0
             })]))
             
         }, failure: { error in
@@ -117,11 +129,22 @@ final class QuestionsViewController: SkinnedViewController {
     ///
     private func reset(){
         
-        self.questionLabel.text = "???"
+        gemsLabel.text = "---"
+        centerImage.image = nil
+        questionLabel.text = "---"
         
         for button in allButtons {
-            button.titleLabel?.text = "???"
+            button.titleLabel?.text = "---"
         }
+    }
+    
+    ///
+    /// Updates that need to happen each time game is started.
+    ///
+    private func update() {
+        
+        gemsLabel.text = String(User.current.gems)
+        centerImage.image = questionType.image
     }
     
     ///
@@ -178,7 +201,10 @@ final class QuestionsViewController: SkinnedViewController {
         
         DataManager.shared.addGameRecord(ofType: questionType, score: score, startTime: startTime) {
             
+            (self.tabBarController as? CustomTabBar)?.shouldPromptForTabSwitch = false
             self.hideProgressHUD()
+            
+            self.isCheckYoSelfGame = false
             
             let alert = BSGCustomAlert(message: "You scored \(self.score)POINTs!", options: [(text: "Word", handler: {
                 self.showStats()

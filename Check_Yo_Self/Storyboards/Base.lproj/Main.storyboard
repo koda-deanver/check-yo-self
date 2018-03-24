@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -694,197 +693,167 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="205-Pf-Gwf">
-                                <rect key="frame" x="88" y="100" width="200" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Ncw-9H-mk2"/>
-                                    <constraint firstAttribute="width" constant="200" id="bEF-Lm-dMz"/>
-                                </constraints>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="R0K-am-abV" userLabel="Button Stack">
-                                <rect key="frame" x="20" y="344.5" width="335" height="167.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mRT-Ru-OQL" userLabel="fullStack">
+                                <rect key="frame" x="16" y="20" width="343" height="588"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Jj9-6m-7h9" userLabel="Left Button Stack">
-                                        <rect key="frame" x="0.0" y="0.0" width="157.5" height="167.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Pf-jf-ia7" userLabel="hudStack">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="59"/>
                                         <subviews>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" semanticContentAttribute="spatial" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ye8-dn-92u">
-                                                <rect key="frame" x="0.0" y="0.0" width="157.5" height="46"/>
-                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="oyv-Ru-vFO"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
-                                                <size key="titleShadowOffset" width="1" height="1"/>
-                                                <state key="normal" title="???">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="choicePressed:" destination="avA-NG-c4e" eventType="touchUpInside" id="t6l-kM-gnY"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="spatial" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="PPG-Eo-EwR">
-                                                <rect key="frame" x="0.0" y="61" width="157.5" height="46"/>
-                                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
-                                                <size key="titleShadowOffset" width="1" height="1"/>
-                                                <state key="normal" title="???">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="choicePressed:" destination="avA-NG-c4e" eventType="touchUpInside" id="FAr-px-GBq"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="3" contentMode="scaleToFill" semanticContentAttribute="spatial" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1Q1-he-Kgh">
-                                                <rect key="frame" x="0.0" y="122" width="157.5" height="45.5"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
-                                                <size key="titleShadowOffset" width="1" height="1"/>
-                                                <state key="normal" title="???">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="choicePressed:" destination="avA-NG-c4e" eventType="touchUpInside" id="G8R-7a-abi"/>
-                                                </connections>
-                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="???" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6t-HT-h7V" userLabel="nameLabel">
+                                                <rect key="frame" x="0.0" y="15.5" width="171.5" height="28"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsq-Ps-2xd" userLabel="gemLabel">
+                                                <rect key="frame" x="181.5" y="14.5" width="117" height="30.5"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="26"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <size key="shadowOffset" width="0.0" height="1"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JabbRGem" translatesAutoresizingMaskIntoConstraints="NO" id="eWb-mD-358" userLabel="gemImageView">
+                                                <rect key="frame" x="308.5" y="0.0" width="34.5" height="59"/>
+                                            </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="PPG-Eo-EwR" firstAttribute="height" secondItem="ye8-dn-92u" secondAttribute="height" id="TzJ-xZ-SZV"/>
+                                            <constraint firstItem="R6t-HT-h7V" firstAttribute="width" secondItem="7Pf-jf-ia7" secondAttribute="width" multiplier="0.5" id="C2H-Wb-xPv"/>
+                                            <constraint firstItem="eWb-mD-358" firstAttribute="width" secondItem="7Pf-jf-ia7" secondAttribute="width" multiplier="0.1" id="ieO-OS-mig"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zWc-N5-g2l" userLabel="Right Button Stack">
-                                        <rect key="frame" x="177.5" y="0.0" width="157.5" height="167.5"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="4" contentMode="scaleToFill" semanticContentAttribute="spatial" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZP2-wW-Dcp">
-                                                <rect key="frame" x="0.0" y="0.0" width="157.5" height="46"/>
-                                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
-                                                <size key="titleShadowOffset" width="1" height="1"/>
-                                                <state key="normal" title="???">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="choicePressed:" destination="avA-NG-c4e" eventType="touchUpInside" id="pG1-jw-gZL"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="5" contentMode="scaleToFill" semanticContentAttribute="spatial" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="63d-DG-b0L">
-                                                <rect key="frame" x="0.0" y="61" width="157.5" height="46"/>
-                                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
-                                                <size key="titleShadowOffset" width="1" height="1"/>
-                                                <state key="normal" title="???">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="choicePressed:" destination="avA-NG-c4e" eventType="touchUpInside" id="Qqg-Zt-KwT"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="6" contentMode="scaleToFill" semanticContentAttribute="spatial" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6yH-1E-vAf">
-                                                <rect key="frame" x="0.0" y="122" width="157.5" height="45.5"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
-                                                <size key="titleShadowOffset" width="1" height="1"/>
-                                                <state key="normal" title="???">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="choicePressed:" destination="avA-NG-c4e" eventType="touchUpInside" id="7li-4f-DwZ"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="R0K-am-abV" secondAttribute="height" multiplier="2:1" id="8ln-wG-AVy"/>
-                                </constraints>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="X2p-6v-Zji" userLabel="Question stack">
-                                <rect key="frame" x="20" y="532" width="335" height="56"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ygs-bY-3Zo">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="56"/>
-                                        <color key="backgroundColor" red="0.82195512820000005" green="0.82195512820000005" blue="0.82195512820000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="LgS-UH-CX2"/>
-                                        </constraints>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fzy-qN-zxB" userLabel="centerImageView">
+                                        <rect key="frame" x="0.0" y="69" width="343" height="147"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ygs-bY-3Zo" userLabel="questionLabel">
+                                        <rect key="frame" x="0.0" y="226" width="343" height="88"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="R0K-am-abV" userLabel="buttonStack">
+                                        <rect key="frame" x="0.0" y="324" width="343" height="264"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Jj9-6m-7h9" userLabel="leftStack">
+                                                <rect key="frame" x="0.0" y="0.0" width="166.5" height="264"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" semanticContentAttribute="spatial" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ye8-dn-92u" userLabel="redButton">
+                                                        <rect key="frame" x="0.0" y="0.0" width="166.5" height="78"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
+                                                        <size key="titleShadowOffset" width="1" height="1"/>
+                                                        <state key="normal" title="???" backgroundImage="ConnectionBackdropRed">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="choicePressed:" destination="avA-NG-c4e" eventType="touchUpInside" id="t6l-kM-gnY"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="spatial" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="PPG-Eo-EwR" userLabel="greenButton">
+                                                        <rect key="frame" x="0.0" y="93" width="166.5" height="78"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
+                                                        <size key="titleShadowOffset" width="1" height="1"/>
+                                                        <state key="normal" title="???" backgroundImage="ConnectionBackdropGreen">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="choicePressed:" destination="avA-NG-c4e" eventType="touchUpInside" id="FAr-px-GBq"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" semanticContentAttribute="spatial" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1Q1-he-Kgh" userLabel="blueButton">
+                                                        <rect key="frame" x="0.0" y="186" width="166.5" height="78"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
+                                                        <size key="titleShadowOffset" width="1" height="1"/>
+                                                        <state key="normal" title="???" backgroundImage="ConnectionBackdropBlue">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="choicePressed:" destination="avA-NG-c4e" eventType="touchUpInside" id="G8R-7a-abi"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zWc-N5-g2l" userLabel="rightStack">
+                                                <rect key="frame" x="176.5" y="0.0" width="166.5" height="264"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" semanticContentAttribute="spatial" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZP2-wW-Dcp" userLabel="cyanButton">
+                                                        <rect key="frame" x="0.0" y="0.0" width="166.5" height="78"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
+                                                        <size key="titleShadowOffset" width="1" height="1"/>
+                                                        <state key="normal" title="???" backgroundImage="ConnectionBackdropCyan">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="choicePressed:" destination="avA-NG-c4e" eventType="touchUpInside" id="pG1-jw-gZL"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" semanticContentAttribute="spatial" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="63d-DG-b0L" userLabel="magentaButton">
+                                                        <rect key="frame" x="0.0" y="93" width="166.5" height="78"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
+                                                        <size key="titleShadowOffset" width="1" height="1"/>
+                                                        <state key="normal" title="???" backgroundImage="ConnectionBackdropMagenta">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="choicePressed:" destination="avA-NG-c4e" eventType="touchUpInside" id="Qqg-Zt-KwT"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="6" contentMode="scaleToFill" semanticContentAttribute="spatial" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6yH-1E-vAf" userLabel="yellowButton">
+                                                        <rect key="frame" x="0.0" y="186" width="166.5" height="78"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
+                                                        <size key="titleShadowOffset" width="1" height="1"/>
+                                                        <state key="normal" title="???" backgroundImage="ConnectionBackdropYellow">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="choicePressed:" destination="avA-NG-c4e" eventType="touchUpInside" id="7li-4f-DwZ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="X2p-6v-Zji" secondAttribute="height" multiplier="6:1" id="KOo-sa-49B"/>
+                                    <constraint firstItem="Ygs-bY-3Zo" firstAttribute="height" secondItem="mRT-Ru-OQL" secondAttribute="height" multiplier="0.15" id="gsG-Kb-HR9"/>
+                                    <constraint firstItem="Fzy-qN-zxB" firstAttribute="height" secondItem="mRT-Ru-OQL" secondAttribute="height" multiplier="0.25" id="iB3-Y7-kRh"/>
+                                    <constraint firstItem="7Pf-jf-ia7" firstAttribute="height" secondItem="mRT-Ru-OQL" secondAttribute="height" multiplier="0.1" id="upG-ia-Xlf"/>
                                 </constraints>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JabbRGem" translatesAutoresizingMaskIntoConstraints="NO" id="eWb-mD-358">
-                                <rect key="frame" x="289" y="28" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="TDE-ea-ram"/>
-                                    <constraint firstAttribute="width" constant="50" id="hga-ib-iFH"/>
-                                </constraints>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="DefaultUserPic" translatesAutoresizingMaskIntoConstraints="NO" id="8r1-gU-ldb">
-                                <rect key="frame" x="55" y="126" width="266" height="148"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="148" id="VpI-ev-gx3"/>
-                                    <constraint firstAttribute="width" constant="266" id="zN1-O7-1fw"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="???" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6t-HT-h7V">
-                                <rect key="frame" x="36" y="40" width="42" height="28"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsq-Ps-2xd">
-                                <rect key="frame" x="78" y="37" width="201" height="30.5"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="26"/>
-                                <color key="textColor" red="1" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <size key="shadowOffset" width="0.0" height="1"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.82195512820000005" green="0.82195512820000005" blue="0.82195512820000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="8r1-gU-ldb" firstAttribute="centerX" secondItem="jY0-sq-YCV" secondAttribute="centerX" id="3WK-qZ-kyW"/>
-                            <constraint firstItem="xsq-Ps-2xd" firstAttribute="top" secondItem="Ujp-OH-jVB" secondAttribute="bottom" constant="17" id="Ccg-46-UQ8"/>
-                            <constraint firstItem="205-Pf-Gwf" firstAttribute="centerY" secondItem="jY0-sq-YCV" secondAttribute="top" constant="200" id="CyO-AK-XsW"/>
-                            <constraint firstItem="R6t-HT-h7V" firstAttribute="leading" secondItem="jY0-sq-YCV" secondAttribute="leadingMargin" constant="20" id="GMP-NH-55j"/>
-                            <constraint firstItem="R6t-HT-h7V" firstAttribute="top" secondItem="Ujp-OH-jVB" secondAttribute="bottom" constant="20" id="Gtt-mk-og7"/>
-                            <constraint firstItem="R0K-am-abV" firstAttribute="bottom" secondItem="X2p-6v-Zji" secondAttribute="top" constant="-20" id="LIH-XQ-1Ty"/>
-                            <constraint firstItem="xsq-Ps-2xd" firstAttribute="leading" secondItem="R6t-HT-h7V" secondAttribute="trailing" id="Wfg-nb-x1f"/>
-                            <constraint firstItem="X2p-6v-Zji" firstAttribute="leading" secondItem="jY0-sq-YCV" secondAttribute="leading" constant="20" id="XwB-3G-3lF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="eWb-mD-358" secondAttribute="trailing" constant="20" id="ZkK-yM-OyG"/>
-                            <constraint firstAttribute="trailing" secondItem="R0K-am-abV" secondAttribute="trailing" constant="20" id="gmE-pb-phM"/>
-                            <constraint firstItem="WJq-Y1-wPo" firstAttribute="top" secondItem="X2p-6v-Zji" secondAttribute="bottom" constant="30" id="kYy-8q-DH6"/>
-                            <constraint firstItem="205-Pf-Gwf" firstAttribute="centerX" secondItem="jY0-sq-YCV" secondAttribute="centerX" id="niB-k0-0PG"/>
-                            <constraint firstItem="eWb-mD-358" firstAttribute="leading" secondItem="xsq-Ps-2xd" secondAttribute="trailing" constant="10" id="nl1-JD-TTm"/>
-                            <constraint firstItem="eWb-mD-358" firstAttribute="top" secondItem="Ujp-OH-jVB" secondAttribute="bottom" constant="8" id="qI3-yK-SCR"/>
-                            <constraint firstItem="8r1-gU-ldb" firstAttribute="centerY" secondItem="jY0-sq-YCV" secondAttribute="top" constant="200" id="v8Y-eO-Dgp"/>
-                            <constraint firstItem="R0K-am-abV" firstAttribute="leading" secondItem="jY0-sq-YCV" secondAttribute="leading" constant="20" id="vh4-vc-mWF"/>
-                            <constraint firstAttribute="trailing" secondItem="X2p-6v-Zji" secondAttribute="trailing" constant="20" id="wyY-PW-nVN"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="mRT-Ru-OQL" secondAttribute="bottom" constant="10" id="BEJ-G5-Tmg"/>
+                            <constraint firstItem="mRT-Ru-OQL" firstAttribute="top" secondItem="jY0-sq-YCV" secondAttribute="topMargin" id="BHd-1f-tnR"/>
+                            <constraint firstItem="mRT-Ru-OQL" firstAttribute="leading" secondItem="jY0-sq-YCV" secondAttribute="leadingMargin" id="pao-gX-knQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mRT-Ru-OQL" secondAttribute="trailing" id="yFu-Ox-Cb7"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Play" image="TabBarIconPlay" id="6r8-7T-H3f"/>
                     <connections>
-                        <outlet property="backDrop" destination="205-Pf-Gwf" id="wcv-fr-VSc"/>
                         <outlet property="blueButton" destination="1Q1-he-Kgh" id="rXO-Oc-Jyh"/>
+                        <outlet property="centerImage" destination="Fzy-qN-zxB" id="YBJ-Zp-aFx"/>
                         <outlet property="cyanButton" destination="ZP2-wW-Dcp" id="kuO-mu-G3f"/>
+                        <outlet property="gemsLabel" destination="xsq-Ps-2xd" id="7Yo-PO-nA2"/>
                         <outlet property="greenButton" destination="PPG-Eo-EwR" id="XmG-7V-Y5I"/>
                         <outlet property="magentaButton" destination="63d-DG-b0L" id="2pT-uB-Af2"/>
-                        <outlet property="phaseImage" destination="8r1-gU-ldb" id="9Si-br-SuI"/>
-                        <outlet property="questionLabel" destination="Ygs-bY-3Zo" id="mH1-tT-FfJ"/>
+                        <outlet property="nameLabel" destination="R6t-HT-h7V" id="Ddx-gf-Qhr"/>
+                        <outlet property="questionLabel" destination="Ygs-bY-3Zo" id="iQB-fi-8ZM"/>
                         <outlet property="redButton" destination="ye8-dn-92u" id="kV7-nd-Dsc"/>
-                        <outlet property="scoreLabel" destination="xsq-Ps-2xd" id="0po-D8-VF8"/>
-                        <outlet property="usernameLabel" destination="R6t-HT-h7V" id="vmT-MZ-EVo"/>
                         <outlet property="yellowButton" destination="6yH-1E-vAf" id="pjm-Iu-DlI"/>
                     </connections>
                 </viewController>
@@ -1793,7 +1762,13 @@
         <image name="ArrowRight" width="270" height="270"/>
         <image name="Brainstorm" width="210" height="119"/>
         <image name="ConnectedSymbol" width="320" height="320"/>
+        <image name="ConnectionBackdropBlue" width="640" height="640"/>
+        <image name="ConnectionBackdropCyan" width="640" height="640"/>
         <image name="ConnectionBackdropGray" width="640" height="640"/>
+        <image name="ConnectionBackdropGreen" width="640" height="640"/>
+        <image name="ConnectionBackdropMagenta" width="640" height="640"/>
+        <image name="ConnectionBackdropRed" width="640" height="640"/>
+        <image name="ConnectionBackdropYellow" width="640" height="640"/>
         <image name="DefaultUserPic" width="253" height="299"/>
         <image name="FriendsIcon" width="160" height="160"/>
         <image name="GameButtonGray" width="1280" height="640"/>

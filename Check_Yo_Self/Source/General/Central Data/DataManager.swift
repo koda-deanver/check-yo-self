@@ -178,7 +178,7 @@ class DataManager {
         BSGFirebaseService.fetchData(atPath: Constants.firebaseRootPath.child("check-yo-self/game-records/\(User.current.uid)"), success: { snapshot in
            
             guard let gameRecordSnapshots = snapshot.value as? [String: Any] else {
-                failure?("Connection Error")
+                failure?("No game data found.")
                 return
             }
             
