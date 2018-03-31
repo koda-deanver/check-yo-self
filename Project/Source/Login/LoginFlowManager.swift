@@ -80,7 +80,7 @@ final class LoginFlowManager {
         
         guard password.count >= Configuration.passwordMinLength else { return (false, "Password must be at least \(Configuration.passwordMinLength) characters.") }
         
-        var containsUpperCase = false
+        /*var containsUpperCase = false
         var containsNumber = false
         var containsSpecial = false
         
@@ -91,7 +91,7 @@ final class LoginFlowManager {
             if CharacterType.specialCharacters.contains(String(character)) { containsSpecial = true }
         }
         
-        guard containsUpperCase, containsNumber, containsSpecial else { return (false, "Password must contain an uppercase letter, a number, and a special character.") }
+        guard containsUpperCase, containsNumber, containsSpecial else { return (false, "Password must contain an uppercase letter, a number, and a special character.") }*/
         
         return (true, "")
     }
