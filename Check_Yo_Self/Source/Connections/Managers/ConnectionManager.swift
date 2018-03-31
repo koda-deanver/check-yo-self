@@ -56,6 +56,7 @@ final class ConnectionManager {
         case .healthKit: connectHealthKit(connection: connection, viewController: viewController)
         case .fitbit: connectFitbit(connection: connection, viewController: viewController)
         case .maps: connectMaps(connection: connection, viewController: viewController)
+        case .camera: connectCamera(connection: connection, viewController: viewController)
         default: break
         }
     }
@@ -75,6 +76,7 @@ final class ConnectionManager {
         case .healthKit: explainHealthKit(connection: connection, viewController: viewController)
         case .fitbit: explainFitbit(connection: connection, viewController: viewController)
         case .maps: explainMaps(connection: connection, viewController: viewController)
+        case .camera: explainCamera(connection: connection, viewController: viewController)
         default: break
         }
     }
@@ -82,7 +84,7 @@ final class ConnectionManager {
     ///
     /// Checks whether the specified connection is connected.
     ///
-    /// - parameter connection: The desired connection to connect to.
+    /// - parameter connection: The desired connection to check connection for.
     ///
     func checkConnection(for connection: Connection) {
         
@@ -93,6 +95,7 @@ final class ConnectionManager {
         case .healthKit: checkHealthKitConnection(connection: connection)
         case .fitbit: checkFitbitConnection(connection: connection)
         case .maps: checkMapsConnection(connection: connection)
+        case .camera: checkCameraConnection(connection: connection)
         default: break
         }
     }
@@ -319,6 +322,55 @@ extension ConnectionManager {
     ///
     private func checkMapsConnection(connection: Connection) {
         let isConnected = LocationManager.shared.location != nil
+        actionComplete(connection, isConnected)
+    }
+}
+
+// MARK: - Extension: Camera -
+
+extension ConnectionManager {
+    
+    ///
+    /// Display camera controller and allow user to take picture.
+    ///
+    /// If a picture is chosen, the connection is set to true.
+    ///
+    /// - parameter connection: The *Camera* connection.
+    /// - parameter viewController: View controller on which to display alerts.
+    ///
+    private func connectCamera(connection: Connection, viewController: GeneralViewController) {
+        
+        CameraManager.shared.showCamera(inViewController: viewController, completion: { isConnected in
+            self.actionComplete(connection, isConnected)
+        })
+    }
+    
+    ///
+    /// Displays alert explaining the purpose of *Camera* in the app.
+    ///
+    /// - parameter connection: The *Camera* connection.
+    /// - parameter viewController: View controller on which to display alerts.
+    ///
+    private func explainCamera(connection: Connection, viewController: GeneralViewController) {
+        
+        let alert = BSGCustomAlert(message: "Your chosen picture is being used as your avatar!", options: [(text: "Cool", handler: {
+            self.actionComplete(connection, true)
+        }), (text: "Remove", handler: {
+            CameraManager.shared.removeSavedImage()
+            self.actionComplete(connection, false)
+        })])
+        viewController.showAlert(alert)
+    }
+    
+    ///
+    /// Checks if there is currently a connection to *Camera*.
+    ///
+    /// If a saved image is found, there is a connection.
+    ///
+    /// - parameter connection: The *Camera* connection.
+    ///
+    private func checkCameraConnection(connection: Connection) {
+        let isConnected = CameraManager.shared.savedImage != nil
         actionComplete(connection, isConnected)
     }
 }

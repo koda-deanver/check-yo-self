@@ -55,8 +55,11 @@ final class CubeViewController: SkinnedViewController {
         gemLabel.textColor = User.current.favoriteColor.uiColor
         
         userBackdrop.image = User.current.favoriteColor.alertBackdrop
+        
         let avatar = AvatarManager.shared.getAvatar(for: User.current)
-        userImage.setImage(avatar.image, for: .normal)
+        let image = CameraManager.shared.savedImage ?? avatar.image
+        userImage.setImage(image, for: .normal)
+        
         userLabel.text = User.current.displayName
         userLabel.font = UIFont(name: Font.heavy, size: Font.largeSize)
         

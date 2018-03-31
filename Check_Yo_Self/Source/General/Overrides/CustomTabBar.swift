@@ -23,6 +23,14 @@ class CustomTabBar: UITabBarController {
         super.viewDidLoad()
         delegate = self
         
+        NotificationManager.shared.addObserver(self, forNotificationType: .profileUpdated, handler: #selector(style))
+        style()
+    }
+    
+    ///
+    /// Styles tab items with correct color.
+    ///
+    @objc func style() {
         tabBar.tintColor = User.current.favoriteColor.uiColor
         
         tabBar.barTintColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0)
