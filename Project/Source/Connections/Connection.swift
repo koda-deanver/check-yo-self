@@ -32,7 +32,7 @@ enum ConnectionType: String {
         case .healthKit: return #imageLiteral(resourceName: "health")
         case .fitbit: return #imageLiteral(resourceName: "fitbit")
         case .maps: return #imageLiteral(resourceName: "maps")
-        case .camera: return #imageLiteral(resourceName: "maps")
+        case .camera: return #imageLiteral(resourceName: "camera")
         default: return nil
         }
     }

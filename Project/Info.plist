@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Take a live image!</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en_US</string>
 	<key>CFBundleDisplayName</key>
@@ -19,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.2</string>
+	<string>2.0</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -33,7 +31,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>3</string>
+	<string>1</string>
 	<key>FacebookAppID</key>
 	<string>168489043664341</string>
 	<key>FacebookDisplayName</key>
@@ -47,6 +45,8 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Take a live image!</string>
 	<key>NSHealthShareUsageDescription</key>
 	<string>Your steps help you earn more gems!</string>
 	<key>NSHealthUpdateUsageDescription</key>

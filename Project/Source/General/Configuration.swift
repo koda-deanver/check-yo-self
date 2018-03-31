@@ -35,7 +35,7 @@ struct Font {
     /// Font used to style titles and important things.
     static let heavy = "Arial Rounded MT Bold"
     /// Font used for the bulk of the app.
-    static let main = "Chalkduster"
+    static var main = "Arial"
     /// Font used for things that should never really be styled.
     static let pure = "Arial Rounded MT Bold"
     
@@ -106,7 +106,9 @@ fileprivate func loadGameConfiguration(_ completion: Closure?) {
     BSGFirebaseService.fetchData(atPath: Constants.firebaseRootPath.child("check-yo-self/configuration"), success: { snapshot in
         
         guard let configuration = snapshot.value as? [String: Any] else { return }
+        
         GameConfiguration.adFrequency = configuration["ad-frequency"] as? Int ?? GameConfiguration.adFrequency
+        Font.main = configuration["font-main"] as? String ?? Font.main
         
         completion?()
         
