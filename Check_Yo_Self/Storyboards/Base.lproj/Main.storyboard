@@ -46,7 +46,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8na-7K-qsa" userLabel="cubeProjectButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                                                <state key="normal" backgroundImage="AlertBackdropGray"/>
+                                                <state key="normal" backgroundImage="raised-square-gray"/>
                                                 <connections>
                                                     <action selector="cubeProjectButtonPressed:" destination="s06-6N-bN5" eventType="touchUpInside" id="oF9-FD-E5M"/>
                                                 </connections>
@@ -57,7 +57,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ConnectionBackdropGray" translatesAutoresizingMaskIntoConstraints="NO" id="heE-OM-qv8" userLabel="cubeProjectImageView">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="raised-square-gray" translatesAutoresizingMaskIntoConstraints="NO" id="heE-OM-qv8" userLabel="cubeProjectImageView">
                                                 <rect key="frame" x="35.5" y="9" width="41.5" height="42"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="heE-OM-qv8" secondAttribute="height" multiplier="1:1" id="x39-ex-350"/>
@@ -87,7 +87,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="eKn-Y5-naP" userLabel="gemStack">
                                                         <rect key="frame" x="20" y="9.5" width="147.5" height="30"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JabbRGem" translatesAutoresizingMaskIntoConstraints="NO" id="GLs-Ce-fgo" userLabel="gemImageView">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jabbrgem" translatesAutoresizingMaskIntoConstraints="NO" id="GLs-Ce-fgo" userLabel="gemImageView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="08s-ho-LzS"/>
@@ -150,7 +150,7 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Y0-Gc-WGE" userLabel="profileButton">
                                                                         <rect key="frame" x="16.5" y="56.5" width="50.5" height="51"/>
-                                                                        <state key="normal" backgroundImage="ConnectionBackdropGray"/>
+                                                                        <state key="normal" backgroundImage="raised-square-gray"/>
                                                                         <connections>
                                                                             <action selector="profileButtonPressed:" destination="s06-6N-bN5" eventType="touchUpInside" id="ahR-6e-czj"/>
                                                                         </connections>
@@ -170,7 +170,7 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="Byj-Zt-X5a" secondAttribute="height" multiplier="1:1" id="QMY-As-PPq"/>
                                                                         </constraints>
-                                                                        <state key="normal" backgroundImage="ConnectionBackdropGray"/>
+                                                                        <state key="normal" backgroundImage="raised-square-gray"/>
                                                                         <connections>
                                                                             <action selector="knowledgeBaseButtonPressed:" destination="s06-6N-bN5" eventType="touchUpInside" id="7SC-LO-0ql"/>
                                                                         </connections>
@@ -192,7 +192,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lcn-Xc-0I2" userLabel="userView">
                                                         <rect key="frame" x="84" y="0.0" width="206.5" height="329"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlertBackdropGray" translatesAutoresizingMaskIntoConstraints="NO" id="xs3-LG-n1B" userLabel="backdropImageView">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alert-backdrop-gray" translatesAutoresizingMaskIntoConstraints="NO" id="xs3-LG-n1B" userLabel="backdropImageView">
                                                                 <rect key="frame" x="0.0" y="61.5" width="206.5" height="206"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="xs3-LG-n1B" secondAttribute="height" multiplier="1:1" id="leF-tI-3Pq"/>
@@ -203,12 +203,12 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="GQ1-VN-9X6" secondAttribute="height" multiplier="1:1.2" id="oV9-rT-GPH"/>
                                                                 </constraints>
-                                                                <state key="normal" title="Button" image="DefaultUserPic"/>
+                                                                <state key="normal" title="Button" image="avatar-default"/>
                                                                 <connections>
                                                                     <action selector="userImagePressed:" destination="s06-6N-bN5" eventType="touchUpInside" id="tJH-rz-EgJ"/>
                                                                 </connections>
                                                             </button>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TripleCheckSmall" translatesAutoresizingMaskIntoConstraints="NO" id="2Q6-fp-cHh" userLabel="phaseImageView">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="align-icon" translatesAutoresizingMaskIntoConstraints="NO" id="2Q6-fp-cHh" userLabel="phaseImageView">
                                                                 <rect key="frame" x="0.0" y="61.5" width="72" height="48"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="2Q6-fp-cHh" secondAttribute="height" multiplier="1.5:1" id="vuR-qS-Tg8"/>
@@ -244,7 +244,7 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfS-tu-kdD" userLabel="friendsButton">
                                                                         <rect key="frame" x="17" y="56.5" width="50.5" height="51"/>
-                                                                        <state key="normal" backgroundImage="ConnectionBackdropGray"/>
+                                                                        <state key="normal" backgroundImage="raised-square-gray"/>
                                                                         <connections>
                                                                             <action selector="friendsButtonPressed:" destination="s06-6N-bN5" eventType="touchUpInside" id="IDf-vn-ntL"/>
                                                                         </connections>
@@ -261,7 +261,7 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F07-Oe-4Qc" userLabel="connectionsButton">
                                                                         <rect key="frame" x="16.5" y="56.5" width="51" height="51"/>
-                                                                        <state key="normal" backgroundImage="ConnectionBackdropGray"/>
+                                                                        <state key="normal" backgroundImage="raised-square-gray"/>
                                                                         <connections>
                                                                             <action selector="connectionsButtonPressed:" destination="s06-6N-bN5" eventType="touchUpInside" id="gQc-r1-5TI"/>
                                                                         </connections>
@@ -309,7 +309,7 @@
                                                                     <constraint firstAttribute="width" secondItem="WxB-bi-Ac0" secondAttribute="height" multiplier="6:1" id="ivV-h3-dFy"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
-                                                                <state key="normal" title="Check Yo Self" backgroundImage="ConnectionBackdropGray">
+                                                                <state key="normal" title="Check Yo Self" backgroundImage="raised-square-gray">
                                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
                                                                 <connections>
@@ -333,7 +333,7 @@
                                                                     <constraint firstAttribute="width" secondItem="k7U-le-Je2" secondAttribute="height" multiplier="6:1" id="ikd-vB-fwt"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
-                                                                <state key="normal" title="Logout" backgroundImage="ConnectionBackdropGray">
+                                                                <state key="normal" title="Logout" backgroundImage="raised-square-gray">
                                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </state>
                                                                 <connections>
@@ -375,7 +375,7 @@
                             <constraint firstItem="mFs-Gm-Zw7" firstAttribute="leading" secondItem="POG-Af-wjI" secondAttribute="leading" id="o6J-Zu-IhL"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Cube" image="TabBarIconCube" selectedImage="TabBarIconCube" id="QZI-63-p7Q"/>
+                    <tabBarItem key="tabBarItem" title="Cube" image="tab-icon-cube" id="QZI-63-p7Q"/>
                     <connections>
                         <outlet property="checkButton" destination="WxB-bi-Ac0" id="5Jw-40-Jha"/>
                         <outlet property="connectionsButton" destination="F07-Oe-4Qc" id="zNk-oV-6pB"/>
@@ -465,16 +465,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ConnectionBackdropGray" translatesAutoresizingMaskIntoConstraints="NO" id="bmn-tp-4fZ" userLabel="backdrop">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="raised-square-gray" translatesAutoresizingMaskIntoConstraints="NO" id="bmn-tp-4fZ" userLabel="backdrop">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlertBackdropGray" translatesAutoresizingMaskIntoConstraints="NO" id="nc9-os-ozd" userLabel="friendImageBackdrop">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alert-backdrop-gray" translatesAutoresizingMaskIntoConstraints="NO" id="nc9-os-ozd" userLabel="friendImageBackdrop">
                                                     <rect key="frame" x="33.5" y="9.5" width="42" height="42"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="nc9-os-ozd" secondAttribute="height" multiplier="1:1" id="uoA-Jf-aze"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FriendsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="fRg-eu-1jA" userLabel="friendImage">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friends-icon" translatesAutoresizingMaskIntoConstraints="NO" id="fRg-eu-1jA" userLabel="friendImage">
                                                     <rect key="frame" x="37.5" y="13.5" width="33" height="33"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="fRg-eu-1jA" secondAttribute="height" multiplier="1:1" id="YmK-xP-hxM"/>
@@ -495,7 +495,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JabbRGem" translatesAutoresizingMaskIntoConstraints="NO" id="URH-nF-kv6" userLabel="gemImage">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jabbrgem" translatesAutoresizingMaskIntoConstraints="NO" id="URH-nF-kv6" userLabel="gemImage">
                                                             <rect key="frame" x="152" y="15" width="30.5" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="URH-nF-kv6" secondAttribute="height" multiplier="1:1" id="Uwg-GU-uUk"/>
@@ -604,18 +604,18 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4h-KC-4sN" userLabel="backdropButton">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                                    <state key="normal" backgroundImage="ConnectionBackdropGray"/>
+                                                    <state key="normal" backgroundImage="raised-square-gray"/>
                                                     <connections>
                                                         <action selector="backdropButtonPressed:" destination="V3o-Wl-0qj" eventType="touchUpInside" id="ZR7-wV-84O"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Health" translatesAutoresizingMaskIntoConstraints="NO" id="TTk-YH-Aqk" userLabel="connectionImage">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fitbit" translatesAutoresizingMaskIntoConstraints="NO" id="TTk-YH-Aqk" userLabel="connectionImage">
                                                     <rect key="frame" x="15.5" y="16" width="48" height="48"/>
                                                 </imageView>
-                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoadingSymbolGreen" translatesAutoresizingMaskIntoConstraints="NO" id="vQ3-PU-j8j" userLabel="loadingImageView">
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pending" translatesAutoresizingMaskIntoConstraints="NO" id="vQ3-PU-j8j" userLabel="loadingImageView">
                                                     <rect key="frame" x="19.5" y="20" width="40" height="40"/>
                                                 </imageView>
-                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ConnectedSymbol" translatesAutoresizingMaskIntoConstraints="NO" id="Ous-g1-dhK" userLabel="checkmarkImage">
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="connected" translatesAutoresizingMaskIntoConstraints="NO" id="Ous-g1-dhK" userLabel="checkmarkImage">
                                                     <rect key="frame" x="40" y="40" width="40" height="40"/>
                                                 </imageView>
                                             </subviews>
@@ -713,7 +713,7 @@
                                                 <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <size key="shadowOffset" width="0.0" height="1"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JabbRGem" translatesAutoresizingMaskIntoConstraints="NO" id="eWb-mD-358" userLabel="gemImageView">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jabbrgem" translatesAutoresizingMaskIntoConstraints="NO" id="eWb-mD-358" userLabel="gemImageView">
                                                 <rect key="frame" x="308.5" y="0.0" width="34.5" height="59"/>
                                             </imageView>
                                         </subviews>
@@ -744,7 +744,7 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
                                                         <size key="titleShadowOffset" width="1" height="1"/>
-                                                        <state key="normal" title="???" backgroundImage="ConnectionBackdropRed">
+                                                        <state key="normal" title="???" backgroundImage="raised-square-red">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         </state>
@@ -757,7 +757,7 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
                                                         <size key="titleShadowOffset" width="1" height="1"/>
-                                                        <state key="normal" title="???" backgroundImage="ConnectionBackdropGreen">
+                                                        <state key="normal" title="???" backgroundImage="raised-square-green">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         </state>
@@ -770,7 +770,7 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
                                                         <size key="titleShadowOffset" width="1" height="1"/>
-                                                        <state key="normal" title="???" backgroundImage="ConnectionBackdropBlue">
+                                                        <state key="normal" title="???" backgroundImage="raised-square-blue">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         </state>
@@ -788,7 +788,7 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
                                                         <size key="titleShadowOffset" width="1" height="1"/>
-                                                        <state key="normal" title="???" backgroundImage="ConnectionBackdropCyan">
+                                                        <state key="normal" title="???" backgroundImage="raised-square-cyan">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         </state>
@@ -801,7 +801,7 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
                                                         <size key="titleShadowOffset" width="1" height="1"/>
-                                                        <state key="normal" title="???" backgroundImage="ConnectionBackdropMagenta">
+                                                        <state key="normal" title="???" backgroundImage="raised-square-magenta">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         </state>
@@ -814,7 +814,7 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
                                                         <size key="titleShadowOffset" width="1" height="1"/>
-                                                        <state key="normal" title="???" backgroundImage="ConnectionBackdropYellow">
+                                                        <state key="normal" title="???" backgroundImage="raised-square-yellow">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="titleShadowColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         </state>
@@ -843,7 +843,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="mRT-Ru-OQL" secondAttribute="trailing" id="yFu-Ox-Cb7"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Play" image="TabBarIconPlay" id="6r8-7T-H3f"/>
+                    <tabBarItem key="tabBarItem" title="Play" image="tab-icon-play" id="6r8-7T-H3f"/>
                     <connections>
                         <outlet property="blueButton" destination="1Q1-he-Kgh" id="rXO-Oc-Jyh"/>
                         <outlet property="centerImage" destination="Fzy-qN-zxB" id="YBJ-Zp-aFx"/>
@@ -944,7 +944,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zki-Un-lIB" userLabel="loginView">
                                 <rect key="frame" x="68" y="234" width="240" height="200"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlertBackdropGray" translatesAutoresizingMaskIntoConstraints="NO" id="Q2E-h4-6oW">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alert-backdrop-gray" translatesAutoresizingMaskIntoConstraints="NO" id="Q2E-h4-6oW">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="200"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Eqq-Kp-Kt1" userLabel="loginStack">
@@ -986,7 +986,7 @@
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <state key="normal" title="Login" backgroundImage="GameButtonGray"/>
+                                                <state key="normal" title="Login" backgroundImage="button-sharp-gray"/>
                                                 <connections>
                                                     <action selector="loginButtonPressed:" destination="Zqt-00-Rnf" eventType="touchUpInside" id="m8L-w8-iUw"/>
                                                 </connections>
@@ -1014,7 +1014,7 @@
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <state key="normal" title="Create New Account" backgroundImage="GameButtonGray"/>
+                                <state key="normal" title="Create New Account" backgroundImage="button-sharp-gray"/>
                                 <connections>
                                     <action selector="createAccountButtonPressed:" destination="Zqt-00-Rnf" eventType="touchUpInside" id="Vck-nB-H8P"/>
                                 </connections>
@@ -1116,7 +1116,7 @@
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <state key="normal" title="Continue" backgroundImage="GameButtonGray"/>
+                                <state key="normal" title="Continue" backgroundImage="button-sharp-gray"/>
                                 <connections>
                                     <action selector="continueButtonPressed:" destination="PEa-iB-K9k" eventType="touchUpInside" id="90f-78-Pn0"/>
                                     <action selector="createAccountButtonPressed:" destination="Zqt-00-Rnf" eventType="touchUpInside" id="Lq3-CL-wCM"/>
@@ -1233,7 +1233,7 @@
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <state key="normal" title="Finish" backgroundImage="GameButtonGray"/>
+                                <state key="normal" title="Finish" backgroundImage="button-sharp-gray"/>
                                 <connections>
                                     <action selector="continueButtonPressed:" destination="PEa-iB-K9k" eventType="touchUpInside" id="9Ox-n3-eQ0"/>
                                     <action selector="createAccountButtonPressed:" destination="Zqt-00-Rnf" eventType="touchUpInside" id="myh-6p-2qe"/>
@@ -1278,7 +1278,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.29411764709999999" green="0.31764705879999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="selectedImageTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
@@ -1315,7 +1315,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ConnectionBackdropGray" translatesAutoresizingMaskIntoConstraints="NO" id="E5z-2M-aoA">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="raised-square-gray" translatesAutoresizingMaskIntoConstraints="NO" id="E5z-2M-aoA">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g52-oi-Ygk">
@@ -1324,7 +1324,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rqq-fK-LA3">
                                                             <rect key="frame" x="0.0" y="0.0" width="101" height="60.5"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlignSmall" translatesAutoresizingMaskIntoConstraints="NO" id="qfK-ZF-8lv" userLabel="typeImageView">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="align-icon" translatesAutoresizingMaskIntoConstraints="NO" id="qfK-ZF-8lv" userLabel="typeImageView">
                                                                     <rect key="frame" x="9" y="7" width="83" height="47.5"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
@@ -1447,7 +1447,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exh-vb-3RX" userLabel="centerMapButton">
                                                 <rect key="frame" x="0.0" y="153.5" width="375" height="27"/>
                                                 <fontDescription key="fontDescription" name="Arial-ItalicMT" family="Arial" pointSize="14"/>
-                                                <state key="normal" title="Center Map" backgroundImage="ConnectionBackdropGray">
+                                                <state key="normal" title="Center Map" backgroundImage="raised-square-gray">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -1462,7 +1462,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wrq-Xe-KNv" userLabel="scoreStack">
                                         <rect key="frame" x="0.0" y="190.5" width="375" height="60.5"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brainstorm" translatesAutoresizingMaskIntoConstraints="NO" id="Hyo-Jz-gJX" userLabel="gametypeImageView">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="align-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Hyo-Jz-gJX" userLabel="gametypeImageView">
                                                 <rect key="frame" x="0.0" y="0.0" width="187.5" height="60.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvn-A3-ODh" userLabel="scoreLabel">
@@ -1599,14 +1599,14 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="tPO-Kh-uOq" secondAttribute="height" multiplier="50:80" id="NK3-A8-2z4"/>
                                                 </constraints>
-                                                <state key="normal" title="Button" image="ArrowLeft"/>
+                                                <state key="normal" title="Button" image="arrow-left"/>
                                                 <connections>
                                                     <action selector="arrowPressed:" destination="5gm-EC-Spv" eventType="touchUpInside" id="ce9-NH-ya4"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S08-ET-QJi" userLabel="bigImage">
                                                 <rect key="frame" x="76.5" y="23" width="190.5" height="120"/>
-                                                <state key="normal" title="Button" image="Align"/>
+                                                <state key="normal" title="Button" image="align-icon"/>
                                                 <connections>
                                                     <action selector="bigImagePressed:" destination="5gm-EC-Spv" eventType="touchUpInside" id="dva-cb-eeo"/>
                                                 </connections>
@@ -1617,7 +1617,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="S0i-19-4rD" secondAttribute="height" multiplier="50:80" id="0vO-3y-kqL"/>
                                                 </constraints>
-                                                <state key="normal" title="Button" image="ArrowRight"/>
+                                                <state key="normal" title="Button" image="arrow-right"/>
                                                 <connections>
                                                     <action selector="arrowPressed:" destination="5gm-EC-Spv" eventType="touchUpInside" id="6KB-mJ-MWe"/>
                                                 </connections>
@@ -1651,7 +1651,7 @@
                             <constraint firstAttribute="bottomMargin" secondItem="BxO-Hi-0Az" secondAttribute="bottom" id="shG-Yi-5Bp"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="TabBarIconMap" id="LlN-a2-AwV"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="tab-icon-map" id="LlN-a2-AwV"/>
                     <connections>
                         <outlet property="bigImage" destination="S08-ET-QJi" id="YgK-d3-tmr"/>
                         <outlet property="slider" destination="b8b-FF-vGg" id="Txn-mg-E7P"/>
@@ -1738,7 +1738,7 @@
         <scene sceneID="DNB-7U-htF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QEh-Vb-F98" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stats" image="TabBarIconStats" id="Fhl-dl-0cm"/>
+                    <tabBarItem key="tabBarItem" title="Stats" image="tab-icon-stats" id="Fhl-dl-0cm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="m0H-Xa-rno">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1755,30 +1755,27 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AlertBackdropGray" width="1280" height="1280"/>
-        <image name="Align" width="210" height="120"/>
-        <image name="AlignSmall" width="90" height="51"/>
-        <image name="ArrowLeft" width="270" height="270"/>
-        <image name="ArrowRight" width="270" height="270"/>
-        <image name="Brainstorm" width="210" height="119"/>
-        <image name="ConnectedSymbol" width="320" height="320"/>
-        <image name="ConnectionBackdropBlue" width="640" height="640"/>
-        <image name="ConnectionBackdropCyan" width="640" height="640"/>
-        <image name="ConnectionBackdropGray" width="640" height="640"/>
-        <image name="ConnectionBackdropGreen" width="640" height="640"/>
-        <image name="ConnectionBackdropMagenta" width="640" height="640"/>
-        <image name="ConnectionBackdropRed" width="640" height="640"/>
-        <image name="ConnectionBackdropYellow" width="640" height="640"/>
-        <image name="DefaultUserPic" width="253" height="299"/>
-        <image name="FriendsIcon" width="160" height="160"/>
-        <image name="GameButtonGray" width="1280" height="640"/>
-        <image name="Health" width="240" height="240"/>
-        <image name="JabbRGem" width="300" height="300"/>
-        <image name="LoadingSymbolGreen" width="240" height="240"/>
-        <image name="TabBarIconCube" width="24" height="24"/>
-        <image name="TabBarIconMap" width="24" height="24"/>
-        <image name="TabBarIconPlay" width="24" height="24"/>
-        <image name="TabBarIconStats" width="24" height="24"/>
-        <image name="TripleCheckSmall" width="90" height="51"/>
+        <image name="alert-backdrop-gray" width="1280" height="1280"/>
+        <image name="align-icon" width="210" height="120"/>
+        <image name="arrow-left" width="270" height="270"/>
+        <image name="arrow-right" width="270" height="270"/>
+        <image name="avatar-default" width="253" height="299"/>
+        <image name="button-sharp-gray" width="1280" height="640"/>
+        <image name="connected" width="320" height="320"/>
+        <image name="fitbit" width="480" height="480"/>
+        <image name="friends-icon" width="320" height="320"/>
+        <image name="jabbrgem" width="300" height="300"/>
+        <image name="pending" width="480" height="480"/>
+        <image name="raised-square-blue" width="640" height="640"/>
+        <image name="raised-square-cyan" width="640" height="640"/>
+        <image name="raised-square-gray" width="640" height="640"/>
+        <image name="raised-square-green" width="640" height="640"/>
+        <image name="raised-square-magenta" width="640" height="640"/>
+        <image name="raised-square-red" width="640" height="640"/>
+        <image name="raised-square-yellow" width="640" height="640"/>
+        <image name="tab-icon-cube" width="24" height="24"/>
+        <image name="tab-icon-map" width="24" height="24"/>
+        <image name="tab-icon-play" width="24" height="24"/>
+        <image name="tab-icon-stats" width="24" height="24"/>
     </resources>
 </document>

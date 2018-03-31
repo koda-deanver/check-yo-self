@@ -55,8 +55,11 @@ final class CubeViewController: SkinnedViewController {
         gemLabel.textColor = User.current.favoriteColor.uiColor
         
         userBackdrop.image = User.current.favoriteColor.alertBackdrop
+        
         let avatar = AvatarManager.shared.getAvatar(for: User.current)
-        userImage.setImage(avatar.image, for: .normal)
+        let image = CameraManager.shared.savedImage ?? avatar.image
+        userImage.setImage(image, for: .normal)
+        
         userLabel.text = User.current.displayName
         userLabel.font = UIFont(name: Font.heavy, size: Font.largeSize)
         
@@ -82,7 +85,7 @@ final class CubeViewController: SkinnedViewController {
     private func setupMiniButtons() {
         
         let buttons = [knowledgeBaseButton, profileButton, friendsButton, connectionsButton]
-        let buttonImages = [#imageLiteral(resourceName: "KnowledgeBaseIcon"), #imageLiteral(resourceName: "ProfileIcon"), #imageLiteral(resourceName: "FriendsIcon"), #imageLiteral(resourceName: "ConnectionsIcon")]
+        let buttonImages = [#imageLiteral(resourceName: "knowledge-base-icon"), #imageLiteral(resourceName: "profile-icon"), #imageLiteral(resourceName: "friends-icon"), #imageLiteral(resourceName: "connections-icon")]
         
         for (index, button) in buttons.enumerated() {
             

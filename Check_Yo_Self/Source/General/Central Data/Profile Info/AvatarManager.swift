@@ -52,28 +52,28 @@ class AvatarManager {
     // MARK: - Private Members -
     
     /// Currently used as default avatar.
-    private let genericMaleAvatar = Avatar(#imageLiteral(resourceName: "Freeform2"), name: "Generic Avatar", discipline: "Adjust your profile to get a cutomized avatar.", genre: .general, identity: .unknown)
+    private let genericMaleAvatar = Avatar(#imageLiteral(resourceName: "avatar-generic-male"), name: "Generic Avatar", discipline: "Adjust your profile to get a cutomized avatar.", genre: .general, identity: .unknown)
     /// Not currently used.
-    private let genericFemaleAvatar = Avatar(#imageLiteral(resourceName: "Freeform1"), name: "Generic Avatar", discipline: "Adjust your profile to get a cutomized avatar.", genre: .general, identity: .unknown)
+    private let genericFemaleAvatar = Avatar(#imageLiteral(resourceName: "avatar-generic-female"), name: "Generic Avatar", discipline: "Adjust your profile to get a cutomized avatar.", genre: .general, identity: .unknown)
     
     private let maleAvatars: [Avatar] = [
         
-        Avatar(#imageLiteral(resourceName: "CRMacintosh_Architect"), name: "CR Macintosh", discipline: "Architect", genre: .realEstate, identity: .straightMale),
-        Avatar(#imageLiteral(resourceName: "ChadGutstein_Machinima"), name: "Chad Gutstein", discipline: "Machinima", genre: .selling, identity: .straightMale),
-        Avatar(#imageLiteral(resourceName: "OskarEustice_Storyteller"), name: "Oscar Eustice", discipline: "Storyteller", genre: .live, identity: .straightMale),
-        Avatar(#imageLiteral(resourceName: "DannyMeyer_Restauranteur"), name: "Danny Meyer", discipline: "Restauranteur", genre: .foodie, identity: .straightMale),
-        Avatar(#imageLiteral(resourceName: "TylerOakley_Publisher"), name: "Tyler Oakley", discipline: "Publisher", genre: .publications, identity: .straightMale),
-        Avatar(#imageLiteral(resourceName: "AaronSorkin_Screenwriter"), name: "Aaron Sorkin", discipline: "Screenwriter", genre: .lensed, identity: .straightMale)
+        Avatar(#imageLiteral(resourceName: "avatar-cr-macintosh"), name: "CR Macintosh", discipline: "Architect", genre: .realEstate, identity: .straightMale),
+        Avatar(#imageLiteral(resourceName: "avatar-chad-gutstein"), name: "Chad Gutstein", discipline: "Machinima", genre: .selling, identity: .straightMale),
+        Avatar(#imageLiteral(resourceName: "avatar-oscar-eustice"), name: "Oscar Eustice", discipline: "Storyteller", genre: .live, identity: .straightMale),
+        Avatar(#imageLiteral(resourceName: "avatar-danny-meyer"), name: "Danny Meyer", discipline: "Restauranteur", genre: .foodie, identity: .straightMale),
+        Avatar(#imageLiteral(resourceName: "avatar-tyler-oakley"), name: "Tyler Oakley", discipline: "Publisher", genre: .publications, identity: .straightMale),
+        Avatar(#imageLiteral(resourceName: "avatar-aaron-sorkin"), name: "Aaron Sorkin", discipline: "Screenwriter", genre: .lensed, identity: .straightMale)
     ]
     
     private let femaleAvatars: [Avatar] = [
         
-        Avatar(#imageLiteral(resourceName: "Zida_Architect"), name: "Zida", discipline: "Architect", genre: .realEstate, identity: .straightFemale),
-        Avatar(#imageLiteral(resourceName: "ChelseaClinton_Philanthropist"), name: "Chelsea Clinton", discipline: "Philanthropist", genre: .selling, identity: .straightFemale),
-        Avatar(#imageLiteral(resourceName: "Beyonce_Publisher"), name: "Beyonce", discipline: "Publisher", genre: .live, identity: .straightFemale),
-        Avatar(#imageLiteral(resourceName: "AliceWaters_Foodie"), name: "Alice Waters", discipline: "Foodie", genre: .foodie, identity: .straightFemale),
-        Avatar(#imageLiteral(resourceName: "AliLew_Gamer"), name: "Ali Lew", discipline: "Gamer", genre: .publications, identity: .straightFemale),
-        Avatar(#imageLiteral(resourceName: "TinaFey_Writer"), name: "Tina Fey", discipline: "Writer", genre: .lensed, identity: .straightFemale)
+        Avatar(#imageLiteral(resourceName: "avatar-zida"), name: "Zida", discipline: "Architect", genre: .realEstate, identity: .straightFemale),
+        Avatar(#imageLiteral(resourceName: "avatar-chelsea-clinton"), name: "Chelsea Clinton", discipline: "Philanthropist", genre: .selling, identity: .straightFemale),
+        Avatar(#imageLiteral(resourceName: "avatar-beyonce"), name: "Beyonce", discipline: "Publisher", genre: .live, identity: .straightFemale),
+        Avatar(#imageLiteral(resourceName: "avatar-alice-waters"), name: "Alice Waters", discipline: "Foodie", genre: .foodie, identity: .straightFemale),
+        Avatar(#imageLiteral(resourceName: "avatar-ali-lew"), name: "Ali Lew", discipline: "Gamer", genre: .publications, identity: .straightFemale),
+        Avatar(#imageLiteral(resourceName: "avatar-tina-fey"), name: "Tina Fey", discipline: "Writer", genre: .lensed, identity: .straightFemale)
     ]
     
     // MARK: - Public Methods -

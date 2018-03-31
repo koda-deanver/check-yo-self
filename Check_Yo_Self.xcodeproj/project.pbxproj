@@ -30,6 +30,7 @@
 		138BF03220328D9E00119A52 /* BSGFacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF03120328D9E00119A52 /* BSGFacebookService.swift */; };
 		138BF0372032B25300119A52 /* SkinnedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF0362032B25300119A52 /* SkinnedViewController.swift */; };
 		138BF03A2032B2E800119A52 /* ProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BF0392032B2E800119A52 /* ProfileInfo.swift */; };
+		1396C29B2066E84500694B92 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396C29A2066E84500694B92 /* CameraManager.swift */; };
 		13C099A8202D865100E356D5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A7202D865100E356D5 /* ProfileViewController.swift */; };
 		13C099AA202D886200E356D5 /* DropdownMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A9202D886200E356D5 /* DropdownMenuCell.swift */; };
 		13E5ACF62026150A00C92237 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E5ACF52026150A00C92237 /* CustomTabBar.swift */; };
@@ -102,6 +103,7 @@
 		138BF03120328D9E00119A52 /* BSGFacebookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSGFacebookService.swift; sourceTree = "<group>"; };
 		138BF0362032B25300119A52 /* SkinnedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinnedViewController.swift; sourceTree = "<group>"; };
 		138BF0392032B2E800119A52 /* ProfileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfo.swift; sourceTree = "<group>"; };
+		1396C29A2066E84500694B92 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		13C099A7202D865100E356D5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		13C099A9202D886200E356D5 /* DropdownMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownMenuCell.swift; sourceTree = "<group>"; };
 		13E5ACF52026150A00C92237 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				136246D0204FBF6300778209 /* HealthKitManager.swift */,
 				1317BE7A20524F2A0095F0BB /* FitbitManager.swift */,
 				134DA2E7205CB10900FD4940 /* LocationManager.swift */,
+				1396C29A2066E84500694B92 /* CameraManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				4AADEAD61E30826600C062B5 /* SyncingViewController.swift in Sources */,
 				134DA2F12060D49B00FD4940 /* GameStatCell.swift in Sources */,
 				4A8346B01E203B6200BAF8F9 /* MapViewController.swift in Sources */,
+				1396C29B2066E84500694B92 /* CameraManager.swift in Sources */,
 				4A8346A81E203B6200BAF8F9 /* Question.swift in Sources */,
 				134D3CF2205A413E00D11AB4 /* SpeechManager.swift in Sources */,
 				4A8346AF1E203B6200BAF8F9 /* LoginViewController.swift in Sources */,
@@ -903,7 +907,7 @@
 				INFOPLIST_FILE = Check_Yo_Self/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.thematics.checkyoself;
+				PRODUCT_BUNDLE_IDENTIFIER = net.thematics.checkyoself0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
 				SWIFT_VERSION = 4.0;
@@ -927,7 +931,7 @@
 				INFOPLIST_FILE = Check_Yo_Self/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.thematics.checkyoself;
+				PRODUCT_BUNDLE_IDENTIFIER = net.thematics.checkyoself0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
 				SWIFT_VERSION = 4.0;

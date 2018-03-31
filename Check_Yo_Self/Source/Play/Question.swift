@@ -65,12 +65,12 @@ enum QuestionType: String {
     var image: UIImage? {
         switch self {
         case .profile: return nil
-        case .check: return #imageLiteral(resourceName: "TripleCheck")
-        case .brainstorm: return #imageLiteral(resourceName: "Brainstorm")
-        case .develop: return #imageLiteral(resourceName: "Develop")
-        case .align: return #imageLiteral(resourceName: "Align")
-        case .improve: return #imageLiteral(resourceName: "Improve")
-        case .make: return #imageLiteral(resourceName: "Make")
+        case .check: return #imageLiteral(resourceName: "check-icon")
+        case .brainstorm: return #imageLiteral(resourceName: "brainstorm-icon")
+        case .develop: return #imageLiteral(resourceName: "develop-icon")
+        case .align: return #imageLiteral(resourceName: "align-icon")
+        case .improve: return #imageLiteral(resourceName: "improve-icon")
+        case .make: return #imageLiteral(resourceName: "make-icon")
         }
     }
     

@@ -11,12 +11,15 @@ import Foundation
 // MARK: - Enumerations -
 
 // List of connection types.
-enum ConnectionType: String{
+enum ConnectionType: String {
+    
     case facebook = "Facebook"
     case healthKit = "HealthKit"
     case fitbit = "Fitbit"
-    case cube = "Cube"
     case maps = "Maps"
+    case camera = "Camera"
+    
+    case cube = "Cube"
     case musically = "Musically"
     case emotiv = "Emotiv"
     case occulus = "Occulus"
@@ -25,15 +28,16 @@ enum ConnectionType: String{
     /// Image to be displayed on connections screen.
     var image: UIImage? {
         switch self {
-        case .facebook: return #imageLiteral(resourceName: "Facebook")
-        case .healthKit: return #imageLiteral(resourceName: "Health")
-        case .fitbit: return #imageLiteral(resourceName: "Fitbit")
-        case .maps: return #imageLiteral(resourceName: "Maps")
+        case .facebook: return #imageLiteral(resourceName: "facebook")
+        case .healthKit: return #imageLiteral(resourceName: "health")
+        case .fitbit: return #imageLiteral(resourceName: "fitbit")
+        case .maps: return #imageLiteral(resourceName: "maps")
+        case .camera: return #imageLiteral(resourceName: "maps")
         default: return nil
         }
     }
     
-    static var existing: [ConnectionType] = [.facebook, .healthKit, .fitbit, .maps]
+    static var existing: [ConnectionType] = [.facebook, .healthKit, .fitbit, .maps, .camera]
 }
 
 /// Every possible state for *ConnectionView*.

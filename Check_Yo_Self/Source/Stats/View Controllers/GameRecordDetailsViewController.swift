@@ -76,22 +76,22 @@ final class GameRecordDetailsViewController: SkinnedViewController {
         
         let gems = gameRecord.gemsEarned
         let gemValue = gems >= 0 ? "+\(gems)" : "-\(gems)"
-        let gemStat = GameStat(image: #imageLiteral(resourceName: "JabbRGem"), name: "Gems Earned", value: gemValue)
+        let gemStat = GameStat(image: #imageLiteral(resourceName: "jabbrgem"), name: "Gems Earned", value: gemValue)
         
-        let startTimeStat = GameStat(image: #imageLiteral(resourceName: "TabBarIconStats"), name: "Started", value: dateFormatter.string(from: gameRecord.startTime))
-        let endTimeStat = GameStat(image: #imageLiteral(resourceName: "TabBarIconStats"), name: "Ended", value: dateFormatter.string(from: gameRecord.endTime))
+        let startTimeStat = GameStat(image: #imageLiteral(resourceName: "tab-icon-stats"), name: "Started", value: dateFormatter.string(from: gameRecord.startTime))
+        let endTimeStat = GameStat(image: #imageLiteral(resourceName: "tab-icon-stats"), name: "Ended", value: dateFormatter.string(from: gameRecord.endTime))
         
         gameStats += [gemStat, startTimeStat, endTimeStat]
         
         if let steps = gameRecord.steps {
-            gameStats.append(GameStat(image: #imageLiteral(resourceName: "Health"), name: "Daily Steps", value: String(steps)))
+            gameStats.append(GameStat(image: #imageLiteral(resourceName: "health"), name: "Daily Steps", value: String(steps)))
         }
         
         if let heartData = gameRecord.heartData {
-            let heartRateStat = GameStat(image: #imageLiteral(resourceName: "Fitbit"), name: "Resting Heart Rate", value: String(heartData.restingHeartRate))
-            let fatBurnMinutesStat = GameStat(image: #imageLiteral(resourceName: "Fitbit"), name: "Fat Burn Minutes", value: String(heartData.fatBurnMinutes))
-            let cardioMinutesStat = GameStat(image: #imageLiteral(resourceName: "Fitbit"), name: "Cardio Minutes", value: String(heartData.cardioMinutes))
-            let peakMinutesStat = GameStat(image: #imageLiteral(resourceName: "Fitbit"), name: "Peak Minutes", value: String(heartData.peakMinutes))
+            let heartRateStat = GameStat(image: #imageLiteral(resourceName: "fitbit"), name: "Resting Heart Rate", value: String(heartData.restingHeartRate))
+            let fatBurnMinutesStat = GameStat(image: #imageLiteral(resourceName: "fitbit"), name: "Fat Burn Minutes", value: String(heartData.fatBurnMinutes))
+            let cardioMinutesStat = GameStat(image: #imageLiteral(resourceName: "fitbit"), name: "Cardio Minutes", value: String(heartData.cardioMinutes))
+            let peakMinutesStat = GameStat(image: #imageLiteral(resourceName: "fitbit"), name: "Peak Minutes", value: String(heartData.peakMinutes))
             
             gameStats += [heartRateStat, fatBurnMinutesStat, cardioMinutesStat, peakMinutesStat]
         }
