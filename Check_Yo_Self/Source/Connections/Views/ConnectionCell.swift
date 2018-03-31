@@ -54,7 +54,7 @@ class ConnectionCell: UICollectionViewCell {
     ///
     func style(for state: ConnectionState) {
       
-        let backgroundImage = (connection.state == .connected) ? #imageLiteral(resourceName: "ConnectionBackdropGreen") : #imageLiteral(resourceName: "ConnectionBackdropGray")
+        let backgroundImage = (connection.state == .connected) ? #imageLiteral(resourceName: "raised-square-green") : #imageLiteral(resourceName: "raised-square-gray")
         backdropButton.setBackgroundImage(backgroundImage, for: .normal)
         backdropButton.alpha = (state == .pending) ? 0.5 : 1.0
         connectionImage.alpha = (state == .pending) ? 0.5 : 1.0

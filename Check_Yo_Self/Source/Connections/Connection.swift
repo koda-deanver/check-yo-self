@@ -28,11 +28,11 @@ enum ConnectionType: String {
     /// Image to be displayed on connections screen.
     var image: UIImage? {
         switch self {
-        case .facebook: return #imageLiteral(resourceName: "Facebook")
-        case .healthKit: return #imageLiteral(resourceName: "Health")
-        case .fitbit: return #imageLiteral(resourceName: "Fitbit")
-        case .maps: return #imageLiteral(resourceName: "Maps")
-        case .camera: return #imageLiteral(resourceName: "DefaultUserPic")
+        case .facebook: return #imageLiteral(resourceName: "facebook")
+        case .healthKit: return #imageLiteral(resourceName: "health")
+        case .fitbit: return #imageLiteral(resourceName: "fitbit")
+        case .maps: return #imageLiteral(resourceName: "maps")
+        case .camera: return #imageLiteral(resourceName: "maps")
         default: return nil
         }
     }

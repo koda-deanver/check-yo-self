@@ -18,39 +18,39 @@ enum CubeColor: String {
     /// The background image for alerts.
     var alertBackdrop: UIImage {
         switch self {
-        case .red: return #imageLiteral(resourceName: "AlertBackdropRed")
-        case .green: return #imageLiteral(resourceName: "AlertBackdropGreen")
-        case .blue: return #imageLiteral(resourceName: "AlertBackdropBlue")
-        case .cyan: return #imageLiteral(resourceName: "AlertBackdropCyan")
-        case .magenta: return #imageLiteral(resourceName: "AlertBackdropMagenta")
-        case .yellow: return #imageLiteral(resourceName: "AlertBackdropYellow")
-        case .none: return #imageLiteral(resourceName: "AlertBackdropGray")
+        case .red: return #imageLiteral(resourceName: "alert-backdrop-red")
+        case .green: return #imageLiteral(resourceName: "alert-backdrop-green")
+        case .blue: return #imageLiteral(resourceName: "alert-backdrop-blue")
+        case .cyan: return #imageLiteral(resourceName: "alert-backdrop-cyan")
+        case .magenta: return #imageLiteral(resourceName: "alert-backdrop-magenta")
+        case .yellow: return #imageLiteral(resourceName: "alert-backdrop-yellow")
+        case .none: return #imageLiteral(resourceName: "alert-backdrop-gray")
         }
     }
     
     /// The background image for connection buttons.
     var connectionBackdrop: UIImage {
         switch self {
-        case .red: return #imageLiteral(resourceName: "ConnectionBackdropRed")
-        case .green: return #imageLiteral(resourceName: "ConnectionBackdropGreen")
-        case .blue: return #imageLiteral(resourceName: "ConnectionBackdropBlue")
-        case .cyan: return #imageLiteral(resourceName: "ConnectionBackdropCyan")
-        case .magenta: return #imageLiteral(resourceName: "ConnectionBackdropMagenta")
-        case .yellow: return #imageLiteral(resourceName: "ConnectionBackdropYellow")
-        case .none: return #imageLiteral(resourceName: "ConnectionBackdropGray")
+        case .red: return #imageLiteral(resourceName: "raised-square-red")
+        case .green: return #imageLiteral(resourceName: "raised-square-green")
+        case .blue: return #imageLiteral(resourceName: "raised-square-blue")
+        case .cyan: return #imageLiteral(resourceName: "raised-square-cyan")
+        case .magenta: return #imageLiteral(resourceName: "raised-square-magenta")
+        case .yellow: return #imageLiteral(resourceName: "raised-square-yellow")
+        case .none: return #imageLiteral(resourceName: "raised-square-gray")
         }
     }
     
     /// The button image to display on alerts and in the game.
     var buttonImage: UIImage {
         switch self {
-        case .red: return #imageLiteral(resourceName: "GameButtonRed")
-        case .green: return #imageLiteral(resourceName: "GameButtonGreen")
-        case .blue: return #imageLiteral(resourceName: "GameButtonBlue")
-        case .cyan: return #imageLiteral(resourceName: "GameButtonCyan")
-        case .magenta: return #imageLiteral(resourceName: "GameButtonMagenta")
-        case .yellow: return #imageLiteral(resourceName: "GameButtonYellow")
-        case .none: return #imageLiteral(resourceName: "GameButtonGray")
+        case .red: return #imageLiteral(resourceName: "button-sharp-red")
+        case .green: return #imageLiteral(resourceName: "button-sharp-green")
+        case .blue: return #imageLiteral(resourceName: "button-sharp-blue")
+        case .cyan: return #imageLiteral(resourceName: "button-sharp-cyan")
+        case .magenta: return #imageLiteral(resourceName: "button-sharp-magenta")
+        case .yellow: return #imageLiteral(resourceName: "button-sharp-yellow")
+        case .none: return #imageLiteral(resourceName: "button-sharp-gray")
         }
     }
     
@@ -88,8 +88,8 @@ enum AgeGroup: String {
     /// Image to style skinned VC with.
     var backgroundImage: UIImage {
         switch self {
-        case .youth: return #imageLiteral(resourceName: "GradientWhite")
-        case .adult: return #imageLiteral(resourceName: "GradientBlack")
+        case .youth: return #imageLiteral(resourceName: "gradient-white")
+        case .adult: return #imageLiteral(resourceName: "gradient-black")
         }
     }
     

@@ -85,7 +85,7 @@ final class CubeViewController: SkinnedViewController {
     private func setupMiniButtons() {
         
         let buttons = [knowledgeBaseButton, profileButton, friendsButton, connectionsButton]
-        let buttonImages = [#imageLiteral(resourceName: "KnowledgeBaseIcon"), #imageLiteral(resourceName: "ProfileIcon"), #imageLiteral(resourceName: "FriendsIcon"), #imageLiteral(resourceName: "ConnectionsIcon")]
+        let buttonImages = [#imageLiteral(resourceName: "knowledge-base-icon"), #imageLiteral(resourceName: "profile-icon"), #imageLiteral(resourceName: "friends-icon"), #imageLiteral(resourceName: "connections-icon")]
         
         for (index, button) in buttons.enumerated() {
             
