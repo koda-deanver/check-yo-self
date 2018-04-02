@@ -54,6 +54,12 @@ final class CubeViewController: SkinnedViewController {
         gemLabel.font = UIFont(name: Font.pure, size: Font.largeSize)
         gemLabel.textColor = User.current.favoriteColor.uiColor
         
+        if let questionTypeString = DataManager.shared.getLocalValue(for: .questionType), let questionType = QuestionType(rawValue: questionTypeString) {
+            phaseImage.image = questionType.image
+        } else {
+            phaseImage.image = #imageLiteral(resourceName: "check-icon")
+        }
+        
         userBackdrop.image = User.current.favoriteColor.alertBackdrop
         
         let avatar = AvatarManager.shared.getAvatar(for: User.current)
