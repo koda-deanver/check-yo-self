@@ -1,0 +1,6 @@
+framework module Pods_check_yo_self {
+  umbrella header "Pods-check-yo-self-umbrella.h"
+
+  export *
+  module * { export * }
+}
