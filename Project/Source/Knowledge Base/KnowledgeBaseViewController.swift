@@ -13,7 +13,7 @@ final class KnowledgeBaseViewController: SkinnedViewController {
     
     // MARK: - Private Members -
     
-    private let knowledgeBaseURLString = "https://www.collab101.com/terms"
+    private let knowledgeBaseURLString = "https://www.collab101.com"
     
     // MARK: - Outlets -
     
