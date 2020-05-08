@@ -42,7 +42,7 @@ class BSGFacebookService {
         
         let loginManager = LoginManager()
         
-        loginManager.logIn(readPermissions: [ReadPermission.publicProfile, ReadPermission.userFriends]) { loginResult in
+        loginManager.logIn(permissions: [Permission.publicProfile, Permission.userFriends]) { loginResult in
             switch loginResult {
             case .failed: failure?(.connectionFailed)
             case .cancelled: failure?(.cancelledAction)
@@ -87,19 +87,34 @@ class BSGFacebookService {
         
         // Request info
         let connection = GraphRequestConnection()
-        connection.add(GraphRequest(graphPath: "me", parameters: ["fields": "id, name"])) { httpResponse, result in
-            switch result {
-                
-            case .success(let response):
-                
-            guard let facebookDictionary = response.dictionaryValue, let facebookID = facebookDictionary["id"] as? String, let facebookName = facebookDictionary["name"] as? String else {
+        connection.add(GraphRequest(graphPath: "me", parameters: ["fields": "id, name"])) { httpResponse, result, error in
+            print("Response : \(String(describing: httpResponse))")
+            print("RESULT : \(String(describing: result))")
+            
+            if error != nil {
+                failure?(.connectionFailed)
+                return
+            }
+            
+            
+            guard let facebookDictionary = result as? [String: Any], let facebookID = facebookDictionary["id"] as? String, let facebookName = facebookDictionary["name"] as? String else {
                 failure?(.missingData)
                 return
             }
             completion((id: facebookID, name: facebookName))
-                
-            case .failed: failure?(.connectionFailed)
-            }
+            
+//            switch result {
+//
+//            case .success(let response):
+//
+//            guard let facebookDictionary = response.dictionaryValue, let facebookID = facebookDictionary["id"] as? String, let facebookName = facebookDictionary["name"] as? String else {
+//                failure?(.missingData)
+//                return
+//            }
+//            completion((id: facebookID, name: facebookName))
+//
+//            case .failed: failure?(.connectionFailed)
+//            }
         }
         connection.start()
     }
@@ -115,26 +130,50 @@ class BSGFacebookService {
         }
         
         let connection = GraphRequestConnection()
-        connection.add(GraphRequest(graphPath: "me", parameters: ["fields": "friends"])) { httpResponse, result in
-            switch result {
-            case .success(let response):
-                if let facebookDictionary = response.dictionaryValue{
-                    if let friendResponse = facebookDictionary["friends"] as? [String: Any]{
-                        if let friends = friendResponse["data"] as? [[String: Any]]{
+        connection.add(GraphRequest(graphPath: "me", parameters: ["fields": "friends"])) { httpResponse, result, error in
+            print("Response : \(String(describing: httpResponse))")
+            print("RESULT : \(String(describing: result))")
+            
+            if error != nil {
+                failure?(.connectionFailed)
+                return
+            }
+            
+            if let facebookDictionary = result as? [String: Any] {
+                if let friendResponse = facebookDictionary["friends"] as? [String: Any] {
+                    if let friends = friendResponse["data"] as? [[String: Any]] {
+                        
+                        var friendArray: [(id: String, name: String)] = []
+                        for friend in friends {
+                            guard let facebookID = friend["id"] as? String, let facebookName = friend["name"] as? String else { continue }
                             
-                            var friendArray: [(id: String, name: String)] = []
-                            for friend in friends{
-                                guard let facebookID = friend["id"] as? String, let facebookName = friend["name"] as? String else { continue }
-                                
-                                let friend = (id: facebookID, name: facebookName)
-                                friendArray.append(friend)
-                            }
-                            completion(friendArray)
+                            let friend = (id: facebookID, name: facebookName)
+                            friendArray.append(friend)
                         }
+                        completion(friendArray)
                     }
+                }
             }
-            case .failed: failure?(.connectionFailed)
-            }
+            
+//            switch result {
+//            case .success(let response):
+//                if let facebookDictionary = response.dictionaryValue{
+//                    if let friendResponse = facebookDictionary["friends"] as? [String: Any]{
+//                        if let friends = friendResponse["data"] as? [[String: Any]]{
+//
+//                            var friendArray: [(id: String, name: String)] = []
+//                            for friend in friends{
+//                                guard let facebookID = friend["id"] as? String, let facebookName = friend["name"] as? String else { continue }
+//
+//                                let friend = (id: facebookID, name: facebookName)
+//                                friendArray.append(friend)
+//                            }
+//                            completion(friendArray)
+//                        }
+//                    }
+//            }
+//            case .failed: failure?(.connectionFailed)
+//            }
         }
         connection.start()
     }

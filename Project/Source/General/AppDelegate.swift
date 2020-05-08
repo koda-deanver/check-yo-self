@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.isStatusBarHidden = true
         
         //Facebook
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions:launchOptions)
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions:launchOptions)
        
         // Initialize the Chartboost library.
         Chartboost.start(withAppId: "5882482d43150f4771a3bdf1", appSignature: "e6c3203b65f9cbe700de0bf1208656fea12ebe8f", delegate: nil)
@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // Facebook
             case "fb168489043664341":
-                let handled: Bool = FBSDKApplicationDelegate.sharedInstance().application(application, open: url as URL!, sourceApplication: sourceApplication, annotation: annotation)
+                let handled: Bool = ApplicationDelegate.shared.application(application, open: url as URL!, sourceApplication: sourceApplication, annotation: annotation)
                 return handled
             
         default:

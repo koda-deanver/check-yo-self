@@ -124,7 +124,7 @@ final class CreateNewAccountViewController: GeneralViewController {
                     return
                 }
                 
-                User.current = User(withID: user.uid, email: email, firstName: firstName, lastName: lastName)
+                User.current = User(withID: user.user.uid, email: email, firstName: firstName, lastName: lastName)
                 User.current.gamertag = gamertag
                 
                 self.performSegue(withIdentifier: "showProfile", sender: self)

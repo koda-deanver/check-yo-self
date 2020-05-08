@@ -32,7 +32,7 @@ final class LoginFlowManager {
         
         Auth.auth().signIn(withEmail: email, password: password, completion: { user, error in
             
-            guard let uid = user?.uid, error == nil else {
+            guard let uid = user?.user.uid, error == nil else {
                 failure?(error?.localizedDescription ?? "Login Failed.")
                 return
             }
