@@ -31,6 +31,7 @@ final class SyncingViewController: GeneralViewController {
         
         loadConfiguration() {
             BSGCommon.stopSound()
+            NotificationCenter.default.post(name: NSNotification.Name("synching_dismissed"), object: nil)
             self.dismiss(animated: true, completion: nil)
         }
     }

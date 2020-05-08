@@ -24,6 +24,8 @@ class BackgroundViewController: GeneralViewController {
         
         super.viewDidLoad()
         setupBackgroundImage()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didDismissSynching(notification:)), name: NSNotification.Name("synching_dismissed"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,7 +36,10 @@ class BackgroundViewController: GeneralViewController {
             performSegue(withIdentifier: "showSyncing", sender: self)
             didSync = true
         } else {
-            performSegue(withIdentifier: "showLogin", sender: self)
+//            performSegue(withIdentifier: "showLogin", sender: self)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "showLogin", sender: self)
+            }
         }
     }
     
@@ -51,5 +56,10 @@ class BackgroundViewController: GeneralViewController {
         
         self.view.addSubview(backgroundImageView)
         self.view.sendSubview(toBack: backgroundImageView)
+    }
+    
+    
+    @objc private func didDismissSynching(notification: NSNotification) {
+        self.viewDidAppear(true)
     }
 }
