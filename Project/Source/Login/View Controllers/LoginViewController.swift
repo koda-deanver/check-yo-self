@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GoogleSignIn
+import FBSDKLoginKit
 
 ///  Initial login screen for app. User can either enter credeentials to log in or create a new account.
 final class LoginViewController: GeneralViewController {
@@ -19,6 +21,9 @@ final class LoginViewController: GeneralViewController {
     @IBOutlet private weak var passwordTextField: TextField!
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var createAccountButton: UIButton!
+    @IBOutlet weak var forgotPassButton: UIButton!
+    @IBOutlet weak var facebookBtn: UIButton!
+    @IBOutlet weak var googleBtn: UIButton!
     
     // MARK: - Lifecycle -
     
@@ -43,6 +48,7 @@ final class LoginViewController: GeneralViewController {
         loginButton.isEnabled = false
         
         createAccountButton.titleLabel?.font = UIFont(name: Font.heavy, size: Font.mediumSize)
+        forgotPassButton.titleLabel?.font = UIFont(name: Font.heavy, size: Font.mediumSize)
     }
     
     /// To prevent temporarily showing this view behind the next.
@@ -97,6 +103,34 @@ final class LoginViewController: GeneralViewController {
         })
     }
     
+    private func checkUserOnFirebaseAndLogin(result: [String:Any]){
+        guard let uid = result["userId"] as? String else {
+            self.hideProgressHUD()
+            self.showAlert(BSGCustomAlert(message: "User not found"))
+            return
+        }
+        
+        DataManager.shared.getUsers(matching: [(field: .uid, value: uid)], success: { users in
+            self.hideProgressHUD()
+            
+            guard users.count == 1 else {
+                
+                let errorText = (users.count == 0) ? "Could not find data for user." : "Uh-oh Something is wrong with your account."
+                self.showAlert(BSGCustomAlert(message: errorText))
+                return
+            }
+            
+            let user = users[0]
+            User.current = user
+            
+            self.performSegue(withIdentifier: "showCubeScreen", sender: self)
+            
+        }, failure: { err in
+            self.hideProgressHUD()
+            self.showAlert(BSGCustomAlert(message: err))
+        })
+    }
+    
     ///
     /// Clears username and passcode text fields.
     ///
@@ -127,4 +161,48 @@ extension LoginViewController {
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "showCreateNewAccount", sender: self)
     }
+    
+    @IBAction func forgotPassButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "forgotPassScreen", sender: self)
+    }
+    
+    @IBAction func loginWithFacebook(_ sender: UIButton) {
+        showProgressHUD()
+        DataManager.shared.loginOrSignupWithFacebook(success: { (userInfo) in
+        print("SERUBF \(userInfo)")
+            DataManager.shared.registerFBOnFirebase(result: userInfo, completion: { result in
+                self.checkUserOnFirebaseAndLogin(result: result)
+            }) { (err) in
+                self.hideProgressHUD()
+                self.showAlert(BSGCustomAlert(message: err))
+            }
+        }, failure: { err in
+            self.hideProgressHUD()
+            self.showAlert(BSGCustomAlert(message: err))
+        })
+    }
+    
+    @IBAction func loginWithGoogle(_ sender: UIButton) {
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.delegate = self
+        GIDSignIn.sharedInstance().signIn()
+    }
+}
+
+extension LoginViewController : GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+            self.showAlert(BSGCustomAlert(message: error.localizedDescription))
+        } else {
+            DataManager.shared.registerGoogleOnFirebase(user: user, completion: { (result) in
+                print("HEY \(result)")
+                self.checkUserOnFirebaseAndLogin(result: result)
+            }) { (err) in
+                self.showAlert(BSGCustomAlert(message: err))
+            }
+        }
+    }
+    
+    
 }

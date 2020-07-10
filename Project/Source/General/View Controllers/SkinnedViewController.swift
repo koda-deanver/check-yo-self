@@ -28,7 +28,6 @@ class SkinnedViewController: GeneralViewController {
     /// Style with correct backdrop based on age.
     ///
     private func setupBackdrop() {
-        
         if backgroundImageView != nil { backgroundImageView?.removeFromSuperview() }
         
         backgroundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.screenWidth, height: self.screenHeight))

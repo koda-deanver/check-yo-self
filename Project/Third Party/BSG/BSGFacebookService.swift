@@ -42,7 +42,7 @@ class BSGFacebookService {
         
         let loginManager = LoginManager()
         
-        loginManager.logIn(permissions: [Permission.publicProfile, Permission.userFriends]) { loginResult in
+        loginManager.logIn(permissions: [Permission.email, Permission.publicProfile, Permission.userFriends]) { loginResult in
             switch loginResult {
             case .failed: failure?(.connectionFailed)
             case .cancelled: failure?(.cancelledAction)
@@ -119,6 +119,35 @@ class BSGFacebookService {
         connection.start()
     }
     
+    ///get user data to use for Login/Signup with FB for Login Screen
+    static func getUserforLoginOrSignup(completion: @escaping ([String:Any]) -> Void, failure: BSGFacebookErrorClosure? = nil){
+            
+            guard AccessToken.current != nil else {
+                failure?(.missingAccessToken)
+                return
+            }
+            
+            // Request info
+            let connection = GraphRequestConnection()
+            connection.add(GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture, email"])) { httpResponse, result, error in
+                print("Response : \(String(describing: httpResponse))")
+                print("RESULT : \(String(describing: result))")
+                
+                if error != nil {
+                    failure?(.connectionFailed)
+                    return
+                }
+                
+                
+                guard let facebookDictionary = result as? [String: Any] else {
+                    failure?(.missingData)
+                    return
+                }
+                completion(facebookDictionary)
+            }
+            connection.start()
+        }
+    
     ///
     /// Get friends from FB.
     ///
@@ -151,9 +180,9 @@ class BSGFacebookService {
                             friendArray.append(friend)
                         }
                         completion(friendArray)
-                    }
-                }
-            }
+                    } else { failure?(.connectionFailed) }
+                } else { failure?(.connectionFailed) }
+            } else { failure?(.missingData) }
             
 //            switch result {
 //            case .success(let response):
@@ -176,6 +205,28 @@ class BSGFacebookService {
 //            }
         }
         connection.start()
+    }
+    
+    static func getFBUserData(completion: @escaping ([String: Any]) -> Void, failure: BSGFacebookErrorClosure? = nil) {
+        if(AccessToken.current != nil){
+            let connection = GraphRequestConnection()
+            connection.add(GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture, email"])) { httpResponse, result, error in
+                if error != nil {
+                    failure?(.connectionFailed)
+                    return
+                }
+            
+                guard let facebookDictionary = result as? [String: Any] else {
+                    failure?(.missingData)
+                    return
+                }
+                
+                completion(facebookDictionary)
+            }
+            connection.start()
+        } else {
+            failure?(.missingAccessToken)
+        }
     }
 }
 

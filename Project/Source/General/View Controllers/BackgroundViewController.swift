@@ -37,9 +37,9 @@ class BackgroundViewController: GeneralViewController {
             didSync = true
         } else {
 //            performSegue(withIdentifier: "showLogin", sender: self)
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "showLogin", sender: self)
-            }
+            DispatchQueue.main.asyncAfter(deadline:.now() + 1.5, execute: {
+               self.performSegue(withIdentifier:"showLogin",sender: self)
+            })
         }
     }
     
@@ -60,6 +60,8 @@ class BackgroundViewController: GeneralViewController {
     
     
     @objc private func didDismissSynching(notification: NSNotification) {
-        self.viewDidAppear(true)
+        if #available(iOS 13, *){
+            self.viewDidAppear(true)
+        }
     }
 }

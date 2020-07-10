@@ -33,7 +33,6 @@
 		1396C29B2066E84500694B92 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396C29A2066E84500694B92 /* CameraManager.swift */; };
 		13C099A8202D865100E356D5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A7202D865100E356D5 /* ProfileViewController.swift */; };
 		13C099AA202D886200E356D5 /* DropdownMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A9202D886200E356D5 /* DropdownMenuCell.swift */; };
-		13D71F0A20700AA500651D53 /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13D71F0920700AA500651D53 /* Chartboost.framework */; };
 		13E5ACF62026150A00C92237 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E5ACF52026150A00C92237 /* CustomTabBar.swift */; };
 		4A06B5F81E709F1B008BDBE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A06B5F71E709F1B008BDBE1 /* GoogleService-Info.plist */; };
 		4A06B5FC1E713C82008BDBE1 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B5FB1E713C82008BDBE1 /* Connection.swift */; };
@@ -76,6 +75,14 @@
 		4AFB6CAF1E31545700CB8586 /* hook-up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4AFB6CAB1E31545700CB8586 /* hook-up.mp3 */; };
 		4AFB6CB01E31545700CB8586 /* chorus-vocals.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4AFB6CAC1E31545700CB8586 /* chorus-vocals.mp3 */; };
 		4AFB6CB11E31545700CB8586 /* chorus-instrumental.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4AFB6CAD1E31545700CB8586 /* chorus-instrumental.mp3 */; };
+		8B0E4C4F24B30DDD00D6EEEF /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0E4C4E24B30DDD00D6EEEF /* WebKit.framework */; };
+		8B0E4C5824B3143100D6EEEF /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0E4C5724B3143100D6EEEF /* Chartboost.framework */; };
+		8B0E4C5A24B3191800D6EEEF /* ChartBoostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0E4C5924B3191800D6EEEF /* ChartBoostManager.swift */; };
+		8B15723124AEFC3400FC5683 /* OuraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B15723024AEFC3400FC5683 /* OuraManager.swift */; };
+		8B15723424AEFD9600FC5683 /* OuraAuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B15723324AEFD9600FC5683 /* OuraAuthenticationController.swift */; };
+		8B15723624AEFDB100FC5683 /* OuraAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B15723524AEFDB100FC5683 /* OuraAPI.swift */; };
+		8B15723824AF29C200FC5683 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B15723724AF29C200FC5683 /* AVFoundation.framework */; };
+		8B5ABA57249CB3B1000B1250 /* ForgotPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5ABA56249CB3B1000B1250 /* ForgotPassViewController.swift */; };
 		91D296EA20A2ECBA00B55E59 /* Pods_check_yo_self.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D296E920A2ECBA00B55E59 /* Pods_check_yo_self.framework */; };
 /* End PBXBuildFile section */
 
@@ -106,7 +113,6 @@
 		1396C29A2066E84500694B92 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		13C099A7202D865100E356D5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		13C099A9202D886200E356D5 /* DropdownMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownMenuCell.swift; sourceTree = "<group>"; };
-		13D71F0920700AA500651D53 /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chartboost.framework; path = Project/Frameworks/Chartboost.framework; sourceTree = "<group>"; };
 		13E5ACF52026150A00C92237 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		4A00258B1E36A52A00950990 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		4A06B5F71E709F1B008BDBE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -155,6 +161,14 @@
 		4AFB6CAC1E31545700CB8586 /* chorus-vocals.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "chorus-vocals.mp3"; sourceTree = "<group>"; };
 		4AFB6CAD1E31545700CB8586 /* chorus-instrumental.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "chorus-instrumental.mp3"; sourceTree = "<group>"; };
 		4D6A8F49780E00E06AA0BEA1 /* Pods-Check_Yo_Self.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Check_Yo_Self.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Check_Yo_Self/Pods-Check_Yo_Self.debug.xcconfig"; sourceTree = "<group>"; };
+		8B0E4C4E24B30DDD00D6EEEF /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		8B0E4C5724B3143100D6EEEF /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
+		8B0E4C5924B3191800D6EEEF /* ChartBoostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartBoostManager.swift; sourceTree = "<group>"; };
+		8B15723024AEFC3400FC5683 /* OuraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuraManager.swift; sourceTree = "<group>"; };
+		8B15723324AEFD9600FC5683 /* OuraAuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuraAuthenticationController.swift; sourceTree = "<group>"; };
+		8B15723524AEFDB100FC5683 /* OuraAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuraAPI.swift; sourceTree = "<group>"; };
+		8B15723724AF29C200FC5683 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8B5ABA56249CB3B1000B1250 /* ForgotPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassViewController.swift; sourceTree = "<group>"; };
 		91D296E920A2ECBA00B55E59 /* Pods_check_yo_self.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_check_yo_self.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93E32BA7DE5A16D1EA705790 /* Pods-check-yo-self.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-check-yo-self.release.xcconfig"; path = "Pods/Target Support Files/Pods-check-yo-self/Pods-check-yo-self.release.xcconfig"; sourceTree = "<group>"; };
 		A82CF04B01C2AFCBA26141E4 /* Pods-check-yo-self.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-check-yo-self.debug.xcconfig"; path = "Pods/Target Support Files/Pods-check-yo-self/Pods-check-yo-self.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,10 +181,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B0E4C4F24B30DDD00D6EEEF /* WebKit.framework in Frameworks */,
 				91D296EA20A2ECBA00B55E59 /* Pods_check_yo_self.framework in Frameworks */,
 				4A438D8A1E31EB9300C2253C /* CoreGraphics.framework in Frameworks */,
-				13D71F0A20700AA500651D53 /* Chartboost.framework in Frameworks */,
+				8B15723824AF29C200FC5683 /* AVFoundation.framework in Frameworks */,
 				4A438D881E31EB8D00C2253C /* Foundation.framework in Frameworks */,
+				8B0E4C5824B3143100D6EEEF /* Chartboost.framework in Frameworks */,
 				4A438D861E31EB8600C2253C /* UIKit.framework in Frameworks */,
 				4A438D841E31EB8000C2253C /* StoreKit.framework in Frameworks */,
 				4A8346B71E203E4000BAF8F9 /* HealthKit.framework in Frameworks */,
@@ -189,6 +205,7 @@
 				1317BE7A20524F2A0095F0BB /* FitbitManager.swift */,
 				134DA2E7205CB10900FD4940 /* LocationManager.swift */,
 				1396C29A2066E84500694B92 /* CameraManager.swift */,
+				8B15723024AEFC3400FC5683 /* OuraManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -272,6 +289,7 @@
 				13523AF72011C52B00CDF58C /* CreateNewAccountViewController.swift */,
 				4AADEAD51E30826600C062B5 /* SyncingViewController.swift */,
 				13C099A7202D865100E356D5 /* ProfileViewController.swift */,
+				8B5ABA56249CB3B1000B1250 /* ForgotPassViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -305,9 +323,11 @@
 		13E5ACE1202610F700C92237 /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				8B15723224AEFD7900FC5683 /* Oura */,
 				13E5ACDF202610C300C92237 /* BSG */,
 				4A83467F1E203B6200BAF8F9 /* FitBit */,
 				4AADEAD91E30887000C062B5 /* iOSDevCenters+GIF.swift */,
+				8B0E4C5924B3191800D6EEEF /* ChartBoostManager.swift */,
 			);
 			path = "Third Party";
 			sourceTree = "<group>";
@@ -511,8 +531,10 @@
 		4A8346B51E203E4000BAF8F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B0E4C5724B3143100D6EEEF /* Chartboost.framework */,
+				8B0E4C4E24B30DDD00D6EEEF /* WebKit.framework */,
+				8B15723724AF29C200FC5683 /* AVFoundation.framework */,
 				91D296E920A2ECBA00B55E59 /* Pods_check_yo_self.framework */,
-				13D71F0920700AA500651D53 /* Chartboost.framework */,
 				4A438D891E31EB9300C2253C /* CoreGraphics.framework */,
 				4A438D871E31EB8D00C2253C /* Foundation.framework */,
 				4A438D851E31EB8600C2253C /* UIKit.framework */,
@@ -547,6 +569,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8B15723224AEFD7900FC5683 /* Oura */ = {
+			isa = PBXGroup;
+			children = (
+				8B15723324AEFD9600FC5683 /* OuraAuthenticationController.swift */,
+				8B15723524AEFDB100FC5683 /* OuraAPI.swift */,
+			);
+			path = Oura;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -559,6 +590,7 @@
 				4A83465F1E20394D00BAF8F9 /* Frameworks */,
 				4A8346601E20394D00BAF8F9 /* Resources */,
 				372327873F8DDAAEB5EFC364 /* [CP] Embed Pods Frameworks */,
+				99BB7B5AF4D939AD14C6A85C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -581,7 +613,8 @@
 				TargetAttributes = {
 					4A8346611E20394D00BAF8F9 = {
 						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = W6FG9GRTG5;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -601,6 +634,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -642,12 +676,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-check-yo-self/Pods-check-yo-self-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
@@ -657,12 +693,14 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
@@ -673,6 +711,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-check-yo-self/Pods-check-yo-self-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99BB7B5AF4D939AD14C6A85C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-check-yo-self/Pods-check-yo-self-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-check-yo-self/Pods-check-yo-self-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CE6902CB6696D86C5072F0F4 /* [CP] Check Pods Manifest.lock */ = {
@@ -710,6 +766,7 @@
 				4AADEADA1E30887000C062B5 /* iOSDevCenters+GIF.swift in Sources */,
 				4A55D7101E79B6BB00EFB9B5 /* BSGCommon.swift in Sources */,
 				4A8346AA1E203B6200BAF8F9 /* CubeViewController.swift in Sources */,
+				8B15723124AEFC3400FC5683 /* OuraManager.swift in Sources */,
 				132042AD2010682300DCE39E /* DataManager.swift in Sources */,
 				4AADEAD61E30826600C062B5 /* SyncingViewController.swift in Sources */,
 				134DA2F12060D49B00FD4940 /* GameStatCell.swift in Sources */,
@@ -717,12 +774,14 @@
 				1396C29B2066E84500694B92 /* CameraManager.swift in Sources */,
 				4A8346A81E203B6200BAF8F9 /* Question.swift in Sources */,
 				134D3CF2205A413E00D11AB4 /* SpeechManager.swift in Sources */,
+				8B15723424AEFD9600FC5683 /* OuraAuthenticationController.swift in Sources */,
 				4A8346AF1E203B6200BAF8F9 /* LoginViewController.swift in Sources */,
 				4A8346B31E203B6200BAF8F9 /* GameRecordsViewController.swift in Sources */,
 				4A8346991E203B6200BAF8F9 /* AppDelegate.swift in Sources */,
 				138BF02E2031638C00119A52 /* TextField.swift in Sources */,
 				4A8346A41E203B6200BAF8F9 /* GameRecordCell.swift in Sources */,
 				136246CE204E66D400778209 /* ConnectionManager.swift in Sources */,
+				8B15723624AEFDB100FC5683 /* OuraAPI.swift in Sources */,
 				132042AF2010692800DCE39E /* User.swift in Sources */,
 				13523AF82011C52B00CDF58C /* CreateNewAccountViewController.swift in Sources */,
 				4AA2D3CC1E2FFC6F00DBE986 /* Configuration.swift in Sources */,
@@ -742,6 +801,7 @@
 				4A83469E1E203B6200BAF8F9 /* FitbitAPI.swift in Sources */,
 				4AA2D3A01E256A7D00DBE986 /* AvatarManager.swift in Sources */,
 				4A8346AE1E203B6200BAF8F9 /* KnowledgeBaseViewController.swift in Sources */,
+				8B5ABA57249CB3B1000B1250 /* ForgotPassViewController.swift in Sources */,
 				138BF0282031403900119A52 /* BSGCustomAlertController.swift in Sources */,
 				4A877CD01E889BED009CE752 /* FriendCell.swift in Sources */,
 				138BF03220328D9E00119A52 /* BSGFacebookService.swift in Sources */,
@@ -749,6 +809,7 @@
 				138BF0272031403900119A52 /* BSGCustomAlert.swift in Sources */,
 				4A877CD31E889D5C009CE752 /* FriendListViewController.swift in Sources */,
 				13523AFB2011E1E500CDF58C /* BackgroundViewController.swift in Sources */,
+				8B0E4C5A24B3191800D6EEEF /* ChartBoostManager.swift in Sources */,
 				1317BE7D205268D80095F0BB /* UINib+Extractor.swift in Sources */,
 				4A8346B11E203B6200BAF8F9 /* QuestionsViewController.swift in Sources */,
 				4A83469D1E203B6200BAF8F9 /* AuthenticationController.swift in Sources */,
@@ -823,7 +884,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -873,7 +934,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -886,20 +947,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A82CF04B01C2AFCBA26141E4 /* Pods-check-yo-self.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Project/check-yo-self.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 13;
+				DEVELOPMENT_TEAM = W6FG9GRTG5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Check_Yo_Self/Frameworks",
 					"$(PROJECT_DIR)/Project/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.thematics.checkyoself;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -913,20 +977,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 93E32BA7DE5A16D1EA705790 /* Pods-check-yo-self.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Project/check-yo-self.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 13;
+				DEVELOPMENT_TEAM = W6FG9GRTG5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Check_Yo_Self/Frameworks",
 					"$(PROJECT_DIR)/Project/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.thematics.checkyoself;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

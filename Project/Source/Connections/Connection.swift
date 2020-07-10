@@ -24,6 +24,7 @@ enum ConnectionType: String {
     case emotiv = "Emotiv"
     case occulus = "Occulus"
     case thingyverse = "Thingyverse"
+    case oura = "Oura"
     
     /// Image to be displayed on connections screen.
     var image: UIImage? {
@@ -33,11 +34,12 @@ enum ConnectionType: String {
         case .fitbit: return #imageLiteral(resourceName: "fitbit")
         case .maps: return #imageLiteral(resourceName: "maps")
         case .camera: return #imageLiteral(resourceName: "camera")
+        case .oura: return #imageLiteral(resourceName: "oura")
         default: return nil
         }
     }
     
-    static var existing: [ConnectionType] = [.facebook, .healthKit, .fitbit, .maps, .camera]
+    static var existing: [ConnectionType] = [.facebook, .healthKit, .fitbit, .maps, .camera, .oura]
 }
 
 /// Every possible state for *ConnectionView*.

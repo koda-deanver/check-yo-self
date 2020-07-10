@@ -57,6 +57,7 @@ final class ConnectionManager {
         case .fitbit: connectFitbit(connection: connection, viewController: viewController)
         case .maps: connectMaps(connection: connection, viewController: viewController)
         case .camera: connectCamera(connection: connection, viewController: viewController)
+        case .oura: connectOura(connection: connection, viewController: viewController)
         default: break
         }
     }
@@ -77,6 +78,7 @@ final class ConnectionManager {
         case .fitbit: explainFitbit(connection: connection, viewController: viewController)
         case .maps: explainMaps(connection: connection, viewController: viewController)
         case .camera: explainCamera(connection: connection, viewController: viewController)
+        case .oura: explainOura(connection: connection, viewController: viewController)
         default: break
         }
     }
@@ -96,6 +98,7 @@ final class ConnectionManager {
         case .fitbit: checkFitbitConnection(connection: connection)
         case .maps: checkMapsConnection(connection: connection)
         case .camera: checkCameraConnection(connection: connection)
+        case .oura: checkOuraConnection(connection: connection)
         default: break
         }
     }
@@ -109,7 +112,7 @@ final class ConnectionManager {
     /// - parameter isConnected: Bool indicating if connection has been established.
     ///
     private func actionComplete(_ connection: Connection, _ isConnected: Bool) {
-        
+        print("\(isConnected)")
         DispatchQueue.main.async {
             let newState: ConnectionState = isConnected ? .connected : .unconnected
             connection.state = newState
@@ -372,5 +375,34 @@ extension ConnectionManager {
     private func checkCameraConnection(connection: Connection) {
         let isConnected = CameraManager.shared.savedImage != nil
         actionComplete(connection, isConnected)
+    }
+}
+
+extension ConnectionManager {
+    
+    private func connectOura(connection: Connection, viewController: GeneralViewController) {
+        let alert = BSGCustomAlert(message: "Connect Oura?", options: [(text: "Connect", handler: {
+            
+            OuraManager.shared.login(from: viewController) { isConnected in
+                self.actionComplete(connection, isConnected)
+            }
+        }), (text: "Cancel", handler: { self.actionComplete(connection, false) })])
+        
+        viewController.showAlert(alert)
+    }
+    
+    private func explainOura(connection: Connection, viewController: GeneralViewController) {
+        let alert = BSGCustomAlert(message: "Your heart rate and daily activity boost your scores and earn gems!", options: [(text: "Cool", handler: {
+            self.actionComplete(connection, true)
+        })])
+        viewController.showAlert(alert)
+    }
+    
+    private func checkOuraConnection(connection: Connection) {
+        OuraManager.shared.getSleepInfo(forToday: true, success: { _ in
+            self.actionComplete(connection, true)
+        }, failure: { _ in
+            self.actionComplete(connection, false)
+        })
     }
 }

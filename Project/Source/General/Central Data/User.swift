@@ -13,14 +13,14 @@ import Foundation
 /// Fields that can be accessed on database.
 enum UserDatabaseField: String {
     
-    case uid = "uid"
+    case uid = "userId"
     case email = "email"
-    case firstName = "first-name"
-    case lastName = "last-name"
+    case firstName = "firstname"
+    case lastName = "lastname"
     
     case gems = "gems"
     
-    case gamertag = "gamertag"
+    case gamertag = "gamer-tag"
     case facebookID = "facebook-id"
     case facebookName = "facebook-name"
     
@@ -36,6 +36,8 @@ enum UserDatabaseField: String {
 class User {
     
     static var current: User!
+    
+    var hasProfileInfo : Bool = false
     
     // Required
     let uid: String
@@ -69,27 +71,39 @@ class User {
     
     init?(withSnapshot snapshot: [String: Any]) {
         
-        guard let uid = snapshot[UserDatabaseField.uid.rawValue] as? String, let email = snapshot[UserDatabaseField.email.rawValue] as? String, let firstName = snapshot[UserDatabaseField.firstName.rawValue] as? String, let lastName = snapshot[UserDatabaseField.lastName.rawValue] as? String, let gems = snapshot[UserDatabaseField.gems.rawValue] as? Int else { return nil }
+        guard let uid = snapshot[UserDatabaseField.uid.rawValue] as? String, let email = snapshot[UserDatabaseField.email.rawValue] as? String, let firstName = snapshot[UserDatabaseField.firstName.rawValue] as? String, let lastName = snapshot[UserDatabaseField.lastName.rawValue] as? String else { return nil }
         
         self.uid = uid
         self.email = email
         self.firstName = firstName
         self.lastName = lastName
-        self.gems = gems
+        self.gems = snapshot[UserDatabaseField.gems.rawValue] as? Int ?? 0
         
         gamertag = snapshot[UserDatabaseField.gamertag.rawValue] as? String
         facebookID = snapshot[UserDatabaseField.facebookID.rawValue] as? String
         facebookName = snapshot[UserDatabaseField.facebookName.rawValue] as? String
         
-        guard let profileInfo = snapshot["profile"] as? [String: Any] else { return nil }
+        let profileInfo = snapshot["profile"] as? [String: Any]
         
-        favoriteColor = CubeColor.color(fromString: profileInfo[UserDatabaseField.favoriteColor.rawValue] as? String)
-        
-        ageGroup = AgeGroup.ageGroup(fromString: profileInfo[UserDatabaseField.ageGroup.rawValue] as? String)
-        
-        favoriteGenre = CollabrationGenre.genre(fromString: profileInfo[UserDatabaseField.favoriteGenre.rawValue] as? String)
-        
-        identity = Identity.identity(fromString: profileInfo[UserDatabaseField.identity.rawValue] as? String)
+        favoriteColor = CubeColor.color(fromString: profileInfo == nil ? "none" : profileInfo![UserDatabaseField.favoriteColor.rawValue] as? String)
+
+        ageGroup = AgeGroup.ageGroup(fromString: profileInfo == nil ? "adult" : profileInfo![UserDatabaseField.ageGroup.rawValue] as? String)
+
+        favoriteGenre = CollabrationGenre.genre(fromString: profileInfo == nil ? "live" : profileInfo![UserDatabaseField.favoriteGenre.rawValue] as? String)
+
+        identity = Identity.identity(fromString: profileInfo == nil ? "unknown" : profileInfo![UserDatabaseField.identity.rawValue] as? String)
+            
+        hasProfileInfo = profileInfo == nil ? false : true
+//        }
+//        guard let profileInfo = snapshot["profile"] as? [String: Any] else { return nil }
+
+//        favoriteColor = CubeColor.color(fromString: profileInfo[UserDatabaseField.favoriteColor.rawValue] as? String)
+//
+//        ageGroup = AgeGroup.ageGroup(fromString: profileInfo[UserDatabaseField.ageGroup.rawValue] as? String)
+//
+//        favoriteGenre = CollabrationGenre.genre(fromString: profileInfo[UserDatabaseField.favoriteGenre.rawValue] as? String)
+//
+//        identity = Identity.identity(fromString: profileInfo[UserDatabaseField.identity.rawValue] as? String)
     }
     
     // MARK: - Public Methods -
@@ -100,6 +114,11 @@ class User {
     /// - returns: Dictionary representation of user.
     ///
     func toSnapshot() -> [String: Any] {
+        
+        print(favoriteColor.rawValue)
+        print(ageGroup.rawValue)
+        print(favoriteGenre.rawValue)
+        print(identity.rawValue)
         
         let profileSnapshot: [String: Any] = [
             UserDatabaseField.favoriteColor.rawValue : "\(favoriteColor.rawValue)",

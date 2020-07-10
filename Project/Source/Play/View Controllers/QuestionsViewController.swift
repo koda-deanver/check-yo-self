@@ -15,6 +15,7 @@ final class QuestionsViewController: SkinnedViewController {
     
     /// If true, a check game will be played instead of current question type set in *mapViewController*.
     var isCheckYoSelfGame = false
+    var isProfileGame = false
     
     // MARK: - Private Members -
     
@@ -27,6 +28,7 @@ final class QuestionsViewController: SkinnedViewController {
     private var questionType: QuestionType {
         
         if isCheckYoSelfGame { return .check }
+        if isProfileGame { return .profile }
         
         guard let typeKey = DataManager.shared.getLocalValue(for: .questionType), let type = QuestionType(rawValue: typeKey) else { return .brainstorm }
         return type
@@ -45,7 +47,8 @@ final class QuestionsViewController: SkinnedViewController {
     }}
     
     /// Array of all choice buttons.
-    private var allButtons: [UIButton] { return [redButton, greenButton, blueButton, cyanButton, magentaButton, yellowButton] }
+//    private var allButtons: [UIButton] { return [redButton, greenButton, blueButton, cyanButton, magentaButton, yellowButton] }
+    private var allButtons: [UIButton] { return [blueButton, cyanButton, magentaButton, yellowButton, greenButton, redButton] }
     
     // MARK: - Outlets -
     
@@ -61,12 +64,27 @@ final class QuestionsViewController: SkinnedViewController {
     @IBOutlet private weak var magentaButton: UIButton!
     @IBOutlet private weak var yellowButton: UIButton!
     
+    private var selectedColor: CubeColor!
+    private var selectedAgeGroup: AgeGroup!
+    private var selectedGenre: CollabrationGenre!
+    private var selectedIdentity: Identity!
+    
     // MARK: - Lifecycle -
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(true)
-        startQuestions()
+        print(isProfileGame)
+        if isProfileGame{
+            getProfileQuestions()
+        } else {
+            startQuestions()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.isCheckYoSelfGame = false
+        self.isProfileGame = false
     }
     
     override func style() {
@@ -108,12 +126,57 @@ final class QuestionsViewController: SkinnedViewController {
             
             self.showAlert(BSGCustomAlert(message: "Answer these 20 questions and score JabbRGems.", options: [(text: "Go", handler: {
                 
+                if !User.current.hasProfileInfo {
+                    self.tabBarController?.selectedIndex = 0
+                } else {
+                    /// Ask user before leaving mid-game.
+                    (self.tabBarController as? CustomTabBar)?.shouldPromptForTabSwitch = true
+                    
+                    // Catch next interstitial for game over.
+                    if GameConfiguration.adFrequency > 0 {
+//                        Chartboost.cacheInterstitial(CBLocationGameOver)
+//                        let ccache = CHBInterstitial.init(location: CBLocationGameOver, delegate: nil)
+//                        ccache.cache()
+                        ChartBoostManager.sharedInstance.cacheInterstitial(location: CBLocationGameOver)
+                    }
+                    
+                    self.questionsAnswered = 0
+                    self.score = 0
+                    self.startTime = Date.init()
+                    
+                    self.presentQuestion()
+                }
+            }), (text: "Not Now", handler: {
+                self.tabBarController?.selectedIndex = 0
+            })]))
+            
+        }, failure: { error in
+            self.handle(error)
+        })
+    }
+    
+    private func getProfileQuestions(){
+        reset()
+        showProgressHUD()
+        
+        QuestionService.getQuestions(ofType: .profile, success: { questions in
+            
+            self.hideProgressHUD()
+            
+            self.update()
+            self.questions = questions
+            
+            self.showAlert(BSGCustomAlert(message: "Answer these 20 questions to customize your profile.", options: [(text: "Go", handler: {
+                
                 /// Ask user before leaving mid-game.
                 (self.tabBarController as? CustomTabBar)?.shouldPromptForTabSwitch = true
                 
                 // Catch next interstitial for game over.
                 if GameConfiguration.adFrequency > 0 {
-                    Chartboost.cacheInterstitial(CBLocationGameOver)
+//                    Chartboost.cacheInterstitial(CBLocationGameOver)
+//                    let ccache = CHBInterstitial.init(location: CBLocationGameOver, delegate: nil)
+//                    ccache.cache()
+                    ChartBoostManager.sharedInstance.cacheInterstitial(location: CBLocationGameOver)
                 }
                 
                 self.questionsAnswered = 0
@@ -125,8 +188,8 @@ final class QuestionsViewController: SkinnedViewController {
                 self.tabBarController?.selectedIndex = 0
             })]))
             
-        }, failure: { error in
-            self.handle(error)
+        }, failure: { errorString in
+            self.handle(errorString)
         })
     }
     
@@ -184,8 +247,21 @@ final class QuestionsViewController: SkinnedViewController {
         
         for choice in currentQuestion.choices {
             if choice.text == selectedChoiceText {
-                if let pointValue = choice.pointValue { score += pointValue }
+                if !isProfileGame {
+                    if let pointValue = choice.pointValue { score += pointValue }
+                } else {
+                    //handles choice for Profile Questions
+                    switch currentQuestion.id {
+                    case "PQ-000003": selectedColor = CubeColor.color(fromString: choice.text.lowercased())
+                    case "PQ-000004": selectedAgeGroup = AgeGroup.ageGroup(fromString: choice.text.lowercased())
+                    case "PQ-000002": selectedGenre = CollabrationGenre.genre(fromString: choice.text.lowercased())
+                    case "PQ-000001": selectedIdentity = Identity.identity(fromString: choice.text.lowercased())
+                    default: break
+                    }
+                }
                 questionsAnswered += 1
+                
+                print("Questions \(questions.count) ANS: \(questionsAnswered)")
             }
         }
         
@@ -202,22 +278,50 @@ final class QuestionsViewController: SkinnedViewController {
     ///
     private func finish(){
         
-        score > 0 ? BSGCommon.playSound("hook-up", ofType: "mp3") : BSGCommon.playSound("hook-down", ofType: "mp3")
-        
-        guard let startTime = startTime else { return }
-        showProgressHUD()
-        
-        DataManager.shared.addGameRecord(ofType: questionType, score: score, startTime: startTime) {
+        if !isProfileGame {
+            score > 0 ? BSGCommon.playSound("hook-up", ofType: "mp3") : BSGCommon.playSound("hook-down", ofType: "mp3")
             
-            (self.tabBarController as? CustomTabBar)?.shouldPromptForTabSwitch = false
-            self.hideProgressHUD()
+            guard let startTime = startTime else { return }
+            showProgressHUD()
             
-            self.isCheckYoSelfGame = false
+            DataManager.shared.addGameRecord(ofType: questionType, score: score, startTime: startTime) {
+                
+                (self.tabBarController as? CustomTabBar)?.shouldPromptForTabSwitch = false
+                self.hideProgressHUD()
+                
+                self.isCheckYoSelfGame = false
+                
+                let alert = BSGCustomAlert(message: "You scored \(self.score)POINTs!", options: [(text: "Word", handler: {
+                    self.showStats()
+                })])
+                self.showAlert(alert)
+            }
+        } else {
+            //finish Profile Questions
+            showProgressHUD()
             
-            let alert = BSGCustomAlert(message: "You scored \(self.score)POINTs!", options: [(text: "Word", handler: {
-                self.showStats()
-            })])
-            self.showAlert(alert)
+            User.current.favoriteColor = selectedColor
+            User.current.ageGroup = selectedAgeGroup
+            User.current.favoriteGenre = selectedGenre
+            User.current.identity = selectedIdentity
+            
+            print(User.current.toSnapshot())
+            
+            LoginFlowManager.shared.updateAccount(for: User.current, success: {
+                self.hideProgressHUD()
+                NotificationManager.shared.postNotification(ofType: .profileUpdated)
+                User.current.hasProfileInfo = true
+                
+                self.isProfileGame = false
+                
+                let alert = BSGCustomAlert(message: "Profile Updated", options: [(text: "Okay", handler: {
+                    self.tabBarController?.selectedIndex = 0
+                })])
+                self.showAlert(alert)
+                
+            }, failure: { errorString in
+                self.handle(errorString)
+            })
         }
     }
     

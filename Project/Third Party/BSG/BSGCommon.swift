@@ -43,7 +43,10 @@ struct BSGCommon{
     static func playSound(_ soundName: String, ofType soundType: String){
         let soundURL = NSURL.fileURL(withPath: Bundle.main.path(forResource: soundName, ofType: soundType)!)
         do{
-            boomBox = try AVAudioPlayer(contentsOf: soundURL)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, mode: AVAudioSessionModeDefault)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            boomBox = try AVAudioPlayer(contentsOf: soundURL, fileTypeHint: soundType)
             guard let boomBox = boomBox else{return}
             boomBox.prepareToPlay()
             boomBox.play()

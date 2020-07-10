@@ -24,6 +24,7 @@ final class FriendListViewController: SkinnedViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        createDummyFriends()
         loadFriendTable()
     }
     
@@ -34,28 +35,56 @@ final class FriendListViewController: SkinnedViewController {
     ///
     private func loadFriendTable() {
         
-        showProgressHUD()
+//        showProgressHUD()
+        self.tableView.reloadData()
         
-        BSGFacebookService.getFriends(completion: { friendTupleArray in
-            
-            for friend in friendTupleArray {
-                
-                DataManager.shared.getUsers(matching: [(field: .facebookID, value: friend.id)], success: { users in
-                    self.hideProgressHUD()
-                    self.friends = users
-                    self.tableView.reloadData()
-                }, failure: { errorString in
-                    self.handle(errorString)
-                })
-            }
-        }, failure: { facebookError in
-            self.hideProgressHUD()
-            
-            switch facebookError {
-            case .missingAccessToken: self.promptFacebookLogin()
-            default: break
-            }
-        })
+//        BSGFacebookService.getFriends(completion: { friendTupleArray in
+//
+//            for friend in friendTupleArray {
+//                print(friend)
+//                DataManager.shared.getUsers(matching: [(field: .facebookID, value: friend.id)], success: { users in
+//                    self.hideProgressHUD()
+//                    self.friends = users
+//                    self.tableView.reloadData()
+//                }, failure: { errorString in
+//                    self.handle(errorString)
+//                })
+//            }
+//        }, failure: { facebookError in
+//            self.hideProgressHUD()
+//
+//            switch facebookError {
+//            case .missingAccessToken: self.promptFacebookLogin(); break
+//            case .missingData: self.handle("No data"); break
+//            default: break
+//            }
+//        })
+    }
+    
+    private func createDummyFriends(){
+        let firstnames = ["Jackie", "Mario", "Lily", "Mica", "Bomin"]
+        let lastnames = ["Chan", "Berdan", "Co", "San", "Lee"]
+        let gamertags = ["jchan", "mberdan", "lilyco", "micamica", "bomin88"]
+        let userids = ["ABC00001", "ABC00002", "ABC00003", "ABC00004", "ABC00005"]
+        let fbids = ["FB0001", "FB0002", "FB0003", "FB0004", "FB0005"]
+        let gems = [10,4,2,15,20]
+        
+        for x in (0..<firstnames.count)  {
+            let fullname = "\(firstnames[x]) \(lastnames[x])"
+            friends.append(User.init(withSnapshot: ["email": "\(firstnames[x])@gmail.com",
+                "firstname": "\(firstnames[x])",
+                "lastname": "\(lastnames[x])",
+                "gamer-tag": "\(gamertags[x])",
+                "userId": "\(userids[x])",
+                "gems": gems[x],
+                "facebook-id": "\(fbids[x])",
+                "facebook-name": "\(fullname)",
+                "profile": ["favorite-color": "none",
+                            "age-group": "adult",
+                            "favorite-genre": "live",
+                            "identity": "unknown"
+                ]])!)
+        }
     }
     
     ///

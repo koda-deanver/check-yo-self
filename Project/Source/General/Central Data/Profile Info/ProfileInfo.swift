@@ -76,6 +76,7 @@ enum CubeColor: String {
     /// - returns: A color matching the given string, if there is one.
     ///
     static func color(fromString string: String?) -> CubeColor {
+        print("SELCOLOR: \(String(describing: string))")
         guard let string = string else { return .none }
         return CubeColor(rawValue: string) ?? .none
     }
@@ -109,6 +110,7 @@ enum AgeGroup: String {
     /// - returns: An AgeGroup matching the given string.
     ///
     static func ageGroup(fromString string: String?) -> AgeGroup {
+        print("SELAGEGROUP: \(String(describing: string))")
         guard let string = string else { return .adult }
         return AgeGroup(rawValue: string) ?? .adult
     }
@@ -126,6 +128,7 @@ enum CollabrationGenre: String {
     /// - returns: A CollabrationGenre matching the given string.
     ///
     static func genre(fromString string: String?) -> CollabrationGenre {
+        print("SELGEnRE: \(String(describing: string))")
         guard let string = string else { return .live }
         return CollabrationGenre(rawValue: string) ?? .live
     }
@@ -138,12 +141,14 @@ enum Identity: String {
     case straightFemale = "female-straight"
     case gayFemale = "female-gay"
     case unknown = "unknown"
+    case female = "female"
+    case male = "male"
     
     /// Value to show in avatar description.
     var displayedIdentity: String {
         switch self {
-        case .straightMale, .gayMale: return "male"
-        case .straightFemale, .gayFemale: return "female"
+        case .straightMale, .gayMale, .male: return "male"
+        case .straightFemale, .gayFemale, .female: return "female"
         case .unknown: return "unknown"
         }
     }
@@ -156,6 +161,7 @@ enum Identity: String {
     /// - returns: An Identity matching the given string.
     ///
     static func identity(fromString string: String?) -> Identity {
+        print("SELIDENTITY: \(String(describing: string))")
         guard let string = string else { return .unknown }
         return Identity(rawValue: string) ?? .unknown
     }

@@ -28,6 +28,7 @@ class DropdownMenuCell: UITableViewCell {
         guard let text = textField.text else { return false }
         return text.count >= 1
     }
+    var cellID: String?
     
     // MARK: - Private Members -
     
@@ -69,6 +70,7 @@ class DropdownMenuCell: UITableViewCell {
         pickerView.selectRow(selectedIndex, inComponent: 0, animated: false)
         pickerView.showsSelectionIndicator = false
         pickerView.alpha = 0.0
+        cellID = question.id
     }
     
     ///

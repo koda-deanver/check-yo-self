@@ -16,4 +16,5 @@ target 'check-yo-self' do
   pod 'FacebookShare'
 
   pod 'MBProgressHUD'
+  pod 'GoogleSignIn'
 end

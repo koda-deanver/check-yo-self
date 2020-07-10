@@ -41,6 +41,7 @@ struct GameRecord {
     
     init?(withSnapshot snapshot: [String: Any]) {
         
+        print("GAME REC : \(snapshot)")
         guard let questionTypeValue = snapshot["type"] as? String, let questionType = QuestionType(rawValue: questionTypeValue) else { return nil }
         guard let score = snapshot["score"] as? Int, let gemsEarned = snapshot["gems-earned"] as? Int else { return nil }
         guard let startTimeString = snapshot["start-time"] as? String, let endTimeString = snapshot["end-time"] as? String else { return nil }

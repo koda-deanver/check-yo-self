@@ -85,11 +85,10 @@ class AvatarManager {
     ///
     /// - returns: Avatar matching user or default avatar.
     ///
-    func getAvatar(for user: User) -> Avatar {
-        
+    func getAvatar(for user: User) -> Avatar {        
         switch user.identity {
-        case .straightMale, .gayMale: return getAvatarMatching(genre: user.favoriteGenre, from: maleAvatars) ?? genericMaleAvatar
-        case .straightFemale, .gayFemale: return getAvatarMatching(genre: user.favoriteGenre, from: femaleAvatars) ?? genericMaleAvatar
+        case .straightMale, .gayMale, .male: return getAvatarMatching(genre: user.favoriteGenre, from: maleAvatars) ?? genericMaleAvatar
+        case .straightFemale, .gayFemale, .female: return getAvatarMatching(genre: user.favoriteGenre, from: femaleAvatars) ?? genericFemaleAvatar
         case .unknown: return genericMaleAvatar
         }
     }

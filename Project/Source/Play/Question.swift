@@ -111,16 +111,18 @@ struct Question {
     
     init?(withSnapshot snapshot: [String: Any], type questionType: QuestionType) {
         
-        guard let questionText = snapshot["text"] as? String, let questionID = snapshot["id"] as? String, let choiceSnapshot = snapshot["choices"] as? [[String: Any]] else { return nil }
+        guard let questionText = snapshot["title"] as? String, let questionID = snapshot["id"] as? String, let choiceSnapshot = snapshot["choices"] as? [[String: Any]] else { return nil }
         
         var choices: [Choice] = []
         for choice in choiceSnapshot {
-            guard let text = choice["text"] as? String else { return nil }
-            let pointValueString = choice["point-value"] as? String
-            let pointValue = pointValueString != nil ? Int(pointValueString!) : 0
+            print("THIS CHOCE \(questionText)\(choice)")
+            guard let text = choice["choiceText"] as? String else { return nil }
+            let pointValueString = choice["choiceValue"] as? NSNumber
+//            let pointValue = pointValueString != nil ? Int(pointValueString!) : 0
+            let pointValue = pointValueString
             let profileValue = choice["profile-value"] as? String
             
-            choices.append((text: text, pointValue: pointValue, profileValue: profileValue))
+            choices.append((text: text, pointValue: pointValue?.intValue, profileValue: profileValue))
         }
         
         self.text = questionText
@@ -159,10 +161,10 @@ struct Question {
         
         for choice in choices {
             
-            var choiceSnapshot: [String: String] = ["text": choice.text]
+            var choiceSnapshot: [String: String] = ["choiceText": choice.text]
 
             if let pointValue = choice.pointValue {
-                choiceSnapshot["point-value"] = String(pointValue)
+                choiceSnapshot["choiceValue"] = String(pointValue)
             }
             
             if let profileValue = choice.profileValue {

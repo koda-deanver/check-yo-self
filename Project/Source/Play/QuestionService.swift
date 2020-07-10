@@ -33,13 +33,18 @@ final class QuestionService {
             // Eliminate questions as they are used.
             var allQuestions = questions
             var chosenQuestions: [Question] = []
-            
-            for _ in 0 ..< amount{
-                let index = Int(arc4random_uniform(UInt32(allQuestions.count)))
-                var newQuestion: Question = allQuestions[index]
-                newQuestion.randomize()
-                chosenQuestions.append(newQuestion)
-                allQuestions.remove(at: index)
+            var count = 0
+//            for _ in 0 ..< amount{
+//                let index = Int(arc4random_uniform(UInt32(allQuestions.count)))
+//                var newQuestion: Question = allQuestions[index]
+//                newQuestion.randomize()
+//                chosenQuestions.append(newQuestion)
+//                allQuestions.remove(at: index)
+//            }
+            for question in allQuestions {
+                guard count < amount else { return }
+                chosenQuestions.append(question)
+                count = count + 1
             }
             success(chosenQuestions)
             
@@ -79,8 +84,9 @@ final class QuestionService {
     ///
     static func getQuestions(ofType type: QuestionType, success: @escaping ([Question]) -> Void, failure: ErrorClosure?) {
         
-        let questionPath = Constants.firebaseRootPath.child("questions/\(type.databaseNode)")
+        let questionPath = Constants.firebaseRootPath.child("Questions/\(type.databaseNode.capitalized)Question")
         
+        print("dB PATH: \(questionPath)")
         BSGFirebaseService.fetchData(atPath: questionPath, success: { snapshot in
             
             guard let questionSnapshots = snapshot.value as? [[String: Any]] else {
@@ -88,11 +94,14 @@ final class QuestionService {
                 return
             }
             
+            print("YOLO >> \(questionSnapshots)")
             var questions: [Question] = []
             
             for snapshot in questionSnapshots {
                 guard let question = Question(withSnapshot: snapshot, type: type) else { continue }
-                questions.append(question)
+                if questions.count < 20 {
+                    questions.append(question)
+                }
             }
             
             success(questions)

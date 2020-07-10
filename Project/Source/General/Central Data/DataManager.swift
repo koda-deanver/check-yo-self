@@ -9,6 +9,9 @@
 import Foundation
 import FirebaseCore
 import FirebaseDatabase
+import FirebaseAuth
+import FacebookCore
+import GoogleSignIn
 
 // MARK: - Enumeration -
 
@@ -48,7 +51,7 @@ class DataManager {
             var users: [User] = []
            
             searchingUsers: for userRecord in clients {
-                
+                print("RECORD  : \(userRecord.value)")
                 guard let userInfo = userRecord.value as? [String: Any], let user = User(withSnapshot: userInfo) else { continue }
                 
                 // Filter users that do not meet conditions
@@ -76,7 +79,8 @@ class DataManager {
     ///
     func updateAccount(for user: User, success: ((User) -> Void)?, failure: ErrorClosure?) {
         
-        let userPath = Constants.firebaseRootPath.child("clients/\(user.uid)")
+//        let userPath = Constants.firebaseRootPath.child("clients/\(user.uid)")
+        let userPath = Constants.firebaseRootPath.child("Users/\(user.uid)")
         
         BSGFirebaseService.updateData(atPath: userPath, values: user.toSnapshot(), success: {
                 success?(user)
@@ -109,6 +113,95 @@ class DataManager {
         }, failure: { _ in
             failure?("Failed to login to Facebook")
         })
+    }
+    
+    func loginOrSignupWithFacebook(success: @escaping ([String: Any]) -> Void, failure: ErrorClosure?) {
+        
+        BSGFacebookService.login(completion: {
+            BSGFacebookService.getUserforLoginOrSignup(completion: { userInfo in
+//                User.current.facebookID = userInfo.id
+//                User.current.facebookName = userInfo.name
+//
+//                self.updateAccount(for: User.current, success: { _ in
+//                    success?()
+//                }, failure: failure)
+                success(userInfo)
+                
+            }, failure: { error in
+                failure?("Failed to login to Facebook")
+            })
+        }, failure: { _ in
+            failure?("Failed to login to Facebook")
+        })
+    }
+    
+    func registerFBOnFirebase(result: [String:Any], completion: @escaping ([String: Any]) -> Void, failure: ErrorClosure?){
+        let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+        
+        Auth.auth().signIn(with: credential) { (authResult, err) in
+            if let err = err {
+                failure?(err.localizedDescription)
+            }
+            if let userId = authResult?.user.uid {
+                let dict:[String:Any] = ["email":"\(result["email"] as! String)",
+                "firstname":"\(result["first_name"] as? String ?? "")",
+                "lastname":"\(result["last_name"] as? String ?? "")",
+                "facebookId":"\(result["id"] as? String ?? "")",
+                "image":"\(authResult?.user.photoURL ?? NSURL() as URL)",
+                "phone":"\(authResult?.user.phoneNumber ?? "")",
+                "userId":"\(userId)"]
+                self.createUser(dict: dict, userId: userId)
+                completion(dict)
+            }
+        }
+    }
+    
+    func registerGoogleOnFirebase(user: GIDGoogleUser!, completion: @escaping ([String: Any]) -> Void, failure: ErrorClosure?){
+        var firstName:String = ""
+        var lastName:String = ""
+        let fullName = user.profile.name as String
+        var components = fullName.components(separatedBy: " ")
+        if(components.count > 0)
+        {
+             firstName = components.removeFirst()
+             lastName = components.joined(separator: " ")
+        }
+        
+        guard let authentication = user.authentication else {
+            failure?("Failed to authenticate.")
+            return
+        }
+        
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,accessToken: authentication.accessToken)
+        
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            if let error = error {
+                failure?(error.localizedDescription)
+                return
+            }
+            
+            if let priUserId = authResult?.user.uid {
+                let dict:[String:Any] = ["email":"\(user?.profile.email ?? "")",
+                    "firstname":"\(firstName)",
+                    "lastname":"\(lastName)",
+                    "googleId":"\(user?.userID ?? "")",
+                    "image":"\(authResult?.user.photoURL ?? NSURL() as URL)",
+                    "phone":"\(authResult?.user.phoneNumber ?? "")",
+                    "userId":"\(priUserId)"]
+                self.createUser(dict: dict, userId: priUserId)
+                completion(dict)
+            }
+        }
+    }
+    
+    private func createUser(dict:Dictionary<String, Any>, userId:String){
+        DispatchQueue.main.async {
+            let ref:DatabaseReference! = Database.database().reference().child("Users").child(userId)
+            
+            if let userRef = ref{
+                userRef.updateChildValues(dict)
+            }
+        }
     }
     
     ///
@@ -211,13 +304,17 @@ class DataManager {
     ///
     private func fetchAllClients(success: @escaping ([String: Any]) -> Void, failure: ErrorClosure?) {
         
-        BSGFirebaseService.fetchData(atPath: Constants.firebaseRootPath.child("clients"), success: { snapshot in
-            
+        /// change 'clients' to 'Users'
+        /// All users are now saved to Users database table so fetching users from Users table instead of clients
+        
+//        BSGFirebaseService.fetchData(atPath: Constants.firebaseRootPath.child("clients"), success: { snapshot in
+        BSGFirebaseService.fetchData(atPath: Constants.firebaseRootPath.child("Users"), success: { snapshot in
+            print("all users \(String(describing: snapshot.value))")
             guard let clients = snapshot.value as? [String: Any] else {
                 failure?("Connection Error")
                 return
             }
-        
+            
             success(clients)
             
         }, failure: {

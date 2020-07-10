@@ -63,7 +63,9 @@ final class GameRecordsViewController: SkinnedViewController {
         super.viewDidAppear(animated)
         
         if shouldShowAd {
-            Chartboost.showInterstitial(CBLocationGameOver)
+//            Chartboost.showInterstitial(CBLocationGameOver)
+//            let ccache = CHBInterstitial.sho
+            ChartBoostManager.sharedInstance.showInterstitialfor(controller: self)
             shouldShowAd = false
         }
     }

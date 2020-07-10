@@ -34,6 +34,8 @@ final class CreateNewAccountViewController: GeneralViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var continueButton: UIButton!
     
+    var ref : DatabaseReference!
+    
     // MARK: - Lifecycle -
     
     ///
@@ -127,10 +129,32 @@ final class CreateNewAccountViewController: GeneralViewController {
                 User.current = User(withID: user.user.uid, email: email, firstName: firstName, lastName: lastName)
                 User.current.gamertag = gamertag
                 
-                self.performSegue(withIdentifier: "showProfile", sender: self)
+                let dict:[String:Any] = ["email":"\(email)",
+                "firstname":"\(firstName)",
+                "lastname":"\(lastName)",
+                "gamer-tag": "\(gamertag ?? "")",
+                "userId":"\(user.user.uid)"]
+
+                self.createUser(dict: dict, userId: user.user.uid)
+                
+//                self.performSegue(withIdentifier: "showProfile", sender: self)
             })
         }), (text: "Wait", handler: {})]))
         
+    }
+    
+    func createUser(dict:Dictionary<String, Any>, userId:String){
+        DispatchQueue.main.async {
+            self.ref = Database.database().reference().child("Users").child(userId)
+            
+            if let userRef = self.ref{
+                userRef.updateChildValues(dict)
+                
+//                self.performSegue(withIdentifier: "showSignupDetails", sender: self)
+//                self.performSegue(withIdentifier: "showProfile", sender: self)
+                self.navigateToCubeScreen()
+            }
+        }
     }
     
     ///
@@ -140,6 +164,24 @@ final class CreateNewAccountViewController: GeneralViewController {
         
         guard let profileViewController = segue.destination as? ProfileViewController else { return }
         profileViewController.displaysWithTransparentBackground = true
+    }
+    
+    //goes to cube screen
+    private func navigateToCubeScreen() {
+        
+        /// If this fails means user is updating profile and is not initial creation. Just dismiss this viewController.
+        guard let loginViewController = self.presentingViewController as? LoginViewController else {
+            self.hideProgressHUD()
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
+        
+        /// For first time creation launch *cubeViewController* from *loginViewController*
+        dismiss(animated: true) {
+            
+            self.hideProgressHUD()
+            loginViewController.presentCubeScreenWithVideo()
+        }
     }
 }
 

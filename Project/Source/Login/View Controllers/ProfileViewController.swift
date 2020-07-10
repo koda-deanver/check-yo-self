@@ -49,10 +49,12 @@ final class ProfileViewController: SkinnedViewController {
         super.viewDidLoad()
         loadProfileQuestions()
         
-        selectedColor = User.current.favoriteColor
-        selectedAgeGroup = User.current.ageGroup
-        selectedGenre = User.current.favoriteGenre
-        selectedIdentity = User.current.identity
+        DispatchQueue.main.async {
+            self.selectedColor = User.current.favoriteColor
+            self.selectedAgeGroup = User.current.ageGroup
+            self.selectedGenre = User.current.favoriteGenre
+            self.selectedIdentity = User.current.identity
+        }
     }
     
     override func style() {
@@ -127,6 +129,7 @@ final class ProfileViewController: SkinnedViewController {
         
         LoginFlowManager.shared.updateAccount(for: User.current, success: {
             NotificationManager.shared.postNotification(ofType: .profileUpdated)
+            User.current.hasProfileInfo = true
             self.navigateToCubeScreen()
         }, failure: { errorString in
             self.handle(errorString)
@@ -142,6 +145,12 @@ final class ProfileViewController: SkinnedViewController {
         User.current.ageGroup = selectedAgeGroup
         User.current.favoriteGenre = selectedGenre
         User.current.identity = selectedIdentity
+        
+        print("SELECteD: \(String(describing: selectedColor))")
+        print("SELECteD: \(String(describing: selectedAgeGroup))")
+        print("SELECteD: \(String(describing: selectedGenre))")
+        print("SELECteD: \(String(describing: selectedIdentity))")
+        print("SELECteD: \(User.current.toSnapshot())")
     }
     
     ///
@@ -169,6 +178,10 @@ final class ProfileViewController: SkinnedViewController {
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return profileQuestions.count
     }
@@ -180,7 +193,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         let question = profileQuestions[indexPath.row]
         let previousChoice = getPreviouslySelectedChoice(forQuestion: question)
         
-        cell.configure(withQuestion: question, color: User.current.ageGroup.textColor, selectedChoice: previousChoice, delegate: self)
+        if (cell.cellID != question.id){
+            cell.configure(withQuestion: question, color: User.current.ageGroup.textColor, selectedChoice: previousChoice, delegate: self)
+        }
         return cell
     }
     

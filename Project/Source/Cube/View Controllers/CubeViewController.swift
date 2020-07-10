@@ -63,7 +63,8 @@ final class CubeViewController: SkinnedViewController {
         userBackdrop.image = User.current.favoriteColor.alertBackdrop
         
         let avatar = AvatarManager.shared.getAvatar(for: User.current)
-        let image = CameraManager.shared.savedImage ?? avatar.image
+//        let image = CameraManager.shared.savedImage ?? avatar.image
+        let image = avatar.image
         userImage.setImage(image, for: .normal)
         
         userLabel.text = User.current.displayName
@@ -78,6 +79,10 @@ final class CubeViewController: SkinnedViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(true)
+        
+        DispatchQueue.main.async {
+            if !User.current.hasProfileInfo { self.profileButtonPressed(self.profileButton) }
+        }
         
         gemLabel.text = String(User.current.gems)
         if newPlayer { playVideo() }
@@ -124,7 +129,7 @@ extension CubeViewController {
     }
     
     @IBAction func gemHitboxPressed(_ sender: UIButton) {
-        showAlert(BSGCustomAlert(message: "To redeem JabbRGems go to CollabRJabbR.com or tap the K button below!", options: [(text:"Sweet!", handler: {})]))
+        showAlert(BSGCustomAlert(message: "To redeem JabbRGems go to www.collab101.com or tap the K button below!", options: [(text:"Sweet!", handler: {})]))
     }
     
     @IBAction func userImagePressed(_ sender: UIButton) {
@@ -135,16 +140,20 @@ extension CubeViewController {
     /// Can't do this in storyboard because of double segue.
     @IBAction func profileButtonPressed(_ sender: UIButton) {
         
-        guard let profileViewController = self.storyboard?.instantiateViewController(withIdentifier: "profileViewController") as? ProfileViewController else { return }
-        
-        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: profileViewController, action: #selector(profileViewController.exit))
-        profileViewController.navigationItem.setLeftBarButton(backButton, animated: false)
-        profileViewController.shouldPreloadChoices = true
-        
-        let navigationController = UINavigationController(rootViewController: profileViewController)
-        navigationController.modalPresentationStyle = .overCurrentContext
-        
-        self.present(navigationController, animated: true, completion: nil)
+//        guard let profileViewController = self.storyboard?.instantiateViewController(withIdentifier: "profileViewController") as? ProfileViewController else { return }
+//
+//        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: profileViewController, action: #selector(profileViewController.exit))
+//        profileViewController.navigationItem.setLeftBarButton(backButton, animated: false)
+//        profileViewController.shouldPreloadChoices = true
+//
+//        let navigationController = UINavigationController(rootViewController: profileViewController)
+//        navigationController.modalPresentationStyle = .overCurrentContext
+//
+//        self.present(navigationController, animated: true, completion: nil)
+        guard let viewController = tabBarController?.viewControllers?[1] as? QuestionsViewController else { return }
+        viewController.isCheckYoSelfGame = false
+        viewController.isProfileGame = true
+        tabBarController?.selectedIndex = 1
     }
     
     @IBAction func friendsButtonPressed(_ sender: UIButton) {
@@ -163,6 +172,7 @@ extension CubeViewController {
         
         guard let viewController = tabBarController?.viewControllers?[1] as? QuestionsViewController else { return }
         viewController.isCheckYoSelfGame = true
+        viewController.isProfileGame = false
         tabBarController?.selectedIndex = 1
     }
     
