@@ -152,6 +152,10 @@ final class CreateNewAccountViewController: GeneralViewController {
                 
 //                self.performSegue(withIdentifier: "showSignupDetails", sender: self)
 //                self.performSegue(withIdentifier: "showProfile", sender: self)
+                if !DefaultsManager.shared.IsFirstLogin() && DefaultsManager.shared.IsFirstAppLaunch(){
+                    DefaultsManager.shared.setIsFirstLogin(value: true)
+                }
+                
                 self.navigateToCubeScreen()
             }
         }

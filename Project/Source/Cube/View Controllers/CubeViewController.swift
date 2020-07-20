@@ -85,6 +85,11 @@ final class CubeViewController: SkinnedViewController {
         }
         
         gemLabel.text = String(User.current.gems)
+        
+        if DefaultsManager.shared.IsFirstLogin() && !DefaultsManager.shared.shouldShowTutorial(){
+            loadTutorial()
+        }
+        
         if newPlayer { playVideo() }
     }
     
@@ -117,6 +122,10 @@ final class CubeViewController: SkinnedViewController {
         let videoURL = NSURL.fileURL(withPath: Bundle.main.path(forResource: "welcome", ofType:"mp4")!)
         BSGCommon.playVideo(url: videoURL, onController: self)
         newPlayer = false
+    }
+    
+    private func loadTutorial(){
+        self.performSegue(withIdentifier: "showTutorial", sender: self)
     }
 }
 

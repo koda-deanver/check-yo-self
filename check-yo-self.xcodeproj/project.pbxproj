@@ -82,6 +82,8 @@
 		8B15723424AEFD9600FC5683 /* OuraAuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B15723324AEFD9600FC5683 /* OuraAuthenticationController.swift */; };
 		8B15723624AEFDB100FC5683 /* OuraAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B15723524AEFDB100FC5683 /* OuraAPI.swift */; };
 		8B15723824AF29C200FC5683 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B15723724AF29C200FC5683 /* AVFoundation.framework */; };
+		8B183A6024C561220008DFF4 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B183A5F24C561220008DFF4 /* DefaultsManager.swift */; };
+		8B38C86224C19BC500EEF638 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B38C86124C19BC500EEF638 /* TutorialViewController.swift */; };
 		8B5ABA57249CB3B1000B1250 /* ForgotPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5ABA56249CB3B1000B1250 /* ForgotPassViewController.swift */; };
 		91D296EA20A2ECBA00B55E59 /* Pods_check_yo_self.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D296E920A2ECBA00B55E59 /* Pods_check_yo_self.framework */; };
 /* End PBXBuildFile section */
@@ -168,6 +170,8 @@
 		8B15723324AEFD9600FC5683 /* OuraAuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuraAuthenticationController.swift; sourceTree = "<group>"; };
 		8B15723524AEFDB100FC5683 /* OuraAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuraAPI.swift; sourceTree = "<group>"; };
 		8B15723724AF29C200FC5683 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8B183A5F24C561220008DFF4 /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
+		8B38C86124C19BC500EEF638 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		8B5ABA56249CB3B1000B1250 /* ForgotPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassViewController.swift; sourceTree = "<group>"; };
 		91D296E920A2ECBA00B55E59 /* Pods_check_yo_self.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_check_yo_self.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93E32BA7DE5A16D1EA705790 /* Pods-check-yo-self.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-check-yo-self.release.xcconfig"; path = "Pods/Target Support Files/Pods-check-yo-self/Pods-check-yo-self.release.xcconfig"; sourceTree = "<group>"; };
@@ -303,6 +307,8 @@
 				138BF0352032AC3C00119A52 /* Central Data */,
 				13E5ACF42026150200C92237 /* Overrides */,
 				13E5ACE52026118E00C92237 /* View Controllers */,
+				8B38C86124C19BC500EEF638 /* TutorialViewController.swift */,
+				8B183A5F24C561220008DFF4 /* DefaultsManager.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -772,6 +778,7 @@
 				134DA2F12060D49B00FD4940 /* GameStatCell.swift in Sources */,
 				4A8346B01E203B6200BAF8F9 /* MapViewController.swift in Sources */,
 				1396C29B2066E84500694B92 /* CameraManager.swift in Sources */,
+				8B38C86224C19BC500EEF638 /* TutorialViewController.swift in Sources */,
 				4A8346A81E203B6200BAF8F9 /* Question.swift in Sources */,
 				134D3CF2205A413E00D11AB4 /* SpeechManager.swift in Sources */,
 				8B15723424AEFD9600FC5683 /* OuraAuthenticationController.swift in Sources */,
@@ -806,6 +813,7 @@
 				4A877CD01E889BED009CE752 /* FriendCell.swift in Sources */,
 				138BF03220328D9E00119A52 /* BSGFacebookService.swift in Sources */,
 				138BF0372032B25300119A52 /* SkinnedViewController.swift in Sources */,
+				8B183A6024C561220008DFF4 /* DefaultsManager.swift in Sources */,
 				138BF0272031403900119A52 /* BSGCustomAlert.swift in Sources */,
 				4A877CD31E889D5C009CE752 /* FriendListViewController.swift in Sources */,
 				13523AFB2011E1E500CDF58C /* BackgroundViewController.swift in Sources */,

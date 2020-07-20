@@ -46,6 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         
+        if !DefaultsManager.shared.IsFirstAppLaunch() {
+            DefaultsManager.shared.setIsFirstAppLaunch(value: true)
+        }
+        
         return true
     }
     

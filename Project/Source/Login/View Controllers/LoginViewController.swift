@@ -97,6 +97,11 @@ final class LoginViewController: GeneralViewController {
         
         LoginFlowManager.shared.login(withEmail: email, password: password, success: {
             self.hideProgressHUD()
+            
+            if !DefaultsManager.shared.IsFirstLogin() && DefaultsManager.shared.IsFirstAppLaunch(){
+                DefaultsManager.shared.setIsFirstLogin(value: true)
+            }
+            
             self.performSegue(withIdentifier: "showCubeScreen", sender: self)
         }, failure: { error in
             self.handle(error)
@@ -122,6 +127,10 @@ final class LoginViewController: GeneralViewController {
             
             let user = users[0]
             User.current = user
+            
+            if !DefaultsManager.shared.IsFirstLogin() && DefaultsManager.shared.IsFirstAppLaunch(){
+                DefaultsManager.shared.setIsFirstLogin(value: true)
+            }
             
             self.performSegue(withIdentifier: "showCubeScreen", sender: self)
             
