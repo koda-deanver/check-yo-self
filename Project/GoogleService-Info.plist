@@ -2,14 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
-	<string>ca-app-pub-3940256099942544/2934735716</string>
-	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
-	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>177025070177-08ri4f72bf8vh29p9651dgr3mt9796t2.apps.googleusercontent.com</string>
+	<string>177025070177-20bghh8k7o2d68g1f2d63t13sqtv5mns.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.177025070177-08ri4f72bf8vh29p9651dgr3mt9796t2</string>
+	<string>com.googleusercontent.apps.177025070177-20bghh8k7o2d68g1f2d63t13sqtv5mns</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>177025070177-k6feh9samabtqbp1mp7nult5qjc74jka.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCsi2xcZ5ITCDiS-cvijP_ui7mzA6BTexw</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,23 +15,23 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>net.thematics.checkyoself</string>
+	<string>com.sindyxr.checkyoself</string>
 	<key>PROJECT_ID</key>
 	<string>check-yo-self-18682434</string>
 	<key>STORAGE_BUCKET</key>
 	<string>check-yo-self-18682434.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:177025070177:ios:6f52c89dc4f444a7</string>
+	<string>1:177025070177:ios:590edac818dd63271c2620</string>
 	<key>DATABASE_URL</key>
 	<string>https://check-yo-self-18682434.firebaseio.com</string>
 </dict>
