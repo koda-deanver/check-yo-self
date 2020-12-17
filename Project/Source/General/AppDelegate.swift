@@ -85,7 +85,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case "fb252498072687562":
                 let handled: Bool = ApplicationDelegate.shared.application(application, open: url as URL!, sourceApplication: sourceApplication, annotation: annotation)
                 return handled
-            case "com.googleusercontent.apps.177025070177-08ri4f72bf8vh29p9651dgr3mt9796t2":
+            case "com.googleusercontent.apps.177025070177-08ri4f72bf8vh29p9651dgr3mt9796t2",
+                 "com.googleusercontent.apps.177025070177-20bghh8k7o2d68g1f2d63t13sqtv5mns":
                 let googleAuthentication = GIDSignIn.sharedInstance()?.handle(url)
                 return true
             

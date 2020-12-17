@@ -34,7 +34,6 @@
 		13C099A8202D865100E356D5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A7202D865100E356D5 /* ProfileViewController.swift */; };
 		13C099AA202D886200E356D5 /* DropdownMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C099A9202D886200E356D5 /* DropdownMenuCell.swift */; };
 		13E5ACF62026150A00C92237 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E5ACF52026150A00C92237 /* CustomTabBar.swift */; };
-		4A06B5F81E709F1B008BDBE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A06B5F71E709F1B008BDBE1 /* GoogleService-Info.plist */; };
 		4A06B5FC1E713C82008BDBE1 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B5FB1E713C82008BDBE1 /* Connection.swift */; };
 		4A438D841E31EB8000C2253C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A438D831E31EB8000C2253C /* StoreKit.framework */; };
 		4A438D861E31EB8600C2253C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A438D851E31EB8600C2253C /* UIKit.framework */; };
@@ -83,6 +82,7 @@
 		8B15723624AEFDB100FC5683 /* OuraAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B15723524AEFDB100FC5683 /* OuraAPI.swift */; };
 		8B15723824AF29C200FC5683 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B15723724AF29C200FC5683 /* AVFoundation.framework */; };
 		8B183A6024C561220008DFF4 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B183A5F24C561220008DFF4 /* DefaultsManager.swift */; };
+		8B22E3B4255167D300D3C9B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B22E3B3255167D200D3C9B9 /* GoogleService-Info.plist */; };
 		8B38C86224C19BC500EEF638 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B38C86124C19BC500EEF638 /* TutorialViewController.swift */; };
 		8B5ABA57249CB3B1000B1250 /* ForgotPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5ABA56249CB3B1000B1250 /* ForgotPassViewController.swift */; };
 		91D296EA20A2ECBA00B55E59 /* Pods_check_yo_self.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D296E920A2ECBA00B55E59 /* Pods_check_yo_self.framework */; };
@@ -117,7 +117,6 @@
 		13C099A9202D886200E356D5 /* DropdownMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownMenuCell.swift; sourceTree = "<group>"; };
 		13E5ACF52026150A00C92237 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		4A00258B1E36A52A00950990 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
-		4A06B5F71E709F1B008BDBE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A06B5FB1E713C82008BDBE1 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		4A438D831E31EB8000C2253C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4A438D851E31EB8600C2253C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -125,7 +124,7 @@
 		4A438D891E31EB9300C2253C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		4A438D8E1E32DD1F00C2253C /* welcome.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = welcome.mp4; sourceTree = "<group>"; };
 		4A55D70F1E79B6BB00EFB9B5 /* BSGCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSGCommon.swift; sourceTree = "<group>"; };
-		4A8346621E20394D00BAF8F9 /* check-yo-self.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "check-yo-self.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A8346621E20394D00BAF8F9 /* Check Yo Self!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Check Yo Self!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A8346781E203B6200BAF8F9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A8346791E203B6200BAF8F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A83467B1E203B6200BAF8F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -171,8 +170,10 @@
 		8B15723524AEFDB100FC5683 /* OuraAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuraAPI.swift; sourceTree = "<group>"; };
 		8B15723724AF29C200FC5683 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8B183A5F24C561220008DFF4 /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
+		8B22E3B3255167D200D3C9B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B38C86124C19BC500EEF638 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		8B5ABA56249CB3B1000B1250 /* ForgotPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassViewController.swift; sourceTree = "<group>"; };
+		8B62828225811E310097ABC8 /* FacebookCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D296E920A2ECBA00B55E59 /* Pods_check_yo_self.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_check_yo_self.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93E32BA7DE5A16D1EA705790 /* Pods-check-yo-self.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-check-yo-self.release.xcconfig"; path = "Pods/Target Support Files/Pods-check-yo-self/Pods-check-yo-self.release.xcconfig"; sourceTree = "<group>"; };
 		A82CF04B01C2AFCBA26141E4 /* Pods-check-yo-self.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-check-yo-self.debug.xcconfig"; path = "Pods/Target Support Files/Pods-check-yo-self/Pods-check-yo-self.debug.xcconfig"; sourceTree = "<group>"; };
@@ -505,7 +506,7 @@
 		4A8346631E20394D00BAF8F9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4A8346621E20394D00BAF8F9 /* check-yo-self.app */,
+				4A8346621E20394D00BAF8F9 /* Check Yo Self!.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -517,8 +518,8 @@
 				13E5ACE1202610F700C92237 /* Third Party */,
 				13E5ACDA20260FE300C92237 /* Source */,
 				4AA2D3941E24883C00DBE986 /* Assets */,
-				4A06B5F71E709F1B008BDBE1 /* GoogleService-Info.plist */,
 				4A83467E1E203B6200BAF8F9 /* check-yo-self.entitlements */,
+				8B22E3B3255167D200D3C9B9 /* GoogleService-Info.plist */,
 				4A8346861E203B6200BAF8F9 /* Info.plist */,
 			);
 			path = Project;
@@ -537,6 +538,7 @@
 		4A8346B51E203E4000BAF8F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B62828225811E310097ABC8 /* FacebookCore.framework */,
 				8B0E4C5724B3143100D6EEEF /* Chartboost.framework */,
 				8B0E4C4E24B30DDD00D6EEEF /* WebKit.framework */,
 				8B15723724AF29C200FC5683 /* AVFoundation.framework */,
@@ -604,7 +606,7 @@
 			);
 			name = "check-yo-self";
 			productName = Check_Yo_Self;
-			productReference = 4A8346621E20394D00BAF8F9 /* check-yo-self.app */;
+			productReference = 4A8346621E20394D00BAF8F9 /* Check Yo Self!.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -619,8 +621,8 @@
 				TargetAttributes = {
 					4A8346611E20394D00BAF8F9 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = W6FG9GRTG5;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = UK8WF3KTV9;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -659,7 +661,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A06B5F81E709F1B008BDBE1 /* GoogleService-Info.plist in Resources */,
 				4A438D901E32DF1F00C2253C /* welcome.mp4 in Resources */,
 				4AFB6CAF1E31545700CB8586 /* hook-up.mp3 in Resources */,
 				4AFB6CB11E31545700CB8586 /* chorus-instrumental.mp3 in Resources */,
@@ -667,6 +668,7 @@
 				4AFB6CAE1E31545700CB8586 /* hook-down.mp3 in Resources */,
 				4AFB6CB01E31545700CB8586 /* chorus-vocals.mp3 in Resources */,
 				4A83469C1E203B6200BAF8F9 /* Main.storyboard in Resources */,
+				8B22E3B4255167D300D3C9B9 /* GoogleService-Info.plist in Resources */,
 				4A83469A1E203B6200BAF8F9 /* Assets.xcassets in Resources */,
 				4A83469B1E203B6200BAF8F9 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -957,11 +959,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Project/check-yo-self.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
-				DEVELOPMENT_TEAM = W6FG9GRTG5;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = "9 ";
+				DEVELOPMENT_TEAM = UK8WF3KTV9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Check_Yo_Self/Frameworks",
@@ -971,13 +973,124 @@
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 3.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.thematics.checkyoself;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"sqlite3\"",
+					"-l\"stdc++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AppAuth\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"FBLPromises\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"FBSDKShareKit\"",
+					"-framework",
+					"\"FIRAnalyticsConnector\"",
+					"-framework",
+					"\"FacebookCore\"",
+					"-framework",
+					"\"FacebookLogin\"",
+					"-framework",
+					"\"FacebookShare\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseAuth\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreDiagnostics\"",
+					"-framework",
+					"\"FirebaseDatabase\"",
+					"-framework",
+					"\"FirebaseInstallations\"",
+					"-framework",
+					"\"FirebaseStorage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GTMAppAuth\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GoogleAppMeasurement\"",
+					"-framework",
+					"\"GoogleDataTransport\"",
+					"-framework",
+					"\"GoogleDataTransportCCTSupport\"",
+					"-framework",
+					"\"GoogleSignIn\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"LocalAuthentication\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"leveldb\"",
+					"-framework",
+					"\"nanopb\"",
+					"-weak_framework",
+					"\"Accelerate\"",
+					"-weak_framework",
+					"\"Accounts\"",
+					"-weak_framework",
+					"\"AudioToolbox\"",
+					"-weak_framework",
+					"\"AuthenticationServices\"",
+					"-weak_framework",
+					"\"CoreGraphics\"",
+					"-weak_framework",
+					"\"CoreLocation\"",
+					"-weak_framework",
+					"\"Foundation\"",
+					"-weak_framework",
+					"\"QuartzCore\"",
+					"-weak_framework",
+					"\"Security\"",
+					"-weak_framework",
+					"\"Social\"",
+					"-weak_framework",
+					"\"UIKit\"",
+					"-weak_framework",
+					CryptoTokenKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sindyxr.checkyoself;
+				PRODUCT_NAME = "Check Yo Self!";
+				PROVISIONING_PROFILE_SPECIFIER = "CheckYoSelf AppStore Profile";
 				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -987,11 +1100,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Project/check-yo-self.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
-				DEVELOPMENT_TEAM = W6FG9GRTG5;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = "9 ";
+				DEVELOPMENT_TEAM = UK8WF3KTV9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Check_Yo_Self/Frameworks",
@@ -1001,13 +1114,124 @@
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 3.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.thematics.checkyoself;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"sqlite3\"",
+					"-l\"stdc++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AppAuth\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"FBLPromises\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"FBSDKShareKit\"",
+					"-framework",
+					"\"FIRAnalyticsConnector\"",
+					"-framework",
+					"\"FacebookCore\"",
+					"-framework",
+					"\"FacebookLogin\"",
+					"-framework",
+					"\"FacebookShare\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseAuth\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreDiagnostics\"",
+					"-framework",
+					"\"FirebaseDatabase\"",
+					"-framework",
+					"\"FirebaseInstallations\"",
+					"-framework",
+					"\"FirebaseStorage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GTMAppAuth\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GoogleAppMeasurement\"",
+					"-framework",
+					"\"GoogleDataTransport\"",
+					"-framework",
+					"\"GoogleDataTransportCCTSupport\"",
+					"-framework",
+					"\"GoogleSignIn\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"LocalAuthentication\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"leveldb\"",
+					"-framework",
+					"\"nanopb\"",
+					"-weak_framework",
+					"\"Accelerate\"",
+					"-weak_framework",
+					"\"Accounts\"",
+					"-weak_framework",
+					"\"AudioToolbox\"",
+					"-weak_framework",
+					"\"AuthenticationServices\"",
+					"-weak_framework",
+					"\"CoreGraphics\"",
+					"-weak_framework",
+					"\"CoreLocation\"",
+					"-weak_framework",
+					"\"Foundation\"",
+					"-weak_framework",
+					"\"QuartzCore\"",
+					"-weak_framework",
+					"\"Security\"",
+					"-weak_framework",
+					"\"Social\"",
+					"-weak_framework",
+					"\"UIKit\"",
+					"-weak_framework",
+					CryptoTokenKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sindyxr.checkyoself;
+				PRODUCT_NAME = "Check Yo Self!";
+				PROVISIONING_PROFILE_SPECIFIER = "CheckYoSelf AppStore Profile";
 				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

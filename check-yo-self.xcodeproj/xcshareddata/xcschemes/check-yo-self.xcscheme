@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4A8346611E20394D00BAF8F9"
-               BuildableName = "check-yo-self.app"
+               BuildableName = "Check Yo Self!.app"
                BlueprintName = "check-yo-self"
                ReferencedContainer = "container:check-yo-self.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4A8346611E20394D00BAF8F9"
-            BuildableName = "check-yo-self.app"
+            BuildableName = "Check Yo Self!.app"
             BlueprintName = "check-yo-self"
             ReferencedContainer = "container:check-yo-self.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4A8346611E20394D00BAF8F9"
-            BuildableName = "check-yo-self.app"
+            BuildableName = "Check Yo Self!.app"
             BlueprintName = "check-yo-self"
             ReferencedContainer = "container:check-yo-self.xcodeproj">
          </BuildableReference>

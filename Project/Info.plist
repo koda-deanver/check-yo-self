@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en_US</string>
 	<key>CFBundleDisplayName</key>
-	<string>Check Yo Self</string>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -38,6 +38,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.177025070177-08ri4f72bf8vh29p9651dgr3mt9796t2</string>
+				<string>com.googleusercontent.apps.177025070177-20bghh8k7o2d68g1f2d63t13sqtv5mns</string>
 			</array>
 		</dict>
 	</array>

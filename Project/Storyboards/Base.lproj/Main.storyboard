@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="deX-qX-97p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="deX-qX-97p">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Cube-->
         <scene sceneID="mSf-ZH-2VY">
             <objects>
-                <viewController storyboardIdentifier="cubeViewController" title="Cube" id="s06-6N-bN5" customClass="CubeViewController" customModule="check_yo_self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cubeViewController" title="Cube" id="s06-6N-bN5" customClass="CubeViewController" customModule="Check_Yo_Self_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vwT-dm-zkM"/>
                         <viewControllerLayoutGuide type="bottom" id="a4L-Y8-V9T"/>
@@ -25,7 +26,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Yy-fJ-g0L" userLabel="cubeProjectView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8na-7K-qsa" userLabel="cubeProjectButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8na-7K-qsa" userLabel="cubeProjectButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
                                                 <state key="normal" backgroundImage="raised-square-gray"/>
                                                 <connections>
@@ -83,7 +84,7 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOz-CC-J1O" userLabel="gemHitbox">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOz-CC-J1O" userLabel="gemHitbox">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="76"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <connections>
@@ -308,7 +309,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waC-Jl-ztr" userLabel="buttonContainer">
                                                         <rect key="frame" x="0.0" y="94.5" width="414" height="95"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7U-le-Je2" userLabel="logoutButton">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7U-le-Je2" userLabel="logoutButton">
                                                                 <rect key="frame" x="103.5" y="30.5" width="207" height="34.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="k7U-le-Je2" secondAttribute="height" multiplier="6:1" id="ikd-vB-fwt"/>
@@ -383,7 +384,7 @@
         <!--KnowledgeBase-->
         <scene sceneID="76y-0I-vfp">
             <objects>
-                <viewController id="aHY-qi-syv" userLabel="KnowledgeBase" customClass="KnowledgeBaseViewController" customModule="check_yo_self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aHY-qi-syv" userLabel="KnowledgeBase" customClass="KnowledgeBaseViewController" customModule="Check_Yo_Self_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cSY-LS-OBS"/>
                         <viewControllerLayoutGuide type="bottom" id="TUd-sP-lST"/>
@@ -427,7 +428,7 @@
         <!--Facebook Friends-->
         <scene sceneID="O1y-w5-ib6">
             <objects>
-                <viewController id="JqL-Zf-Qyh" customClass="FriendListViewController" customModule="check_yo_self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JqL-Zf-Qyh" customClass="FriendListViewController" customModule="Check_Yo_Self_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Odl-Hs-h8t"/>
                         <viewControllerLayoutGuide type="bottom" id="ayH-jJ-Cmi"/>
@@ -440,7 +441,7 @@
                                 <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="friendCell" rowHeight="60" id="nmq-qX-oUP" customClass="FriendCell" customModule="check_yo_self" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="friendCell" rowHeight="60" id="nmq-qX-oUP" customClass="FriendCell" customModule="Check_Yo_Self_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nmq-qX-oUP" id="Ujd-g4-MPc">
@@ -550,7 +551,7 @@
         <!--Devices-->
         <scene sceneID="6DH-xE-vmP">
             <objects>
-                <viewController id="4mN-Uj-d0o" userLabel="Devices" customClass="ConnectionsViewController" customModule="check_yo_self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4mN-Uj-d0o" userLabel="Devices" customClass="ConnectionsViewController" customModule="Check_Yo_Self_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="arr-Jq-3yg"/>
                         <viewControllerLayoutGuide type="bottom" id="Pdd-kR-yyp"/>
@@ -577,14 +578,14 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="connectionCell" id="V3o-Wl-0qj" customClass="ConnectionCell" customModule="check_yo_self" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="connectionCell" id="V3o-Wl-0qj" customClass="ConnectionCell" customModule="Check_Yo_Self_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4h-KC-4sN" userLabel="backdropButton">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4h-KC-4sN" userLabel="backdropButton">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                     <state key="normal" backgroundImage="raised-square-gray"/>
                                                     <connections>
@@ -666,7 +667,7 @@
         <!--Play-->
         <scene sceneID="hcV-RS-M4l">
             <objects>
-                <viewController storyboardIdentifier="PlayScene" title="Play" id="avA-NG-c4e" customClass="QuestionsViewController" customModule="check_yo_self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayScene" title="Play" id="avA-NG-c4e" customClass="QuestionsViewController" customModule="Check_Yo_Self_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ujp-OH-jVB"/>
                         <viewControllerLayoutGuide type="bottom" id="WJq-Y1-wPo"/>
@@ -846,7 +847,7 @@
         <!--Syncing View Controller-->
         <scene sceneID="KvL-ia-8Pt">
             <objects>
-                <viewController id="P5S-Ad-vke" customClass="SyncingViewController" customModule="check_yo_self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="P5S-Ad-vke" customClass="SyncingViewController" customModule="Check_Yo_Self_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="90m-XY-Vd7"/>
                         <viewControllerLayoutGuide type="bottom" id="RMe-xg-CSH"/>
@@ -892,7 +893,7 @@
         <!--Background View Controller-->
         <scene sceneID="mOO-7B-SHI">
             <objects>
-                <viewController id="deX-qX-97p" customClass="BackgroundViewController" customModule="check_yo_self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="deX-qX-97p" customClass="BackgroundViewController" customModule="Check_Yo_Self_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KAe-rC-sUQ"/>
                         <viewControllerLayoutGuide type="bottom" id="h9d-wj-mgJ"/>
@@ -914,7 +915,7 @@
         <!--Forgot Pass View Controller-->
         <scene sceneID="vOB-JX-fg6">
             <objects>
-                <viewController storyboardIdentifier="ForgotPassVC" id="Icg-VK-N8T" customClass="ForgotPassViewController" customModule="check_yo_self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForgotPassVC" id="Icg-VK-N8T" customClass="ForgotPassViewController" customModule="Check_Yo_Self_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xu8-JS-awQ"/>
                         <viewControllerLayoutGuide type="bottom" id="8AM-Bv-aCW"/>
@@ -941,7 +942,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pZd-K1-TZS">
                                                 <rect key="frame" x="0.0" y="83" width="242" height="61"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sBB-Lr-OSe" userLabel="emailTextField" customClass="TextField" customModule="check_yo_self" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sBB-Lr-OSe" userLabel="emailTextField" customClass="TextField" customModule="Check_Yo_Self_" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="242" height="61"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -952,11 +953,11 @@
                                                     </textField>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G09-bh-rkD" userLabel="loginButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G09-bh-rkD" userLabel="loginButton">
                                                 <rect key="frame" x="0.0" y="164" width="242" height="38"/>
                                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
-                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="tintColor" systemColor="darkTextColor"/>
                                                 <state key="normal" title="Send" backgroundImage="button-sharp-gray"/>
                                                 <connections>
                                                     <action selector="loginButtonPressed:" destination="Zqt-00-Rnf" eventType="touchUpInside" id="P6b-6O-aMJ"/>
@@ -981,11 +982,11 @@
                                     <constraint firstItem="Fqm-Io-mLn" firstAttribute="centerX" secondItem="IXf-cs-b1N" secondAttribute="centerX" id="tY4-nk-cBG"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fug-xz-eyb" userLabel="loginButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fug-xz-eyb" userLabel="loginButton">
                                 <rect key="frame" x="0.0" y="749" width="414" height="59"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
-                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="tintColor" systemColor="darkTextColor"/>
                                 <state key="normal" title="Log in" backgroundImage="button-sharp-gray"/>
                                 <connections>
                                     <action selector="loginBtnPressed:" destination="Icg-VK-N8T" eventType="touchUpInside" id="mgB-AK-r0T"/>
@@ -1018,7 +1019,7 @@
         <!--Login View Controller-->
         <scene sceneID="EZQ-Kq-4fK">
             <objects>
-                <viewController storyboardIdentifier="loginViewController" id="Zqt-00-Rnf" customClass="LoginViewController" customModule="check_yo_self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" id="Zqt-00-Rnf" customClass="LoginViewController" customModule="Check_Yo_Self_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rLV-FL-98w"/>
                         <viewControllerLayoutGuide type="bottom" id="thd-kk-Wpt"/>
@@ -1028,7 +1029,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zki-Un-lIB" userLabel="loginView">
-                                <rect key="frame" x="45.5" y="313.5" width="323" height="269"/>
+                                <rect key="frame" x="45.5" y="263.5" width="323" height="269"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alert-backdrop-gray" translatesAutoresizingMaskIntoConstraints="NO" id="Q2E-h4-6oW">
                                         <rect key="frame" x="0.0" y="0.0" width="323" height="269"/>
@@ -1036,7 +1037,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Eqq-Kp-Kt1" userLabel="loginStack">
                                         <rect key="frame" x="32.5" y="27" width="258" height="215"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to CollabRjabbR account." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rb-mb-f2Q" userLabel="label">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to SindyXR account." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rb-mb-f2Q" userLabel="label">
                                                 <rect key="frame" x="0.0" y="0.0" width="258" height="67"/>
                                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
                                                 <nil key="textColor"/>
@@ -1045,7 +1046,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="sFP-jc-USz">
                                                 <rect key="frame" x="0.0" y="87" width="258" height="67.5"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EYS-2O-kb8" userLabel="emailTextField" customClass="TextField" customModule="check_yo_self" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EYS-2O-kb8" userLabel="emailTextField" customClass="TextField" customModule="Check_Yo_Self_" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="258" height="31.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -1054,7 +1055,7 @@
                                                             <action selector="textFieldEditingDidEnd:" destination="Zqt-00-Rnf" eventType="editingDidEnd" id="y0b-HO-Nd5"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Gc-Bk-1oL" userLabel="passwordTextField" customClass="TextField" customModule="check_yo_self" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Gc-Bk-1oL" userLabel="passwordTextField" customClass="TextField" customModule="Check_Yo_Self_" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="36.5" width="258" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -1065,11 +1066,11 @@
                                                     </textField>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1VT-zf-80G" userLabel="loginButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1VT-zf-80G" userLabel="loginButton">
                                                 <rect key="frame" x="0.0" y="174.5" width="258" height="40.5"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
-                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="tintColor" systemColor="darkTextColor"/>
                                                 <state key="normal" title="Login" backgroundImage="button-sharp-gray"/>
                                                 <connections>
                                                     <action selector="loginButtonPressed:" destination="Zqt-00-Rnf" eventType="touchUpInside" id="m8L-w8-iUw"/>
@@ -1093,27 +1094,33 @@
                                     <constraint firstAttribute="bottom" secondItem="Q2E-h4-6oW" secondAttribute="bottom" id="zBU-Vj-NNM"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMU-cb-RQd" userLabel="loginButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMU-cb-RQd" userLabel="loginButton">
                                 <rect key="frame" x="0.0" y="799.5" width="414" height="62.5"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
-                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="tintColor" systemColor="darkTextColor"/>
                                 <state key="normal" title="Create New Account" backgroundImage="button-sharp-gray"/>
                                 <connections>
                                     <action selector="createAccountButtonPressed:" destination="Zqt-00-Rnf" eventType="touchUpInside" id="Vck-nB-H8P"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKY-Tf-5hd">
-                                <rect key="frame" x="142" y="592.5" width="130" height="103"/>
+                                <rect key="frame" x="132" y="542.5" width="150" height="163"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nST-Op-xiT">
-                                        <rect key="frame" x="56.5" y="0.0" width="17.5" height="23"/>
+                                        <rect key="frame" x="66.5" y="0.0" width="17.5" height="23"/>
                                         <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="19"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UTO-uC-Nsv">
+                                        <rect key="frame" x="0.0" y="33" width="150" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="fb7-pa-ksx"/>
+                                        </constraints>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="y4L-gC-MJ2">
-                                        <rect key="frame" x="0.0" y="38" width="130" height="60"/>
+                                        <rect key="frame" x="10" y="98" width="130" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFY-7F-ym4" userLabel="FacebookBtn">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -1142,19 +1149,22 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="nST-Op-xiT" firstAttribute="top" secondItem="qKY-Tf-5hd" secondAttribute="top" id="7qA-Mz-dpJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="UTO-uC-Nsv" secondAttribute="trailing" id="DSR-B9-rPQ"/>
+                                    <constraint firstItem="UTO-uC-Nsv" firstAttribute="leading" secondItem="qKY-Tf-5hd" secondAttribute="leading" id="OEa-7c-o92"/>
                                     <constraint firstItem="nST-Op-xiT" firstAttribute="centerX" secondItem="qKY-Tf-5hd" secondAttribute="centerX" id="Pfi-0T-Rz1"/>
                                     <constraint firstAttribute="bottom" secondItem="y4L-gC-MJ2" secondAttribute="bottom" constant="5" id="Ulk-LR-Sim"/>
-                                    <constraint firstItem="y4L-gC-MJ2" firstAttribute="leading" secondItem="qKY-Tf-5hd" secondAttribute="leading" id="fAt-36-8mj"/>
-                                    <constraint firstItem="y4L-gC-MJ2" firstAttribute="top" secondItem="nST-Op-xiT" secondAttribute="bottom" constant="15" id="obq-80-uyB"/>
-                                    <constraint firstAttribute="width" constant="130" id="vs7-zX-WUL"/>
-                                    <constraint firstAttribute="trailing" secondItem="y4L-gC-MJ2" secondAttribute="trailing" id="yI4-kP-e2H"/>
+                                    <constraint firstItem="y4L-gC-MJ2" firstAttribute="top" secondItem="UTO-uC-Nsv" secondAttribute="bottom" constant="15" id="cey-0B-iB5"/>
+                                    <constraint firstItem="y4L-gC-MJ2" firstAttribute="leading" secondItem="qKY-Tf-5hd" secondAttribute="leading" constant="10" id="fAt-36-8mj"/>
+                                    <constraint firstItem="UTO-uC-Nsv" firstAttribute="top" secondItem="nST-Op-xiT" secondAttribute="bottom" constant="10" id="gf2-6I-Nqh"/>
+                                    <constraint firstAttribute="width" constant="150" id="vs7-zX-WUL"/>
+                                    <constraint firstAttribute="trailing" secondItem="y4L-gC-MJ2" secondAttribute="trailing" constant="10" id="yI4-kP-e2H"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hb-MR-kfN" userLabel="forgotPass">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hb-MR-kfN" userLabel="forgotPass">
                                 <rect key="frame" x="0.0" y="731.5" width="414" height="63"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
-                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="tintColor" systemColor="darkTextColor"/>
                                 <state key="normal" title="Forgot Password" backgroundImage="button-sharp-gray"/>
                                 <connections>
                                     <action selector="forgotPassButtonPressed:" destination="Zqt-00-Rnf" eventType="touchUpInside" id="vu8-8u-2Xq"/>
@@ -1164,6 +1174,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="3hb-MR-kfN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qKY-Tf-5hd" secondAttribute="bottom" constant="15" id="05I-pJ-raM"/>
                             <constraint firstItem="zki-Un-lIB" firstAttribute="centerX" secondItem="fXU-5y-coi" secondAttribute="centerX" id="0ZC-u2-Tc8"/>
                             <constraint firstItem="thd-kk-Wpt" firstAttribute="top" secondItem="aMU-cb-RQd" secondAttribute="bottom" id="2g5-mS-j8v"/>
                             <constraint firstItem="aMU-cb-RQd" firstAttribute="height" secondItem="fXU-5y-coi" secondAttribute="height" multiplier="0.07" id="2z6-9a-d3j"/>
@@ -1171,7 +1182,7 @@
                             <constraint firstItem="qKY-Tf-5hd" firstAttribute="centerX" secondItem="fXU-5y-coi" secondAttribute="centerX" id="JKi-yR-1IV"/>
                             <constraint firstItem="aMU-cb-RQd" firstAttribute="leading" secondItem="fXU-5y-coi" secondAttribute="leading" id="MjE-Qj-Jbj"/>
                             <constraint firstAttribute="trailing" secondItem="3hb-MR-kfN" secondAttribute="trailing" id="N10-WW-BWN"/>
-                            <constraint firstItem="zki-Un-lIB" firstAttribute="centerY" secondItem="fXU-5y-coi" secondAttribute="centerY" id="WSn-YP-Ej7"/>
+                            <constraint firstItem="zki-Un-lIB" firstAttribute="centerY" secondItem="fXU-5y-coi" secondAttribute="centerY" constant="-50" id="WSn-YP-Ej7"/>
                             <constraint firstItem="3hb-MR-kfN" firstAttribute="leading" secondItem="fXU-5y-coi" secondAttribute="leading" id="Z82-KT-T71"/>
                             <constraint firstItem="qKY-Tf-5hd" firstAttribute="top" secondItem="zki-Un-lIB" secondAttribute="bottom" constant="10" id="ZiW-pa-0dx"/>
                             <constraint firstItem="aMU-cb-RQd" firstAttribute="top" secondItem="3hb-MR-kfN" secondAttribute="bottom" constant="5" id="f0d-Be-aUd"/>
@@ -1186,9 +1197,11 @@
                         <outlet property="forgotPassButton" destination="3hb-MR-kfN" id="EDO-0f-ALM"/>
                         <outlet property="googleBtn" destination="Mga-7m-LFu" id="uBE-zW-j9H"/>
                         <outlet property="loginButton" destination="1VT-zf-80G" id="yLq-Lg-aOG"/>
+                        <outlet property="loginProviderStackview" destination="UTO-uC-Nsv" id="GEA-H7-Q0a"/>
                         <outlet property="loginView" destination="zki-Un-lIB" id="nQH-pc-SX3"/>
                         <outlet property="messageLabel" destination="4rb-mb-f2Q" id="EiH-V6-EAX"/>
                         <outlet property="passwordTextField" destination="4Gc-Bk-1oL" id="AgN-Xh-7Df"/>
+                        <outlet property="stackHeight" destination="fb7-pa-ksx" id="Tc8-yi-czk"/>
                         <segue destination="seB-r1-mAs" kind="presentation" identifier="showCreateNewAccount" modalTransitionStyle="coverVertical" id="IvV-Is-De6"/>
                         <segue destination="oye-vC-dZ8" kind="show" identifier="showCubeScreen" id="6oq-HZ-WNf"/>
                     </connections>
@@ -1200,7 +1213,7 @@
         <!--Create Account-->
         <scene sceneID="mgr-kC-dfb">
             <objects>
-                <viewController storyboardIdentifier="createNewAccountViewController" id="PEa-iB-K9k" customClass="CreateNewAccountViewController" customModule="check_yo_self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="createNewAccountViewController" id="PEa-iB-K9k" customClass="CreateNewAccountViewController" customModule="Check_Yo_Self_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5hQ-4d-SU7"/>
                         <viewControllerLayoutGuide type="bottom" id="asY-S4-6hY"/>
@@ -1213,7 +1226,7 @@
                                 <rect key="frame" x="20" y="56" width="374" height="693"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="labelAndTextFieldCell" rowHeight="60" id="D7p-UW-7PU" customClass="LabelAndTextFieldCell" customModule="check_yo_self" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="labelAndTextFieldCell" rowHeight="60" id="D7p-UW-7PU" customClass="LabelAndTextFieldCell" customModule="Check_Yo_Self_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D7p-UW-7PU" id="u0s-Yj-mKh">
@@ -1230,7 +1243,7 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Label" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rCp-KY-KN2" userLabel="textField" customClass="TextField" customModule="check_yo_self" customModuleProvider="target">
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Label" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rCp-KY-KN2" userLabel="textField" customClass="TextField" customModule="Check_Yo_Self_" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="30" width="337" height="30"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1261,11 +1274,11 @@
                                     <outlet property="delegate" destination="PEa-iB-K9k" id="BO5-JL-1YE"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMF-ao-qic" userLabel="continueButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMF-ao-qic" userLabel="continueButton">
                                 <rect key="frame" x="0.0" y="749" width="414" height="59"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
-                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="tintColor" systemColor="darkTextColor"/>
                                 <state key="normal" title="Continue" backgroundImage="button-sharp-gray"/>
                                 <connections>
                                     <action selector="continueButtonPressed:" destination="PEa-iB-K9k" eventType="touchUpInside" id="90f-78-Pn0"/>
@@ -1305,7 +1318,7 @@
         <!--Profile-->
         <scene sceneID="7VN-4r-4sP">
             <objects>
-                <viewController storyboardIdentifier="profileViewController" id="dhS-PX-xpl" customClass="ProfileViewController" customModule="check_yo_self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="profileViewController" id="dhS-PX-xpl" customClass="ProfileViewController" customModule="Check_Yo_Self_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zPQ-6Z-EHQ"/>
                         <viewControllerLayoutGuide type="bottom" id="Tie-UB-9j1"/>
@@ -1318,7 +1331,7 @@
                                 <rect key="frame" x="20" y="56" width="374" height="693"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dropdownMenuCell" rowHeight="120" id="hbO-dP-sLX" customClass="DropdownMenuCell" customModule="check_yo_self" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dropdownMenuCell" rowHeight="120" id="hbO-dP-sLX" customClass="DropdownMenuCell" customModule="Check_Yo_Self_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hbO-dP-sLX" id="QPx-eb-uBy">
@@ -1337,7 +1350,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="SELECT OPTION" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XrM-DA-NwN" userLabel="textField" customClass="TextField" customModule="check_yo_self" customModuleProvider="target">
+                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="SELECT OPTION" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XrM-DA-NwN" userLabel="textField" customClass="TextField" customModule="Check_Yo_Self_" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="30" width="337" height="30"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits"/>
@@ -1377,11 +1390,11 @@
                                     <outlet property="delegate" destination="dhS-PX-xpl" id="xM9-jZ-Pss"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fy-xQ-do8" userLabel="finishButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fy-xQ-do8" userLabel="finishButton">
                                 <rect key="frame" x="0.0" y="749" width="414" height="59"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
-                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="tintColor" systemColor="darkTextColor"/>
                                 <state key="normal" title="Finish" backgroundImage="button-sharp-gray"/>
                                 <connections>
                                     <action selector="continueButtonPressed:" destination="PEa-iB-K9k" eventType="touchUpInside" id="9Ox-n3-eQ0"/>
@@ -1422,7 +1435,7 @@
         <!--Custom Tab Bar-->
         <scene sceneID="unx-48-zhD">
             <objects>
-                <tabBarController storyboardIdentifier="customTabBar" id="oye-vC-dZ8" customClass="CustomTabBar" customModule="check_yo_self" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="customTabBar" id="oye-vC-dZ8" customClass="CustomTabBar" customModule="Check_Yo_Self_" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleAspectFit" id="X5g-ru-o3C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1444,7 +1457,7 @@
         <!--Games Played-->
         <scene sceneID="mqc-xw-PEZ">
             <objects>
-                <viewController id="teg-xT-Ha4" customClass="GameRecordsViewController" customModule="check_yo_self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="teg-xT-Ha4" customClass="GameRecordsViewController" customModule="Check_Yo_Self_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZFc-a0-yGF"/>
                         <viewControllerLayoutGuide type="bottom" id="6dt-DS-skz"/>
@@ -1457,7 +1470,7 @@
                                 <rect key="frame" x="0.0" y="56" width="414" height="703"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="gameRecordCell" rowHeight="60" id="mUp-3c-jDw" userLabel="gameRecordCell" customClass="GameRecordCell" customModule="check_yo_self" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="gameRecordCell" rowHeight="60" id="mUp-3c-jDw" userLabel="gameRecordCell" customClass="GameRecordCell" customModule="Check_Yo_Self_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mUp-3c-jDw" id="SHj-EX-Sch">
@@ -1575,7 +1588,7 @@
         <!--GameRecords-->
         <scene sceneID="Wbd-2A-woP">
             <objects>
-                <viewController storyboardIdentifier="gameRecordDetails" title="GameRecords" id="aHj-oI-cBH" customClass="GameRecordDetailsViewController" customModule="check_yo_self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gameRecordDetails" title="GameRecords" id="aHj-oI-cBH" customClass="GameRecordDetailsViewController" customModule="Check_Yo_Self_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Sj-hP-YhS"/>
                         <viewControllerLayoutGuide type="bottom" id="cEh-rk-yO8"/>
@@ -1593,7 +1606,7 @@
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9nH-jt-7G9" userLabel="mapView">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="200.5"/>
                                             </mapView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exh-vb-3RX" userLabel="centerMapButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exh-vb-3RX" userLabel="centerMapButton">
                                                 <rect key="frame" x="0.0" y="200.5" width="414" height="35.5"/>
                                                 <fontDescription key="fontDescription" name="Arial-ItalicMT" family="Arial" pointSize="14"/>
                                                 <state key="normal" title="Center Map" backgroundImage="raised-square-gray">
@@ -1626,7 +1639,7 @@
                                         <rect key="frame" x="0.0" y="334.5" width="414" height="451.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gameStatCell" id="GJz-gP-A5U" customClass="GameStatCell" customModule="check_yo_self" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gameStatCell" id="GJz-gP-A5U" customClass="GameStatCell" customModule="Check_Yo_Self_" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GJz-gP-A5U" id="5la-Hx-Cay">
@@ -1727,7 +1740,7 @@
         <!--Map-->
         <scene sceneID="MP1-mK-OMt">
             <objects>
-                <viewController title="Map" id="5gm-EC-Spv" customClass="MapViewController" customModule="check_yo_self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Map" id="5gm-EC-Spv" customClass="MapViewController" customModule="Check_Yo_Self_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jFs-iR-1dw"/>
                         <viewControllerLayoutGuide type="bottom" id="cKv-L3-8hO"/>
@@ -1905,13 +1918,13 @@
         <!--Tutorial View Controller-->
         <scene sceneID="oe7-XV-VXm">
             <objects>
-                <viewController id="sMj-jC-0wl" customClass="TutorialViewController" customModule="check_yo_self" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sMj-jC-0wl" customClass="TutorialViewController" customModule="Check_Yo_Self_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sVR-Op-77M"/>
                         <viewControllerLayoutGuide type="bottom" id="cjV-Rf-pp3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8f-ha-7lY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tu6-ce-JMB" userLabel="Container">
                                 <rect key="frame" x="50" y="206" width="314" height="484"/>
@@ -1965,7 +1978,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="systemTealColor"/>
                                         <constraints>
                                             <constraint firstItem="ebG-su-L4c" firstAttribute="width" secondItem="LAO-vS-9LH" secondAttribute="width" id="3fD-I7-47a"/>
                                             <constraint firstItem="h03-M7-9Va" firstAttribute="bottom" secondItem="D60-21-DQp" secondAttribute="bottom" id="5oM-Qc-XpU"/>
@@ -1986,7 +1999,7 @@
                                             <constraint firstAttribute="height" constant="20" id="rg2-e2-KKH"/>
                                         </constraints>
                                     </pageControl>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ep-Sg-r82">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ep-Sg-r82">
                                         <rect key="frame" x="127" y="435" width="60" height="30"/>
                                         <color key="backgroundColor" red="0.11764705882352941" green="0.16078431372549018" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -2069,5 +2082,29 @@
         <image name="tab-icon-map" width="24.5" height="24.5"/>
         <image name="tab-icon-play" width="24.5" height="24.5"/>
         <image name="tab-icon-stats" width="24.5" height="24.5"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
