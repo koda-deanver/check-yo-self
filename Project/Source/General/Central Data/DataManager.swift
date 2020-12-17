@@ -12,6 +12,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import FacebookCore
 import GoogleSignIn
+import AuthenticationServices
 
 // MARK: - Enumeration -
 
@@ -186,6 +187,33 @@ class DataManager {
                     "lastname":"\(lastName)",
                     "googleId":"\(user?.userID ?? "")",
                     "image":"\(authResult?.user.photoURL ?? NSURL() as URL)",
+                    "phone":"\(authResult?.user.phoneNumber ?? "")",
+                    "userId":"\(priUserId)"]
+                self.createUser(dict: dict, userId: priUserId)
+                completion(dict)
+            }
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    func registerAppleOnFirebase(credential: OAuthCredential!, appleIDCredential: ASAuthorizationAppleIDCredential!, completion: @escaping ([String: Any]) -> Void, failure: ErrorClosure?) {
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            if (error != nil) {
+                // Error. If error.code == .MissingOrInvalidNonce, make sure
+                // you're sending the SHA256-hashed nonce as a hex string with
+                // your request to Apple.
+                print("errormessage \(error?.localizedDescription)")
+                failure?(error?.localizedDescription ?? "error")
+                return
+            }
+            
+            let fullName = appleIDCredential.fullName
+            if let priUserId = authResult?.user.uid {
+                let dict:[String:Any] = ["email":"\(appleIDCredential.email ?? "")",
+                    "firstname":"\(fullName?.givenName ?? "")",
+                    "lastname":"\(fullName?.familyName ?? "")",
+                    "appleId": appleIDCredential.user,
+                    "image":"",
                     "phone":"\(authResult?.user.phoneNumber ?? "")",
                     "userId":"\(priUserId)"]
                 self.createUser(dict: dict, userId: priUserId)
